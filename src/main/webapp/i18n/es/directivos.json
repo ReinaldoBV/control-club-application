@@ -1,0 +1,30 @@
+{
+  "controlClubApplicationApp": {
+    "directivos": {
+      "home": {
+        "title": "Directivos",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Directivos",
+        "createOrEditLabel": "Crear o editar Directivos",
+        "notFound": "Ningún Directivos encontrado"
+      },
+      "created": "Un nuevo Directivos ha sido creado con el identificador {{ param }}",
+      "updated": "Un Directivos ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Directivos ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Directivos {{ id }}?"
+      },
+      "detail": {
+        "title": "Directivos"
+      },
+      "id": "ID",
+      "nombres": "Nombres",
+      "apellidos": "Apellidos",
+      "cargo": "Cargo",
+      "telefono": "Telefono",
+      "fechaEleccion": "Fecha Eleccion",
+      "fechaVencimiento": "Fecha Vencimiento",
+      "email": "Email"
+    }
+  }
+}

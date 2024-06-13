@@ -12,7 +12,10 @@
         "comuna": "Comuna",
         "centroSalud": "Centro Salud",
         "centroEducativo": "Centro Educativo",
-        "categorias": "Categorias"
+        "categorias": "Categorias",
+        "directivos": "Directivos",
+        "asociados": "Asociados",
+        "padre": "Padre"
       },
       "account": {
         "main": "Cuenta",
