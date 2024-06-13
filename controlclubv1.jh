@@ -15,6 +15,16 @@ entity CentroSalud {
     centroSalud String required
 }
 
+entity CentroEducativo {
+    centroEducativo String required
+}
+
+entity Categorias {
+    anioInicio Long required,
+    anioFinal Long required,
+    nombreCategoria String required
+}
+
 service all with serviceClass
 dto all with mapstruct
 paginate all with pagination

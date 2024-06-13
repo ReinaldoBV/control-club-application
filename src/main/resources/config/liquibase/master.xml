@@ -14,6 +14,8 @@
     <include file="config/liquibase/changelog/20240613154417_added_entity_Club.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20240613162321_added_entity_Comuna.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20240613162322_added_entity_CentroSalud.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240613163025_added_entity_CentroEducativo.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240613163026_added_entity_Categorias.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
