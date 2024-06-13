@@ -4,11 +4,7 @@ import cl.controlclub.myapp.domain.CentroEducativo;
 import cl.controlclub.myapp.repository.CentroEducativoRepository;
 import cl.controlclub.myapp.service.dto.CentroEducativoDTO;
 import cl.controlclub.myapp.service.mapper.CentroEducativoMapper;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -90,19 +86,6 @@ public class CentroEducativoService {
     public Page<CentroEducativoDTO> findAll(Pageable pageable) {
         log.debug("Request to get all CentroEducativos");
         return centroEducativoRepository.findAll(pageable).map(centroEducativoMapper::toDto);
-    }
-
-    /**
-     *  Get all the centroEducativos where Jugador is {@code null}.
-     *  @return the list of entities.
-     */
-    @Transactional(readOnly = true)
-    public List<CentroEducativoDTO> findAllWhereJugadorIsNull() {
-        log.debug("Request to get all centroEducativos where Jugador is null");
-        return StreamSupport.stream(centroEducativoRepository.findAll().spliterator(), false)
-            .filter(centroEducativo -> centroEducativo.getJugador() == null)
-            .map(centroEducativoMapper::toDto)
-            .collect(Collectors.toCollection(LinkedList::new));
     }
 
     /**

@@ -1,5 +1,4 @@
 import dayjs from 'dayjs/esm';
-import { IAsociados } from 'app/entities/asociados/asociados.model';
 
 export interface IDirectivos {
   id: number;
@@ -10,7 +9,6 @@ export interface IDirectivos {
   fechaEleccion?: dayjs.Dayjs | null;
   fechaVencimiento?: dayjs.Dayjs | null;
   email?: string | null;
-  asociados?: Pick<IAsociados, 'id'> | null;
 }
 
 export type NewDirectivos = Omit<IDirectivos, 'id'> & { id: null };

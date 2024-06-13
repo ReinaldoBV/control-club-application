@@ -62,21 +62,6 @@
             <column name="documento_identificacion_content_type" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="centro_salud_id" type="bigint">
-                <constraints nullable="true" unique="true" uniqueConstraintName="ux_jugador__centro_salud_id" />
-            </column>
-            <column name="prevision_salud_id" type="bigint">
-                <constraints nullable="true" unique="true" uniqueConstraintName="ux_jugador__prevision_salud_id" />
-            </column>
-            <column name="comuna_id" type="bigint">
-                <constraints nullable="true" unique="true" uniqueConstraintName="ux_jugador__comuna_id" />
-            </column>
-            <column name="centro_educativo_id" type="bigint">
-                <constraints nullable="true" unique="true" uniqueConstraintName="ux_jugador__centro_educativo_id" />
-            </column>
-            <column name="categorias_id" type="bigint">
-                <constraints nullable="true" unique="true" uniqueConstraintName="ux_jugador__categorias_id" />
-            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
     </changeSet>

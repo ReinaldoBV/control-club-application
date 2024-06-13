@@ -20,11 +20,7 @@
       "id": "ID",
       "username": "Username",
       "password": "Password",
-      "rol": "Rol",
-      "jugador": "Jugador",
-      "asociados": "Asociados",
-      "directivos": "Directivos",
-      "cuerpoTecnico": "Cuerpo Tecnico"
+      "rol": "Rol"
     }
   }
 }

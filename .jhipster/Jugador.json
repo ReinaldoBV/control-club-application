@@ -80,50 +80,7 @@
   ],
   "name": "Jugador",
   "pagination": "pagination",
-  "relationships": [
-    {
-      "otherEntityName": "centroSalud",
-      "otherEntityRelationshipName": "jugador",
-      "relationshipName": "centroSalud",
-      "relationshipSide": "left",
-      "relationshipType": "one-to-one"
-    },
-    {
-      "otherEntityName": "previsionSalud",
-      "otherEntityRelationshipName": "jugador",
-      "relationshipName": "previsionSalud",
-      "relationshipSide": "left",
-      "relationshipType": "one-to-one"
-    },
-    {
-      "otherEntityName": "comuna",
-      "otherEntityRelationshipName": "jugador",
-      "relationshipName": "comuna",
-      "relationshipSide": "left",
-      "relationshipType": "one-to-one"
-    },
-    {
-      "otherEntityName": "centroEducativo",
-      "otherEntityRelationshipName": "jugador",
-      "relationshipName": "centroEducativo",
-      "relationshipSide": "left",
-      "relationshipType": "one-to-one"
-    },
-    {
-      "otherEntityName": "categorias",
-      "otherEntityRelationshipName": "jugador",
-      "relationshipName": "categorias",
-      "relationshipSide": "left",
-      "relationshipType": "one-to-one"
-    },
-    {
-      "otherEntityName": "usuario",
-      "otherEntityRelationshipName": "jugador",
-      "relationshipName": "usuario",
-      "relationshipSide": "right",
-      "relationshipType": "one-to-one"
-    }
-  ],
+  "relationships": [],
   "searchEngine": "no",
   "service": "serviceClass"
 }

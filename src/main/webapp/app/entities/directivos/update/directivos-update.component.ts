@@ -2,13 +2,11 @@ import { Component, inject, OnInit } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { finalize, map } from 'rxjs/operators';
+import { finalize } from 'rxjs/operators';
 
 import SharedModule from 'app/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { IAsociados } from 'app/entities/asociados/asociados.model';
-import { AsociadosService } from 'app/entities/asociados/service/asociados.service';
 import { IDirectivos } from '../directivos.model';
 import { DirectivosService } from '../service/directivos.service';
 import { DirectivosFormService, DirectivosFormGroup } from './directivos-form.service';
@@ -23,17 +21,12 @@ export class DirectivosUpdateComponent implements OnInit {
   isSaving = false;
   directivos: IDirectivos | null = null;
 
-  asociadosCollection: IAsociados[] = [];
-
   protected directivosService = inject(DirectivosService);
   protected directivosFormService = inject(DirectivosFormService);
-  protected asociadosService = inject(AsociadosService);
   protected activatedRoute = inject(ActivatedRoute);
 
   // eslint-disable-next-line @typescript-eslint/member-ordering
   editForm: DirectivosFormGroup = this.directivosFormService.createDirectivosFormGroup();
-
-  compareAsociados = (o1: IAsociados | null, o2: IAsociados | null): boolean => this.asociadosService.compareAsociados(o1, o2);
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ directivos }) => {
@@ -41,8 +34,6 @@ export class DirectivosUpdateComponent implements OnInit {
       if (directivos) {
         this.updateForm(directivos);
       }
-
-      this.loadRelationshipsOptions();
     });
   }
 
@@ -82,22 +73,5 @@ export class DirectivosUpdateComponent implements OnInit {
   protected updateForm(directivos: IDirectivos): void {
     this.directivos = directivos;
     this.directivosFormService.resetForm(this.editForm, directivos);
-
-    this.asociadosCollection = this.asociadosService.addAsociadosToCollectionIfMissing<IAsociados>(
-      this.asociadosCollection,
-      directivos.asociados,
-    );
-  }
-
-  protected loadRelationshipsOptions(): void {
-    this.asociadosService
-      .query({ filter: 'directivos-is-null' })
-      .pipe(map((res: HttpResponse<IAsociados[]>) => res.body ?? []))
-      .pipe(
-        map((asociados: IAsociados[]) =>
-          this.asociadosService.addAsociadosToCollectionIfMissing<IAsociados>(asociados, this.directivos?.asociados),
-        ),
-      )
-      .subscribe((asociados: IAsociados[]) => (this.asociadosCollection = asociados));
   }
 }

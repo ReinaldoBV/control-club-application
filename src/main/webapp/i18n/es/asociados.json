@@ -23,10 +23,7 @@
       "cargo": "Cargo",
       "telefono": "Telefono",
       "fechaAsoc": "Fecha Asoc",
-      "email": "Email",
-      "usuario": "Usuario",
-      "directivos": "Directivos",
-      "cuerpoTecnico": "Cuerpo Tecnico"
+      "email": "Email"
     }
   }
 }

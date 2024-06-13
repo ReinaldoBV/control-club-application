@@ -20,8 +20,7 @@
       "id": "ID",
       "anioInicio": "Anio Inicio",
       "anioFinal": "Anio Final",
-      "nombreCategoria": "Nombre Categoria",
-      "jugador": "Jugador"
+      "nombreCategoria": "Nombre Categoria"
     }
   }
 }

@@ -27,7 +27,6 @@ describe('Directivos Form Service', () => {
             fechaEleccion: expect.any(Object),
             fechaVencimiento: expect.any(Object),
             email: expect.any(Object),
-            asociados: expect.any(Object),
           }),
         );
       });
@@ -45,7 +44,6 @@ describe('Directivos Form Service', () => {
             fechaEleccion: expect.any(Object),
             fechaVencimiento: expect.any(Object),
             email: expect.any(Object),
-            asociados: expect.any(Object),
           }),
         );
       });

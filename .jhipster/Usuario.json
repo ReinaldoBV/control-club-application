@@ -24,36 +24,7 @@
   ],
   "name": "Usuario",
   "pagination": "pagination",
-  "relationships": [
-    {
-      "otherEntityName": "jugador",
-      "otherEntityRelationshipName": "usuario",
-      "relationshipName": "jugador",
-      "relationshipSide": "left",
-      "relationshipType": "one-to-one"
-    },
-    {
-      "otherEntityName": "asociados",
-      "otherEntityRelationshipName": "usuario",
-      "relationshipName": "asociados",
-      "relationshipSide": "left",
-      "relationshipType": "one-to-one"
-    },
-    {
-      "otherEntityName": "directivos",
-      "otherEntityRelationshipName": "usuario",
-      "relationshipName": "directivos",
-      "relationshipSide": "left",
-      "relationshipType": "one-to-one"
-    },
-    {
-      "otherEntityName": "cuerpoTecnico",
-      "otherEntityRelationshipName": "usuario",
-      "relationshipName": "cuerpoTecnico",
-      "relationshipSide": "left",
-      "relationshipType": "one-to-one"
-    }
-  ],
+  "relationships": [],
   "searchEngine": "no",
   "service": "serviceClass"
 }

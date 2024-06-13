@@ -1,6 +1,5 @@
 package cl.controlclub.myapp.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
@@ -35,13 +34,6 @@ public class Categorias implements Serializable {
     @NotNull
     @Column(name = "nombre_categoria", nullable = false)
     private String nombreCategoria;
-
-    @JsonIgnoreProperties(
-        value = { "centroSalud", "previsionSalud", "comuna", "centroEducativo", "categorias", "usuario" },
-        allowSetters = true
-    )
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "categorias")
-    private Jugador jugador;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -95,25 +87,6 @@ public class Categorias implements Serializable {
 
     public void setNombreCategoria(String nombreCategoria) {
         this.nombreCategoria = nombreCategoria;
-    }
-
-    public Jugador getJugador() {
-        return this.jugador;
-    }
-
-    public void setJugador(Jugador jugador) {
-        if (this.jugador != null) {
-            this.jugador.setCategorias(null);
-        }
-        if (jugador != null) {
-            jugador.setCategorias(this);
-        }
-        this.jugador = jugador;
-    }
-
-    public Categorias jugador(Jugador jugador) {
-        this.setJugador(jugador);
-        return this;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here

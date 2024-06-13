@@ -63,30 +63,6 @@
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="jugador.id">
-              <div class="d-flex">
-                <span jhiTranslate="controlClubApplicationApp.usuario.jugador">Jugador</span>
-                <fa-icon class="p-1" icon="sort"></fa-icon>
-              </div>
-            </th>
-            <th scope="col" jhiSortBy="asociados.id">
-              <div class="d-flex">
-                <span jhiTranslate="controlClubApplicationApp.usuario.asociados">Asociados</span>
-                <fa-icon class="p-1" icon="sort"></fa-icon>
-              </div>
-            </th>
-            <th scope="col" jhiSortBy="directivos.id">
-              <div class="d-flex">
-                <span jhiTranslate="controlClubApplicationApp.usuario.directivos">Directivos</span>
-                <fa-icon class="p-1" icon="sort"></fa-icon>
-              </div>
-            </th>
-            <th scope="col" jhiSortBy="cuerpoTecnico.id">
-              <div class="d-flex">
-                <span jhiTranslate="controlClubApplicationApp.usuario.cuerpoTecnico">Cuerpo Tecnico</span>
-                <fa-icon class="p-1" icon="sort"></fa-icon>
-              </div>
-            </th>
             <th scope="col"></th>
           </tr>
         </thead>
@@ -104,34 +80,6 @@
                     usuario.rol ?? 'null'
                   ]
                 }}
-              </td>
-              <td>
-                @if (usuario.jugador) {
-                  <div>
-                    <a [routerLink]="['/jugador', usuario.jugador.id, 'view']">{{ usuario.jugador.id }}</a>
-                  </div>
-                }
-              </td>
-              <td>
-                @if (usuario.asociados) {
-                  <div>
-                    <a [routerLink]="['/asociados', usuario.asociados.id, 'view']">{{ usuario.asociados.id }}</a>
-                  </div>
-                }
-              </td>
-              <td>
-                @if (usuario.directivos) {
-                  <div>
-                    <a [routerLink]="['/directivos', usuario.directivos.id, 'view']">{{ usuario.directivos.id }}</a>
-                  </div>
-                }
-              </td>
-              <td>
-                @if (usuario.cuerpoTecnico) {
-                  <div>
-                    <a [routerLink]="['/cuerpo-tecnico', usuario.cuerpoTecnico.id, 'view']">{{ usuario.cuerpoTecnico.id }}</a>
-                  </div>
-                }
               </td>
               <td class="text-end">
                 <div class="btn-group">

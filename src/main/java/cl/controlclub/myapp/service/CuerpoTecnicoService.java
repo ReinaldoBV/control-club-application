@@ -4,11 +4,7 @@ import cl.controlclub.myapp.domain.CuerpoTecnico;
 import cl.controlclub.myapp.repository.CuerpoTecnicoRepository;
 import cl.controlclub.myapp.service.dto.CuerpoTecnicoDTO;
 import cl.controlclub.myapp.service.mapper.CuerpoTecnicoMapper;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -90,19 +86,6 @@ public class CuerpoTecnicoService {
     public Page<CuerpoTecnicoDTO> findAll(Pageable pageable) {
         log.debug("Request to get all CuerpoTecnicos");
         return cuerpoTecnicoRepository.findAll(pageable).map(cuerpoTecnicoMapper::toDto);
-    }
-
-    /**
-     *  Get all the cuerpoTecnicos where Usuario is {@code null}.
-     *  @return the list of entities.
-     */
-    @Transactional(readOnly = true)
-    public List<CuerpoTecnicoDTO> findAllWhereUsuarioIsNull() {
-        log.debug("Request to get all cuerpoTecnicos where Usuario is null");
-        return StreamSupport.stream(cuerpoTecnicoRepository.findAll().spliterator(), false)
-            .filter(cuerpoTecnico -> cuerpoTecnico.getUsuario() == null)
-            .map(cuerpoTecnicoMapper::toDto)
-            .collect(Collectors.toCollection(LinkedList::new));
     }
 
     /**

@@ -43,14 +43,6 @@
           <dd>
             <span>{{ directivos()!.email }}</span>
           </dd>
-          <dt><span jhiTranslate="controlClubApplicationApp.directivos.asociados">Asociados</span></dt>
-          <dd>
-            @if (directivos()!.asociados) {
-              <div>
-                <a [routerLink]="['/asociados', directivos()!.asociados?.id, 'view']">{{ directivos()!.asociados?.id }}</a>
-              </div>
-            }
-          </dd>
         </dl>
 
         <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">

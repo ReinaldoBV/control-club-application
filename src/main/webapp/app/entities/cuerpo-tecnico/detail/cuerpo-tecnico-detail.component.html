@@ -41,14 +41,6 @@
           <dd>
             <span>{{ cuerpoTecnico()!.email }}</span>
           </dd>
-          <dt><span jhiTranslate="controlClubApplicationApp.cuerpoTecnico.asociados">Asociados</span></dt>
-          <dd>
-            @if (cuerpoTecnico()!.asociados) {
-              <div>
-                <a [routerLink]="['/asociados', cuerpoTecnico()!.asociados?.id, 'view']">{{ cuerpoTecnico()!.asociados?.id }}</a>
-              </div>
-            }
-          </dd>
         </dl>
 
         <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">

@@ -23,15 +23,7 @@
   ],
   "name": "Categorias",
   "pagination": "pagination",
-  "relationships": [
-    {
-      "otherEntityName": "jugador",
-      "otherEntityRelationshipName": "categorias",
-      "relationshipName": "jugador",
-      "relationshipSide": "right",
-      "relationshipType": "one-to-one"
-    }
-  ],
+  "relationships": [],
   "searchEngine": "no",
   "service": "serviceClass"
 }

@@ -58,12 +58,5 @@ public class UsuarioAsserts {
      * @param expected the expected entity
      * @param actual the actual entity
      */
-    public static void assertUsuarioUpdatableRelationshipsEquals(Usuario expected, Usuario actual) {
-        assertThat(expected)
-            .as("Verify Usuario relationships")
-            .satisfies(e -> assertThat(e.getJugador()).as("check jugador").isEqualTo(actual.getJugador()))
-            .satisfies(e -> assertThat(e.getAsociados()).as("check asociados").isEqualTo(actual.getAsociados()))
-            .satisfies(e -> assertThat(e.getDirectivos()).as("check directivos").isEqualTo(actual.getDirectivos()))
-            .satisfies(e -> assertThat(e.getCuerpoTecnico()).as("check cuerpoTecnico").isEqualTo(actual.getCuerpoTecnico()));
-    }
+    public static void assertUsuarioUpdatableRelationshipsEquals(Usuario expected, Usuario actual) {}
 }

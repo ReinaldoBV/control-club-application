@@ -21,10 +21,6 @@ type UsuarioFormGroupContent = {
   username: FormControl<IUsuario['username']>;
   password: FormControl<IUsuario['password']>;
   rol: FormControl<IUsuario['rol']>;
-  jugador: FormControl<IUsuario['jugador']>;
-  asociados: FormControl<IUsuario['asociados']>;
-  directivos: FormControl<IUsuario['directivos']>;
-  cuerpoTecnico: FormControl<IUsuario['cuerpoTecnico']>;
 };
 
 export type UsuarioFormGroup = FormGroup<UsuarioFormGroupContent>;
@@ -53,10 +49,6 @@ export class UsuarioFormService {
       rol: new FormControl(usuarioRawValue.rol, {
         validators: [Validators.required],
       }),
-      jugador: new FormControl(usuarioRawValue.jugador),
-      asociados: new FormControl(usuarioRawValue.asociados),
-      directivos: new FormControl(usuarioRawValue.directivos),
-      cuerpoTecnico: new FormControl(usuarioRawValue.cuerpoTecnico),
     });
   }
 
