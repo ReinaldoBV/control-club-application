@@ -1,0 +1,133 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-club-heading" data-cy="ClubCreateUpdateHeading" jhiTranslate="controlClubApplicationApp.club.home.createOrEditLabel">
+        Crear o editar Club
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="controlClubApplicationApp.club.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_razon" jhiTranslate="controlClubApplicationApp.club.razon">Razon</label>
+          <input type="text" class="form-control" name="razon" id="field_razon" data-cy="razon" formControlName="razon" />
+          @if (editForm.get('razon')!.invalid && (editForm.get('razon')!.dirty || editForm.get('razon')!.touched)) {
+            <div>
+              @if (editForm.get('razon')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_direccion" jhiTranslate="controlClubApplicationApp.club.direccion">Direccion</label>
+          <input type="text" class="form-control" name="direccion" id="field_direccion" data-cy="direccion" formControlName="direccion" />
+          @if (editForm.get('direccion')!.invalid && (editForm.get('direccion')!.dirty || editForm.get('direccion')!.touched)) {
+            <div>
+              @if (editForm.get('direccion')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_telefono" jhiTranslate="controlClubApplicationApp.club.telefono">Telefono</label>
+          <input type="text" class="form-control" name="telefono" id="field_telefono" data-cy="telefono" formControlName="telefono" />
+          @if (editForm.get('telefono')!.invalid && (editForm.get('telefono')!.dirty || editForm.get('telefono')!.touched)) {
+            <div>
+              @if (editForm.get('telefono')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_email" jhiTranslate="controlClubApplicationApp.club.email">Email</label>
+          <input type="text" class="form-control" name="email" id="field_email" data-cy="email" formControlName="email" />
+          @if (editForm.get('email')!.invalid && (editForm.get('email')!.dirty || editForm.get('email')!.touched)) {
+            <div>
+              @if (editForm.get('email')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_fechaFundacion" jhiTranslate="controlClubApplicationApp.club.fechaFundacion"
+            >Fecha Fundacion</label
+          >
+          <div class="input-group">
+            <input
+              id="field_fechaFundacion"
+              data-cy="fechaFundacion"
+              type="text"
+              class="form-control"
+              name="fechaFundacion"
+              ngbDatepicker
+              #fechaFundacionDp="ngbDatepicker"
+              formControlName="fechaFundacion"
+            />
+            <button type="button" class="btn btn-secondary" (click)="fechaFundacionDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+          @if (
+            editForm.get('fechaFundacion')!.invalid && (editForm.get('fechaFundacion')!.dirty || editForm.get('fechaFundacion')!.touched)
+          ) {
+            <div>
+              @if (editForm.get('fechaFundacion')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_presidente" jhiTranslate="controlClubApplicationApp.club.presidente">Presidente</label>
+          <input
+            type="text"
+            class="form-control"
+            name="presidente"
+            id="field_presidente"
+            data-cy="presidente"
+            formControlName="presidente"
+          />
+          @if (editForm.get('presidente')!.invalid && (editForm.get('presidente')!.dirty || editForm.get('presidente')!.touched)) {
+            <div>
+              @if (editForm.get('presidente')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+            </div>
+          }
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancelar</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Guardar</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
