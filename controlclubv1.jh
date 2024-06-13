@@ -25,6 +25,76 @@ entity Categorias {
     nombreCategoria String required
 }
 
+entity Directivos {
+	nombres String required,
+    apellidos String required,	
+    cargo String required,
+    telefono String required,
+    fechaEleccion LocalDate required,
+    fechaVencimiento LocalDate required,
+    email String required
+}
+
+entity Asociados {
+    nombres String required,
+    apellidos String required,
+    cargo String required,
+    telefono String required,
+    fechaAsoc LocalDate required,
+    email String required
+}
+
+entity Padre {
+    nombres String required,
+    apellidos String required,
+    relacion String required,
+    telefono String required,
+    asociado Boolean required,
+    email String required
+}
+
+entity TorneosParticipaciones {
+    descripcion String required,
+    monto BigDecimal required,
+    fecha LocalDate required
+}
+
+entity EstadisticasBaloncesto {
+    puntos Integer,
+    rebotes Integer,
+    asistencias Integer,
+    robos Integer,
+    bloqueos Integer,
+    porcentajeTiro BigDecimal
+}
+
+entity Partido {
+    fecha LocalDate required,
+    oponente String required,
+    resultado String
+}
+
+entity TorneosParticipaciones {
+    descripcion String required,
+    monto BigDecimal required,
+    fecha LocalDate required
+}
+
+entity EstadisticasBaloncesto {
+    puntos Integer,
+    rebotes Integer,
+    asistencias Integer,
+    robos Integer,
+    bloqueos Integer,
+    porcentajeTiro BigDecimal
+}
+
+entity Partido {
+    fecha LocalDate required,
+    oponente String required,
+    resultado String
+}
+
 service all with serviceClass
 dto all with mapstruct
 paginate all with pagination
