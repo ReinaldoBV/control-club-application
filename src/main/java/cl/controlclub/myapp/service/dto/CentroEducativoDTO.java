@@ -15,6 +15,8 @@ public class CentroEducativoDTO implements Serializable {
     @NotNull
     private String centroEducativo;
 
+    private ComunaDTO comuna;
+
     public Long getId() {
         return id;
     }
@@ -29,6 +31,14 @@ public class CentroEducativoDTO implements Serializable {
 
     public void setCentroEducativo(String centroEducativo) {
         this.centroEducativo = centroEducativo;
+    }
+
+    public ComunaDTO getComuna() {
+        return comuna;
+    }
+
+    public void setComuna(ComunaDTO comuna) {
+        this.comuna = comuna;
     }
 
     @Override
@@ -58,6 +68,7 @@ public class CentroEducativoDTO implements Serializable {
         return "CentroEducativoDTO{" +
             "id=" + getId() +
             ", centroEducativo='" + getCentroEducativo() + "'" +
+            ", comuna=" + getComuna() +
             "}";
     }
 }

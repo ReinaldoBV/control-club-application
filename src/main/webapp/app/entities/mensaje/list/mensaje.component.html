@@ -1,0 +1,155 @@
+<div>
+  <h2 id="page-heading" data-cy="MensajeHeading">
+    <span jhiTranslate="controlClubApplicationApp.mensaje.home.title">Mensajes</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="controlClubApplicationApp.mensaje.home.refreshListLabel">Refrescar lista</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-mensaje"
+        [routerLink]="['/mensaje/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="controlClubApplicationApp.mensaje.home.createLabel">Crear nuevo Mensaje</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (mensajes?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="controlClubApplicationApp.mensaje.home.notFound">Ningún Mensajes encontrado</span>
+    </div>
+  }
+
+  @if (mensajes && mensajes.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="remitenteId">
+              <div class="d-flex">
+                <span jhiTranslate="controlClubApplicationApp.mensaje.remitenteId">Remitente Id</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="destinatarioId">
+              <div class="d-flex">
+                <span jhiTranslate="controlClubApplicationApp.mensaje.destinatarioId">Destinatario Id</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="mensaje">
+              <div class="d-flex">
+                <span jhiTranslate="controlClubApplicationApp.mensaje.mensaje">Mensaje</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="leido">
+              <div class="d-flex">
+                <span jhiTranslate="controlClubApplicationApp.mensaje.leido">Leido</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="remitente.id">
+              <div class="d-flex">
+                <span jhiTranslate="controlClubApplicationApp.mensaje.remitente">Remitente</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="destinatario.id">
+              <div class="d-flex">
+                <span jhiTranslate="controlClubApplicationApp.mensaje.destinatario">Destinatario</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (mensaje of mensajes; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/mensaje', mensaje.id, 'view']">{{ mensaje.id }}</a>
+              </td>
+              <td>{{ mensaje.remitenteId }}</td>
+              <td>{{ mensaje.destinatarioId }}</td>
+              <td>{{ mensaje.mensaje }}</td>
+              <td>{{ mensaje.leido }}</td>
+              <td>
+                @if (mensaje.remitente) {
+                  <div>
+                    <a [routerLink]="['/jugador', mensaje.remitente.id, 'view']">{{ mensaje.remitente.id }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (mensaje.destinatario) {
+                  <div>
+                    <a [routerLink]="['/jugador', mensaje.destinatario.id, 'view']">{{ mensaje.destinatario.id }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/mensaje', mensaje.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Vista</span>
+                  </a>
+
+                  <a [routerLink]="['/mensaje', mensaje.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editar</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(mensaje)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Eliminar</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (mensajes && mensajes.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

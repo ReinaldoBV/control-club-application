@@ -5,6 +5,8 @@ import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { of, Subject, from } from 'rxjs';
 
+import { IComuna } from 'app/entities/comuna/comuna.model';
+import { ComunaService } from 'app/entities/comuna/service/comuna.service';
 import { CentroEducativoService } from '../service/centro-educativo.service';
 import { ICentroEducativo } from '../centro-educativo.model';
 import { CentroEducativoFormService } from './centro-educativo-form.service';
@@ -17,6 +19,7 @@ describe('CentroEducativo Management Update Component', () => {
   let activatedRoute: ActivatedRoute;
   let centroEducativoFormService: CentroEducativoFormService;
   let centroEducativoService: CentroEducativoService;
+  let comunaService: ComunaService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -38,17 +41,43 @@ describe('CentroEducativo Management Update Component', () => {
     activatedRoute = TestBed.inject(ActivatedRoute);
     centroEducativoFormService = TestBed.inject(CentroEducativoFormService);
     centroEducativoService = TestBed.inject(CentroEducativoService);
+    comunaService = TestBed.inject(ComunaService);
 
     comp = fixture.componentInstance;
   });
 
   describe('ngOnInit', () => {
-    it('Should update editForm', () => {
+    it('Should call Comuna query and add missing value', () => {
       const centroEducativo: ICentroEducativo = { id: 456 };
+      const comuna: IComuna = { id: 13417 };
+      centroEducativo.comuna = comuna;
+
+      const comunaCollection: IComuna[] = [{ id: 9078 }];
+      jest.spyOn(comunaService, 'query').mockReturnValue(of(new HttpResponse({ body: comunaCollection })));
+      const additionalComunas = [comuna];
+      const expectedCollection: IComuna[] = [...additionalComunas, ...comunaCollection];
+      jest.spyOn(comunaService, 'addComunaToCollectionIfMissing').mockReturnValue(expectedCollection);
 
       activatedRoute.data = of({ centroEducativo });
       comp.ngOnInit();
 
+      expect(comunaService.query).toHaveBeenCalled();
+      expect(comunaService.addComunaToCollectionIfMissing).toHaveBeenCalledWith(
+        comunaCollection,
+        ...additionalComunas.map(expect.objectContaining),
+      );
+      expect(comp.comunasSharedCollection).toEqual(expectedCollection);
+    });
+
+    it('Should update editForm', () => {
+      const centroEducativo: ICentroEducativo = { id: 456 };
+      const comuna: IComuna = { id: 28534 };
+      centroEducativo.comuna = comuna;
+
+      activatedRoute.data = of({ centroEducativo });
+      comp.ngOnInit();
+
+      expect(comp.comunasSharedCollection).toContain(comuna);
       expect(comp.centroEducativo).toEqual(centroEducativo);
     });
   });
@@ -118,6 +147,18 @@ describe('CentroEducativo Management Update Component', () => {
       expect(centroEducativoService.update).toHaveBeenCalled();
       expect(comp.isSaving).toEqual(false);
       expect(comp.previousState).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('Compare relationships', () => {
+    describe('compareComuna', () => {
+      it('Should forward to comunaService', () => {
+        const entity = { id: 123 };
+        const entity2 = { id: 456 };
+        jest.spyOn(comunaService, 'compareComuna');
+        comp.compareComuna(entity, entity2);
+        expect(comunaService.compareComuna).toHaveBeenCalledWith(entity, entity2);
+      });
     });
   });
 });

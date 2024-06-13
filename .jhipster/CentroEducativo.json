@@ -13,7 +13,22 @@
   ],
   "name": "CentroEducativo",
   "pagination": "pagination",
-  "relationships": [],
+  "relationships": [
+    {
+      "otherEntityName": "comuna",
+      "otherEntityRelationshipName": "centroEducativo",
+      "relationshipName": "comuna",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "jugador",
+      "otherEntityRelationshipName": "centroEducativo",
+      "relationshipName": "jugador",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-one"
+    }
+  ],
   "searchEngine": "no",
   "service": "serviceClass"
 }

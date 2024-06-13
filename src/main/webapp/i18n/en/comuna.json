@@ -18,7 +18,10 @@
         "title": "Comuna"
       },
       "id": "ID",
-      "comuna": "Comuna"
+      "comuna": "Comuna",
+      "jugador": "Jugador",
+      "centroSalud": "Centro Salud",
+      "centroEducativo": "Centro Educativo"
     }
   }
 }

@@ -23,7 +23,11 @@
       "cargo": "Cargo",
       "telefono": "Telefono",
       "fechaAsoc": "Fecha Asoc",
-      "email": "Email"
+      "email": "Email",
+      "jugador": "Jugador",
+      "usuario": "Usuario",
+      "directivos": "Directivos",
+      "cuerpoTecnico": "Cuerpo Tecnico"
     }
   }
 }

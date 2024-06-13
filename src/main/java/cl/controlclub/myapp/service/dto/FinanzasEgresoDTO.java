@@ -1,0 +1,113 @@
+package cl.controlclub.myapp.service.dto;
+
+import cl.controlclub.myapp.domain.enumeration.TipoEgreso;
+import jakarta.validation.constraints.*;
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.util.Objects;
+
+/**
+ * A DTO for the {@link cl.controlclub.myapp.domain.FinanzasEgreso} entity.
+ */
+@SuppressWarnings("common-java:DuplicatedBlocks")
+public class FinanzasEgresoDTO implements Serializable {
+
+    private Long id;
+
+    @NotNull
+    private TipoEgreso tipo;
+
+    @NotNull
+    private String descripcion;
+
+    @NotNull
+    private BigDecimal monto;
+
+    @NotNull
+    private LocalDate fecha;
+
+    private CuentasDTO cuentas;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public TipoEgreso getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(TipoEgreso tipo) {
+        this.tipo = tipo;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public BigDecimal getMonto() {
+        return monto;
+    }
+
+    public void setMonto(BigDecimal monto) {
+        this.monto = monto;
+    }
+
+    public LocalDate getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
+    }
+
+    public CuentasDTO getCuentas() {
+        return cuentas;
+    }
+
+    public void setCuentas(CuentasDTO cuentas) {
+        this.cuentas = cuentas;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof FinanzasEgresoDTO)) {
+            return false;
+        }
+
+        FinanzasEgresoDTO finanzasEgresoDTO = (FinanzasEgresoDTO) o;
+        if (this.id == null) {
+            return false;
+        }
+        return Objects.equals(this.id, finanzasEgresoDTO.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.id);
+    }
+
+    // prettier-ignore
+    @Override
+    public String toString() {
+        return "FinanzasEgresoDTO{" +
+            "id=" + getId() +
+            ", tipo='" + getTipo() + "'" +
+            ", descripcion='" + getDescripcion() + "'" +
+            ", monto=" + getMonto() +
+            ", fecha='" + getFecha() + "'" +
+            ", cuentas=" + getCuentas() +
+            "}";
+    }
+}

@@ -22,7 +22,33 @@
     <include file="config/liquibase/changelog/20240613164807_added_entity_TorneosParticipaciones.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20240613164808_added_entity_EstadisticasBaloncesto.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20240613164809_added_entity_Partido.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240613174729_added_entity_Jugador.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240613174730_added_entity_PrevisionSalud.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240613174731_added_entity_CuerpoTecnico.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240613174732_added_entity_FinanzasIngreso.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240613174733_added_entity_FinanzasEgreso.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240613174734_added_entity_Cuentas.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240613174735_added_entity_Entrenamiento.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240613174736_added_entity_Mensaje.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240613174737_added_entity_Anuncio.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240613174738_added_entity_Bienes.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240613174739_added_entity_Usuario.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240613174740_added_entity_Asistencia.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20240613162322_added_entity_constraints_CentroSalud.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240613163025_added_entity_constraints_CentroEducativo.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240613164804_added_entity_constraints_Directivos.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240613164805_added_entity_constraints_Asociados.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240613164806_added_entity_constraints_Padre.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240613174729_added_entity_constraints_Jugador.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240613174731_added_entity_constraints_CuerpoTecnico.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240613174732_added_entity_constraints_FinanzasIngreso.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240613174733_added_entity_constraints_FinanzasEgreso.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240613174734_added_entity_constraints_Cuentas.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240613174735_added_entity_constraints_Entrenamiento.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240613174736_added_entity_constraints_Mensaje.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240613174738_added_entity_constraints_Bienes.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240613174739_added_entity_constraints_Usuario.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
 </databaseChangeLog>

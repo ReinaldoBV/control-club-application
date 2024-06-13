@@ -1,0 +1,28 @@
+{
+  "annotations": {
+    "changelogDate": "20240613174730"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "tipoPrevision",
+      "fieldType": "TipoPrevision",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "FONASA,ISAPRE,NO_TIENE,OTRO"
+    }
+  ],
+  "name": "PrevisionSalud",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "jugador",
+      "otherEntityRelationshipName": "previsionSalud",
+      "relationshipName": "jugador",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

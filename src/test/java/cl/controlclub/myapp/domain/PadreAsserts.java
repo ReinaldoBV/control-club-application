@@ -61,5 +61,9 @@ public class PadreAsserts {
      * @param expected the expected entity
      * @param actual the actual entity
      */
-    public static void assertPadreUpdatableRelationshipsEquals(Padre expected, Padre actual) {}
+    public static void assertPadreUpdatableRelationshipsEquals(Padre expected, Padre actual) {
+        assertThat(expected)
+            .as("Verify Padre relationships")
+            .satisfies(e -> assertThat(e.getJugador()).as("check jugador").isEqualTo(actual.getJugador()));
+    }
 }

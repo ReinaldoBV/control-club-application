@@ -13,7 +13,29 @@
   ],
   "name": "Comuna",
   "pagination": "pagination",
-  "relationships": [],
+  "relationships": [
+    {
+      "otherEntityName": "jugador",
+      "otherEntityRelationshipName": "comuna",
+      "relationshipName": "jugador",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "centroSalud",
+      "otherEntityRelationshipName": "comuna",
+      "relationshipName": "centroSalud",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "centroEducativo",
+      "otherEntityRelationshipName": "comuna",
+      "relationshipName": "centroEducativo",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    }
+  ],
   "searchEngine": "no",
   "service": "serviceClass"
 }

@@ -21,6 +21,14 @@
           <dd>
             <span>{{ centroEducativo()!.centroEducativo }}</span>
           </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.centroEducativo.comuna">Comuna</span></dt>
+          <dd>
+            @if (centroEducativo()!.comuna) {
+              <div>
+                <a [routerLink]="['/comuna', centroEducativo()!.comuna?.id, 'view']">{{ centroEducativo()!.comuna?.id }}</a>
+              </div>
+            }
+          </dd>
         </dl>
 
         <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">

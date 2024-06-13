@@ -19,6 +19,7 @@ type CentroEducativoFormDefaults = Pick<NewCentroEducativo, 'id'>;
 type CentroEducativoFormGroupContent = {
   id: FormControl<ICentroEducativo['id'] | NewCentroEducativo['id']>;
   centroEducativo: FormControl<ICentroEducativo['centroEducativo']>;
+  comuna: FormControl<ICentroEducativo['comuna']>;
 };
 
 export type CentroEducativoFormGroup = FormGroup<CentroEducativoFormGroupContent>;
@@ -41,6 +42,7 @@ export class CentroEducativoFormService {
       centroEducativo: new FormControl(centroEducativoRawValue.centroEducativo, {
         validators: [Validators.required],
       }),
+      comuna: new FormControl(centroEducativoRawValue.comuna),
     });
   }
 

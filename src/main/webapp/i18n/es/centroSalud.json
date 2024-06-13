@@ -18,7 +18,9 @@
         "title": "Centro Salud"
       },
       "id": "ID",
-      "centroSalud": "Centro Salud"
+      "centroSalud": "Centro Salud",
+      "comuna": "Comuna",
+      "jugador": "Jugador"
     }
   }
 }

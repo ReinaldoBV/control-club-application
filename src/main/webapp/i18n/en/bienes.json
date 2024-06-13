@@ -1,0 +1,27 @@
+{
+  "controlClubApplicationApp": {
+    "bienes": {
+      "home": {
+        "title": "Bienes",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Bienes",
+        "createOrEditLabel": "Create or edit a Bienes",
+        "notFound": "No Bienes found"
+      },
+      "created": "A new Bienes is created with identifier {{ param }}",
+      "updated": "A Bienes is updated with identifier {{ param }}",
+      "deleted": "A Bienes is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Bienes {{ id }}?"
+      },
+      "detail": {
+        "title": "Bienes"
+      },
+      "id": "ID",
+      "descripcion": "Descripcion",
+      "cantidad": "Cantidad",
+      "estado": "Estado",
+      "asignadoA": "Asignado A"
+    }
+  }
+}

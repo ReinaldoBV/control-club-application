@@ -49,6 +49,12 @@
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
+            <th scope="col" jhiSortBy="comuna.id">
+              <div class="d-flex">
+                <span jhiTranslate="controlClubApplicationApp.centroSalud.comuna">Comuna</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
             <th scope="col"></th>
           </tr>
         </thead>
@@ -59,6 +65,13 @@
                 <a [routerLink]="['/centro-salud', centroSalud.id, 'view']">{{ centroSalud.id }}</a>
               </td>
               <td>{{ centroSalud.centroSalud }}</td>
+              <td>
+                @if (centroSalud.comuna) {
+                  <div>
+                    <a [routerLink]="['/comuna', centroSalud.comuna.id, 'view']">{{ centroSalud.comuna.id }}</a>
+                  </div>
+                }
+              </td>
               <td class="text-end">
                 <div class="btn-group">
                   <a [routerLink]="['/centro-salud', centroSalud.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">

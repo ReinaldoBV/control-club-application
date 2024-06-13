@@ -295,6 +295,8 @@ class CentroSaludResourceIT {
         CentroSalud partialUpdatedCentroSalud = new CentroSalud();
         partialUpdatedCentroSalud.setId(centroSalud.getId());
 
+        partialUpdatedCentroSalud.centroSalud(UPDATED_CENTRO_SALUD);
+
         restCentroSaludMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, partialUpdatedCentroSalud.getId())

@@ -1,0 +1,32 @@
+{
+  "annotations": {
+    "changelogDate": "20240613174735"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "fechaHora",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "duracion",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "Entrenamiento",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "cuerpoTecnico",
+      "otherEntityRelationshipName": "entrenamiento",
+      "relationshipName": "cuerpoTecnico",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

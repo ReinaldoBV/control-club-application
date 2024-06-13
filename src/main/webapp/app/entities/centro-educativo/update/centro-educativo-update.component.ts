@@ -2,11 +2,13 @@ import { Component, inject, OnInit } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { finalize } from 'rxjs/operators';
+import { finalize, map } from 'rxjs/operators';
 
 import SharedModule from 'app/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { IComuna } from 'app/entities/comuna/comuna.model';
+import { ComunaService } from 'app/entities/comuna/service/comuna.service';
 import { ICentroEducativo } from '../centro-educativo.model';
 import { CentroEducativoService } from '../service/centro-educativo.service';
 import { CentroEducativoFormService, CentroEducativoFormGroup } from './centro-educativo-form.service';
@@ -21,12 +23,17 @@ export class CentroEducativoUpdateComponent implements OnInit {
   isSaving = false;
   centroEducativo: ICentroEducativo | null = null;
 
+  comunasSharedCollection: IComuna[] = [];
+
   protected centroEducativoService = inject(CentroEducativoService);
   protected centroEducativoFormService = inject(CentroEducativoFormService);
+  protected comunaService = inject(ComunaService);
   protected activatedRoute = inject(ActivatedRoute);
 
   // eslint-disable-next-line @typescript-eslint/member-ordering
   editForm: CentroEducativoFormGroup = this.centroEducativoFormService.createCentroEducativoFormGroup();
+
+  compareComuna = (o1: IComuna | null, o2: IComuna | null): boolean => this.comunaService.compareComuna(o1, o2);
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ centroEducativo }) => {
@@ -34,6 +41,8 @@ export class CentroEducativoUpdateComponent implements OnInit {
       if (centroEducativo) {
         this.updateForm(centroEducativo);
       }
+
+      this.loadRelationshipsOptions();
     });
   }
 
@@ -73,5 +82,18 @@ export class CentroEducativoUpdateComponent implements OnInit {
   protected updateForm(centroEducativo: ICentroEducativo): void {
     this.centroEducativo = centroEducativo;
     this.centroEducativoFormService.resetForm(this.editForm, centroEducativo);
+
+    this.comunasSharedCollection = this.comunaService.addComunaToCollectionIfMissing<IComuna>(
+      this.comunasSharedCollection,
+      centroEducativo.comuna,
+    );
+  }
+
+  protected loadRelationshipsOptions(): void {
+    this.comunaService
+      .query()
+      .pipe(map((res: HttpResponse<IComuna[]>) => res.body ?? []))
+      .pipe(map((comunas: IComuna[]) => this.comunaService.addComunaToCollectionIfMissing<IComuna>(comunas, this.centroEducativo?.comuna)))
+      .subscribe((comunas: IComuna[]) => (this.comunasSharedCollection = comunas));
   }
 }

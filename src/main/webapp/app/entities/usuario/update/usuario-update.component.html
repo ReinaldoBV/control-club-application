@@ -1,0 +1,151 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-usuario-heading"
+        data-cy="UsuarioCreateUpdateHeading"
+        jhiTranslate="controlClubApplicationApp.usuario.home.createOrEditLabel"
+      >
+        Crear o editar Usuario
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="controlClubApplicationApp.usuario.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_username" jhiTranslate="controlClubApplicationApp.usuario.username">Username</label>
+          <input type="text" class="form-control" name="username" id="field_username" data-cy="username" formControlName="username" />
+          @if (editForm.get('username')!.invalid && (editForm.get('username')!.dirty || editForm.get('username')!.touched)) {
+            <div>
+              @if (editForm.get('username')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_password" jhiTranslate="controlClubApplicationApp.usuario.password">Password</label>
+          <input type="text" class="form-control" name="password" id="field_password" data-cy="password" formControlName="password" />
+          @if (editForm.get('password')!.invalid && (editForm.get('password')!.dirty || editForm.get('password')!.touched)) {
+            <div>
+              @if (editForm.get('password')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_rol" jhiTranslate="controlClubApplicationApp.usuario.rol">Rol</label>
+          <select class="form-control" name="rol" formControlName="rol" id="field_rol" data-cy="rol">
+            <option [ngValue]="null">{{ 'controlClubApplicationApp.RolUsuario.null' | translate }}</option>
+            @for (rolUsuario of rolUsuarioValues; track $index) {
+              <option [value]="rolUsuario">{{ 'controlClubApplicationApp.RolUsuario.' + rolUsuario | translate }}</option>
+            }
+          </select>
+          @if (editForm.get('rol')!.invalid && (editForm.get('rol')!.dirty || editForm.get('rol')!.touched)) {
+            <div>
+              @if (editForm.get('rol')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_jugador" jhiTranslate="controlClubApplicationApp.usuario.jugador">Jugador</label>
+          <select
+            class="form-control"
+            id="field_jugador"
+            data-cy="jugador"
+            name="jugador"
+            formControlName="jugador"
+            [compareWith]="compareJugador"
+          >
+            <option [ngValue]="null"></option>
+            @for (jugadorOption of jugadorsCollection; track $index) {
+              <option [ngValue]="jugadorOption">{{ jugadorOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_asociados" jhiTranslate="controlClubApplicationApp.usuario.asociados">Asociados</label>
+          <select
+            class="form-control"
+            id="field_asociados"
+            data-cy="asociados"
+            name="asociados"
+            formControlName="asociados"
+            [compareWith]="compareAsociados"
+          >
+            <option [ngValue]="null"></option>
+            @for (asociadosOption of asociadosCollection; track $index) {
+              <option [ngValue]="asociadosOption">{{ asociadosOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_directivos" jhiTranslate="controlClubApplicationApp.usuario.directivos">Directivos</label>
+          <select
+            class="form-control"
+            id="field_directivos"
+            data-cy="directivos"
+            name="directivos"
+            formControlName="directivos"
+            [compareWith]="compareDirectivos"
+          >
+            <option [ngValue]="null"></option>
+            @for (directivosOption of directivosCollection; track $index) {
+              <option [ngValue]="directivosOption">{{ directivosOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_cuerpoTecnico" jhiTranslate="controlClubApplicationApp.usuario.cuerpoTecnico"
+            >Cuerpo Tecnico</label
+          >
+          <select
+            class="form-control"
+            id="field_cuerpoTecnico"
+            data-cy="cuerpoTecnico"
+            name="cuerpoTecnico"
+            formControlName="cuerpoTecnico"
+            [compareWith]="compareCuerpoTecnico"
+          >
+            <option [ngValue]="null"></option>
+            @for (cuerpoTecnicoOption of cuerpoTecnicosCollection; track $index) {
+              <option [ngValue]="cuerpoTecnicoOption">{{ cuerpoTecnicoOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancelar</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Guardar</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
