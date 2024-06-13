@@ -53,7 +53,7 @@ public class Directivos implements Serializable {
     @Column(name = "email", nullable = false)
     private String email;
 
-    @JsonIgnoreProperties(value = { "jugador", "usuario", "directivos", "cuerpoTecnico" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "usuario", "directivos", "cuerpoTecnico" }, allowSetters = true)
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(unique = true)
     private Asociados asociados;

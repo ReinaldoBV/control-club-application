@@ -5,8 +5,6 @@ import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { of, Subject, from } from 'rxjs';
 
-import { IJugador } from 'app/entities/jugador/jugador.model';
-import { JugadorService } from 'app/entities/jugador/service/jugador.service';
 import { MensajeService } from '../service/mensaje.service';
 import { IMensaje } from '../mensaje.model';
 import { MensajeFormService } from './mensaje-form.service';
@@ -19,7 +17,6 @@ describe('Mensaje Management Update Component', () => {
   let activatedRoute: ActivatedRoute;
   let mensajeFormService: MensajeFormService;
   let mensajeService: MensajeService;
-  let jugadorService: JugadorService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -41,48 +38,17 @@ describe('Mensaje Management Update Component', () => {
     activatedRoute = TestBed.inject(ActivatedRoute);
     mensajeFormService = TestBed.inject(MensajeFormService);
     mensajeService = TestBed.inject(MensajeService);
-    jugadorService = TestBed.inject(JugadorService);
 
     comp = fixture.componentInstance;
   });
 
   describe('ngOnInit', () => {
-    it('Should call Jugador query and add missing value', () => {
-      const mensaje: IMensaje = { id: 456 };
-      const remitente: IJugador = { id: 30367 };
-      mensaje.remitente = remitente;
-      const destinatario: IJugador = { id: 19818 };
-      mensaje.destinatario = destinatario;
-
-      const jugadorCollection: IJugador[] = [{ id: 19278 }];
-      jest.spyOn(jugadorService, 'query').mockReturnValue(of(new HttpResponse({ body: jugadorCollection })));
-      const additionalJugadors = [remitente, destinatario];
-      const expectedCollection: IJugador[] = [...additionalJugadors, ...jugadorCollection];
-      jest.spyOn(jugadorService, 'addJugadorToCollectionIfMissing').mockReturnValue(expectedCollection);
-
-      activatedRoute.data = of({ mensaje });
-      comp.ngOnInit();
-
-      expect(jugadorService.query).toHaveBeenCalled();
-      expect(jugadorService.addJugadorToCollectionIfMissing).toHaveBeenCalledWith(
-        jugadorCollection,
-        ...additionalJugadors.map(expect.objectContaining),
-      );
-      expect(comp.jugadorsSharedCollection).toEqual(expectedCollection);
-    });
-
     it('Should update editForm', () => {
       const mensaje: IMensaje = { id: 456 };
-      const remitente: IJugador = { id: 25561 };
-      mensaje.remitente = remitente;
-      const destinatario: IJugador = { id: 11154 };
-      mensaje.destinatario = destinatario;
 
       activatedRoute.data = of({ mensaje });
       comp.ngOnInit();
 
-      expect(comp.jugadorsSharedCollection).toContain(remitente);
-      expect(comp.jugadorsSharedCollection).toContain(destinatario);
       expect(comp.mensaje).toEqual(mensaje);
     });
   });
@@ -152,18 +118,6 @@ describe('Mensaje Management Update Component', () => {
       expect(mensajeService.update).toHaveBeenCalled();
       expect(comp.isSaving).toEqual(false);
       expect(comp.previousState).not.toHaveBeenCalled();
-    });
-  });
-
-  describe('Compare relationships', () => {
-    describe('compareJugador', () => {
-      it('Should forward to jugadorService', () => {
-        const entity = { id: 123 };
-        const entity2 = { id: 456 };
-        jest.spyOn(jugadorService, 'compareJugador');
-        comp.compareJugador(entity, entity2);
-        expect(jugadorService.compareJugador).toHaveBeenCalledWith(entity, entity2);
-      });
     });
   });
 });

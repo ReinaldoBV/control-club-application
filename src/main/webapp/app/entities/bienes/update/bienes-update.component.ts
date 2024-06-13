@@ -2,13 +2,11 @@ import { Component, inject, OnInit } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { finalize, map } from 'rxjs/operators';
+import { finalize } from 'rxjs/operators';
 
 import SharedModule from 'app/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { IJugador } from 'app/entities/jugador/jugador.model';
-import { JugadorService } from 'app/entities/jugador/service/jugador.service';
 import { IBienes } from '../bienes.model';
 import { BienesService } from '../service/bienes.service';
 import { BienesFormService, BienesFormGroup } from './bienes-form.service';
@@ -23,17 +21,12 @@ export class BienesUpdateComponent implements OnInit {
   isSaving = false;
   bienes: IBienes | null = null;
 
-  jugadorsSharedCollection: IJugador[] = [];
-
   protected bienesService = inject(BienesService);
   protected bienesFormService = inject(BienesFormService);
-  protected jugadorService = inject(JugadorService);
   protected activatedRoute = inject(ActivatedRoute);
 
   // eslint-disable-next-line @typescript-eslint/member-ordering
   editForm: BienesFormGroup = this.bienesFormService.createBienesFormGroup();
-
-  compareJugador = (o1: IJugador | null, o2: IJugador | null): boolean => this.jugadorService.compareJugador(o1, o2);
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ bienes }) => {
@@ -41,8 +34,6 @@ export class BienesUpdateComponent implements OnInit {
       if (bienes) {
         this.updateForm(bienes);
       }
-
-      this.loadRelationshipsOptions();
     });
   }
 
@@ -82,18 +73,5 @@ export class BienesUpdateComponent implements OnInit {
   protected updateForm(bienes: IBienes): void {
     this.bienes = bienes;
     this.bienesFormService.resetForm(this.editForm, bienes);
-
-    this.jugadorsSharedCollection = this.jugadorService.addJugadorToCollectionIfMissing<IJugador>(
-      this.jugadorsSharedCollection,
-      bienes.asignadoA,
-    );
-  }
-
-  protected loadRelationshipsOptions(): void {
-    this.jugadorService
-      .query()
-      .pipe(map((res: HttpResponse<IJugador[]>) => res.body ?? []))
-      .pipe(map((jugadors: IJugador[]) => this.jugadorService.addJugadorToCollectionIfMissing<IJugador>(jugadors, this.bienes?.asignadoA)))
-      .subscribe((jugadors: IJugador[]) => (this.jugadorsSharedCollection = jugadors));
   }
 }

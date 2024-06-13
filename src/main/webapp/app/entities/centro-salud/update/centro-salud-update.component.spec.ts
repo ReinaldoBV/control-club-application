@@ -5,8 +5,6 @@ import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { of, Subject, from } from 'rxjs';
 
-import { IComuna } from 'app/entities/comuna/comuna.model';
-import { ComunaService } from 'app/entities/comuna/service/comuna.service';
 import { CentroSaludService } from '../service/centro-salud.service';
 import { ICentroSalud } from '../centro-salud.model';
 import { CentroSaludFormService } from './centro-salud-form.service';
@@ -19,7 +17,6 @@ describe('CentroSalud Management Update Component', () => {
   let activatedRoute: ActivatedRoute;
   let centroSaludFormService: CentroSaludFormService;
   let centroSaludService: CentroSaludService;
-  let comunaService: ComunaService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -41,43 +38,17 @@ describe('CentroSalud Management Update Component', () => {
     activatedRoute = TestBed.inject(ActivatedRoute);
     centroSaludFormService = TestBed.inject(CentroSaludFormService);
     centroSaludService = TestBed.inject(CentroSaludService);
-    comunaService = TestBed.inject(ComunaService);
 
     comp = fixture.componentInstance;
   });
 
   describe('ngOnInit', () => {
-    it('Should call Comuna query and add missing value', () => {
-      const centroSalud: ICentroSalud = { id: 456 };
-      const comuna: IComuna = { id: 29122 };
-      centroSalud.comuna = comuna;
-
-      const comunaCollection: IComuna[] = [{ id: 1880 }];
-      jest.spyOn(comunaService, 'query').mockReturnValue(of(new HttpResponse({ body: comunaCollection })));
-      const additionalComunas = [comuna];
-      const expectedCollection: IComuna[] = [...additionalComunas, ...comunaCollection];
-      jest.spyOn(comunaService, 'addComunaToCollectionIfMissing').mockReturnValue(expectedCollection);
-
-      activatedRoute.data = of({ centroSalud });
-      comp.ngOnInit();
-
-      expect(comunaService.query).toHaveBeenCalled();
-      expect(comunaService.addComunaToCollectionIfMissing).toHaveBeenCalledWith(
-        comunaCollection,
-        ...additionalComunas.map(expect.objectContaining),
-      );
-      expect(comp.comunasSharedCollection).toEqual(expectedCollection);
-    });
-
     it('Should update editForm', () => {
       const centroSalud: ICentroSalud = { id: 456 };
-      const comuna: IComuna = { id: 11500 };
-      centroSalud.comuna = comuna;
 
       activatedRoute.data = of({ centroSalud });
       comp.ngOnInit();
 
-      expect(comp.comunasSharedCollection).toContain(comuna);
       expect(comp.centroSalud).toEqual(centroSalud);
     });
   });
@@ -147,18 +118,6 @@ describe('CentroSalud Management Update Component', () => {
       expect(centroSaludService.update).toHaveBeenCalled();
       expect(comp.isSaving).toEqual(false);
       expect(comp.previousState).not.toHaveBeenCalled();
-    });
-  });
-
-  describe('Compare relationships', () => {
-    describe('compareComuna', () => {
-      it('Should forward to comunaService', () => {
-        const entity = { id: 123 };
-        const entity2 = { id: 456 };
-        jest.spyOn(comunaService, 'compareComuna');
-        comp.compareComuna(entity, entity2);
-        expect(comunaService.compareComuna).toHaveBeenCalledWith(entity, entity2);
-      });
     });
   });
 });

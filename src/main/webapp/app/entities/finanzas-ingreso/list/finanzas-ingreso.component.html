@@ -70,12 +70,6 @@
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="jugador.id">
-              <div class="d-flex">
-                <span jhiTranslate="controlClubApplicationApp.finanzasIngreso.jugador">Jugador</span>
-                <fa-icon class="p-1" icon="sort"></fa-icon>
-              </div>
-            </th>
             <th scope="col"></th>
           </tr>
         </thead>
@@ -91,13 +85,6 @@
               <td>{{ finanzasIngreso.descripcion }}</td>
               <td>{{ finanzasIngreso.monto }}</td>
               <td>{{ finanzasIngreso.fecha | formatMediumDate }}</td>
-              <td>
-                @if (finanzasIngreso.jugador) {
-                  <div>
-                    <a [routerLink]="['/jugador', finanzasIngreso.jugador.id, 'view']">{{ finanzasIngreso.jugador.id }}</a>
-                  </div>
-                }
-              </td>
               <td class="text-end">
                 <div class="btn-group">
                   <a

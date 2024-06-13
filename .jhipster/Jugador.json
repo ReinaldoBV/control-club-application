@@ -122,34 +122,6 @@
       "relationshipName": "usuario",
       "relationshipSide": "right",
       "relationshipType": "one-to-one"
-    },
-    {
-      "otherEntityName": "finanzasIngreso",
-      "otherEntityRelationshipName": "jugador",
-      "relationshipName": "finanzasIngreso",
-      "relationshipSide": "right",
-      "relationshipType": "one-to-many"
-    },
-    {
-      "otherEntityName": "cuentas",
-      "otherEntityRelationshipName": "jugador",
-      "relationshipName": "cuentas",
-      "relationshipSide": "right",
-      "relationshipType": "one-to-many"
-    },
-    {
-      "otherEntityName": "padre",
-      "otherEntityRelationshipName": "jugador",
-      "relationshipName": "padre",
-      "relationshipSide": "right",
-      "relationshipType": "one-to-many"
-    },
-    {
-      "otherEntityName": "asociados",
-      "otherEntityRelationshipName": "jugador",
-      "relationshipName": "asociados",
-      "relationshipSide": "right",
-      "relationshipType": "one-to-many"
     }
   ],
   "searchEngine": "no",

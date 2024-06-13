@@ -31,18 +31,7 @@ public class PrevisionSalud implements Serializable {
     private TipoPrevision tipoPrevision;
 
     @JsonIgnoreProperties(
-        value = {
-            "centroSalud",
-            "previsionSalud",
-            "comuna",
-            "centroEducativo",
-            "categorias",
-            "usuario",
-            "finanzasIngresos",
-            "cuentas",
-            "padres",
-            "asociados",
-        },
+        value = { "centroSalud", "previsionSalud", "comuna", "centroEducativo", "categorias", "usuario" },
         allowSetters = true
     )
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "previsionSalud")

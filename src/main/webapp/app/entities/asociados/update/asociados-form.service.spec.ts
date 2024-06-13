@@ -26,7 +26,6 @@ describe('Asociados Form Service', () => {
             telefono: expect.any(Object),
             fechaAsoc: expect.any(Object),
             email: expect.any(Object),
-            jugador: expect.any(Object),
           }),
         );
       });
@@ -43,7 +42,6 @@ describe('Asociados Form Service', () => {
             telefono: expect.any(Object),
             fechaAsoc: expect.any(Object),
             email: expect.any(Object),
-            jugador: expect.any(Object),
           }),
         );
       });

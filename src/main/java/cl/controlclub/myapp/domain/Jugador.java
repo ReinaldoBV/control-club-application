@@ -7,8 +7,6 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -93,7 +91,7 @@ public class Jugador implements Serializable {
     @Column(name = "documento_identificacion_content_type")
     private String documentoIdentificacionContentType;
 
-    @JsonIgnoreProperties(value = { "comuna", "jugador" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "jugador" }, allowSetters = true)
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(unique = true)
     private CentroSalud centroSalud;
@@ -103,12 +101,12 @@ public class Jugador implements Serializable {
     @JoinColumn(unique = true)
     private PrevisionSalud previsionSalud;
 
-    @JsonIgnoreProperties(value = { "jugador", "centroSaluds", "centroEducativos" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "jugador" }, allowSetters = true)
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(unique = true)
     private Comuna comuna;
 
-    @JsonIgnoreProperties(value = { "comuna", "jugador" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "jugador" }, allowSetters = true)
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(unique = true)
     private CentroEducativo centroEducativo;
@@ -121,26 +119,6 @@ public class Jugador implements Serializable {
     @JsonIgnoreProperties(value = { "jugador", "asociados", "directivos", "cuerpoTecnico" }, allowSetters = true)
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "jugador")
     private Usuario usuario;
-
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "jugador")
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnoreProperties(value = { "jugador" }, allowSetters = true)
-    private Set<FinanzasIngreso> finanzasIngresos = new HashSet<>();
-
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "jugador")
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnoreProperties(value = { "jugador", "finanzasEgresos" }, allowSetters = true)
-    private Set<Cuentas> cuentas = new HashSet<>();
-
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "jugador")
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnoreProperties(value = { "jugador" }, allowSetters = true)
-    private Set<Padre> padres = new HashSet<>();
-
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "jugador")
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnoreProperties(value = { "jugador", "usuario", "directivos", "cuerpoTecnico" }, allowSetters = true)
-    private Set<Asociados> asociados = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -446,130 +424,6 @@ public class Jugador implements Serializable {
 
     public Jugador usuario(Usuario usuario) {
         this.setUsuario(usuario);
-        return this;
-    }
-
-    public Set<FinanzasIngreso> getFinanzasIngresos() {
-        return this.finanzasIngresos;
-    }
-
-    public void setFinanzasIngresos(Set<FinanzasIngreso> finanzasIngresos) {
-        if (this.finanzasIngresos != null) {
-            this.finanzasIngresos.forEach(i -> i.setJugador(null));
-        }
-        if (finanzasIngresos != null) {
-            finanzasIngresos.forEach(i -> i.setJugador(this));
-        }
-        this.finanzasIngresos = finanzasIngresos;
-    }
-
-    public Jugador finanzasIngresos(Set<FinanzasIngreso> finanzasIngresos) {
-        this.setFinanzasIngresos(finanzasIngresos);
-        return this;
-    }
-
-    public Jugador addFinanzasIngreso(FinanzasIngreso finanzasIngreso) {
-        this.finanzasIngresos.add(finanzasIngreso);
-        finanzasIngreso.setJugador(this);
-        return this;
-    }
-
-    public Jugador removeFinanzasIngreso(FinanzasIngreso finanzasIngreso) {
-        this.finanzasIngresos.remove(finanzasIngreso);
-        finanzasIngreso.setJugador(null);
-        return this;
-    }
-
-    public Set<Cuentas> getCuentas() {
-        return this.cuentas;
-    }
-
-    public void setCuentas(Set<Cuentas> cuentas) {
-        if (this.cuentas != null) {
-            this.cuentas.forEach(i -> i.setJugador(null));
-        }
-        if (cuentas != null) {
-            cuentas.forEach(i -> i.setJugador(this));
-        }
-        this.cuentas = cuentas;
-    }
-
-    public Jugador cuentas(Set<Cuentas> cuentas) {
-        this.setCuentas(cuentas);
-        return this;
-    }
-
-    public Jugador addCuentas(Cuentas cuentas) {
-        this.cuentas.add(cuentas);
-        cuentas.setJugador(this);
-        return this;
-    }
-
-    public Jugador removeCuentas(Cuentas cuentas) {
-        this.cuentas.remove(cuentas);
-        cuentas.setJugador(null);
-        return this;
-    }
-
-    public Set<Padre> getPadres() {
-        return this.padres;
-    }
-
-    public void setPadres(Set<Padre> padres) {
-        if (this.padres != null) {
-            this.padres.forEach(i -> i.setJugador(null));
-        }
-        if (padres != null) {
-            padres.forEach(i -> i.setJugador(this));
-        }
-        this.padres = padres;
-    }
-
-    public Jugador padres(Set<Padre> padres) {
-        this.setPadres(padres);
-        return this;
-    }
-
-    public Jugador addPadre(Padre padre) {
-        this.padres.add(padre);
-        padre.setJugador(this);
-        return this;
-    }
-
-    public Jugador removePadre(Padre padre) {
-        this.padres.remove(padre);
-        padre.setJugador(null);
-        return this;
-    }
-
-    public Set<Asociados> getAsociados() {
-        return this.asociados;
-    }
-
-    public void setAsociados(Set<Asociados> asociados) {
-        if (this.asociados != null) {
-            this.asociados.forEach(i -> i.setJugador(null));
-        }
-        if (asociados != null) {
-            asociados.forEach(i -> i.setJugador(this));
-        }
-        this.asociados = asociados;
-    }
-
-    public Jugador asociados(Set<Asociados> asociados) {
-        this.setAsociados(asociados);
-        return this;
-    }
-
-    public Jugador addAsociados(Asociados asociados) {
-        this.asociados.add(asociados);
-        asociados.setJugador(this);
-        return this;
-    }
-
-    public Jugador removeAsociados(Asociados asociados) {
-        this.asociados.remove(asociados);
-        asociados.setJugador(null);
         return this;
     }
 

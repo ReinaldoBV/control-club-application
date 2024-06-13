@@ -19,8 +19,6 @@ public class EntrenamientoDTO implements Serializable {
     @NotNull
     private Integer duracion;
 
-    private CuerpoTecnicoDTO cuerpoTecnico;
-
     public Long getId() {
         return id;
     }
@@ -43,14 +41,6 @@ public class EntrenamientoDTO implements Serializable {
 
     public void setDuracion(Integer duracion) {
         this.duracion = duracion;
-    }
-
-    public CuerpoTecnicoDTO getCuerpoTecnico() {
-        return cuerpoTecnico;
-    }
-
-    public void setCuerpoTecnico(CuerpoTecnicoDTO cuerpoTecnico) {
-        this.cuerpoTecnico = cuerpoTecnico;
     }
 
     @Override
@@ -81,7 +71,6 @@ public class EntrenamientoDTO implements Serializable {
             "id=" + getId() +
             ", fechaHora='" + getFechaHora() + "'" +
             ", duracion=" + getDuracion() +
-            ", cuerpoTecnico=" + getCuerpoTecnico() +
             "}";
     }
 }

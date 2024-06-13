@@ -20,8 +20,7 @@
       "id": "ID",
       "descripcion": "Descripcion",
       "cantidad": "Cantidad",
-      "estado": "Estado",
-      "asignadoA": "Asignado A"
+      "estado": "Estado"
     }
   }
 }

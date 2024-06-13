@@ -56,12 +56,6 @@
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="cuerpoTecnico.id">
-              <div class="d-flex">
-                <span jhiTranslate="controlClubApplicationApp.entrenamiento.cuerpoTecnico">Cuerpo Tecnico</span>
-                <fa-icon class="p-1" icon="sort"></fa-icon>
-              </div>
-            </th>
             <th scope="col"></th>
           </tr>
         </thead>
@@ -73,13 +67,6 @@
               </td>
               <td>{{ entrenamiento.fechaHora | formatMediumDate }}</td>
               <td>{{ entrenamiento.duracion }}</td>
-              <td>
-                @if (entrenamiento.cuerpoTecnico) {
-                  <div>
-                    <a [routerLink]="['/cuerpo-tecnico', entrenamiento.cuerpoTecnico.id, 'view']">{{ entrenamiento.cuerpoTecnico.id }}</a>
-                  </div>
-                }
-              </td>
               <td class="text-end">
                 <div class="btn-group">
                   <a [routerLink]="['/entrenamiento', entrenamiento.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">

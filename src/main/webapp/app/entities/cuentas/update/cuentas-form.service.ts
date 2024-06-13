@@ -24,7 +24,6 @@ type CuentasFormGroupContent = {
   nroCuotas: FormControl<ICuentas['nroCuotas']>;
   fechaVencimiento: FormControl<ICuentas['fechaVencimiento']>;
   estado: FormControl<ICuentas['estado']>;
-  jugador: FormControl<ICuentas['jugador']>;
 };
 
 export type CuentasFormGroup = FormGroup<CuentasFormGroupContent>;
@@ -62,7 +61,6 @@ export class CuentasFormService {
       estado: new FormControl(cuentasRawValue.estado, {
         validators: [Validators.required],
       }),
-      jugador: new FormControl(cuentasRawValue.jugador),
     });
   }
 

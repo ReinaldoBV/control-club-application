@@ -23,14 +23,7 @@
   ],
   "name": "Bienes",
   "pagination": "pagination",
-  "relationships": [
-    {
-      "otherEntityName": "jugador",
-      "relationshipName": "asignadoA",
-      "relationshipSide": "left",
-      "relationshipType": "many-to-one"
-    }
-  ],
+  "relationships": [],
   "searchEngine": "no",
   "service": "serviceClass"
 }

@@ -1,6 +1,5 @@
 package cl.controlclub.myapp.domain;
 
-import static cl.controlclub.myapp.domain.JugadorTestSamples.*;
 import static cl.controlclub.myapp.domain.MensajeTestSamples.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -21,29 +20,5 @@ class MensajeTest {
 
         mensaje2 = getMensajeSample2();
         assertThat(mensaje1).isNotEqualTo(mensaje2);
-    }
-
-    @Test
-    void remitenteTest() {
-        Mensaje mensaje = getMensajeRandomSampleGenerator();
-        Jugador jugadorBack = getJugadorRandomSampleGenerator();
-
-        mensaje.setRemitente(jugadorBack);
-        assertThat(mensaje.getRemitente()).isEqualTo(jugadorBack);
-
-        mensaje.remitente(null);
-        assertThat(mensaje.getRemitente()).isNull();
-    }
-
-    @Test
-    void destinatarioTest() {
-        Mensaje mensaje = getMensajeRandomSampleGenerator();
-        Jugador jugadorBack = getJugadorRandomSampleGenerator();
-
-        mensaje.setDestinatario(jugadorBack);
-        assertThat(mensaje.getDestinatario()).isEqualTo(jugadorBack);
-
-        mensaje.destinatario(null);
-        assertThat(mensaje.getDestinatario()).isNull();
     }
 }

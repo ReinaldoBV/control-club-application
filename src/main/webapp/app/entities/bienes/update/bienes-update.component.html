@@ -67,23 +67,6 @@
             </div>
           }
         </div>
-
-        <div class="mb-3">
-          <label class="form-label" for="field_asignadoA" jhiTranslate="controlClubApplicationApp.bienes.asignadoA">Asignado A</label>
-          <select
-            class="form-control"
-            id="field_asignadoA"
-            data-cy="asignadoA"
-            name="asignadoA"
-            formControlName="asignadoA"
-            [compareWith]="compareJugador"
-          >
-            <option [ngValue]="null"></option>
-            @for (jugadorOption of jugadorsSharedCollection; track $index) {
-              <option [ngValue]="jugadorOption">{{ jugadorOption.id }}</option>
-            }
-          </select>
-        </div>
       </div>
 
       <div>

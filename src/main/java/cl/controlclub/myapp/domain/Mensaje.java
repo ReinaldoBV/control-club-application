@@ -1,6 +1,5 @@
 package cl.controlclub.myapp.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
@@ -38,42 +37,6 @@ public class Mensaje implements Serializable {
 
     @Column(name = "leido")
     private Boolean leido;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnoreProperties(
-        value = {
-            "centroSalud",
-            "previsionSalud",
-            "comuna",
-            "centroEducativo",
-            "categorias",
-            "usuario",
-            "finanzasIngresos",
-            "cuentas",
-            "padres",
-            "asociados",
-        },
-        allowSetters = true
-    )
-    private Jugador remitente;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnoreProperties(
-        value = {
-            "centroSalud",
-            "previsionSalud",
-            "comuna",
-            "centroEducativo",
-            "categorias",
-            "usuario",
-            "finanzasIngresos",
-            "cuentas",
-            "padres",
-            "asociados",
-        },
-        allowSetters = true
-    )
-    private Jugador destinatario;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -140,32 +103,6 @@ public class Mensaje implements Serializable {
 
     public void setLeido(Boolean leido) {
         this.leido = leido;
-    }
-
-    public Jugador getRemitente() {
-        return this.remitente;
-    }
-
-    public void setRemitente(Jugador jugador) {
-        this.remitente = jugador;
-    }
-
-    public Mensaje remitente(Jugador jugador) {
-        this.setRemitente(jugador);
-        return this;
-    }
-
-    public Jugador getDestinatario() {
-        return this.destinatario;
-    }
-
-    public void setDestinatario(Jugador jugador) {
-        this.destinatario = jugador;
-    }
-
-    public Mensaje destinatario(Jugador jugador) {
-        this.setDestinatario(jugador);
-        return this;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here

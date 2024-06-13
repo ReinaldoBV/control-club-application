@@ -2,13 +2,11 @@ import { Component, inject, OnInit } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { finalize, map } from 'rxjs/operators';
+import { finalize } from 'rxjs/operators';
 
 import SharedModule from 'app/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { IJugador } from 'app/entities/jugador/jugador.model';
-import { JugadorService } from 'app/entities/jugador/service/jugador.service';
 import { IMensaje } from '../mensaje.model';
 import { MensajeService } from '../service/mensaje.service';
 import { MensajeFormService, MensajeFormGroup } from './mensaje-form.service';
@@ -23,17 +21,12 @@ export class MensajeUpdateComponent implements OnInit {
   isSaving = false;
   mensaje: IMensaje | null = null;
 
-  jugadorsSharedCollection: IJugador[] = [];
-
   protected mensajeService = inject(MensajeService);
   protected mensajeFormService = inject(MensajeFormService);
-  protected jugadorService = inject(JugadorService);
   protected activatedRoute = inject(ActivatedRoute);
 
   // eslint-disable-next-line @typescript-eslint/member-ordering
   editForm: MensajeFormGroup = this.mensajeFormService.createMensajeFormGroup();
-
-  compareJugador = (o1: IJugador | null, o2: IJugador | null): boolean => this.jugadorService.compareJugador(o1, o2);
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ mensaje }) => {
@@ -41,8 +34,6 @@ export class MensajeUpdateComponent implements OnInit {
       if (mensaje) {
         this.updateForm(mensaje);
       }
-
-      this.loadRelationshipsOptions();
     });
   }
 
@@ -82,23 +73,5 @@ export class MensajeUpdateComponent implements OnInit {
   protected updateForm(mensaje: IMensaje): void {
     this.mensaje = mensaje;
     this.mensajeFormService.resetForm(this.editForm, mensaje);
-
-    this.jugadorsSharedCollection = this.jugadorService.addJugadorToCollectionIfMissing<IJugador>(
-      this.jugadorsSharedCollection,
-      mensaje.remitente,
-      mensaje.destinatario,
-    );
-  }
-
-  protected loadRelationshipsOptions(): void {
-    this.jugadorService
-      .query()
-      .pipe(map((res: HttpResponse<IJugador[]>) => res.body ?? []))
-      .pipe(
-        map((jugadors: IJugador[]) =>
-          this.jugadorService.addJugadorToCollectionIfMissing<IJugador>(jugadors, this.mensaje?.remitente, this.mensaje?.destinatario),
-        ),
-      )
-      .subscribe((jugadors: IJugador[]) => (this.jugadorsSharedCollection = jugadors));
   }
 }

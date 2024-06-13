@@ -3,7 +3,6 @@ package cl.controlclub.myapp.domain;
 import static cl.controlclub.myapp.domain.AsociadosTestSamples.*;
 import static cl.controlclub.myapp.domain.CuerpoTecnicoTestSamples.*;
 import static cl.controlclub.myapp.domain.DirectivosTestSamples.*;
-import static cl.controlclub.myapp.domain.JugadorTestSamples.*;
 import static cl.controlclub.myapp.domain.UsuarioTestSamples.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -24,18 +23,6 @@ class AsociadosTest {
 
         asociados2 = getAsociadosSample2();
         assertThat(asociados1).isNotEqualTo(asociados2);
-    }
-
-    @Test
-    void jugadorTest() {
-        Asociados asociados = getAsociadosRandomSampleGenerator();
-        Jugador jugadorBack = getJugadorRandomSampleGenerator();
-
-        asociados.setJugador(jugadorBack);
-        assertThat(asociados.getJugador()).isEqualTo(jugadorBack);
-
-        asociados.jugador(null);
-        assertThat(asociados.getJugador()).isNull();
     }
 
     @Test

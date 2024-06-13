@@ -2,14 +2,11 @@ package cl.controlclub.myapp.domain;
 
 import cl.controlclub.myapp.domain.enumeration.EstadoCuenta;
 import cl.controlclub.myapp.domain.enumeration.TipoCuenta;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -55,29 +52,6 @@ public class Cuentas implements Serializable {
     @Enumerated(EnumType.STRING)
     @Column(name = "estado", nullable = false)
     private EstadoCuenta estado;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnoreProperties(
-        value = {
-            "centroSalud",
-            "previsionSalud",
-            "comuna",
-            "centroEducativo",
-            "categorias",
-            "usuario",
-            "finanzasIngresos",
-            "cuentas",
-            "padres",
-            "asociados",
-        },
-        allowSetters = true
-    )
-    private Jugador jugador;
-
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "cuentas")
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnoreProperties(value = { "cuentas" }, allowSetters = true)
-    private Set<FinanzasEgreso> finanzasEgresos = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -170,50 +144,6 @@ public class Cuentas implements Serializable {
 
     public void setEstado(EstadoCuenta estado) {
         this.estado = estado;
-    }
-
-    public Jugador getJugador() {
-        return this.jugador;
-    }
-
-    public void setJugador(Jugador jugador) {
-        this.jugador = jugador;
-    }
-
-    public Cuentas jugador(Jugador jugador) {
-        this.setJugador(jugador);
-        return this;
-    }
-
-    public Set<FinanzasEgreso> getFinanzasEgresos() {
-        return this.finanzasEgresos;
-    }
-
-    public void setFinanzasEgresos(Set<FinanzasEgreso> finanzasEgresos) {
-        if (this.finanzasEgresos != null) {
-            this.finanzasEgresos.forEach(i -> i.setCuentas(null));
-        }
-        if (finanzasEgresos != null) {
-            finanzasEgresos.forEach(i -> i.setCuentas(this));
-        }
-        this.finanzasEgresos = finanzasEgresos;
-    }
-
-    public Cuentas finanzasEgresos(Set<FinanzasEgreso> finanzasEgresos) {
-        this.setFinanzasEgresos(finanzasEgresos);
-        return this;
-    }
-
-    public Cuentas addFinanzasEgreso(FinanzasEgreso finanzasEgreso) {
-        this.finanzasEgresos.add(finanzasEgreso);
-        finanzasEgreso.setCuentas(this);
-        return this;
-    }
-
-    public Cuentas removeFinanzasEgreso(FinanzasEgreso finanzasEgreso) {
-        this.finanzasEgresos.remove(finanzasEgreso);
-        finanzasEgreso.setCuentas(null);
-        return this;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here

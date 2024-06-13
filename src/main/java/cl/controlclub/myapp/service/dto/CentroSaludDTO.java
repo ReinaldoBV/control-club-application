@@ -15,8 +15,6 @@ public class CentroSaludDTO implements Serializable {
     @NotNull
     private String centroSalud;
 
-    private ComunaDTO comuna;
-
     public Long getId() {
         return id;
     }
@@ -31,14 +29,6 @@ public class CentroSaludDTO implements Serializable {
 
     public void setCentroSalud(String centroSalud) {
         this.centroSalud = centroSalud;
-    }
-
-    public ComunaDTO getComuna() {
-        return comuna;
-    }
-
-    public void setComuna(ComunaDTO comuna) {
-        this.comuna = comuna;
     }
 
     @Override
@@ -68,7 +58,6 @@ public class CentroSaludDTO implements Serializable {
         return "CentroSaludDTO{" +
             "id=" + getId() +
             ", centroSalud='" + getCentroSalud() + "'" +
-            ", comuna=" + getComuna() +
             "}";
     }
 }

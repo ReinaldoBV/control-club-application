@@ -20,9 +20,6 @@
             <column name="duracion" type="integer">
                 <constraints nullable="false" />
             </column>
-            <column name="cuerpo_tecnico_id" type="bigint">
-                <constraints nullable="true" />
-            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
     </changeSet>

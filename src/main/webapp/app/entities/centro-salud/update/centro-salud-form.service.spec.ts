@@ -21,7 +21,6 @@ describe('CentroSalud Form Service', () => {
           expect.objectContaining({
             id: expect.any(Object),
             centroSalud: expect.any(Object),
-            comuna: expect.any(Object),
           }),
         );
       });
@@ -33,7 +32,6 @@ describe('CentroSalud Form Service', () => {
           expect.objectContaining({
             id: expect.any(Object),
             centroSalud: expect.any(Object),
-            comuna: expect.any(Object),
           }),
         );
       });

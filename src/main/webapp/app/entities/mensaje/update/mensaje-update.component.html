@@ -91,42 +91,6 @@
           <label class="form-label" for="field_leido" jhiTranslate="controlClubApplicationApp.mensaje.leido">Leido</label>
           <input type="checkbox" class="form-check" name="leido" id="field_leido" data-cy="leido" formControlName="leido" />
         </div>
-
-        <div class="mb-3">
-          <label class="form-label" for="field_remitente" jhiTranslate="controlClubApplicationApp.mensaje.remitente">Remitente</label>
-          <select
-            class="form-control"
-            id="field_remitente"
-            data-cy="remitente"
-            name="remitente"
-            formControlName="remitente"
-            [compareWith]="compareJugador"
-          >
-            <option [ngValue]="null"></option>
-            @for (jugadorOption of jugadorsSharedCollection; track $index) {
-              <option [ngValue]="jugadorOption">{{ jugadorOption.id }}</option>
-            }
-          </select>
-        </div>
-
-        <div class="mb-3">
-          <label class="form-label" for="field_destinatario" jhiTranslate="controlClubApplicationApp.mensaje.destinatario"
-            >Destinatario</label
-          >
-          <select
-            class="form-control"
-            id="field_destinatario"
-            data-cy="destinatario"
-            name="destinatario"
-            formControlName="destinatario"
-            [compareWith]="compareJugador"
-          >
-            <option [ngValue]="null"></option>
-            @for (jugadorOption of jugadorsSharedCollection; track $index) {
-              <option [ngValue]="jugadorOption">{{ jugadorOption.id }}</option>
-            }
-          </select>
-        </div>
       </div>
 
       <div>

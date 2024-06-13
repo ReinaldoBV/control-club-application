@@ -22,8 +22,6 @@ type MensajeFormGroupContent = {
   destinatarioId: FormControl<IMensaje['destinatarioId']>;
   mensaje: FormControl<IMensaje['mensaje']>;
   leido: FormControl<IMensaje['leido']>;
-  remitente: FormControl<IMensaje['remitente']>;
-  destinatario: FormControl<IMensaje['destinatario']>;
 };
 
 export type MensajeFormGroup = FormGroup<MensajeFormGroupContent>;
@@ -53,8 +51,6 @@ export class MensajeFormService {
         validators: [Validators.required],
       }),
       leido: new FormControl(mensajeRawValue.leido),
-      remitente: new FormControl(mensajeRawValue.remitente),
-      destinatario: new FormControl(mensajeRawValue.destinatario),
     });
   }
 

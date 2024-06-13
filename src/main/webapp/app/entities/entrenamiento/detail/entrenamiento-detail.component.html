@@ -25,16 +25,6 @@
           <dd>
             <span>{{ entrenamiento()!.duracion }}</span>
           </dd>
-          <dt><span jhiTranslate="controlClubApplicationApp.entrenamiento.cuerpoTecnico">Cuerpo Tecnico</span></dt>
-          <dd>
-            @if (entrenamiento()!.cuerpoTecnico) {
-              <div>
-                <a [routerLink]="['/cuerpo-tecnico', entrenamiento()!.cuerpoTecnico?.id, 'view']">{{
-                  entrenamiento()!.cuerpoTecnico?.id
-                }}</a>
-              </div>
-            }
-          </dd>
         </dl>
 
         <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">

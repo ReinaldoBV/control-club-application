@@ -35,14 +35,6 @@
           <dd>
             <span>{{ finanzasEgreso()!.fecha | formatMediumDate }}</span>
           </dd>
-          <dt><span jhiTranslate="controlClubApplicationApp.finanzasEgreso.cuentas">Cuentas</span></dt>
-          <dd>
-            @if (finanzasEgreso()!.cuentas) {
-              <div>
-                <a [routerLink]="['/cuentas', finanzasEgreso()!.cuentas?.id, 'view']">{{ finanzasEgreso()!.cuentas?.id }}</a>
-              </div>
-            }
-          </dd>
         </dl>
 
         <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">

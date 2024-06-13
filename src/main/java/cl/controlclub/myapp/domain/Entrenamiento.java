@@ -1,6 +1,5 @@
 package cl.controlclub.myapp.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
@@ -32,10 +31,6 @@ public class Entrenamiento implements Serializable {
     @NotNull
     @Column(name = "duracion", nullable = false)
     private Integer duracion;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnoreProperties(value = { "asociados", "usuario", "entrenamientos" }, allowSetters = true)
-    private CuerpoTecnico cuerpoTecnico;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -76,19 +71,6 @@ public class Entrenamiento implements Serializable {
 
     public void setDuracion(Integer duracion) {
         this.duracion = duracion;
-    }
-
-    public CuerpoTecnico getCuerpoTecnico() {
-        return this.cuerpoTecnico;
-    }
-
-    public void setCuerpoTecnico(CuerpoTecnico cuerpoTecnico) {
-        this.cuerpoTecnico = cuerpoTecnico;
-    }
-
-    public Entrenamiento cuerpoTecnico(CuerpoTecnico cuerpoTecnico) {
-        this.setCuerpoTecnico(cuerpoTecnico);
-        return this;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here

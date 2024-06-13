@@ -21,8 +21,6 @@ public class BienesDTO implements Serializable {
     @NotNull
     private String estado;
 
-    private JugadorDTO asignadoA;
-
     public Long getId() {
         return id;
     }
@@ -55,14 +53,6 @@ public class BienesDTO implements Serializable {
         this.estado = estado;
     }
 
-    public JugadorDTO getAsignadoA() {
-        return asignadoA;
-    }
-
-    public void setAsignadoA(JugadorDTO asignadoA) {
-        this.asignadoA = asignadoA;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -92,7 +82,6 @@ public class BienesDTO implements Serializable {
             ", descripcion='" + getDescripcion() + "'" +
             ", cantidad=" + getCantidad() +
             ", estado='" + getEstado() + "'" +
-            ", asignadoA=" + getAsignadoA() +
             "}";
     }
 }

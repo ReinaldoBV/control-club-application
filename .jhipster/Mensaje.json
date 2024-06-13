@@ -27,20 +27,7 @@
   ],
   "name": "Mensaje",
   "pagination": "pagination",
-  "relationships": [
-    {
-      "otherEntityName": "jugador",
-      "relationshipName": "remitente",
-      "relationshipSide": "left",
-      "relationshipType": "many-to-one"
-    },
-    {
-      "otherEntityName": "jugador",
-      "relationshipName": "destinatario",
-      "relationshipSide": "left",
-      "relationshipType": "many-to-one"
-    }
-  ],
+  "relationships": [],
   "searchEngine": "no",
   "service": "serviceClass"
 }

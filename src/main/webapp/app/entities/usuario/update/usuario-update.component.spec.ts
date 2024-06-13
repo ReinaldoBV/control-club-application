@@ -61,10 +61,10 @@ describe('Usuario Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call jugador query and add missing value', () => {
       const usuario: IUsuario = { id: 456 };
-      const jugador: IJugador = { id: 16965 };
+      const jugador: IJugador = { id: 26003 };
       usuario.jugador = jugador;
 
-      const jugadorCollection: IJugador[] = [{ id: 6645 }];
+      const jugadorCollection: IJugador[] = [{ id: 5757 }];
       jest.spyOn(jugadorService, 'query').mockReturnValue(of(new HttpResponse({ body: jugadorCollection })));
       const expectedCollection: IJugador[] = [jugador, ...jugadorCollection];
       jest.spyOn(jugadorService, 'addJugadorToCollectionIfMissing').mockReturnValue(expectedCollection);
@@ -115,10 +115,10 @@ describe('Usuario Management Update Component', () => {
 
     it('Should call cuerpoTecnico query and add missing value', () => {
       const usuario: IUsuario = { id: 456 };
-      const cuerpoTecnico: ICuerpoTecnico = { id: 1988 };
+      const cuerpoTecnico: ICuerpoTecnico = { id: 7033 };
       usuario.cuerpoTecnico = cuerpoTecnico;
 
-      const cuerpoTecnicoCollection: ICuerpoTecnico[] = [{ id: 6346 }];
+      const cuerpoTecnicoCollection: ICuerpoTecnico[] = [{ id: 25064 }];
       jest.spyOn(cuerpoTecnicoService, 'query').mockReturnValue(of(new HttpResponse({ body: cuerpoTecnicoCollection })));
       const expectedCollection: ICuerpoTecnico[] = [cuerpoTecnico, ...cuerpoTecnicoCollection];
       jest.spyOn(cuerpoTecnicoService, 'addCuerpoTecnicoToCollectionIfMissing').mockReturnValue(expectedCollection);
@@ -133,13 +133,13 @@ describe('Usuario Management Update Component', () => {
 
     it('Should update editForm', () => {
       const usuario: IUsuario = { id: 456 };
-      const jugador: IJugador = { id: 5780 };
+      const jugador: IJugador = { id: 26369 };
       usuario.jugador = jugador;
       const asociados: IAsociados = { id: 3858 };
       usuario.asociados = asociados;
       const directivos: IDirectivos = { id: 10024 };
       usuario.directivos = directivos;
-      const cuerpoTecnico: ICuerpoTecnico = { id: 21826 };
+      const cuerpoTecnico: ICuerpoTecnico = { id: 4851 };
       usuario.cuerpoTecnico = cuerpoTecnico;
 
       activatedRoute.data = of({ usuario });

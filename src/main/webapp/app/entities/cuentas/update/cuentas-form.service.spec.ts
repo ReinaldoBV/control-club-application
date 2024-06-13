@@ -26,7 +26,6 @@ describe('Cuentas Form Service', () => {
             nroCuotas: expect.any(Object),
             fechaVencimiento: expect.any(Object),
             estado: expect.any(Object),
-            jugador: expect.any(Object),
           }),
         );
       });
@@ -43,7 +42,6 @@ describe('Cuentas Form Service', () => {
             nroCuotas: expect.any(Object),
             fechaVencimiento: expect.any(Object),
             estado: expect.any(Object),
-            jugador: expect.any(Object),
           }),
         );
       });

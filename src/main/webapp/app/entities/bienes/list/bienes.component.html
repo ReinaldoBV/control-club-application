@@ -63,12 +63,6 @@
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="asignadoA.id">
-              <div class="d-flex">
-                <span jhiTranslate="controlClubApplicationApp.bienes.asignadoA">Asignado A</span>
-                <fa-icon class="p-1" icon="sort"></fa-icon>
-              </div>
-            </th>
             <th scope="col"></th>
           </tr>
         </thead>
@@ -81,13 +75,6 @@
               <td>{{ bienes.descripcion }}</td>
               <td>{{ bienes.cantidad }}</td>
               <td>{{ bienes.estado }}</td>
-              <td>
-                @if (bienes.asignadoA) {
-                  <div>
-                    <a [routerLink]="['/jugador', bienes.asignadoA.id, 'view']">{{ bienes.asignadoA.id }}</a>
-                  </div>
-                }
-              </td>
               <td class="text-end">
                 <div class="btn-group">
                   <a [routerLink]="['/bienes', bienes.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">

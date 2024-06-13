@@ -23,9 +23,7 @@
       "monto": "Monto",
       "nroCuotas": "Nro Cuotas",
       "fechaVencimiento": "Fecha Vencimiento",
-      "estado": "Estado",
-      "jugador": "Jugador",
-      "finanzasEgreso": "Finanzas Egreso"
+      "estado": "Estado"
     }
   }
 }

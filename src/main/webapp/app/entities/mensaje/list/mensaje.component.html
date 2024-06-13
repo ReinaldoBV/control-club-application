@@ -70,18 +70,6 @@
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="remitente.id">
-              <div class="d-flex">
-                <span jhiTranslate="controlClubApplicationApp.mensaje.remitente">Remitente</span>
-                <fa-icon class="p-1" icon="sort"></fa-icon>
-              </div>
-            </th>
-            <th scope="col" jhiSortBy="destinatario.id">
-              <div class="d-flex">
-                <span jhiTranslate="controlClubApplicationApp.mensaje.destinatario">Destinatario</span>
-                <fa-icon class="p-1" icon="sort"></fa-icon>
-              </div>
-            </th>
             <th scope="col"></th>
           </tr>
         </thead>
@@ -95,20 +83,6 @@
               <td>{{ mensaje.destinatarioId }}</td>
               <td>{{ mensaje.mensaje }}</td>
               <td>{{ mensaje.leido }}</td>
-              <td>
-                @if (mensaje.remitente) {
-                  <div>
-                    <a [routerLink]="['/jugador', mensaje.remitente.id, 'view']">{{ mensaje.remitente.id }}</a>
-                  </div>
-                }
-              </td>
-              <td>
-                @if (mensaje.destinatario) {
-                  <div>
-                    <a [routerLink]="['/jugador', mensaje.destinatario.id, 'view']">{{ mensaje.destinatario.id }}</a>
-                  </div>
-                }
-              </td>
               <td class="text-end">
                 <div class="btn-group">
                   <a [routerLink]="['/mensaje', mensaje.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">

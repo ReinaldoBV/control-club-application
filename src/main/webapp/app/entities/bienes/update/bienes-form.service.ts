@@ -21,7 +21,6 @@ type BienesFormGroupContent = {
   descripcion: FormControl<IBienes['descripcion']>;
   cantidad: FormControl<IBienes['cantidad']>;
   estado: FormControl<IBienes['estado']>;
-  asignadoA: FormControl<IBienes['asignadoA']>;
 };
 
 export type BienesFormGroup = FormGroup<BienesFormGroupContent>;
@@ -50,7 +49,6 @@ export class BienesFormService {
       estado: new FormControl(bienesRawValue.estado, {
         validators: [Validators.required],
       }),
-      asignadoA: new FormControl(bienesRawValue.asignadoA),
     });
   }
 

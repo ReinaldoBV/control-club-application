@@ -21,8 +21,7 @@
       "tipo": "Tipo",
       "descripcion": "Descripcion",
       "monto": "Monto",
-      "fecha": "Fecha",
-      "jugador": "Jugador"
+      "fecha": "Fecha"
     }
   }
 }

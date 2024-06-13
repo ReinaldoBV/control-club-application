@@ -20,7 +20,6 @@ type EntrenamientoFormGroupContent = {
   id: FormControl<IEntrenamiento['id'] | NewEntrenamiento['id']>;
   fechaHora: FormControl<IEntrenamiento['fechaHora']>;
   duracion: FormControl<IEntrenamiento['duracion']>;
-  cuerpoTecnico: FormControl<IEntrenamiento['cuerpoTecnico']>;
 };
 
 export type EntrenamientoFormGroup = FormGroup<EntrenamientoFormGroupContent>;
@@ -46,7 +45,6 @@ export class EntrenamientoFormService {
       duracion: new FormControl(entrenamientoRawValue.duracion, {
         validators: [Validators.required],
       }),
-      cuerpoTecnico: new FormControl(entrenamientoRawValue.cuerpoTecnico),
     });
   }
 

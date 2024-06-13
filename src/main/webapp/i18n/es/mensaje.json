@@ -21,9 +21,7 @@
       "remitenteId": "Remitente Id",
       "destinatarioId": "Destinatario Id",
       "mensaje": "Mensaje",
-      "leido": "Leido",
-      "remitente": "Remitente",
-      "destinatario": "Destinatario"
+      "leido": "Leido"
     }
   }
 }

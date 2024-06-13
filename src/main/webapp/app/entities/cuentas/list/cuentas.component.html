@@ -84,12 +84,6 @@
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="jugador.id">
-              <div class="d-flex">
-                <span jhiTranslate="controlClubApplicationApp.cuentas.jugador">Jugador</span>
-                <fa-icon class="p-1" icon="sort"></fa-icon>
-              </div>
-            </th>
             <th scope="col"></th>
           </tr>
         </thead>
@@ -108,13 +102,6 @@
               <td>{{ cuentas.fechaVencimiento | formatMediumDate }}</td>
               <td [jhiTranslate]="'controlClubApplicationApp.EstadoCuenta.' + (cuentas.estado ?? 'null')">
                 {{ { null: '', PENDIENTE: 'PENDIENTE', PAGADO: 'PAGADO', COBRADO: 'COBRADO' }[cuentas.estado ?? 'null'] }}
-              </td>
-              <td>
-                @if (cuentas.jugador) {
-                  <div>
-                    <a [routerLink]="['/jugador', cuentas.jugador.id, 'view']">{{ cuentas.jugador.id }}</a>
-                  </div>
-                }
               </td>
               <td class="text-end">
                 <div class="btn-group">

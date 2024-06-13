@@ -43,14 +43,6 @@
               { null: '', PENDIENTE: 'PENDIENTE', PAGADO: 'PAGADO', COBRADO: 'COBRADO' }[cuentas()!.estado ?? 'null']
             }}</span>
           </dd>
-          <dt><span jhiTranslate="controlClubApplicationApp.cuentas.jugador">Jugador</span></dt>
-          <dd>
-            @if (cuentas()!.jugador) {
-              <div>
-                <a [routerLink]="['/jugador', cuentas()!.jugador?.id, 'view']">{{ cuentas()!.jugador?.id }}</a>
-              </div>
-            }
-          </dd>
         </dl>
 
         <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">

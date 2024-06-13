@@ -38,15 +38,7 @@
   ],
   "name": "Padre",
   "pagination": "pagination",
-  "relationships": [
-    {
-      "otherEntityName": "jugador",
-      "otherEntityRelationshipName": "padre",
-      "relationshipName": "jugador",
-      "relationshipSide": "left",
-      "relationshipType": "many-to-one"
-    }
-  ],
+  "relationships": [],
   "searchEngine": "no",
   "service": "serviceClass"
 }

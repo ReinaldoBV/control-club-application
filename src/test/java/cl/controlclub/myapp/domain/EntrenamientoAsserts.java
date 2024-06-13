@@ -57,9 +57,5 @@ public class EntrenamientoAsserts {
      * @param expected the expected entity
      * @param actual the actual entity
      */
-    public static void assertEntrenamientoUpdatableRelationshipsEquals(Entrenamiento expected, Entrenamiento actual) {
-        assertThat(expected)
-            .as("Verify Entrenamiento relationships")
-            .satisfies(e -> assertThat(e.getCuerpoTecnico()).as("check cuerpoTecnico").isEqualTo(actual.getCuerpoTecnico()));
-    }
+    public static void assertEntrenamientoUpdatableRelationshipsEquals(Entrenamiento expected, Entrenamiento actual) {}
 }

@@ -37,18 +37,7 @@ public class Categorias implements Serializable {
     private String nombreCategoria;
 
     @JsonIgnoreProperties(
-        value = {
-            "centroSalud",
-            "previsionSalud",
-            "comuna",
-            "centroEducativo",
-            "categorias",
-            "usuario",
-            "finanzasIngresos",
-            "cuentas",
-            "padres",
-            "asociados",
-        },
+        value = { "centroSalud", "previsionSalud", "comuna", "centroEducativo", "categorias", "usuario" },
         allowSetters = true
     )
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "categorias")

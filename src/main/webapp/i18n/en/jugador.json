@@ -37,11 +37,7 @@
       "comuna": "Comuna",
       "centroEducativo": "Centro Educativo",
       "categorias": "Categorias",
-      "usuario": "Usuario",
-      "finanzasIngreso": "Finanzas Ingreso",
-      "cuentas": "Cuentas",
-      "padre": "Padre",
-      "asociados": "Asociados"
+      "usuario": "Usuario"
     }
   }
 }

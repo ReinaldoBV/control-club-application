@@ -19,7 +19,6 @@ type CentroSaludFormDefaults = Pick<NewCentroSalud, 'id'>;
 type CentroSaludFormGroupContent = {
   id: FormControl<ICentroSalud['id'] | NewCentroSalud['id']>;
   centroSalud: FormControl<ICentroSalud['centroSalud']>;
-  comuna: FormControl<ICentroSalud['comuna']>;
 };
 
 export type CentroSaludFormGroup = FormGroup<CentroSaludFormGroupContent>;
@@ -42,7 +41,6 @@ export class CentroSaludFormService {
       centroSalud: new FormControl(centroSaludRawValue.centroSalud, {
         validators: [Validators.required],
       }),
-      comuna: new FormControl(centroSaludRawValue.comuna),
     });
   }
 

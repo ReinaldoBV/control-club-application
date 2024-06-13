@@ -22,7 +22,6 @@ describe('Entrenamiento Form Service', () => {
             id: expect.any(Object),
             fechaHora: expect.any(Object),
             duracion: expect.any(Object),
-            cuerpoTecnico: expect.any(Object),
           }),
         );
       });
@@ -35,7 +34,6 @@ describe('Entrenamiento Form Service', () => {
             id: expect.any(Object),
             fechaHora: expect.any(Object),
             duracion: expect.any(Object),
-            cuerpoTecnico: expect.any(Object),
           }),
         );
       });

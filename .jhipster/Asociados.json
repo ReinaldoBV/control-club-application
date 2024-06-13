@@ -40,13 +40,6 @@
   "pagination": "pagination",
   "relationships": [
     {
-      "otherEntityName": "jugador",
-      "otherEntityRelationshipName": "asociados",
-      "relationshipName": "jugador",
-      "relationshipSide": "left",
-      "relationshipType": "many-to-one"
-    },
-    {
       "otherEntityName": "usuario",
       "otherEntityRelationshipName": "asociados",
       "relationshipName": "usuario",

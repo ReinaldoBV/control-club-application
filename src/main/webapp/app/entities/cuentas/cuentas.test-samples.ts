@@ -3,42 +3,42 @@ import dayjs from 'dayjs/esm';
 import { ICuentas, NewCuentas } from './cuentas.model';
 
 export const sampleWithRequiredData: ICuentas = {
-  id: 7842,
-  tipo: 'PAGAR',
-  descripcion: 'consequently usually',
-  monto: 28935.91,
-  nroCuotas: 8224,
+  id: 22966,
+  tipo: 'COBRAR',
+  descripcion: 'whoa',
+  monto: 8951.63,
+  nroCuotas: 31741,
+  fechaVencimiento: dayjs('2024-06-13'),
+  estado: 'COBRADO',
+};
+
+export const sampleWithPartialData: ICuentas = {
+  id: 21126,
+  tipo: 'COBRAR',
+  descripcion: 'aside',
+  monto: 10272.01,
+  nroCuotas: 28518,
   fechaVencimiento: dayjs('2024-06-13'),
   estado: 'PENDIENTE',
 };
 
-export const sampleWithPartialData: ICuentas = {
-  id: 10272,
-  tipo: 'COBRAR',
-  descripcion: 'monsoon',
-  monto: 24177.8,
-  nroCuotas: 32703,
-  fechaVencimiento: dayjs('2024-06-13'),
-  estado: 'PAGADO',
-};
-
 export const sampleWithFullData: ICuentas = {
-  id: 27809,
+  id: 2091,
   tipo: 'PAGAR',
-  descripcion: 'staff excluding boohoo',
-  monto: 9418.72,
-  nroCuotas: 8996,
+  descripcion: 'next',
+  monto: 27808.66,
+  nroCuotas: 2369,
   fechaVencimiento: dayjs('2024-06-12'),
-  estado: 'COBRADO',
+  estado: 'PENDIENTE',
 };
 
 export const sampleWithNewData: NewCuentas = {
   tipo: 'COBRAR',
-  descripcion: 'yuck',
-  monto: 3871.44,
-  nroCuotas: 26639,
+  descripcion: 'between',
+  monto: 28589.41,
+  nroCuotas: 7774,
   fechaVencimiento: dayjs('2024-06-13'),
-  estado: 'PENDIENTE',
+  estado: 'PAGADO',
   id: null,
 };
 
