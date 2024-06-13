@@ -320,7 +320,7 @@ class PartidoResourceIT {
         Partido partialUpdatedPartido = new Partido();
         partialUpdatedPartido.setId(partido.getId());
 
-        partialUpdatedPartido.fecha(UPDATED_FECHA);
+        partialUpdatedPartido.fecha(UPDATED_FECHA).oponente(UPDATED_OPONENTE);
 
         restPartidoMockMvc
             .perform(

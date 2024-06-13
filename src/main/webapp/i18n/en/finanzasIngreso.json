@@ -1,0 +1,27 @@
+{
+  "controlClubApplicationApp": {
+    "finanzasIngreso": {
+      "home": {
+        "title": "Finanzas Ingresos",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Finanzas Ingreso",
+        "createOrEditLabel": "Create or edit a Finanzas Ingreso",
+        "notFound": "No Finanzas Ingresos found"
+      },
+      "created": "A new Finanzas Ingreso is created with identifier {{ param }}",
+      "updated": "A Finanzas Ingreso is updated with identifier {{ param }}",
+      "deleted": "A Finanzas Ingreso is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Finanzas Ingreso {{ id }}?"
+      },
+      "detail": {
+        "title": "Finanzas Ingreso"
+      },
+      "id": "ID",
+      "tipo": "Tipo",
+      "descripcion": "Descripcion",
+      "monto": "Monto",
+      "fecha": "Fecha"
+    }
+  }
+}

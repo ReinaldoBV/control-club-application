@@ -1,0 +1,148 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (jugador()) {
+      <div>
+        <h2 data-cy="jugadorDetailsHeading"><span jhiTranslate="controlClubApplicationApp.jugador.detail.title">Jugador</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ jugador()!.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.jugador.nroIdentificacion">Nro Identificacion</span></dt>
+          <dd>
+            <span>{{ jugador()!.nroIdentificacion }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.jugador.tipoIdentificacion">Tipo Identificacion</span></dt>
+          <dd>
+            <span [jhiTranslate]="'controlClubApplicationApp.TipoIdentificacion.' + (jugador()!.tipoIdentificacion ?? 'null')">{{
+              { null: '', RUT: 'RUT', PASAPORTE: 'PASAPORTE', ESCOLAR: 'ESCOLAR', OTRO: 'OTRO' }[jugador()!.tipoIdentificacion ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.jugador.nombres">Nombres</span></dt>
+          <dd>
+            <span>{{ jugador()!.nombres }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.jugador.apellidos">Apellidos</span></dt>
+          <dd>
+            <span>{{ jugador()!.apellidos }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.jugador.nacionalidad">Nacionalidad</span></dt>
+          <dd>
+            <span [jhiTranslate]="'controlClubApplicationApp.Nacionalidad.' + (jugador()!.nacionalidad ?? 'null')">{{
+              { null: '', CHILENA: 'CHILENA', VENEZOLANA: 'VENEZOLANA', DOMINICANA: 'DOMINICANA', COLOMBIANA: 'COLOMBIANA', OTRA: 'OTRA' }[
+                jugador()!.nacionalidad ?? 'null'
+              ]
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.jugador.edad">Edad</span></dt>
+          <dd>
+            <span>{{ jugador()!.edad }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.jugador.fechaNacimiento">Fecha Nacimiento</span></dt>
+          <dd>
+            <span>{{ jugador()!.fechaNacimiento | formatMediumDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.jugador.numeroCamisa">Numero Camisa</span></dt>
+          <dd>
+            <span>{{ jugador()!.numeroCamisa }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.jugador.contactoEmergencia">Contacto Emergencia</span></dt>
+          <dd>
+            <span>{{ jugador()!.contactoEmergencia }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.jugador.calleAvenidaDireccion">Calle Avenida Direccion</span></dt>
+          <dd>
+            <span>{{ jugador()!.calleAvenidaDireccion }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.jugador.numeroDireccion">Numero Direccion</span></dt>
+          <dd>
+            <span>{{ jugador()!.numeroDireccion }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.jugador.numeroPersonal">Numero Personal</span></dt>
+          <dd>
+            <span>{{ jugador()!.numeroPersonal }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.jugador.imagenJugador">Imagen Jugador</span></dt>
+          <dd>
+            @if (jugador()!.imagenJugador) {
+              <div>
+                <a (click)="openFile(jugador()!.imagenJugador ?? '', jugador()!.imagenJugadorContentType)" jhiTranslate="entity.action.open"
+                  >Abrir</a
+                >
+                {{ jugador()!.imagenJugadorContentType }}, {{ byteSize(jugador()!.imagenJugador ?? '') }}
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.jugador.documentoIdentificacion">Documento Identificacion</span></dt>
+          <dd>
+            @if (jugador()!.documentoIdentificacion) {
+              <div>
+                <a
+                  (click)="openFile(jugador()!.documentoIdentificacion ?? '', jugador()!.documentoIdentificacionContentType)"
+                  jhiTranslate="entity.action.open"
+                  >Abrir</a
+                >
+                {{ jugador()!.documentoIdentificacionContentType }}, {{ byteSize(jugador()!.documentoIdentificacion ?? '') }}
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.jugador.centroSalud">Centro Salud</span></dt>
+          <dd>
+            @if (jugador()!.centroSalud) {
+              <div>
+                <a [routerLink]="['/centro-salud', jugador()!.centroSalud?.id, 'view']">{{ jugador()!.centroSalud?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.jugador.previsionSalud">Prevision Salud</span></dt>
+          <dd>
+            @if (jugador()!.previsionSalud) {
+              <div>
+                <a [routerLink]="['/prevision-salud', jugador()!.previsionSalud?.id, 'view']">{{ jugador()!.previsionSalud?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.jugador.comuna">Comuna</span></dt>
+          <dd>
+            @if (jugador()!.comuna) {
+              <div>
+                <a [routerLink]="['/comuna', jugador()!.comuna?.id, 'view']">{{ jugador()!.comuna?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.jugador.centroEducativo">Centro Educativo</span></dt>
+          <dd>
+            @if (jugador()!.centroEducativo) {
+              <div>
+                <a [routerLink]="['/centro-educativo', jugador()!.centroEducativo?.id, 'view']">{{ jugador()!.centroEducativo?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.jugador.categorias">Categorias</span></dt>
+          <dd>
+            @if (jugador()!.categorias) {
+              <div>
+                <a [routerLink]="['/categorias', jugador()!.categorias?.id, 'view']">{{ jugador()!.categorias?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+        </button>
+
+        <button type="button" [routerLink]="['/jugador', jugador()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

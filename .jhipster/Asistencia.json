@@ -1,0 +1,35 @@
+{
+  "annotations": {
+    "changelogDate": "20240613173833"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "tipo",
+      "fieldType": "TipoAsistencia",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "ENTRENAMIENTO,PARTIDO"
+    },
+    {
+      "fieldName": "idEvento",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "fecha",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "asistencia",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "Asistencia",
+  "pagination": "pagination",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

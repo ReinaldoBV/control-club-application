@@ -1,0 +1,9 @@
+{
+  "controlClubApplicationApp": {
+    "TipoCuenta": {
+      "null": "",
+      "PAGAR": "PAGAR",
+      "COBRAR": "COBRAR"
+    }
+  }
+}

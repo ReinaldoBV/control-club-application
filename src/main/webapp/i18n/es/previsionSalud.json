@@ -1,0 +1,25 @@
+{
+  "controlClubApplicationApp": {
+    "previsionSalud": {
+      "home": {
+        "title": "Prevision Saluds",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Prevision Salud",
+        "createOrEditLabel": "Crear o editar Prevision Salud",
+        "notFound": "Ningún Prevision Saluds encontrado"
+      },
+      "created": "Un nuevo Prevision Salud ha sido creado con el identificador {{ param }}",
+      "updated": "Un Prevision Salud ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Prevision Salud ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Prevision Salud {{ id }}?"
+      },
+      "detail": {
+        "title": "Prevision Salud"
+      },
+      "id": "ID",
+      "tipoPrevision": "Tipo Prevision",
+      "jugador": "Jugador"
+    }
+  }
+}

@@ -18,7 +18,8 @@
         "title": "Centro Educativo"
       },
       "id": "ID",
-      "centroEducativo": "Centro Educativo"
+      "centroEducativo": "Centro Educativo",
+      "jugador": "Jugador"
     }
   }
 }

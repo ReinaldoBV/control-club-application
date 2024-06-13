@@ -1,0 +1,43 @@
+{
+  "controlClubApplicationApp": {
+    "jugador": {
+      "home": {
+        "title": "Jugadors",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Jugador",
+        "createOrEditLabel": "Crear o editar Jugador",
+        "notFound": "Ningún Jugadors encontrado"
+      },
+      "created": "Un nuevo Jugador ha sido creado con el identificador {{ param }}",
+      "updated": "Un Jugador ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Jugador ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Jugador {{ id }}?"
+      },
+      "detail": {
+        "title": "Jugador"
+      },
+      "id": "ID",
+      "nroIdentificacion": "Nro Identificacion",
+      "tipoIdentificacion": "Tipo Identificacion",
+      "nombres": "Nombres",
+      "apellidos": "Apellidos",
+      "nacionalidad": "Nacionalidad",
+      "edad": "Edad",
+      "fechaNacimiento": "Fecha Nacimiento",
+      "numeroCamisa": "Numero Camisa",
+      "contactoEmergencia": "Contacto Emergencia",
+      "calleAvenidaDireccion": "Calle Avenida Direccion",
+      "numeroDireccion": "Numero Direccion",
+      "numeroPersonal": "Numero Personal",
+      "imagenJugador": "Imagen Jugador",
+      "documentoIdentificacion": "Documento Identificacion",
+      "centroSalud": "Centro Salud",
+      "previsionSalud": "Prevision Salud",
+      "comuna": "Comuna",
+      "centroEducativo": "Centro Educativo",
+      "categorias": "Categorias",
+      "usuario": "Usuario"
+    }
+  }
+}

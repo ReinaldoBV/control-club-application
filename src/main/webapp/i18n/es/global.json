@@ -18,7 +18,19 @@
         "padre": "Padre",
         "torneosParticipaciones": "Torneos Participaciones",
         "estadisticasBaloncesto": "Estadisticas Baloncesto",
-        "partido": "Partido"
+        "partido": "Partido",
+        "jugador": "Jugador",
+        "previsionSalud": "Prevision Salud",
+        "cuerpoTecnico": "Cuerpo Tecnico",
+        "finanzasIngreso": "Finanzas Ingreso",
+        "finanzasEgreso": "Finanzas Egreso",
+        "cuentas": "Cuentas",
+        "entrenamiento": "Entrenamiento",
+        "mensaje": "Mensaje",
+        "anuncio": "Anuncio",
+        "bienes": "Bienes",
+        "usuario": "Usuario",
+        "asistencia": "Asistencia"
       },
       "account": {
         "main": "Cuenta",

@@ -1,0 +1,58 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (cuentas()) {
+      <div>
+        <h2 data-cy="cuentasDetailsHeading"><span jhiTranslate="controlClubApplicationApp.cuentas.detail.title">Cuentas</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ cuentas()!.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.cuentas.tipo">Tipo</span></dt>
+          <dd>
+            <span [jhiTranslate]="'controlClubApplicationApp.TipoCuenta.' + (cuentas()!.tipo ?? 'null')">{{
+              { null: '', PAGAR: 'PAGAR', COBRAR: 'COBRAR' }[cuentas()!.tipo ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.cuentas.descripcion">Descripcion</span></dt>
+          <dd>
+            <span>{{ cuentas()!.descripcion }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.cuentas.monto">Monto</span></dt>
+          <dd>
+            <span>{{ cuentas()!.monto }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.cuentas.nroCuotas">Nro Cuotas</span></dt>
+          <dd>
+            <span>{{ cuentas()!.nroCuotas }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.cuentas.fechaVencimiento">Fecha Vencimiento</span></dt>
+          <dd>
+            <span>{{ cuentas()!.fechaVencimiento | formatMediumDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.cuentas.estado">Estado</span></dt>
+          <dd>
+            <span [jhiTranslate]="'controlClubApplicationApp.EstadoCuenta.' + (cuentas()!.estado ?? 'null')">{{
+              { null: '', PENDIENTE: 'PENDIENTE', PAGADO: 'PAGADO', COBRADO: 'COBRADO' }[cuentas()!.estado ?? 'null']
+            }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+        </button>
+
+        <button type="button" [routerLink]="['/cuentas', cuentas()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

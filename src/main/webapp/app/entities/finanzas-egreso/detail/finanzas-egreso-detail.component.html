@@ -1,0 +1,50 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (finanzasEgreso()) {
+      <div>
+        <h2 data-cy="finanzasEgresoDetailsHeading">
+          <span jhiTranslate="controlClubApplicationApp.finanzasEgreso.detail.title">Finanzas Egreso</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ finanzasEgreso()!.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.finanzasEgreso.tipo">Tipo</span></dt>
+          <dd>
+            <span [jhiTranslate]="'controlClubApplicationApp.TipoEgreso.' + (finanzasEgreso()!.tipo ?? 'null')">{{
+              { null: '', TRANSFERENCIA: 'TRANSFERENCIA', EFECTIVO: 'EFECTIVO', CHEQUE: 'CHEQUE' }[finanzasEgreso()!.tipo ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.finanzasEgreso.descripcion">Descripcion</span></dt>
+          <dd>
+            <span>{{ finanzasEgreso()!.descripcion }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.finanzasEgreso.monto">Monto</span></dt>
+          <dd>
+            <span>{{ finanzasEgreso()!.monto }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.finanzasEgreso.fecha">Fecha</span></dt>
+          <dd>
+            <span>{{ finanzasEgreso()!.fecha | formatMediumDate }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+        </button>
+
+        <button type="button" [routerLink]="['/finanzas-egreso', finanzasEgreso()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

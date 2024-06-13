@@ -1,0 +1,11 @@
+{
+  "controlClubApplicationApp": {
+    "TipoIdentificacion": {
+      "null": "",
+      "RUT": "RUT",
+      "PASAPORTE": "PASAPORTE",
+      "ESCOLAR": "ESCOLAR",
+      "OTRO": "OTRO"
+    }
+  }
+}

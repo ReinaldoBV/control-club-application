@@ -1,0 +1,10 @@
+{
+  "controlClubApplicationApp": {
+    "EstadoCuenta": {
+      "null": "",
+      "PENDIENTE": "PENDIENTE",
+      "PAGADO": "PAGADO",
+      "COBRADO": "COBRADO"
+    }
+  }
+}
