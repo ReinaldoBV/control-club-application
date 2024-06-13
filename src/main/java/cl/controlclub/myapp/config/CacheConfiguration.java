@@ -51,6 +51,8 @@ public class CacheConfiguration {
             createCache(cm, cl.controlclub.myapp.domain.Authority.class.getName());
             createCache(cm, cl.controlclub.myapp.domain.User.class.getName() + ".authorities");
             createCache(cm, cl.controlclub.myapp.domain.Club.class.getName());
+            createCache(cm, cl.controlclub.myapp.domain.Comuna.class.getName());
+            createCache(cm, cl.controlclub.myapp.domain.CentroSalud.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }
