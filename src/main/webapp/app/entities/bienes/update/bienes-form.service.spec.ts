@@ -23,7 +23,6 @@ describe('Bienes Form Service', () => {
             descripcion: expect.any(Object),
             cantidad: expect.any(Object),
             estado: expect.any(Object),
-            asignadoA: expect.any(Object),
           }),
         );
       });
@@ -37,7 +36,6 @@ describe('Bienes Form Service', () => {
             descripcion: expect.any(Object),
             cantidad: expect.any(Object),
             estado: expect.any(Object),
-            asignadoA: expect.any(Object),
           }),
         );
       });

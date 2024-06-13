@@ -24,8 +24,6 @@ describe('Mensaje Form Service', () => {
             destinatarioId: expect.any(Object),
             mensaje: expect.any(Object),
             leido: expect.any(Object),
-            remitente: expect.any(Object),
-            destinatario: expect.any(Object),
           }),
         );
       });
@@ -40,8 +38,6 @@ describe('Mensaje Form Service', () => {
             destinatarioId: expect.any(Object),
             mensaje: expect.any(Object),
             leido: expect.any(Object),
-            remitente: expect.any(Object),
-            destinatario: expect.any(Object),
           }),
         );
       });

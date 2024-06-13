@@ -29,15 +29,7 @@
   ],
   "name": "FinanzasIngreso",
   "pagination": "pagination",
-  "relationships": [
-    {
-      "otherEntityName": "jugador",
-      "otherEntityRelationshipName": "finanzasIngreso",
-      "relationshipName": "jugador",
-      "relationshipSide": "left",
-      "relationshipType": "many-to-one"
-    }
-  ],
+  "relationships": [],
   "searchEngine": "no",
   "service": "serviceClass"
 }

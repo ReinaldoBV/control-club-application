@@ -34,8 +34,6 @@ public class CuentasDTO implements Serializable {
     @NotNull
     private EstadoCuenta estado;
 
-    private JugadorDTO jugador;
-
     public Long getId() {
         return id;
     }
@@ -92,14 +90,6 @@ public class CuentasDTO implements Serializable {
         this.estado = estado;
     }
 
-    public JugadorDTO getJugador() {
-        return jugador;
-    }
-
-    public void setJugador(JugadorDTO jugador) {
-        this.jugador = jugador;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -132,7 +122,6 @@ public class CuentasDTO implements Serializable {
             ", nroCuotas=" + getNroCuotas() +
             ", fechaVencimiento='" + getFechaVencimiento() + "'" +
             ", estado='" + getEstado() + "'" +
-            ", jugador=" + getJugador() +
             "}";
     }
 }

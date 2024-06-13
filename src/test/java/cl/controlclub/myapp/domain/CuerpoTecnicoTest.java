@@ -2,13 +2,10 @@ package cl.controlclub.myapp.domain;
 
 import static cl.controlclub.myapp.domain.AsociadosTestSamples.*;
 import static cl.controlclub.myapp.domain.CuerpoTecnicoTestSamples.*;
-import static cl.controlclub.myapp.domain.EntrenamientoTestSamples.*;
 import static cl.controlclub.myapp.domain.UsuarioTestSamples.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import cl.controlclub.myapp.web.rest.TestUtil;
-import java.util.HashSet;
-import java.util.Set;
 import org.junit.jupiter.api.Test;
 
 class CuerpoTecnicoTest {
@@ -51,27 +48,5 @@ class CuerpoTecnicoTest {
         cuerpoTecnico.usuario(null);
         assertThat(cuerpoTecnico.getUsuario()).isNull();
         assertThat(usuarioBack.getCuerpoTecnico()).isNull();
-    }
-
-    @Test
-    void entrenamientoTest() {
-        CuerpoTecnico cuerpoTecnico = getCuerpoTecnicoRandomSampleGenerator();
-        Entrenamiento entrenamientoBack = getEntrenamientoRandomSampleGenerator();
-
-        cuerpoTecnico.addEntrenamiento(entrenamientoBack);
-        assertThat(cuerpoTecnico.getEntrenamientos()).containsOnly(entrenamientoBack);
-        assertThat(entrenamientoBack.getCuerpoTecnico()).isEqualTo(cuerpoTecnico);
-
-        cuerpoTecnico.removeEntrenamiento(entrenamientoBack);
-        assertThat(cuerpoTecnico.getEntrenamientos()).doesNotContain(entrenamientoBack);
-        assertThat(entrenamientoBack.getCuerpoTecnico()).isNull();
-
-        cuerpoTecnico.entrenamientos(new HashSet<>(Set.of(entrenamientoBack)));
-        assertThat(cuerpoTecnico.getEntrenamientos()).containsOnly(entrenamientoBack);
-        assertThat(entrenamientoBack.getCuerpoTecnico()).isEqualTo(cuerpoTecnico);
-
-        cuerpoTecnico.setEntrenamientos(new HashSet<>());
-        assertThat(cuerpoTecnico.getEntrenamientos()).doesNotContain(entrenamientoBack);
-        assertThat(entrenamientoBack.getCuerpoTecnico()).isNull();
     }
 }

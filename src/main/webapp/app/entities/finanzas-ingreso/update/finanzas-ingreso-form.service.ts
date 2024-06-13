@@ -22,7 +22,6 @@ type FinanzasIngresoFormGroupContent = {
   descripcion: FormControl<IFinanzasIngreso['descripcion']>;
   monto: FormControl<IFinanzasIngreso['monto']>;
   fecha: FormControl<IFinanzasIngreso['fecha']>;
-  jugador: FormControl<IFinanzasIngreso['jugador']>;
 };
 
 export type FinanzasIngresoFormGroup = FormGroup<FinanzasIngresoFormGroupContent>;
@@ -54,7 +53,6 @@ export class FinanzasIngresoFormService {
       fecha: new FormControl(finanzasIngresoRawValue.fecha, {
         validators: [Validators.required],
       }),
-      jugador: new FormControl(finanzasIngresoRawValue.jugador),
     });
   }
 

@@ -1,7 +1,6 @@
 package cl.controlclub.myapp.domain;
 
 import cl.controlclub.myapp.domain.enumeration.TipoEgreso;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
@@ -43,10 +42,6 @@ public class FinanzasEgreso implements Serializable {
     @NotNull
     @Column(name = "fecha", nullable = false)
     private LocalDate fecha;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnoreProperties(value = { "jugador", "finanzasEgresos" }, allowSetters = true)
-    private Cuentas cuentas;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -113,19 +108,6 @@ public class FinanzasEgreso implements Serializable {
 
     public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
-    }
-
-    public Cuentas getCuentas() {
-        return this.cuentas;
-    }
-
-    public void setCuentas(Cuentas cuentas) {
-        this.cuentas = cuentas;
-    }
-
-    public FinanzasEgreso cuentas(Cuentas cuentas) {
-        this.setCuentas(cuentas);
-        return this;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here

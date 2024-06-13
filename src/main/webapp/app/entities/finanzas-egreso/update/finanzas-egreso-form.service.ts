@@ -22,7 +22,6 @@ type FinanzasEgresoFormGroupContent = {
   descripcion: FormControl<IFinanzasEgreso['descripcion']>;
   monto: FormControl<IFinanzasEgreso['monto']>;
   fecha: FormControl<IFinanzasEgreso['fecha']>;
-  cuentas: FormControl<IFinanzasEgreso['cuentas']>;
 };
 
 export type FinanzasEgresoFormGroup = FormGroup<FinanzasEgresoFormGroupContent>;
@@ -54,7 +53,6 @@ export class FinanzasEgresoFormService {
       fecha: new FormControl(finanzasEgresoRawValue.fecha, {
         validators: [Validators.required],
       }),
-      cuentas: new FormControl(finanzasEgresoRawValue.cuentas),
     });
   }
 

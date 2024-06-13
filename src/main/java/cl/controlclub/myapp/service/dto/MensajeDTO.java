@@ -23,10 +23,6 @@ public class MensajeDTO implements Serializable {
 
     private Boolean leido;
 
-    private JugadorDTO remitente;
-
-    private JugadorDTO destinatario;
-
     public Long getId() {
         return id;
     }
@@ -67,22 +63,6 @@ public class MensajeDTO implements Serializable {
         this.leido = leido;
     }
 
-    public JugadorDTO getRemitente() {
-        return remitente;
-    }
-
-    public void setRemitente(JugadorDTO remitente) {
-        this.remitente = remitente;
-    }
-
-    public JugadorDTO getDestinatario() {
-        return destinatario;
-    }
-
-    public void setDestinatario(JugadorDTO destinatario) {
-        this.destinatario = destinatario;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -113,8 +93,6 @@ public class MensajeDTO implements Serializable {
             ", destinatarioId=" + getDestinatarioId() +
             ", mensaje='" + getMensaje() + "'" +
             ", leido='" + getLeido() + "'" +
-            ", remitente=" + getRemitente() +
-            ", destinatario=" + getDestinatario() +
             "}";
     }
 }

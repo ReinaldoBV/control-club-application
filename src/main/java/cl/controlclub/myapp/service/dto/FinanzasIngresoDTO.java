@@ -27,8 +27,6 @@ public class FinanzasIngresoDTO implements Serializable {
     @NotNull
     private LocalDate fecha;
 
-    private JugadorDTO jugador;
-
     public Long getId() {
         return id;
     }
@@ -69,14 +67,6 @@ public class FinanzasIngresoDTO implements Serializable {
         this.fecha = fecha;
     }
 
-    public JugadorDTO getJugador() {
-        return jugador;
-    }
-
-    public void setJugador(JugadorDTO jugador) {
-        this.jugador = jugador;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -107,7 +97,6 @@ public class FinanzasIngresoDTO implements Serializable {
             ", descripcion='" + getDescripcion() + "'" +
             ", monto=" + getMonto() +
             ", fecha='" + getFecha() + "'" +
-            ", jugador=" + getJugador() +
             "}";
     }
 }

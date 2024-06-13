@@ -27,8 +27,6 @@ public class FinanzasEgresoDTO implements Serializable {
     @NotNull
     private LocalDate fecha;
 
-    private CuentasDTO cuentas;
-
     public Long getId() {
         return id;
     }
@@ -69,14 +67,6 @@ public class FinanzasEgresoDTO implements Serializable {
         this.fecha = fecha;
     }
 
-    public CuentasDTO getCuentas() {
-        return cuentas;
-    }
-
-    public void setCuentas(CuentasDTO cuentas) {
-        this.cuentas = cuentas;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -107,7 +97,6 @@ public class FinanzasEgresoDTO implements Serializable {
             ", descripcion='" + getDescripcion() + "'" +
             ", monto=" + getMonto() +
             ", fecha='" + getFecha() + "'" +
-            ", cuentas=" + getCuentas() +
             "}";
     }
 }

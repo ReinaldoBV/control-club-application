@@ -31,22 +31,6 @@
           <dd>
             <span>{{ mensaje()!.leido }}</span>
           </dd>
-          <dt><span jhiTranslate="controlClubApplicationApp.mensaje.remitente">Remitente</span></dt>
-          <dd>
-            @if (mensaje()!.remitente) {
-              <div>
-                <a [routerLink]="['/jugador', mensaje()!.remitente?.id, 'view']">{{ mensaje()!.remitente?.id }}</a>
-              </div>
-            }
-          </dd>
-          <dt><span jhiTranslate="controlClubApplicationApp.mensaje.destinatario">Destinatario</span></dt>
-          <dd>
-            @if (mensaje()!.destinatario) {
-              <div>
-                <a [routerLink]="['/jugador', mensaje()!.destinatario?.id, 'view']">{{ mensaje()!.destinatario?.id }}</a>
-              </div>
-            }
-          </dd>
         </dl>
 
         <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">

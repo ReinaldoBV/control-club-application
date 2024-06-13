@@ -28,23 +28,8 @@ public class CentroEducativo implements Serializable {
     @Column(name = "centro_educativo", nullable = false)
     private String centroEducativo;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnoreProperties(value = { "jugador", "centroSaluds", "centroEducativos" }, allowSetters = true)
-    private Comuna comuna;
-
     @JsonIgnoreProperties(
-        value = {
-            "centroSalud",
-            "previsionSalud",
-            "comuna",
-            "centroEducativo",
-            "categorias",
-            "usuario",
-            "finanzasIngresos",
-            "cuentas",
-            "padres",
-            "asociados",
-        },
+        value = { "centroSalud", "previsionSalud", "comuna", "centroEducativo", "categorias", "usuario" },
         allowSetters = true
     )
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "centroEducativo")
@@ -76,19 +61,6 @@ public class CentroEducativo implements Serializable {
 
     public void setCentroEducativo(String centroEducativo) {
         this.centroEducativo = centroEducativo;
-    }
-
-    public Comuna getComuna() {
-        return this.comuna;
-    }
-
-    public void setComuna(Comuna comuna) {
-        this.comuna = comuna;
-    }
-
-    public CentroEducativo comuna(Comuna comuna) {
-        this.setComuna(comuna);
-        return this;
     }
 
     public Jugador getJugador() {

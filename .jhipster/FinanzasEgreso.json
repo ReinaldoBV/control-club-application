@@ -29,15 +29,7 @@
   ],
   "name": "FinanzasEgreso",
   "pagination": "pagination",
-  "relationships": [
-    {
-      "otherEntityName": "cuentas",
-      "otherEntityRelationshipName": "finanzasEgreso",
-      "relationshipName": "cuentas",
-      "relationshipSide": "left",
-      "relationshipType": "many-to-one"
-    }
-  ],
+  "relationships": [],
   "searchEngine": "no",
   "service": "serviceClass"
 }

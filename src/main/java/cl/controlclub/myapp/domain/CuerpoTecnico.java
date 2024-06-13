@@ -5,8 +5,6 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -51,7 +49,7 @@ public class CuerpoTecnico implements Serializable {
     @Column(name = "email", nullable = false)
     private String email;
 
-    @JsonIgnoreProperties(value = { "jugador", "usuario", "directivos", "cuerpoTecnico" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "usuario", "directivos", "cuerpoTecnico" }, allowSetters = true)
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(unique = true)
     private Asociados asociados;
@@ -59,11 +57,6 @@ public class CuerpoTecnico implements Serializable {
     @JsonIgnoreProperties(value = { "jugador", "asociados", "directivos", "cuerpoTecnico" }, allowSetters = true)
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "cuerpoTecnico")
     private Usuario usuario;
-
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "cuerpoTecnico")
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnoreProperties(value = { "cuerpoTecnico" }, allowSetters = true)
-    private Set<Entrenamiento> entrenamientos = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -187,37 +180,6 @@ public class CuerpoTecnico implements Serializable {
 
     public CuerpoTecnico usuario(Usuario usuario) {
         this.setUsuario(usuario);
-        return this;
-    }
-
-    public Set<Entrenamiento> getEntrenamientos() {
-        return this.entrenamientos;
-    }
-
-    public void setEntrenamientos(Set<Entrenamiento> entrenamientos) {
-        if (this.entrenamientos != null) {
-            this.entrenamientos.forEach(i -> i.setCuerpoTecnico(null));
-        }
-        if (entrenamientos != null) {
-            entrenamientos.forEach(i -> i.setCuerpoTecnico(this));
-        }
-        this.entrenamientos = entrenamientos;
-    }
-
-    public CuerpoTecnico entrenamientos(Set<Entrenamiento> entrenamientos) {
-        this.setEntrenamientos(entrenamientos);
-        return this;
-    }
-
-    public CuerpoTecnico addEntrenamiento(Entrenamiento entrenamiento) {
-        this.entrenamientos.add(entrenamiento);
-        entrenamiento.setCuerpoTecnico(this);
-        return this;
-    }
-
-    public CuerpoTecnico removeEntrenamiento(Entrenamiento entrenamiento) {
-        this.entrenamientos.remove(entrenamiento);
-        entrenamiento.setCuerpoTecnico(null);
         return this;
     }
 

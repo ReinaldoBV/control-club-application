@@ -31,8 +31,6 @@ public class AsociadosDTO implements Serializable {
     @NotNull
     private String email;
 
-    private JugadorDTO jugador;
-
     public Long getId() {
         return id;
     }
@@ -89,14 +87,6 @@ public class AsociadosDTO implements Serializable {
         this.email = email;
     }
 
-    public JugadorDTO getJugador() {
-        return jugador;
-    }
-
-    public void setJugador(JugadorDTO jugador) {
-        this.jugador = jugador;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -129,7 +119,6 @@ public class AsociadosDTO implements Serializable {
             ", telefono='" + getTelefono() + "'" +
             ", fechaAsoc='" + getFechaAsoc() + "'" +
             ", email='" + getEmail() + "'" +
-            ", jugador=" + getJugador() +
             "}";
     }
 }

@@ -27,14 +27,6 @@
           <dd>
             <span>{{ bienes()!.estado }}</span>
           </dd>
-          <dt><span jhiTranslate="controlClubApplicationApp.bienes.asignadoA">Asignado A</span></dt>
-          <dd>
-            @if (bienes()!.asignadoA) {
-              <div>
-                <a [routerLink]="['/jugador', bienes()!.asignadoA?.id, 'view']">{{ bienes()!.asignadoA?.id }}</a>
-              </div>
-            }
-          </dd>
         </dl>
 
         <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">

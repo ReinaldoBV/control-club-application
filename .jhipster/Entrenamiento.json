@@ -18,15 +18,7 @@
   ],
   "name": "Entrenamiento",
   "pagination": "pagination",
-  "relationships": [
-    {
-      "otherEntityName": "cuerpoTecnico",
-      "otherEntityRelationshipName": "entrenamiento",
-      "relationshipName": "cuerpoTecnico",
-      "relationshipSide": "left",
-      "relationshipType": "many-to-one"
-    }
-  ],
+  "relationships": [],
   "searchEngine": "no",
   "service": "serviceClass"
 }

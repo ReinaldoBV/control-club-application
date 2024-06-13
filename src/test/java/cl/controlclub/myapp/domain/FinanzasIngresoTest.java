@@ -1,7 +1,6 @@
 package cl.controlclub.myapp.domain;
 
 import static cl.controlclub.myapp.domain.FinanzasIngresoTestSamples.*;
-import static cl.controlclub.myapp.domain.JugadorTestSamples.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import cl.controlclub.myapp.web.rest.TestUtil;
@@ -21,17 +20,5 @@ class FinanzasIngresoTest {
 
         finanzasIngreso2 = getFinanzasIngresoSample2();
         assertThat(finanzasIngreso1).isNotEqualTo(finanzasIngreso2);
-    }
-
-    @Test
-    void jugadorTest() {
-        FinanzasIngreso finanzasIngreso = getFinanzasIngresoRandomSampleGenerator();
-        Jugador jugadorBack = getJugadorRandomSampleGenerator();
-
-        finanzasIngreso.setJugador(jugadorBack);
-        assertThat(finanzasIngreso.getJugador()).isEqualTo(jugadorBack);
-
-        finanzasIngreso.jugador(null);
-        assertThat(finanzasIngreso.getJugador()).isNull();
     }
 }

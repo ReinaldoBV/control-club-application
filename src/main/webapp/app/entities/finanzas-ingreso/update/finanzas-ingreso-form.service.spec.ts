@@ -24,7 +24,6 @@ describe('FinanzasIngreso Form Service', () => {
             descripcion: expect.any(Object),
             monto: expect.any(Object),
             fecha: expect.any(Object),
-            jugador: expect.any(Object),
           }),
         );
       });
@@ -39,7 +38,6 @@ describe('FinanzasIngreso Form Service', () => {
             descripcion: expect.any(Object),
             monto: expect.any(Object),
             fecha: expect.any(Object),
-            jugador: expect.any(Object),
           }),
         );
       });

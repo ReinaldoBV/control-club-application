@@ -21,8 +21,7 @@
       "tipo": "Tipo",
       "descripcion": "Descripcion",
       "monto": "Monto",
-      "fecha": "Fecha",
-      "cuentas": "Cuentas"
+      "fecha": "Fecha"
     }
   }
 }

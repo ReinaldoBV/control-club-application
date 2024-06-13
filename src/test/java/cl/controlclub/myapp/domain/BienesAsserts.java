@@ -58,9 +58,5 @@ public class BienesAsserts {
      * @param expected the expected entity
      * @param actual the actual entity
      */
-    public static void assertBienesUpdatableRelationshipsEquals(Bienes expected, Bienes actual) {
-        assertThat(expected)
-            .as("Verify Bienes relationships")
-            .satisfies(e -> assertThat(e.getAsignadoA()).as("check asignadoA").isEqualTo(actual.getAsignadoA()));
-    }
+    public static void assertBienesUpdatableRelationshipsEquals(Bienes expected, Bienes actual) {}
 }

@@ -39,14 +39,6 @@
           <dd>
             <span>{{ padre()!.email }}</span>
           </dd>
-          <dt><span jhiTranslate="controlClubApplicationApp.padre.jugador">Jugador</span></dt>
-          <dd>
-            @if (padre()!.jugador) {
-              <div>
-                <a [routerLink]="['/jugador', padre()!.jugador?.id, 'view']">{{ padre()!.jugador?.id }}</a>
-              </div>
-            }
-          </dd>
         </dl>
 
         <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">

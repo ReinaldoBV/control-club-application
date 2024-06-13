@@ -30,8 +30,6 @@ public class PadreDTO implements Serializable {
     @NotNull
     private String email;
 
-    private JugadorDTO jugador;
-
     public Long getId() {
         return id;
     }
@@ -88,14 +86,6 @@ public class PadreDTO implements Serializable {
         this.email = email;
     }
 
-    public JugadorDTO getJugador() {
-        return jugador;
-    }
-
-    public void setJugador(JugadorDTO jugador) {
-        this.jugador = jugador;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -128,7 +118,6 @@ public class PadreDTO implements Serializable {
             ", telefono='" + getTelefono() + "'" +
             ", asociado='" + getAsociado() + "'" +
             ", email='" + getEmail() + "'" +
-            ", jugador=" + getJugador() +
             "}";
     }
 }

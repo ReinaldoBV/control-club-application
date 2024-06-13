@@ -5,8 +5,6 @@ import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { of, Subject, from } from 'rxjs';
 
-import { IJugador } from 'app/entities/jugador/jugador.model';
-import { JugadorService } from 'app/entities/jugador/service/jugador.service';
 import { BienesService } from '../service/bienes.service';
 import { IBienes } from '../bienes.model';
 import { BienesFormService } from './bienes-form.service';
@@ -19,7 +17,6 @@ describe('Bienes Management Update Component', () => {
   let activatedRoute: ActivatedRoute;
   let bienesFormService: BienesFormService;
   let bienesService: BienesService;
-  let jugadorService: JugadorService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -41,43 +38,17 @@ describe('Bienes Management Update Component', () => {
     activatedRoute = TestBed.inject(ActivatedRoute);
     bienesFormService = TestBed.inject(BienesFormService);
     bienesService = TestBed.inject(BienesService);
-    jugadorService = TestBed.inject(JugadorService);
 
     comp = fixture.componentInstance;
   });
 
   describe('ngOnInit', () => {
-    it('Should call Jugador query and add missing value', () => {
-      const bienes: IBienes = { id: 456 };
-      const asignadoA: IJugador = { id: 6566 };
-      bienes.asignadoA = asignadoA;
-
-      const jugadorCollection: IJugador[] = [{ id: 17380 }];
-      jest.spyOn(jugadorService, 'query').mockReturnValue(of(new HttpResponse({ body: jugadorCollection })));
-      const additionalJugadors = [asignadoA];
-      const expectedCollection: IJugador[] = [...additionalJugadors, ...jugadorCollection];
-      jest.spyOn(jugadorService, 'addJugadorToCollectionIfMissing').mockReturnValue(expectedCollection);
-
-      activatedRoute.data = of({ bienes });
-      comp.ngOnInit();
-
-      expect(jugadorService.query).toHaveBeenCalled();
-      expect(jugadorService.addJugadorToCollectionIfMissing).toHaveBeenCalledWith(
-        jugadorCollection,
-        ...additionalJugadors.map(expect.objectContaining),
-      );
-      expect(comp.jugadorsSharedCollection).toEqual(expectedCollection);
-    });
-
     it('Should update editForm', () => {
       const bienes: IBienes = { id: 456 };
-      const asignadoA: IJugador = { id: 7274 };
-      bienes.asignadoA = asignadoA;
 
       activatedRoute.data = of({ bienes });
       comp.ngOnInit();
 
-      expect(comp.jugadorsSharedCollection).toContain(asignadoA);
       expect(comp.bienes).toEqual(bienes);
     });
   });
@@ -147,18 +118,6 @@ describe('Bienes Management Update Component', () => {
       expect(bienesService.update).toHaveBeenCalled();
       expect(comp.isSaving).toEqual(false);
       expect(comp.previousState).not.toHaveBeenCalled();
-    });
-  });
-
-  describe('Compare relationships', () => {
-    describe('compareJugador', () => {
-      it('Should forward to jugadorService', () => {
-        const entity = { id: 123 };
-        const entity2 = { id: 456 };
-        jest.spyOn(jugadorService, 'compareJugador');
-        comp.compareJugador(entity, entity2);
-        expect(jugadorService.compareJugador).toHaveBeenCalledWith(entity, entity2);
-      });
     });
   });
 });

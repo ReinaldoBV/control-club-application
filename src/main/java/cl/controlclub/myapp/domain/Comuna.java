@@ -4,8 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -31,32 +29,11 @@ public class Comuna implements Serializable {
     private String comuna;
 
     @JsonIgnoreProperties(
-        value = {
-            "centroSalud",
-            "previsionSalud",
-            "comuna",
-            "centroEducativo",
-            "categorias",
-            "usuario",
-            "finanzasIngresos",
-            "cuentas",
-            "padres",
-            "asociados",
-        },
+        value = { "centroSalud", "previsionSalud", "comuna", "centroEducativo", "categorias", "usuario" },
         allowSetters = true
     )
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "comuna")
     private Jugador jugador;
-
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "comuna")
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnoreProperties(value = { "comuna", "jugador" }, allowSetters = true)
-    private Set<CentroSalud> centroSaluds = new HashSet<>();
-
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "comuna")
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnoreProperties(value = { "comuna", "jugador" }, allowSetters = true)
-    private Set<CentroEducativo> centroEducativos = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -102,68 +79,6 @@ public class Comuna implements Serializable {
 
     public Comuna jugador(Jugador jugador) {
         this.setJugador(jugador);
-        return this;
-    }
-
-    public Set<CentroSalud> getCentroSaluds() {
-        return this.centroSaluds;
-    }
-
-    public void setCentroSaluds(Set<CentroSalud> centroSaluds) {
-        if (this.centroSaluds != null) {
-            this.centroSaluds.forEach(i -> i.setComuna(null));
-        }
-        if (centroSaluds != null) {
-            centroSaluds.forEach(i -> i.setComuna(this));
-        }
-        this.centroSaluds = centroSaluds;
-    }
-
-    public Comuna centroSaluds(Set<CentroSalud> centroSaluds) {
-        this.setCentroSaluds(centroSaluds);
-        return this;
-    }
-
-    public Comuna addCentroSalud(CentroSalud centroSalud) {
-        this.centroSaluds.add(centroSalud);
-        centroSalud.setComuna(this);
-        return this;
-    }
-
-    public Comuna removeCentroSalud(CentroSalud centroSalud) {
-        this.centroSaluds.remove(centroSalud);
-        centroSalud.setComuna(null);
-        return this;
-    }
-
-    public Set<CentroEducativo> getCentroEducativos() {
-        return this.centroEducativos;
-    }
-
-    public void setCentroEducativos(Set<CentroEducativo> centroEducativos) {
-        if (this.centroEducativos != null) {
-            this.centroEducativos.forEach(i -> i.setComuna(null));
-        }
-        if (centroEducativos != null) {
-            centroEducativos.forEach(i -> i.setComuna(this));
-        }
-        this.centroEducativos = centroEducativos;
-    }
-
-    public Comuna centroEducativos(Set<CentroEducativo> centroEducativos) {
-        this.setCentroEducativos(centroEducativos);
-        return this;
-    }
-
-    public Comuna addCentroEducativo(CentroEducativo centroEducativo) {
-        this.centroEducativos.add(centroEducativo);
-        centroEducativo.setComuna(this);
-        return this;
-    }
-
-    public Comuna removeCentroEducativo(CentroEducativo centroEducativo) {
-        this.centroEducativos.remove(centroEducativo);
-        centroEducativo.setComuna(null);
         return this;
     }
 

@@ -1,21 +1,15 @@
 package cl.controlclub.myapp.domain;
 
-import static cl.controlclub.myapp.domain.AsociadosTestSamples.*;
 import static cl.controlclub.myapp.domain.CategoriasTestSamples.*;
 import static cl.controlclub.myapp.domain.CentroEducativoTestSamples.*;
 import static cl.controlclub.myapp.domain.CentroSaludTestSamples.*;
 import static cl.controlclub.myapp.domain.ComunaTestSamples.*;
-import static cl.controlclub.myapp.domain.CuentasTestSamples.*;
-import static cl.controlclub.myapp.domain.FinanzasIngresoTestSamples.*;
 import static cl.controlclub.myapp.domain.JugadorTestSamples.*;
-import static cl.controlclub.myapp.domain.PadreTestSamples.*;
 import static cl.controlclub.myapp.domain.PrevisionSaludTestSamples.*;
 import static cl.controlclub.myapp.domain.UsuarioTestSamples.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import cl.controlclub.myapp.web.rest.TestUtil;
-import java.util.HashSet;
-import java.util.Set;
 import org.junit.jupiter.api.Test;
 
 class JugadorTest {
@@ -106,93 +100,5 @@ class JugadorTest {
         jugador.usuario(null);
         assertThat(jugador.getUsuario()).isNull();
         assertThat(usuarioBack.getJugador()).isNull();
-    }
-
-    @Test
-    void finanzasIngresoTest() {
-        Jugador jugador = getJugadorRandomSampleGenerator();
-        FinanzasIngreso finanzasIngresoBack = getFinanzasIngresoRandomSampleGenerator();
-
-        jugador.addFinanzasIngreso(finanzasIngresoBack);
-        assertThat(jugador.getFinanzasIngresos()).containsOnly(finanzasIngresoBack);
-        assertThat(finanzasIngresoBack.getJugador()).isEqualTo(jugador);
-
-        jugador.removeFinanzasIngreso(finanzasIngresoBack);
-        assertThat(jugador.getFinanzasIngresos()).doesNotContain(finanzasIngresoBack);
-        assertThat(finanzasIngresoBack.getJugador()).isNull();
-
-        jugador.finanzasIngresos(new HashSet<>(Set.of(finanzasIngresoBack)));
-        assertThat(jugador.getFinanzasIngresos()).containsOnly(finanzasIngresoBack);
-        assertThat(finanzasIngresoBack.getJugador()).isEqualTo(jugador);
-
-        jugador.setFinanzasIngresos(new HashSet<>());
-        assertThat(jugador.getFinanzasIngresos()).doesNotContain(finanzasIngresoBack);
-        assertThat(finanzasIngresoBack.getJugador()).isNull();
-    }
-
-    @Test
-    void cuentasTest() {
-        Jugador jugador = getJugadorRandomSampleGenerator();
-        Cuentas cuentasBack = getCuentasRandomSampleGenerator();
-
-        jugador.addCuentas(cuentasBack);
-        assertThat(jugador.getCuentas()).containsOnly(cuentasBack);
-        assertThat(cuentasBack.getJugador()).isEqualTo(jugador);
-
-        jugador.removeCuentas(cuentasBack);
-        assertThat(jugador.getCuentas()).doesNotContain(cuentasBack);
-        assertThat(cuentasBack.getJugador()).isNull();
-
-        jugador.cuentas(new HashSet<>(Set.of(cuentasBack)));
-        assertThat(jugador.getCuentas()).containsOnly(cuentasBack);
-        assertThat(cuentasBack.getJugador()).isEqualTo(jugador);
-
-        jugador.setCuentas(new HashSet<>());
-        assertThat(jugador.getCuentas()).doesNotContain(cuentasBack);
-        assertThat(cuentasBack.getJugador()).isNull();
-    }
-
-    @Test
-    void padreTest() {
-        Jugador jugador = getJugadorRandomSampleGenerator();
-        Padre padreBack = getPadreRandomSampleGenerator();
-
-        jugador.addPadre(padreBack);
-        assertThat(jugador.getPadres()).containsOnly(padreBack);
-        assertThat(padreBack.getJugador()).isEqualTo(jugador);
-
-        jugador.removePadre(padreBack);
-        assertThat(jugador.getPadres()).doesNotContain(padreBack);
-        assertThat(padreBack.getJugador()).isNull();
-
-        jugador.padres(new HashSet<>(Set.of(padreBack)));
-        assertThat(jugador.getPadres()).containsOnly(padreBack);
-        assertThat(padreBack.getJugador()).isEqualTo(jugador);
-
-        jugador.setPadres(new HashSet<>());
-        assertThat(jugador.getPadres()).doesNotContain(padreBack);
-        assertThat(padreBack.getJugador()).isNull();
-    }
-
-    @Test
-    void asociadosTest() {
-        Jugador jugador = getJugadorRandomSampleGenerator();
-        Asociados asociadosBack = getAsociadosRandomSampleGenerator();
-
-        jugador.addAsociados(asociadosBack);
-        assertThat(jugador.getAsociados()).containsOnly(asociadosBack);
-        assertThat(asociadosBack.getJugador()).isEqualTo(jugador);
-
-        jugador.removeAsociados(asociadosBack);
-        assertThat(jugador.getAsociados()).doesNotContain(asociadosBack);
-        assertThat(asociadosBack.getJugador()).isNull();
-
-        jugador.asociados(new HashSet<>(Set.of(asociadosBack)));
-        assertThat(jugador.getAsociados()).containsOnly(asociadosBack);
-        assertThat(asociadosBack.getJugador()).isEqualTo(jugador);
-
-        jugador.setAsociados(new HashSet<>());
-        assertThat(jugador.getAsociados()).doesNotContain(asociadosBack);
-        assertThat(asociadosBack.getJugador()).isNull();
     }
 }

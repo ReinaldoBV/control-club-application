@@ -52,13 +52,6 @@
       "relationshipName": "usuario",
       "relationshipSide": "right",
       "relationshipType": "one-to-one"
-    },
-    {
-      "otherEntityName": "entrenamiento",
-      "otherEntityRelationshipName": "cuerpoTecnico",
-      "relationshipName": "entrenamiento",
-      "relationshipSide": "right",
-      "relationshipType": "one-to-many"
     }
   ],
   "searchEngine": "no",

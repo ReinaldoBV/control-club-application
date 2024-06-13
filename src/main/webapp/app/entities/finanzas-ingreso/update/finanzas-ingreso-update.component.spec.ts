@@ -5,8 +5,6 @@ import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { of, Subject, from } from 'rxjs';
 
-import { IJugador } from 'app/entities/jugador/jugador.model';
-import { JugadorService } from 'app/entities/jugador/service/jugador.service';
 import { FinanzasIngresoService } from '../service/finanzas-ingreso.service';
 import { IFinanzasIngreso } from '../finanzas-ingreso.model';
 import { FinanzasIngresoFormService } from './finanzas-ingreso-form.service';
@@ -19,7 +17,6 @@ describe('FinanzasIngreso Management Update Component', () => {
   let activatedRoute: ActivatedRoute;
   let finanzasIngresoFormService: FinanzasIngresoFormService;
   let finanzasIngresoService: FinanzasIngresoService;
-  let jugadorService: JugadorService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -41,43 +38,17 @@ describe('FinanzasIngreso Management Update Component', () => {
     activatedRoute = TestBed.inject(ActivatedRoute);
     finanzasIngresoFormService = TestBed.inject(FinanzasIngresoFormService);
     finanzasIngresoService = TestBed.inject(FinanzasIngresoService);
-    jugadorService = TestBed.inject(JugadorService);
 
     comp = fixture.componentInstance;
   });
 
   describe('ngOnInit', () => {
-    it('Should call Jugador query and add missing value', () => {
-      const finanzasIngreso: IFinanzasIngreso = { id: 456 };
-      const jugador: IJugador = { id: 16313 };
-      finanzasIngreso.jugador = jugador;
-
-      const jugadorCollection: IJugador[] = [{ id: 25575 }];
-      jest.spyOn(jugadorService, 'query').mockReturnValue(of(new HttpResponse({ body: jugadorCollection })));
-      const additionalJugadors = [jugador];
-      const expectedCollection: IJugador[] = [...additionalJugadors, ...jugadorCollection];
-      jest.spyOn(jugadorService, 'addJugadorToCollectionIfMissing').mockReturnValue(expectedCollection);
-
-      activatedRoute.data = of({ finanzasIngreso });
-      comp.ngOnInit();
-
-      expect(jugadorService.query).toHaveBeenCalled();
-      expect(jugadorService.addJugadorToCollectionIfMissing).toHaveBeenCalledWith(
-        jugadorCollection,
-        ...additionalJugadors.map(expect.objectContaining),
-      );
-      expect(comp.jugadorsSharedCollection).toEqual(expectedCollection);
-    });
-
     it('Should update editForm', () => {
       const finanzasIngreso: IFinanzasIngreso = { id: 456 };
-      const jugador: IJugador = { id: 20130 };
-      finanzasIngreso.jugador = jugador;
 
       activatedRoute.data = of({ finanzasIngreso });
       comp.ngOnInit();
 
-      expect(comp.jugadorsSharedCollection).toContain(jugador);
       expect(comp.finanzasIngreso).toEqual(finanzasIngreso);
     });
   });
@@ -147,18 +118,6 @@ describe('FinanzasIngreso Management Update Component', () => {
       expect(finanzasIngresoService.update).toHaveBeenCalled();
       expect(comp.isSaving).toEqual(false);
       expect(comp.previousState).not.toHaveBeenCalled();
-    });
-  });
-
-  describe('Compare relationships', () => {
-    describe('compareJugador', () => {
-      it('Should forward to jugadorService', () => {
-        const entity = { id: 123 };
-        const entity2 = { id: 456 };
-        jest.spyOn(jugadorService, 'compareJugador');
-        comp.compareJugador(entity, entity2);
-        expect(jugadorService.compareJugador).toHaveBeenCalledWith(entity, entity2);
-      });
     });
   });
 });

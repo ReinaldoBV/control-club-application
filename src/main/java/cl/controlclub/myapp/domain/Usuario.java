@@ -39,25 +39,14 @@ public class Usuario implements Serializable {
     private RolUsuario rol;
 
     @JsonIgnoreProperties(
-        value = {
-            "centroSalud",
-            "previsionSalud",
-            "comuna",
-            "centroEducativo",
-            "categorias",
-            "usuario",
-            "finanzasIngresos",
-            "cuentas",
-            "padres",
-            "asociados",
-        },
+        value = { "centroSalud", "previsionSalud", "comuna", "centroEducativo", "categorias", "usuario" },
         allowSetters = true
     )
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(unique = true)
     private Jugador jugador;
 
-    @JsonIgnoreProperties(value = { "jugador", "usuario", "directivos", "cuerpoTecnico" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "usuario", "directivos", "cuerpoTecnico" }, allowSetters = true)
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(unique = true)
     private Asociados asociados;
@@ -67,7 +56,7 @@ public class Usuario implements Serializable {
     @JoinColumn(unique = true)
     private Directivos directivos;
 
-    @JsonIgnoreProperties(value = { "asociados", "usuario", "entrenamientos" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "asociados", "usuario" }, allowSetters = true)
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(unique = true)
     private CuerpoTecnico cuerpoTecnico;

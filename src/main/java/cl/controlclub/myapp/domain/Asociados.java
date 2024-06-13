@@ -49,24 +49,6 @@ public class Asociados implements Serializable {
     @Column(name = "email", nullable = false)
     private String email;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnoreProperties(
-        value = {
-            "centroSalud",
-            "previsionSalud",
-            "comuna",
-            "centroEducativo",
-            "categorias",
-            "usuario",
-            "finanzasIngresos",
-            "cuentas",
-            "padres",
-            "asociados",
-        },
-        allowSetters = true
-    )
-    private Jugador jugador;
-
     @JsonIgnoreProperties(value = { "jugador", "asociados", "directivos", "cuerpoTecnico" }, allowSetters = true)
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "asociados")
     private Usuario usuario;
@@ -75,7 +57,7 @@ public class Asociados implements Serializable {
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "asociados")
     private Directivos directivos;
 
-    @JsonIgnoreProperties(value = { "asociados", "usuario", "entrenamientos" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "asociados", "usuario" }, allowSetters = true)
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "asociados")
     private CuerpoTecnico cuerpoTecnico;
 
@@ -170,19 +152,6 @@ public class Asociados implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public Jugador getJugador() {
-        return this.jugador;
-    }
-
-    public void setJugador(Jugador jugador) {
-        this.jugador = jugador;
-    }
-
-    public Asociados jugador(Jugador jugador) {
-        this.setJugador(jugador);
-        return this;
     }
 
     public Usuario getUsuario() {

@@ -62,9 +62,5 @@ public class CuentasAsserts {
      * @param expected the expected entity
      * @param actual the actual entity
      */
-    public static void assertCuentasUpdatableRelationshipsEquals(Cuentas expected, Cuentas actual) {
-        assertThat(expected)
-            .as("Verify Cuentas relationships")
-            .satisfies(e -> assertThat(e.getJugador()).as("check jugador").isEqualTo(actual.getJugador()));
-    }
+    public static void assertCuentasUpdatableRelationshipsEquals(Cuentas expected, Cuentas actual) {}
 }
