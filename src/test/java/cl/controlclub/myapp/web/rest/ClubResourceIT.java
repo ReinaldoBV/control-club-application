@@ -417,7 +417,11 @@ class ClubResourceIT {
         Club partialUpdatedClub = new Club();
         partialUpdatedClub.setId(club.getId());
 
-        partialUpdatedClub.presidente(UPDATED_PRESIDENTE);
+        partialUpdatedClub
+            .direccion(UPDATED_DIRECCION)
+            .telefono(UPDATED_TELEFONO)
+            .fechaFundacion(UPDATED_FECHA_FUNDACION)
+            .presidente(UPDATED_PRESIDENTE);
 
         restClubMockMvc
             .perform(

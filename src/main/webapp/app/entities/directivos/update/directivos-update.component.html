@@ -1,0 +1,159 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-directivos-heading"
+        data-cy="DirectivosCreateUpdateHeading"
+        jhiTranslate="controlClubApplicationApp.directivos.home.createOrEditLabel"
+      >
+        Crear o editar Directivos
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="controlClubApplicationApp.directivos.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_nombres" jhiTranslate="controlClubApplicationApp.directivos.nombres">Nombres</label>
+          <input type="text" class="form-control" name="nombres" id="field_nombres" data-cy="nombres" formControlName="nombres" />
+          @if (editForm.get('nombres')!.invalid && (editForm.get('nombres')!.dirty || editForm.get('nombres')!.touched)) {
+            <div>
+              @if (editForm.get('nombres')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_apellidos" jhiTranslate="controlClubApplicationApp.directivos.apellidos">Apellidos</label>
+          <input type="text" class="form-control" name="apellidos" id="field_apellidos" data-cy="apellidos" formControlName="apellidos" />
+          @if (editForm.get('apellidos')!.invalid && (editForm.get('apellidos')!.dirty || editForm.get('apellidos')!.touched)) {
+            <div>
+              @if (editForm.get('apellidos')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_cargo" jhiTranslate="controlClubApplicationApp.directivos.cargo">Cargo</label>
+          <input type="text" class="form-control" name="cargo" id="field_cargo" data-cy="cargo" formControlName="cargo" />
+          @if (editForm.get('cargo')!.invalid && (editForm.get('cargo')!.dirty || editForm.get('cargo')!.touched)) {
+            <div>
+              @if (editForm.get('cargo')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_telefono" jhiTranslate="controlClubApplicationApp.directivos.telefono">Telefono</label>
+          <input type="text" class="form-control" name="telefono" id="field_telefono" data-cy="telefono" formControlName="telefono" />
+          @if (editForm.get('telefono')!.invalid && (editForm.get('telefono')!.dirty || editForm.get('telefono')!.touched)) {
+            <div>
+              @if (editForm.get('telefono')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_fechaEleccion" jhiTranslate="controlClubApplicationApp.directivos.fechaEleccion"
+            >Fecha Eleccion</label
+          >
+          <div class="input-group">
+            <input
+              id="field_fechaEleccion"
+              data-cy="fechaEleccion"
+              type="text"
+              class="form-control"
+              name="fechaEleccion"
+              ngbDatepicker
+              #fechaEleccionDp="ngbDatepicker"
+              formControlName="fechaEleccion"
+            />
+            <button type="button" class="btn btn-secondary" (click)="fechaEleccionDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+          @if (editForm.get('fechaEleccion')!.invalid && (editForm.get('fechaEleccion')!.dirty || editForm.get('fechaEleccion')!.touched)) {
+            <div>
+              @if (editForm.get('fechaEleccion')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_fechaVencimiento" jhiTranslate="controlClubApplicationApp.directivos.fechaVencimiento"
+            >Fecha Vencimiento</label
+          >
+          <div class="input-group">
+            <input
+              id="field_fechaVencimiento"
+              data-cy="fechaVencimiento"
+              type="text"
+              class="form-control"
+              name="fechaVencimiento"
+              ngbDatepicker
+              #fechaVencimientoDp="ngbDatepicker"
+              formControlName="fechaVencimiento"
+            />
+            <button type="button" class="btn btn-secondary" (click)="fechaVencimientoDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+          @if (
+            editForm.get('fechaVencimiento')!.invalid &&
+            (editForm.get('fechaVencimiento')!.dirty || editForm.get('fechaVencimiento')!.touched)
+          ) {
+            <div>
+              @if (editForm.get('fechaVencimiento')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_email" jhiTranslate="controlClubApplicationApp.directivos.email">Email</label>
+          <input type="text" class="form-control" name="email" id="field_email" data-cy="email" formControlName="email" />
+          @if (editForm.get('email')!.invalid && (editForm.get('email')!.dirty || editForm.get('email')!.touched)) {
+            <div>
+              @if (editForm.get('email')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+            </div>
+          }
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancelar</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Guardar</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

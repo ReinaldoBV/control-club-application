@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (asociados()) {
+      <div>
+        <h2 data-cy="asociadosDetailsHeading"><span jhiTranslate="controlClubApplicationApp.asociados.detail.title">Asociados</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ asociados()!.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.asociados.nombres">Nombres</span></dt>
+          <dd>
+            <span>{{ asociados()!.nombres }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.asociados.apellidos">Apellidos</span></dt>
+          <dd>
+            <span>{{ asociados()!.apellidos }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.asociados.cargo">Cargo</span></dt>
+          <dd>
+            <span>{{ asociados()!.cargo }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.asociados.telefono">Telefono</span></dt>
+          <dd>
+            <span>{{ asociados()!.telefono }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.asociados.fechaAsoc">Fecha Asoc</span></dt>
+          <dd>
+            <span>{{ asociados()!.fechaAsoc | formatMediumDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.asociados.email">Email</span></dt>
+          <dd>
+            <span>{{ asociados()!.email }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+        </button>
+
+        <button type="button" [routerLink]="['/asociados', asociados()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

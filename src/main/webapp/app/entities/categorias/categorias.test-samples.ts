@@ -1,30 +1,30 @@
 import { ICategorias, NewCategorias } from './categorias.model';
 
 export const sampleWithRequiredData: ICategorias = {
-  id: 18015,
-  anioInicio: 16380,
-  anioFinal: 15005,
-  nombreCategoria: 'what after',
+  id: 17147,
+  anioInicio: 26703,
+  anioFinal: 18060,
+  nombreCategoria: 'abaft',
 };
 
 export const sampleWithPartialData: ICategorias = {
-  id: 4321,
-  anioInicio: 11941,
-  anioFinal: 9457,
-  nombreCategoria: 'hm',
+  id: 2712,
+  anioInicio: 15324,
+  anioFinal: 24926,
+  nombreCategoria: 'probable',
 };
 
 export const sampleWithFullData: ICategorias = {
-  id: 28364,
-  anioInicio: 18341,
-  anioFinal: 8284,
-  nombreCategoria: 'to numb enforce',
+  id: 18770,
+  anioInicio: 2535,
+  anioFinal: 29378,
+  nombreCategoria: 'trick medal',
 };
 
 export const sampleWithNewData: NewCategorias = {
-  anioInicio: 13756,
-  anioFinal: 12884,
-  nombreCategoria: 'whoever elegantly afore',
+  anioInicio: 12245,
+  anioFinal: 399,
+  nombreCategoria: 'buttery',
   id: null,
 };
 

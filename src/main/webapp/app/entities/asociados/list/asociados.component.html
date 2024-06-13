@@ -1,0 +1,145 @@
+<div>
+  <h2 id="page-heading" data-cy="AsociadosHeading">
+    <span jhiTranslate="controlClubApplicationApp.asociados.home.title">Asociados</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="controlClubApplicationApp.asociados.home.refreshListLabel">Refrescar lista</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-asociados"
+        [routerLink]="['/asociados/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="controlClubApplicationApp.asociados.home.createLabel">Crear nuevo Asociados</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (asociados?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="controlClubApplicationApp.asociados.home.notFound">Ningún Asociados encontrado</span>
+    </div>
+  }
+
+  @if (asociados && asociados.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="nombres">
+              <div class="d-flex">
+                <span jhiTranslate="controlClubApplicationApp.asociados.nombres">Nombres</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="apellidos">
+              <div class="d-flex">
+                <span jhiTranslate="controlClubApplicationApp.asociados.apellidos">Apellidos</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="cargo">
+              <div class="d-flex">
+                <span jhiTranslate="controlClubApplicationApp.asociados.cargo">Cargo</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="telefono">
+              <div class="d-flex">
+                <span jhiTranslate="controlClubApplicationApp.asociados.telefono">Telefono</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="fechaAsoc">
+              <div class="d-flex">
+                <span jhiTranslate="controlClubApplicationApp.asociados.fechaAsoc">Fecha Asoc</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="email">
+              <div class="d-flex">
+                <span jhiTranslate="controlClubApplicationApp.asociados.email">Email</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (asociados of asociados; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/asociados', asociados.id, 'view']">{{ asociados.id }}</a>
+              </td>
+              <td>{{ asociados.nombres }}</td>
+              <td>{{ asociados.apellidos }}</td>
+              <td>{{ asociados.cargo }}</td>
+              <td>{{ asociados.telefono }}</td>
+              <td>{{ asociados.fechaAsoc | formatMediumDate }}</td>
+              <td>{{ asociados.email }}</td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/asociados', asociados.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Vista</span>
+                  </a>
+
+                  <a [routerLink]="['/asociados', asociados.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editar</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(asociados)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Eliminar</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (asociados && asociados.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>
