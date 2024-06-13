@@ -1,7 +1,8 @@
 package cl.controlclub.myapp.web.rest;
 
-import cl.controlclub.myapp.domain.Club;
 import cl.controlclub.myapp.repository.ClubRepository;
+import cl.controlclub.myapp.service.ClubService;
+import cl.controlclub.myapp.service.dto.ClubDTO;
 import cl.controlclub.myapp.web.rest.errors.BadRequestAlertException;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
@@ -13,10 +14,14 @@ import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import tech.jhipster.web.util.HeaderUtil;
+import tech.jhipster.web.util.PaginationUtil;
 import tech.jhipster.web.util.ResponseUtil;
 
 /**
@@ -24,7 +29,6 @@ import tech.jhipster.web.util.ResponseUtil;
  */
 @RestController
 @RequestMapping("/api/clubs")
-@Transactional
 public class ClubResource {
 
     private final Logger log = LoggerFactory.getLogger(ClubResource.class);
@@ -34,49 +38,54 @@ public class ClubResource {
     @Value("${jhipster.clientApp.name}")
     private String applicationName;
 
+    private final ClubService clubService;
+
     private final ClubRepository clubRepository;
 
-    public ClubResource(ClubRepository clubRepository) {
+    public ClubResource(ClubService clubService, ClubRepository clubRepository) {
+        this.clubService = clubService;
         this.clubRepository = clubRepository;
     }
 
     /**
      * {@code POST  /clubs} : Create a new club.
      *
-     * @param club the club to create.
-     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new club, or with status {@code 400 (Bad Request)} if the club has already an ID.
+     * @param clubDTO the clubDTO to create.
+     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new clubDTO, or with status {@code 400 (Bad Request)} if the club has already an ID.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("")
-    public ResponseEntity<Club> createClub(@Valid @RequestBody Club club) throws URISyntaxException {
-        log.debug("REST request to save Club : {}", club);
-        if (club.getId() != null) {
+    public ResponseEntity<ClubDTO> createClub(@Valid @RequestBody ClubDTO clubDTO) throws URISyntaxException {
+        log.debug("REST request to save Club : {}", clubDTO);
+        if (clubDTO.getId() != null) {
             throw new BadRequestAlertException("A new club cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        club = clubRepository.save(club);
-        return ResponseEntity.created(new URI("/api/clubs/" + club.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, club.getId().toString()))
-            .body(club);
+        clubDTO = clubService.save(clubDTO);
+        return ResponseEntity.created(new URI("/api/clubs/" + clubDTO.getId()))
+            .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, clubDTO.getId().toString()))
+            .body(clubDTO);
     }
 
     /**
      * {@code PUT  /clubs/:id} : Updates an existing club.
      *
-     * @param id the id of the club to save.
-     * @param club the club to update.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated club,
-     * or with status {@code 400 (Bad Request)} if the club is not valid,
-     * or with status {@code 500 (Internal Server Error)} if the club couldn't be updated.
+     * @param id the id of the clubDTO to save.
+     * @param clubDTO the clubDTO to update.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated clubDTO,
+     * or with status {@code 400 (Bad Request)} if the clubDTO is not valid,
+     * or with status {@code 500 (Internal Server Error)} if the clubDTO couldn't be updated.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/{id}")
-    public ResponseEntity<Club> updateClub(@PathVariable(value = "id", required = false) final Long id, @Valid @RequestBody Club club)
-        throws URISyntaxException {
-        log.debug("REST request to update Club : {}, {}", id, club);
-        if (club.getId() == null) {
+    public ResponseEntity<ClubDTO> updateClub(
+        @PathVariable(value = "id", required = false) final Long id,
+        @Valid @RequestBody ClubDTO clubDTO
+    ) throws URISyntaxException {
+        log.debug("REST request to update Club : {}, {}", id, clubDTO);
+        if (clubDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
-        if (!Objects.equals(id, club.getId())) {
+        if (!Objects.equals(id, clubDTO.getId())) {
             throw new BadRequestAlertException("Invalid ID", ENTITY_NAME, "idinvalid");
         }
 
@@ -84,33 +93,33 @@ public class ClubResource {
             throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
         }
 
-        club = clubRepository.save(club);
+        clubDTO = clubService.update(clubDTO);
         return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, club.getId().toString()))
-            .body(club);
+            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, clubDTO.getId().toString()))
+            .body(clubDTO);
     }
 
     /**
      * {@code PATCH  /clubs/:id} : Partial updates given fields of an existing club, field will ignore if it is null
      *
-     * @param id the id of the club to save.
-     * @param club the club to update.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated club,
-     * or with status {@code 400 (Bad Request)} if the club is not valid,
-     * or with status {@code 404 (Not Found)} if the club is not found,
-     * or with status {@code 500 (Internal Server Error)} if the club couldn't be updated.
+     * @param id the id of the clubDTO to save.
+     * @param clubDTO the clubDTO to update.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated clubDTO,
+     * or with status {@code 400 (Bad Request)} if the clubDTO is not valid,
+     * or with status {@code 404 (Not Found)} if the clubDTO is not found,
+     * or with status {@code 500 (Internal Server Error)} if the clubDTO couldn't be updated.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PatchMapping(value = "/{id}", consumes = { "application/json", "application/merge-patch+json" })
-    public ResponseEntity<Club> partialUpdateClub(
+    public ResponseEntity<ClubDTO> partialUpdateClub(
         @PathVariable(value = "id", required = false) final Long id,
-        @NotNull @RequestBody Club club
+        @NotNull @RequestBody ClubDTO clubDTO
     ) throws URISyntaxException {
-        log.debug("REST request to partial update Club partially : {}, {}", id, club);
-        if (club.getId() == null) {
+        log.debug("REST request to partial update Club partially : {}, {}", id, clubDTO);
+        if (clubDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
-        if (!Objects.equals(id, club.getId())) {
+        if (!Objects.equals(id, clubDTO.getId())) {
             throw new BadRequestAlertException("Invalid ID", ENTITY_NAME, "idinvalid");
         }
 
@@ -118,72 +127,51 @@ public class ClubResource {
             throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
         }
 
-        Optional<Club> result = clubRepository
-            .findById(club.getId())
-            .map(existingClub -> {
-                if (club.getRazon() != null) {
-                    existingClub.setRazon(club.getRazon());
-                }
-                if (club.getDireccion() != null) {
-                    existingClub.setDireccion(club.getDireccion());
-                }
-                if (club.getTelefono() != null) {
-                    existingClub.setTelefono(club.getTelefono());
-                }
-                if (club.getEmail() != null) {
-                    existingClub.setEmail(club.getEmail());
-                }
-                if (club.getFechaFundacion() != null) {
-                    existingClub.setFechaFundacion(club.getFechaFundacion());
-                }
-                if (club.getPresidente() != null) {
-                    existingClub.setPresidente(club.getPresidente());
-                }
-
-                return existingClub;
-            })
-            .map(clubRepository::save);
+        Optional<ClubDTO> result = clubService.partialUpdate(clubDTO);
 
         return ResponseUtil.wrapOrNotFound(
             result,
-            HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, club.getId().toString())
+            HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, clubDTO.getId().toString())
         );
     }
 
     /**
      * {@code GET  /clubs} : get all the clubs.
      *
+     * @param pageable the pagination information.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of clubs in body.
      */
     @GetMapping("")
-    public List<Club> getAllClubs() {
-        log.debug("REST request to get all Clubs");
-        return clubRepository.findAll();
+    public ResponseEntity<List<ClubDTO>> getAllClubs(@org.springdoc.core.annotations.ParameterObject Pageable pageable) {
+        log.debug("REST request to get a page of Clubs");
+        Page<ClubDTO> page = clubService.findAll(pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
 
     /**
      * {@code GET  /clubs/:id} : get the "id" club.
      *
-     * @param id the id of the club to retrieve.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the club, or with status {@code 404 (Not Found)}.
+     * @param id the id of the clubDTO to retrieve.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the clubDTO, or with status {@code 404 (Not Found)}.
      */
     @GetMapping("/{id}")
-    public ResponseEntity<Club> getClub(@PathVariable("id") Long id) {
+    public ResponseEntity<ClubDTO> getClub(@PathVariable("id") Long id) {
         log.debug("REST request to get Club : {}", id);
-        Optional<Club> club = clubRepository.findById(id);
-        return ResponseUtil.wrapOrNotFound(club);
+        Optional<ClubDTO> clubDTO = clubService.findOne(id);
+        return ResponseUtil.wrapOrNotFound(clubDTO);
     }
 
     /**
      * {@code DELETE  /clubs/:id} : delete the "id" club.
      *
-     * @param id the id of the club to delete.
+     * @param id the id of the clubDTO to delete.
      * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteClub(@PathVariable("id") Long id) {
         log.debug("REST request to delete Club : {}", id);
-        clubRepository.deleteById(id);
+        clubService.delete(id);
         return ResponseEntity.noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))
             .build();

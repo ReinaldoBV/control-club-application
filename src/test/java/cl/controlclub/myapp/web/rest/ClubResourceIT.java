@@ -10,6 +10,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import cl.controlclub.myapp.IntegrationTest;
 import cl.controlclub.myapp.domain.Club;
 import cl.controlclub.myapp.repository.ClubRepository;
+import cl.controlclub.myapp.service.dto.ClubDTO;
+import cl.controlclub.myapp.service.mapper.ClubMapper;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.persistence.EntityManager;
 import java.time.LocalDate;
@@ -63,6 +65,9 @@ class ClubResourceIT {
 
     @Autowired
     private ClubRepository clubRepository;
+
+    @Autowired
+    private ClubMapper clubMapper;
 
     @Autowired
     private EntityManager em;
@@ -126,18 +131,20 @@ class ClubResourceIT {
     void createClub() throws Exception {
         long databaseSizeBeforeCreate = getRepositoryCount();
         // Create the Club
-        var returnedClub = om.readValue(
+        ClubDTO clubDTO = clubMapper.toDto(club);
+        var returnedClubDTO = om.readValue(
             restClubMockMvc
-                .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(club)))
+                .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(clubDTO)))
                 .andExpect(status().isCreated())
                 .andReturn()
                 .getResponse()
                 .getContentAsString(),
-            Club.class
+            ClubDTO.class
         );
 
         // Validate the Club in the database
         assertIncrementedRepositoryCount(databaseSizeBeforeCreate);
+        var returnedClub = clubMapper.toEntity(returnedClubDTO);
         assertClubUpdatableFieldsEquals(returnedClub, getPersistedClub(returnedClub));
 
         insertedClub = returnedClub;
@@ -148,12 +155,13 @@ class ClubResourceIT {
     void createClubWithExistingId() throws Exception {
         // Create the Club with an existing ID
         club.setId(1L);
+        ClubDTO clubDTO = clubMapper.toDto(club);
 
         long databaseSizeBeforeCreate = getRepositoryCount();
 
         // An entity with an existing ID cannot be created, so this API call must fail
         restClubMockMvc
-            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(club)))
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(clubDTO)))
             .andExpect(status().isBadRequest());
 
         // Validate the Club in the database
@@ -168,9 +176,10 @@ class ClubResourceIT {
         club.setRazon(null);
 
         // Create the Club, which fails.
+        ClubDTO clubDTO = clubMapper.toDto(club);
 
         restClubMockMvc
-            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(club)))
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(clubDTO)))
             .andExpect(status().isBadRequest());
 
         assertSameRepositoryCount(databaseSizeBeforeTest);
@@ -184,9 +193,10 @@ class ClubResourceIT {
         club.setDireccion(null);
 
         // Create the Club, which fails.
+        ClubDTO clubDTO = clubMapper.toDto(club);
 
         restClubMockMvc
-            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(club)))
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(clubDTO)))
             .andExpect(status().isBadRequest());
 
         assertSameRepositoryCount(databaseSizeBeforeTest);
@@ -200,9 +210,10 @@ class ClubResourceIT {
         club.setTelefono(null);
 
         // Create the Club, which fails.
+        ClubDTO clubDTO = clubMapper.toDto(club);
 
         restClubMockMvc
-            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(club)))
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(clubDTO)))
             .andExpect(status().isBadRequest());
 
         assertSameRepositoryCount(databaseSizeBeforeTest);
@@ -216,9 +227,10 @@ class ClubResourceIT {
         club.setEmail(null);
 
         // Create the Club, which fails.
+        ClubDTO clubDTO = clubMapper.toDto(club);
 
         restClubMockMvc
-            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(club)))
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(clubDTO)))
             .andExpect(status().isBadRequest());
 
         assertSameRepositoryCount(databaseSizeBeforeTest);
@@ -232,9 +244,10 @@ class ClubResourceIT {
         club.setFechaFundacion(null);
 
         // Create the Club, which fails.
+        ClubDTO clubDTO = clubMapper.toDto(club);
 
         restClubMockMvc
-            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(club)))
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(clubDTO)))
             .andExpect(status().isBadRequest());
 
         assertSameRepositoryCount(databaseSizeBeforeTest);
@@ -248,9 +261,10 @@ class ClubResourceIT {
         club.setPresidente(null);
 
         // Create the Club, which fails.
+        ClubDTO clubDTO = clubMapper.toDto(club);
 
         restClubMockMvc
-            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(club)))
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(clubDTO)))
             .andExpect(status().isBadRequest());
 
         assertSameRepositoryCount(databaseSizeBeforeTest);
@@ -322,13 +336,10 @@ class ClubResourceIT {
             .email(UPDATED_EMAIL)
             .fechaFundacion(UPDATED_FECHA_FUNDACION)
             .presidente(UPDATED_PRESIDENTE);
+        ClubDTO clubDTO = clubMapper.toDto(updatedClub);
 
         restClubMockMvc
-            .perform(
-                put(ENTITY_API_URL_ID, updatedClub.getId())
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .content(om.writeValueAsBytes(updatedClub))
-            )
+            .perform(put(ENTITY_API_URL_ID, clubDTO.getId()).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(clubDTO)))
             .andExpect(status().isOk());
 
         // Validate the Club in the database
@@ -342,9 +353,12 @@ class ClubResourceIT {
         long databaseSizeBeforeUpdate = getRepositoryCount();
         club.setId(longCount.incrementAndGet());
 
+        // Create the Club
+        ClubDTO clubDTO = clubMapper.toDto(club);
+
         // If the entity doesn't have an ID, it will throw BadRequestAlertException
         restClubMockMvc
-            .perform(put(ENTITY_API_URL_ID, club.getId()).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(club)))
+            .perform(put(ENTITY_API_URL_ID, clubDTO.getId()).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(clubDTO)))
             .andExpect(status().isBadRequest());
 
         // Validate the Club in the database
@@ -357,12 +371,15 @@ class ClubResourceIT {
         long databaseSizeBeforeUpdate = getRepositoryCount();
         club.setId(longCount.incrementAndGet());
 
+        // Create the Club
+        ClubDTO clubDTO = clubMapper.toDto(club);
+
         // If url ID doesn't match entity ID, it will throw BadRequestAlertException
         restClubMockMvc
             .perform(
                 put(ENTITY_API_URL_ID, longCount.incrementAndGet())
                     .contentType(MediaType.APPLICATION_JSON)
-                    .content(om.writeValueAsBytes(club))
+                    .content(om.writeValueAsBytes(clubDTO))
             )
             .andExpect(status().isBadRequest());
 
@@ -376,9 +393,12 @@ class ClubResourceIT {
         long databaseSizeBeforeUpdate = getRepositoryCount();
         club.setId(longCount.incrementAndGet());
 
+        // Create the Club
+        ClubDTO clubDTO = clubMapper.toDto(club);
+
         // If url ID doesn't match entity ID, it will throw BadRequestAlertException
         restClubMockMvc
-            .perform(put(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(club)))
+            .perform(put(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(clubDTO)))
             .andExpect(status().isMethodNotAllowed());
 
         // Validate the Club in the database
@@ -397,7 +417,7 @@ class ClubResourceIT {
         Club partialUpdatedClub = new Club();
         partialUpdatedClub.setId(club.getId());
 
-        partialUpdatedClub.razon(UPDATED_RAZON).direccion(UPDATED_DIRECCION).email(UPDATED_EMAIL).presidente(UPDATED_PRESIDENTE);
+        partialUpdatedClub.direccion(UPDATED_DIRECCION).fechaFundacion(UPDATED_FECHA_FUNDACION);
 
         restClubMockMvc
             .perform(
@@ -453,9 +473,14 @@ class ClubResourceIT {
         long databaseSizeBeforeUpdate = getRepositoryCount();
         club.setId(longCount.incrementAndGet());
 
+        // Create the Club
+        ClubDTO clubDTO = clubMapper.toDto(club);
+
         // If the entity doesn't have an ID, it will throw BadRequestAlertException
         restClubMockMvc
-            .perform(patch(ENTITY_API_URL_ID, club.getId()).contentType("application/merge-patch+json").content(om.writeValueAsBytes(club)))
+            .perform(
+                patch(ENTITY_API_URL_ID, clubDTO.getId()).contentType("application/merge-patch+json").content(om.writeValueAsBytes(clubDTO))
+            )
             .andExpect(status().isBadRequest());
 
         // Validate the Club in the database
@@ -468,12 +493,15 @@ class ClubResourceIT {
         long databaseSizeBeforeUpdate = getRepositoryCount();
         club.setId(longCount.incrementAndGet());
 
+        // Create the Club
+        ClubDTO clubDTO = clubMapper.toDto(club);
+
         // If url ID doesn't match entity ID, it will throw BadRequestAlertException
         restClubMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, longCount.incrementAndGet())
                     .contentType("application/merge-patch+json")
-                    .content(om.writeValueAsBytes(club))
+                    .content(om.writeValueAsBytes(clubDTO))
             )
             .andExpect(status().isBadRequest());
 
@@ -487,9 +515,12 @@ class ClubResourceIT {
         long databaseSizeBeforeUpdate = getRepositoryCount();
         club.setId(longCount.incrementAndGet());
 
+        // Create the Club
+        ClubDTO clubDTO = clubMapper.toDto(club);
+
         // If url ID doesn't match entity ID, it will throw BadRequestAlertException
         restClubMockMvc
-            .perform(patch(ENTITY_API_URL).contentType("application/merge-patch+json").content(om.writeValueAsBytes(club)))
+            .perform(patch(ENTITY_API_URL).contentType("application/merge-patch+json").content(om.writeValueAsBytes(clubDTO)))
             .andExpect(status().isMethodNotAllowed());
 
         // Validate the Club in the database

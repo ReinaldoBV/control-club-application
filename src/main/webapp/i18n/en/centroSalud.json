@@ -1,0 +1,24 @@
+{
+  "controlClubApplicationApp": {
+    "centroSalud": {
+      "home": {
+        "title": "Centro Saluds",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Centro Salud",
+        "createOrEditLabel": "Create or edit a Centro Salud",
+        "notFound": "No Centro Saluds found"
+      },
+      "created": "A new Centro Salud is created with identifier {{ param }}",
+      "updated": "A Centro Salud is updated with identifier {{ param }}",
+      "deleted": "A Centro Salud is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Centro Salud {{ id }}?"
+      },
+      "detail": {
+        "title": "Centro Salud"
+      },
+      "id": "ID",
+      "centroSalud": "Centro Salud"
+    }
+  }
+}

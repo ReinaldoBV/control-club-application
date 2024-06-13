@@ -1,0 +1,24 @@
+{
+  "controlClubApplicationApp": {
+    "comuna": {
+      "home": {
+        "title": "Comunas",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Comuna",
+        "createOrEditLabel": "Crear o editar Comuna",
+        "notFound": "Ningún Comunas encontrado"
+      },
+      "created": "Un nuevo Comuna ha sido creado con el identificador {{ param }}",
+      "updated": "Un Comuna ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Comuna ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Comuna {{ id }}?"
+      },
+      "detail": {
+        "title": "Comuna"
+      },
+      "id": "ID",
+      "comuna": "Comuna"
+    }
+  }
+}

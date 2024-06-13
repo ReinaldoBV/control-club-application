@@ -3,6 +3,7 @@
     "changelogDate": "20240613154417"
   },
   "applications": "*",
+  "dto": "mapstruct",
   "fields": [
     {
       "fieldName": "razon",
@@ -36,6 +37,8 @@
     }
   ],
   "name": "Club",
+  "pagination": "pagination",
   "relationships": [],
-  "searchEngine": "no"
+  "searchEngine": "no",
+  "service": "serviceClass"
 }
