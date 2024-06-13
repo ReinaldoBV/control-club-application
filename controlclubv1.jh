@@ -236,20 +236,6 @@ relationship OneToOne {
     CuerpoTecnico to Asociados
 }
 
-relationship ManyToOne {
-    Bienes { asignadoA } to Jugador,
-    CentroSalud to Comuna,
-    CentroEducativo to Comuna,
-    Entrenamiento to CuerpoTecnico,
-    Mensaje { remitente } to Jugador,
-    Mensaje { destinatario } to Jugador,
-    FinanzasIngreso to Jugador,
-    FinanzasEgreso to Cuentas,
-    Cuentas to Jugador,
-    Padre to Jugador,
-    Asociados to Jugador
-}
-
 service all with serviceClass
 dto all with mapstruct
 paginate all with pagination
