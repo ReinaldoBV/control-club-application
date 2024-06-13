@@ -1,60 +1,3 @@
-enum TipoIdentificacion {
-    RUT,
-    PASAPORTE,
-    ESCOLAR,
-    OTRO
-}
-
-enum Nacionalidad {
-    CHILENA,
-    VENEZOLANA,
-    DOMINICANA,
-    COLOMBIANA,
-    OTRA
-}
-
-enum TipoPrevision {
-    FONASA,
-    ISAPRE,
-    NO_TIENE,
-    OTRO
-}
-
-enum TipoIngreso {
-    TRANSFERENCIA,
-    EFECTIVO,
-    CHEQUE
-}
-
-enum TipoEgreso {
-    TRANSFERENCIA,
-    EFECTIVO,
-    CHEQUE
-}
-
-enum TipoCuenta {
-    PAGAR,
-    COBRAR
-}
-
-enum EstadoCuenta {
-    PENDIENTE,
-    PAGADO,
-    COBRADO
-}
-
-enum RolUsuario {
-    ADMINISTRADOR,
-    ENTRENADOR,
-    JUGADOR,
-    PADRE
-}
-
-enum TipoAsistencia {
-    ENTRENAMIENTO,
-    PARTIDO
-}
-
 entity Club {
     razon String required,
     direccion String required,
@@ -62,27 +5,6 @@ entity Club {
     email String required,
     fechaFundacion LocalDate required,
     presidente String required
-}
-
-entity Jugador {
-    nroIdentificacion Long required,
-    tipoIdentificacion TipoIdentificacion required,
-    nombres String required,
-    apellidos String required,
-    nacionalidad Nacionalidad required,
-    edad Integer required,
-    fechaNacimiento LocalDate required,
-    numeroCamisa Integer required,
-    contactoEmergencia String required,
-    calleAvenidaDireccion String required,
-    numeroDireccion Long required,
-    numeroPersonal Long required,
-    imagenJugador Blob, // Almacenar la imagen del jugador como binario
-    documentoIdentificacion Blob // Almacenar el documento de identificación como binario
-}
-
-entity PrevisionSalud {
-    tipoPrevision TipoPrevision required
 }
 
 entity Comuna {
@@ -147,26 +69,22 @@ entity TorneosParticipaciones {
 }
 
 entity FinanzasIngreso {
-    tipo TipoIngreso required,
     descripcion Text required,
     monto BigDecimal required,
     fecha LocalDate required
 }
 
 entity FinanzasEgreso {
-    tipo TipoEgreso required,
 	descripcion Text required,
     monto BigDecimal required,
     fecha LocalDate required
 }
 
 entity Cuentas {
-    tipo TipoCuenta required,
     descripcion Text required,
     monto BigDecimal required,
     nroCuotas Long required, // Fraccionar en 1 a 12 cuotas
-    fechaVencimiento LocalDate required,
-    estado EstadoCuenta required
+    fechaVencimiento LocalDate required
 }
 
 entity EstadisticasBaloncesto {
@@ -211,8 +129,7 @@ entity Bienes {
 
 entity Usuario {
     username String required unique,
-    password String required,
-    rol RolUsuario required
+    password String required
 }
 
 entity Asistencia {
