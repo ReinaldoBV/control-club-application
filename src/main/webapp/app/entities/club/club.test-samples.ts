@@ -3,42 +3,42 @@ import dayjs from 'dayjs/esm';
 import { IClub, NewClub } from './club.model';
 
 export const sampleWithRequiredData: IClub = {
-  id: 5699,
-  razon: 'violence aw dribble',
-  direccion: 'for fantasize jagged',
-  telefono: 'with',
-  email: 'Enrique21@yahoo.com',
+  id: 22786,
+  razon: 'juicy',
+  direccion: 'ugh',
+  telefono: 'questionably abnormally',
+  email: 'Gloria.UrrutiaGaitan10@yahoo.com',
   fechaFundacion: dayjs('2024-06-13'),
-  presidente: 'vide boring ugh',
+  presidente: 'really that decrypt',
 };
 
 export const sampleWithPartialData: IClub = {
-  id: 18894,
-  razon: 'wherever tedious snorkel',
-  direccion: 'out generally for',
-  telefono: 'upside-down periodic phew',
-  email: 'Diego_VelezTamayo30@gmail.com',
+  id: 26860,
+  razon: 'stain unlawful stealthily',
+  direccion: 'duh',
+  telefono: 'although wherever praise',
+  email: 'Marilu.EnriquezMota@hotmail.com',
   fechaFundacion: dayjs('2024-06-13'),
-  presidente: 'restate ripe from',
+  presidente: 'honestly always kangaroo',
 };
 
 export const sampleWithFullData: IClub = {
-  id: 27020,
-  razon: 'flight concerning',
-  direccion: 'fraternise',
-  telefono: 'phooey gadzooks calmly',
-  email: 'Anita_ArmijoDelacruz@yahoo.com',
-  fechaFundacion: dayjs('2024-06-12'),
-  presidente: 'demolish overconfidently knowing',
+  id: 20039,
+  razon: 'unnecessarily unto',
+  direccion: 'tart anenst',
+  telefono: 'beyond coinsurance',
+  email: 'Patricio.AcevedoTorrez@gmail.com',
+  fechaFundacion: dayjs('2024-06-13'),
+  presidente: 'yippee lined',
 };
 
 export const sampleWithNewData: NewClub = {
-  razon: 'foolhardy memorable oldie',
-  direccion: 'whenever cluster besides',
-  telefono: 'instead',
-  email: 'Hernan48@hotmail.com',
-  fechaFundacion: dayjs('2024-06-12'),
-  presidente: 'provided',
+  razon: 'twitter',
+  direccion: 'shaker recommence enjoy',
+  telefono: 'kindly save',
+  email: 'Esperanza_VillalpandoMedina22@yahoo.com',
+  fechaFundacion: dayjs('2024-06-13'),
+  presidente: 'tightly energetically',
   id: null,
 };
 

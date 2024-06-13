@@ -419,7 +419,7 @@ class PadreResourceIT {
         Padre partialUpdatedPadre = new Padre();
         partialUpdatedPadre.setId(padre.getId());
 
-        partialUpdatedPadre.telefono(UPDATED_TELEFONO).asociado(UPDATED_ASOCIADO).email(UPDATED_EMAIL);
+        partialUpdatedPadre.apellidos(UPDATED_APELLIDOS).email(UPDATED_EMAIL);
 
         restPadreMockMvc
             .perform(

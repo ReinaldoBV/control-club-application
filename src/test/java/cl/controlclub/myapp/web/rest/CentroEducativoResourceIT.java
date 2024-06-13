@@ -295,8 +295,6 @@ class CentroEducativoResourceIT {
         CentroEducativo partialUpdatedCentroEducativo = new CentroEducativo();
         partialUpdatedCentroEducativo.setId(centroEducativo.getId());
 
-        partialUpdatedCentroEducativo.centroEducativo(UPDATED_CENTRO_EDUCATIVO);
-
         restCentroEducativoMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, partialUpdatedCentroEducativo.getId())

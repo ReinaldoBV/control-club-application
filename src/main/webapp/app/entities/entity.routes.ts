@@ -61,6 +61,26 @@ const routes: Routes = [
     data: { pageTitle: 'controlClubApplicationApp.partido.home.title' },
     loadChildren: () => import('./partido/partido.routes'),
   },
+  {
+    path: 'entrenamiento',
+    data: { pageTitle: 'controlClubApplicationApp.entrenamiento.home.title' },
+    loadChildren: () => import('./entrenamiento/entrenamiento.routes'),
+  },
+  {
+    path: 'mensaje',
+    data: { pageTitle: 'controlClubApplicationApp.mensaje.home.title' },
+    loadChildren: () => import('./mensaje/mensaje.routes'),
+  },
+  {
+    path: 'anuncio',
+    data: { pageTitle: 'controlClubApplicationApp.anuncio.home.title' },
+    loadChildren: () => import('./anuncio/anuncio.routes'),
+  },
+  {
+    path: 'bienes',
+    data: { pageTitle: 'controlClubApplicationApp.bienes.home.title' },
+    loadChildren: () => import('./bienes/bienes.routes'),
+  },
   /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
 ];
 
