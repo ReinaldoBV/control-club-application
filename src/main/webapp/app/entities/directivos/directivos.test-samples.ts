@@ -3,46 +3,46 @@ import dayjs from 'dayjs/esm';
 import { IDirectivos, NewDirectivos } from './directivos.model';
 
 export const sampleWithRequiredData: IDirectivos = {
-  id: 22539,
-  nombres: 'playfully',
-  apellidos: 'promise',
-  cargo: 'from',
-  telefono: 'apropos surprisingly',
+  id: 6635,
+  nombres: 'girl remains',
+  apellidos: 'sympathetically pish',
+  cargo: 'in like abaft',
+  telefono: 'bumper',
   fechaEleccion: dayjs('2024-06-13'),
   fechaVencimiento: dayjs('2024-06-13'),
-  email: 'David31@yahoo.com',
+  email: 'Natalia_CardenasCarrasco0@yahoo.com',
 };
 
 export const sampleWithPartialData: IDirectivos = {
-  id: 5379,
-  nombres: 'consequently',
-  apellidos: 'which',
-  cargo: 'gratefully night',
-  telefono: 'till finally worriedly',
-  fechaEleccion: dayjs('2024-06-13'),
-  fechaVencimiento: dayjs('2024-06-13'),
-  email: 'MariaCristina.GironDelgadillo@yahoo.com',
+  id: 27720,
+  nombres: 'so stormy',
+  apellidos: 'noisily who geez',
+  cargo: 'true',
+  telefono: 'out frilly',
+  fechaEleccion: dayjs('2024-06-12'),
+  fechaVencimiento: dayjs('2024-06-12'),
+  email: 'Rebeca_CalderonMolina95@hotmail.com',
 };
 
 export const sampleWithFullData: IDirectivos = {
-  id: 13014,
-  nombres: 'mockingly amongst',
-  apellidos: 'heavenly',
-  cargo: 'slowly sound fantastic',
-  telefono: 'gazump fumble',
-  fechaEleccion: dayjs('2024-06-12'),
-  fechaVencimiento: dayjs('2024-06-13'),
-  email: 'Andres.ArguelloSandoval@gmail.com',
+  id: 23024,
+  nombres: 'before frenetically extremely',
+  apellidos: 'clever vulture once',
+  cargo: 'who which',
+  telefono: 'promulgate',
+  fechaEleccion: dayjs('2024-06-13'),
+  fechaVencimiento: dayjs('2024-06-12'),
+  email: 'Gonzalo_PerezSosa@hotmail.com',
 };
 
 export const sampleWithNewData: NewDirectivos = {
-  nombres: 'ew',
-  apellidos: 'urn bah',
-  cargo: 'majority',
-  telefono: 'bodge finally',
+  nombres: 'knotty toward sans',
+  apellidos: 'roasted',
+  cargo: 'winged whenever geez',
+  telefono: 'veldt',
   fechaEleccion: dayjs('2024-06-13'),
   fechaVencimiento: dayjs('2024-06-13'),
-  email: 'Joaquin.RoldanGranados77@hotmail.com',
+  email: 'Rosario95@hotmail.com',
   id: null,
 };
 

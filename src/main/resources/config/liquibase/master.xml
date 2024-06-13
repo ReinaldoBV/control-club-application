@@ -22,6 +22,10 @@
     <include file="config/liquibase/changelog/20240613164807_added_entity_TorneosParticipaciones.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20240613164808_added_entity_EstadisticasBaloncesto.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20240613164809_added_entity_Partido.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240613171036_added_entity_Entrenamiento.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240613171037_added_entity_Mensaje.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240613171038_added_entity_Anuncio.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240613171039_added_entity_Bienes.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->

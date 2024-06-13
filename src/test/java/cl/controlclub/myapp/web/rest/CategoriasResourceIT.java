@@ -345,7 +345,7 @@ class CategoriasResourceIT {
         Categorias partialUpdatedCategorias = new Categorias();
         partialUpdatedCategorias.setId(categorias.getId());
 
-        partialUpdatedCategorias.anioInicio(UPDATED_ANIO_INICIO).anioFinal(UPDATED_ANIO_FINAL);
+        partialUpdatedCategorias.nombreCategoria(UPDATED_NOMBRE_CATEGORIA);
 
         restCategoriasMockMvc
             .perform(

@@ -18,7 +18,11 @@
         "padre": "Padre",
         "torneosParticipaciones": "Torneos Participaciones",
         "estadisticasBaloncesto": "Estadisticas Baloncesto",
-        "partido": "Partido"
+        "partido": "Partido",
+        "entrenamiento": "Entrenamiento",
+        "mensaje": "Mensaje",
+        "anuncio": "Anuncio",
+        "bienes": "Bienes"
       },
       "account": {
         "main": "Cuenta",

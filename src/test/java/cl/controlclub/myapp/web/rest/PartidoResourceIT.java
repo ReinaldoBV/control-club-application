@@ -320,8 +320,6 @@ class PartidoResourceIT {
         Partido partialUpdatedPartido = new Partido();
         partialUpdatedPartido.setId(partido.getId());
 
-        partialUpdatedPartido.fecha(UPDATED_FECHA);
-
         restPartidoMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, partialUpdatedPartido.getId())

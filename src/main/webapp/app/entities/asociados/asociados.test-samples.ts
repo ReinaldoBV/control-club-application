@@ -3,42 +3,42 @@ import dayjs from 'dayjs/esm';
 import { IAsociados, NewAsociados } from './asociados.model';
 
 export const sampleWithRequiredData: IAsociados = {
-  id: 8442,
-  nombres: 'car forked',
-  apellidos: 'signal slimy sum',
-  cargo: 'brr',
-  telefono: 'meanwhile italicise',
+  id: 8048,
+  nombres: 'but considering',
+  apellidos: 'vastly',
+  cargo: 'pest',
+  telefono: 'flatboat spectacular',
   fechaAsoc: dayjs('2024-06-13'),
-  email: 'Monica.SalcidoMondragon@gmail.com',
+  email: 'German95@gmail.com',
 };
 
 export const sampleWithPartialData: IAsociados = {
-  id: 25812,
-  nombres: 'agree although yieldingly',
-  apellidos: 'rash',
-  cargo: 'promotion and',
-  telefono: 'ha ethical round',
+  id: 9690,
+  nombres: 'shimmering adjudicate',
+  apellidos: 'past descriptive',
+  cargo: 'apud lest',
+  telefono: 'surprisingly yum wherever',
   fechaAsoc: dayjs('2024-06-13'),
-  email: 'Alicia.MoralesRael98@hotmail.com',
+  email: 'Mariana_UlloaOrnelas49@hotmail.com',
 };
 
 export const sampleWithFullData: IAsociados = {
-  id: 20895,
-  nombres: 'dutiful whenever however',
-  apellidos: 'fatal messy',
-  cargo: 'forearm rack molder',
-  telefono: 'sculpture',
-  fechaAsoc: dayjs('2024-06-12'),
-  email: 'Fernando_GuevaraNava7@gmail.com',
+  id: 10142,
+  nombres: 'and dazzling',
+  apellidos: 'afore competitor',
+  cargo: 'poor',
+  telefono: 'gadzooks',
+  fechaAsoc: dayjs('2024-06-13'),
+  email: 'Marta67@yahoo.com',
 };
 
 export const sampleWithNewData: NewAsociados = {
-  nombres: 'impose if even',
-  apellidos: 'urgently inasmuch',
-  cargo: 'sword',
-  telefono: 'slang whether',
+  nombres: 'phew',
+  apellidos: 'reason tomorrow bleakly',
+  cargo: 'unlike',
+  telefono: 'furthermore equally huge',
   fechaAsoc: dayjs('2024-06-12'),
-  email: 'Armando.VelascoVargas@hotmail.com',
+  email: 'Vicente34@gmail.com',
   id: null,
 };
 
