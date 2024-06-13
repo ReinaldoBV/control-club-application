@@ -7,6 +7,7 @@ import { finalize } from 'rxjs/operators';
 import SharedModule from 'app/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { RMComuna } from 'app/entities/enumerations/rm-comuna.model';
 import { IComuna } from '../comuna.model';
 import { ComunaService } from '../service/comuna.service';
 import { ComunaFormService, ComunaFormGroup } from './comuna-form.service';
@@ -20,6 +21,7 @@ import { ComunaFormService, ComunaFormGroup } from './comuna-form.service';
 export class ComunaUpdateComponent implements OnInit {
   isSaving = false;
   comuna: IComuna | null = null;
+  rMComunaValues = Object.keys(RMComuna);
 
   protected comunaService = inject(ComunaService);
   protected comunaFormService = inject(ComunaFormService);

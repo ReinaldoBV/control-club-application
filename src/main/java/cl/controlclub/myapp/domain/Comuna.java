@@ -1,5 +1,6 @@
 package cl.controlclub.myapp.domain;
 
+import cl.controlclub.myapp.domain.enumeration.RMComuna;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
@@ -25,8 +26,9 @@ public class Comuna implements Serializable {
     private Long id;
 
     @NotNull
+    @Enumerated(EnumType.STRING)
     @Column(name = "comuna", nullable = false)
-    private String comuna;
+    private RMComuna comuna;
 
     @JsonIgnoreProperties(
         value = { "centroSalud", "previsionSalud", "comuna", "centroEducativo", "categorias", "usuario" },
@@ -50,16 +52,16 @@ public class Comuna implements Serializable {
         this.id = id;
     }
 
-    public String getComuna() {
+    public RMComuna getComuna() {
         return this.comuna;
     }
 
-    public Comuna comuna(String comuna) {
+    public Comuna comuna(RMComuna comuna) {
         this.setComuna(comuna);
         return this;
     }
 
-    public void setComuna(String comuna) {
+    public void setComuna(RMComuna comuna) {
         this.comuna = comuna;
     }
 
