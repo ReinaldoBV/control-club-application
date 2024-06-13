@@ -1,3 +1,60 @@
+enum TipoIdentificacion {
+    RUT,
+    PASAPORTE,
+    ESCOLAR,
+    OTRO
+}
+
+enum Nacionalidad {
+    CHILENA,
+    VENEZOLANA,
+    DOMINICANA,
+    COLOMBIANA,
+    OTRA
+}
+
+enum TipoPrevision {
+    FONASA,
+    ISAPRE,
+    NO_TIENE,
+    OTRO
+}
+
+enum TipoIngreso {
+    TRANSFERENCIA,
+    EFECTIVO,
+    CHEQUE
+}
+
+enum TipoEgreso {
+    TRANSFERENCIA,
+    EFECTIVO,
+    CHEQUE
+}
+
+enum TipoCuenta {
+    PAGAR,
+    COBRAR
+}
+
+enum EstadoCuenta {
+    PENDIENTE,
+    PAGADO,
+    COBRADO
+}
+
+enum RolUsuario {
+    ADMINISTRADOR,
+    ENTRENADOR,
+    JUGADOR,
+    PADRE
+}
+
+enum TipoAsistencia {
+    ENTRENAMIENTO,
+    PARTIDO
+}
+
 entity Club {
     razon String required,
     direccion String required,
@@ -6,3 +63,165 @@ entity Club {
     fechaFundacion LocalDate required,
     presidente String required
 }
+
+entity Jugador {
+    nroIdentificacion Long required,
+    tipoIdentificacion TipoIdentificacion required,
+    nombres String required,
+    apellidos String required,
+    nacionalidad Nacionalidad required,
+    edad Integer required,
+    fechaNacimiento LocalDate required,
+    numeroCamisa Integer required,
+    contactoEmergencia String required,
+    calleAvenidaDireccion String required,
+    numeroDireccion Long required,
+    numeroPersonal Long required,
+    imagenJugador Blob, // Almacenar la imagen del jugador como binario
+    documentoIdentificacion Blob // Almacenar el documento de identificación como binario
+}
+
+entity PrevisionSalud {
+    tipoPrevision TipoPrevision required
+}
+
+entity Comuna {
+    comuna String required
+}
+
+entity CentroSalud {
+    centroSalud String required
+}
+
+entity CentroEducativo {
+    centroEducativo String required
+}
+
+entity CuerpoTecnico {
+    nombres String required,
+    apellidos String required,
+    rolTecnico String required,
+    telefono String required,
+    fechaInicio LocalDate required,
+    email String required
+}
+
+entity Categorias {
+    anioInicio Long required,
+    anioFinal Long required,
+    nombreCategoria String required
+}
+
+entity Directivos {
+	nombres String required,
+    apellidos String required,	
+    cargo String required,
+    telefono String required,
+    fechaEleccion LocalDate required,
+    fechaVencimiento LocalDate required,
+    email String required
+}
+
+entity Asociados {
+    nombres String required,
+    apellidos String required,
+    cargo String required,
+    telefono String required,
+    fechaAsoc LocalDate required,
+    email String required
+}
+
+entity Padre {
+    nombres String required,
+    apellidos String required,
+    relacion String required,
+    telefono String required,
+    asociado Boolean required,
+    email String required
+}
+
+entity TorneosParticipaciones {
+    descripcion Text required,
+    monto BigDecimal required,
+    fecha LocalDate required
+}
+
+entity FinanzasIngreso {
+    tipo TipoIngreso required,
+    descripcion Text required,
+    monto BigDecimal required,
+    fecha LocalDate required
+}
+
+entity FinanzasEgreso {
+    tipo TipoEgreso required,
+	descripcion Text required,
+    monto BigDecimal required,
+    fecha LocalDate required
+}
+
+entity Cuentas {
+    tipo TipoCuenta required,
+    descripcion Text required,
+    monto BigDecimal required,
+    nroCuotas Long required, // Fraccionar en 1 a 12 cuotas
+    fechaVencimiento LocalDate required,
+    estado EstadoCuenta required
+}
+
+entity EstadisticasBaloncesto {
+    puntos Integer,
+    rebotes Integer,
+    asistencias Integer,
+    robos Integer,
+    bloqueos Integer,
+    porcentajeTiro BigDecimal
+}
+
+entity Partido {
+    fecha LocalDate required,
+    oponente String required,
+    resultado String
+}
+
+entity Entrenamiento {
+    fecha LocalDate required,
+    hora LocalTime required,
+    duracion Integer required // Duración en minutos
+}
+
+entity Mensaje {
+    remitenteId Long required,
+    destinatarioId Long required,
+    mensaje Text required,
+    leido Boolean
+}
+
+entity Anuncio {
+    titulo String required,
+    contenido Text required,
+    fechaPublicacion LocalDate required
+}
+
+entity Bienes {
+    descripcion Text required,
+    cantidad Integer required,
+    estado String required
+}
+
+entity Usuario {
+    username String required unique,
+    password String required,
+    rol RolUsuario required
+}
+
+entity Asistencia {
+    tipo TipoAsistencia required,
+    idEvento Long required, // ID del entrenamiento o partido
+    fecha LocalDate required,
+    asistencia Boolean required // Asistencia: true (presente), false (ausente)
+}
+
+service all with serviceClass
+dto all with mapstruct
+paginate all with pagination
