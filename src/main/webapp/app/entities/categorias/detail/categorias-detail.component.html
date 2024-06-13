@@ -1,0 +1,42 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (categorias()) {
+      <div>
+        <h2 data-cy="categoriasDetailsHeading"><span jhiTranslate="controlClubApplicationApp.categorias.detail.title">Categorias</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ categorias()!.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.categorias.anioInicio">Anio Inicio</span></dt>
+          <dd>
+            <span>{{ categorias()!.anioInicio }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.categorias.anioFinal">Anio Final</span></dt>
+          <dd>
+            <span>{{ categorias()!.anioFinal }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.categorias.nombreCategoria">Nombre Categoria</span></dt>
+          <dd>
+            <span>{{ categorias()!.nombreCategoria }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+        </button>
+
+        <button type="button" [routerLink]="['/categorias', categorias()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

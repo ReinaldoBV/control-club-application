@@ -10,7 +10,9 @@
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)",
         "club": "Club",
         "comuna": "Comuna",
-        "centroSalud": "Centro Salud"
+        "centroSalud": "Centro Salud",
+        "centroEducativo": "Centro Educativo",
+        "categorias": "Categorias"
       },
       "account": {
         "main": "Cuenta",

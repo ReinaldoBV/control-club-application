@@ -1,0 +1,24 @@
+{
+  "controlClubApplicationApp": {
+    "centroEducativo": {
+      "home": {
+        "title": "Centro Educativos",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Centro Educativo",
+        "createOrEditLabel": "Crear o editar Centro Educativo",
+        "notFound": "Ningún Centro Educativos encontrado"
+      },
+      "created": "Un nuevo Centro Educativo ha sido creado con el identificador {{ param }}",
+      "updated": "Un Centro Educativo ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Centro Educativo ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Centro Educativo {{ id }}?"
+      },
+      "detail": {
+        "title": "Centro Educativo"
+      },
+      "id": "ID",
+      "centroEducativo": "Centro Educativo"
+    }
+  }
+}

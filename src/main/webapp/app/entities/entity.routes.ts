@@ -21,6 +21,16 @@ const routes: Routes = [
     data: { pageTitle: 'controlClubApplicationApp.centroSalud.home.title' },
     loadChildren: () => import('./centro-salud/centro-salud.routes'),
   },
+  {
+    path: 'centro-educativo',
+    data: { pageTitle: 'controlClubApplicationApp.centroEducativo.home.title' },
+    loadChildren: () => import('./centro-educativo/centro-educativo.routes'),
+  },
+  {
+    path: 'categorias',
+    data: { pageTitle: 'controlClubApplicationApp.categorias.home.title' },
+    loadChildren: () => import('./categorias/categorias.routes'),
+  },
   /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
 ];
 
