@@ -6,6 +6,11 @@ const routes: Routes = [
     data: { pageTitle: 'controlClubApplicationApp.adminAuthority.home.title' },
     loadChildren: () => import('./admin/authority/authority.routes'),
   },
+  {
+    path: 'club',
+    data: { pageTitle: 'controlClubApplicationApp.club.home.title' },
+    loadChildren: () => import('./club/club.routes'),
+  },
   /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
 ];
 
