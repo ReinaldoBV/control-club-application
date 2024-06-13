@@ -1,25 +1,25 @@
 import { IEstadisticasBaloncesto, NewEstadisticasBaloncesto } from './estadisticas-baloncesto.model';
 
 export const sampleWithRequiredData: IEstadisticasBaloncesto = {
-  id: 10794,
+  id: 16846,
 };
 
 export const sampleWithPartialData: IEstadisticasBaloncesto = {
-  id: 19598,
-  puntos: 29372,
-  rebotes: 21092,
-  bloqueos: 32073,
-  porcentajeTiro: 10630.76,
+  id: 17764,
+  rebotes: 14,
+  asistencias: 16503,
+  robos: 6428,
+  porcentajeTiro: 25546.19,
 };
 
 export const sampleWithFullData: IEstadisticasBaloncesto = {
-  id: 29585,
-  puntos: 2202,
-  rebotes: 5203,
-  asistencias: 21051,
-  robos: 15192,
-  bloqueos: 2911,
-  porcentajeTiro: 19000.68,
+  id: 26971,
+  puntos: 3853,
+  rebotes: 16975,
+  asistencias: 22121,
+  robos: 5458,
+  bloqueos: 18822,
+  porcentajeTiro: 25807.18,
 };
 
 export const sampleWithNewData: NewEstadisticasBaloncesto = {

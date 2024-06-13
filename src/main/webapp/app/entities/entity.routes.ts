@@ -61,6 +61,46 @@ const routes: Routes = [
     data: { pageTitle: 'controlClubApplicationApp.partido.home.title' },
     loadChildren: () => import('./partido/partido.routes'),
   },
+  {
+    path: 'prevision-salud',
+    data: { pageTitle: 'controlClubApplicationApp.previsionSalud.home.title' },
+    loadChildren: () => import('./prevision-salud/prevision-salud.routes'),
+  },
+  {
+    path: 'entrenamiento',
+    data: { pageTitle: 'controlClubApplicationApp.entrenamiento.home.title' },
+    loadChildren: () => import('./entrenamiento/entrenamiento.routes'),
+  },
+  {
+    path: 'mensaje',
+    data: { pageTitle: 'controlClubApplicationApp.mensaje.home.title' },
+    loadChildren: () => import('./mensaje/mensaje.routes'),
+  },
+  {
+    path: 'anuncio',
+    data: { pageTitle: 'controlClubApplicationApp.anuncio.home.title' },
+    loadChildren: () => import('./anuncio/anuncio.routes'),
+  },
+  {
+    path: 'bienes',
+    data: { pageTitle: 'controlClubApplicationApp.bienes.home.title' },
+    loadChildren: () => import('./bienes/bienes.routes'),
+  },
+  {
+    path: 'finanzas-ingreso',
+    data: { pageTitle: 'controlClubApplicationApp.finanzasIngreso.home.title' },
+    loadChildren: () => import('./finanzas-ingreso/finanzas-ingreso.routes'),
+  },
+  {
+    path: 'finanzas-egreso',
+    data: { pageTitle: 'controlClubApplicationApp.finanzasEgreso.home.title' },
+    loadChildren: () => import('./finanzas-egreso/finanzas-egreso.routes'),
+  },
+  {
+    path: 'cuentas',
+    data: { pageTitle: 'controlClubApplicationApp.cuentas.home.title' },
+    loadChildren: () => import('./cuentas/cuentas.routes'),
+  },
   /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
 ];
 
