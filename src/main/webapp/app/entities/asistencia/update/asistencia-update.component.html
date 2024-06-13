@@ -1,0 +1,118 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-asistencia-heading"
+        data-cy="AsistenciaCreateUpdateHeading"
+        jhiTranslate="controlClubApplicationApp.asistencia.home.createOrEditLabel"
+      >
+        Crear o editar Asistencia
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="controlClubApplicationApp.asistencia.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_tipo" jhiTranslate="controlClubApplicationApp.asistencia.tipo">Tipo</label>
+          <select class="form-control" name="tipo" formControlName="tipo" id="field_tipo" data-cy="tipo">
+            <option [ngValue]="null">{{ 'controlClubApplicationApp.TipoAsistencia.null' | translate }}</option>
+            @for (tipoAsistencia of tipoAsistenciaValues; track $index) {
+              <option [value]="tipoAsistencia">{{ 'controlClubApplicationApp.TipoAsistencia.' + tipoAsistencia | translate }}</option>
+            }
+          </select>
+          @if (editForm.get('tipo')!.invalid && (editForm.get('tipo')!.dirty || editForm.get('tipo')!.touched)) {
+            <div>
+              @if (editForm.get('tipo')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_idEvento" jhiTranslate="controlClubApplicationApp.asistencia.idEvento">Id Evento</label>
+          <input type="number" class="form-control" name="idEvento" id="field_idEvento" data-cy="idEvento" formControlName="idEvento" />
+          @if (editForm.get('idEvento')!.invalid && (editForm.get('idEvento')!.dirty || editForm.get('idEvento')!.touched)) {
+            <div>
+              @if (editForm.get('idEvento')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('idEvento')?.errors?.number"
+                jhiTranslate="entity.validation.number"
+                >Este campo debe ser un número.</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_fecha" jhiTranslate="controlClubApplicationApp.asistencia.fecha">Fecha</label>
+          <div class="input-group">
+            <input
+              id="field_fecha"
+              data-cy="fecha"
+              type="text"
+              class="form-control"
+              name="fecha"
+              ngbDatepicker
+              #fechaDp="ngbDatepicker"
+              formControlName="fecha"
+            />
+            <button type="button" class="btn btn-secondary" (click)="fechaDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+          @if (editForm.get('fecha')!.invalid && (editForm.get('fecha')!.dirty || editForm.get('fecha')!.touched)) {
+            <div>
+              @if (editForm.get('fecha')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_asistencia" jhiTranslate="controlClubApplicationApp.asistencia.asistencia">Asistencia</label>
+          <input
+            type="checkbox"
+            class="form-check"
+            name="asistencia"
+            id="field_asistencia"
+            data-cy="asistencia"
+            formControlName="asistencia"
+          />
+          @if (editForm.get('asistencia')!.invalid && (editForm.get('asistencia')!.dirty || editForm.get('asistencia')!.touched)) {
+            <div>
+              @if (editForm.get('asistencia')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+            </div>
+          }
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancelar</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Guardar</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

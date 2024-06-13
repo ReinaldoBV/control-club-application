@@ -1,0 +1,30 @@
+{
+  "annotations": {
+    "changelogDate": "20240613172710"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "username",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "unique"]
+    },
+    {
+      "fieldName": "password",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "rol",
+      "fieldType": "RolUsuario",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "ADMINISTRADOR,ENTRENADOR,JUGADOR,PADRE"
+    }
+  ],
+  "name": "Usuario",
+  "pagination": "pagination",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

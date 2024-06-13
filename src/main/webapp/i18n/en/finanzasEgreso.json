@@ -1,0 +1,27 @@
+{
+  "controlClubApplicationApp": {
+    "finanzasEgreso": {
+      "home": {
+        "title": "Finanzas Egresos",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Finanzas Egreso",
+        "createOrEditLabel": "Create or edit a Finanzas Egreso",
+        "notFound": "No Finanzas Egresos found"
+      },
+      "created": "A new Finanzas Egreso is created with identifier {{ param }}",
+      "updated": "A Finanzas Egreso is updated with identifier {{ param }}",
+      "deleted": "A Finanzas Egreso is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Finanzas Egreso {{ id }}?"
+      },
+      "detail": {
+        "title": "Finanzas Egreso"
+      },
+      "id": "ID",
+      "tipo": "Tipo",
+      "descripcion": "Descripcion",
+      "monto": "Monto",
+      "fecha": "Fecha"
+    }
+  }
+}

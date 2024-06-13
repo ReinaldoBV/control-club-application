@@ -1,0 +1,29 @@
+{
+  "controlClubApplicationApp": {
+    "cuerpoTecnico": {
+      "home": {
+        "title": "Cuerpo Tecnicos",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Cuerpo Tecnico",
+        "createOrEditLabel": "Create or edit a Cuerpo Tecnico",
+        "notFound": "No Cuerpo Tecnicos found"
+      },
+      "created": "A new Cuerpo Tecnico is created with identifier {{ param }}",
+      "updated": "A Cuerpo Tecnico is updated with identifier {{ param }}",
+      "deleted": "A Cuerpo Tecnico is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Cuerpo Tecnico {{ id }}?"
+      },
+      "detail": {
+        "title": "Cuerpo Tecnico"
+      },
+      "id": "ID",
+      "nombres": "Nombres",
+      "apellidos": "Apellidos",
+      "rolTecnico": "Rol Tecnico",
+      "telefono": "Telefono",
+      "fechaInicio": "Fecha Inicio",
+      "email": "Email"
+    }
+  }
+}

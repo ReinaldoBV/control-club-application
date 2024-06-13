@@ -1,0 +1,95 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-anuncio-heading"
+        data-cy="AnuncioCreateUpdateHeading"
+        jhiTranslate="controlClubApplicationApp.anuncio.home.createOrEditLabel"
+      >
+        Crear o editar Anuncio
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="controlClubApplicationApp.anuncio.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_titulo" jhiTranslate="controlClubApplicationApp.anuncio.titulo">Titulo</label>
+          <input type="text" class="form-control" name="titulo" id="field_titulo" data-cy="titulo" formControlName="titulo" />
+          @if (editForm.get('titulo')!.invalid && (editForm.get('titulo')!.dirty || editForm.get('titulo')!.touched)) {
+            <div>
+              @if (editForm.get('titulo')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_contenido" jhiTranslate="controlClubApplicationApp.anuncio.contenido">Contenido</label>
+          <input type="text" class="form-control" name="contenido" id="field_contenido" data-cy="contenido" formControlName="contenido" />
+          @if (editForm.get('contenido')!.invalid && (editForm.get('contenido')!.dirty || editForm.get('contenido')!.touched)) {
+            <div>
+              @if (editForm.get('contenido')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_fechaPublicacion" jhiTranslate="controlClubApplicationApp.anuncio.fechaPublicacion"
+            >Fecha Publicacion</label
+          >
+          <div class="input-group">
+            <input
+              id="field_fechaPublicacion"
+              data-cy="fechaPublicacion"
+              type="text"
+              class="form-control"
+              name="fechaPublicacion"
+              ngbDatepicker
+              #fechaPublicacionDp="ngbDatepicker"
+              formControlName="fechaPublicacion"
+            />
+            <button type="button" class="btn btn-secondary" (click)="fechaPublicacionDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+          @if (
+            editForm.get('fechaPublicacion')!.invalid &&
+            (editForm.get('fechaPublicacion')!.dirty || editForm.get('fechaPublicacion')!.touched)
+          ) {
+            <div>
+              @if (editForm.get('fechaPublicacion')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+            </div>
+          }
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancelar</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Guardar</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

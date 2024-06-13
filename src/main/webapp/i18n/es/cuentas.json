@@ -1,0 +1,29 @@
+{
+  "controlClubApplicationApp": {
+    "cuentas": {
+      "home": {
+        "title": "Cuentas",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Cuentas",
+        "createOrEditLabel": "Crear o editar Cuentas",
+        "notFound": "Ningún Cuentas encontrado"
+      },
+      "created": "Un nuevo Cuentas ha sido creado con el identificador {{ param }}",
+      "updated": "Un Cuentas ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Cuentas ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Cuentas {{ id }}?"
+      },
+      "detail": {
+        "title": "Cuentas"
+      },
+      "id": "ID",
+      "tipo": "Tipo",
+      "descripcion": "Descripcion",
+      "monto": "Monto",
+      "nroCuotas": "Nro Cuotas",
+      "fechaVencimiento": "Fecha Vencimiento",
+      "estado": "Estado"
+    }
+  }
+}

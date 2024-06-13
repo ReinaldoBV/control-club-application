@@ -1,0 +1,9 @@
+{
+  "controlClubApplicationApp": {
+    "TipoAsistencia": {
+      "null": "",
+      "ENTRENAMIENTO": "ENTRENAMIENTO",
+      "PARTIDO": "PARTIDO"
+    }
+  }
+}
