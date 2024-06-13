@@ -1,7 +1,6 @@
 package cl.controlclub.myapp.domain;
 
 import cl.controlclub.myapp.domain.enumeration.RolUsuario;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
@@ -37,29 +36,6 @@ public class Usuario implements Serializable {
     @Enumerated(EnumType.STRING)
     @Column(name = "rol", nullable = false)
     private RolUsuario rol;
-
-    @JsonIgnoreProperties(
-        value = { "centroSalud", "previsionSalud", "comuna", "centroEducativo", "categorias", "usuario" },
-        allowSetters = true
-    )
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(unique = true)
-    private Jugador jugador;
-
-    @JsonIgnoreProperties(value = { "usuario", "directivos", "cuerpoTecnico" }, allowSetters = true)
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(unique = true)
-    private Asociados asociados;
-
-    @JsonIgnoreProperties(value = { "asociados", "usuario" }, allowSetters = true)
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(unique = true)
-    private Directivos directivos;
-
-    @JsonIgnoreProperties(value = { "asociados", "usuario" }, allowSetters = true)
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(unique = true)
-    private CuerpoTecnico cuerpoTecnico;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -113,58 +89,6 @@ public class Usuario implements Serializable {
 
     public void setRol(RolUsuario rol) {
         this.rol = rol;
-    }
-
-    public Jugador getJugador() {
-        return this.jugador;
-    }
-
-    public void setJugador(Jugador jugador) {
-        this.jugador = jugador;
-    }
-
-    public Usuario jugador(Jugador jugador) {
-        this.setJugador(jugador);
-        return this;
-    }
-
-    public Asociados getAsociados() {
-        return this.asociados;
-    }
-
-    public void setAsociados(Asociados asociados) {
-        this.asociados = asociados;
-    }
-
-    public Usuario asociados(Asociados asociados) {
-        this.setAsociados(asociados);
-        return this;
-    }
-
-    public Directivos getDirectivos() {
-        return this.directivos;
-    }
-
-    public void setDirectivos(Directivos directivos) {
-        this.directivos = directivos;
-    }
-
-    public Usuario directivos(Directivos directivos) {
-        this.setDirectivos(directivos);
-        return this;
-    }
-
-    public CuerpoTecnico getCuerpoTecnico() {
-        return this.cuerpoTecnico;
-    }
-
-    public void setCuerpoTecnico(CuerpoTecnico cuerpoTecnico) {
-        this.cuerpoTecnico = cuerpoTecnico;
-    }
-
-    public Usuario cuerpoTecnico(CuerpoTecnico cuerpoTecnico) {
-        this.setCuerpoTecnico(cuerpoTecnico);
-        return this;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here

@@ -34,11 +34,6 @@ type JugadorFormGroupContent = {
   imagenJugadorContentType: FormControl<IJugador['imagenJugadorContentType']>;
   documentoIdentificacion: FormControl<IJugador['documentoIdentificacion']>;
   documentoIdentificacionContentType: FormControl<IJugador['documentoIdentificacionContentType']>;
-  centroSalud: FormControl<IJugador['centroSalud']>;
-  previsionSalud: FormControl<IJugador['previsionSalud']>;
-  comuna: FormControl<IJugador['comuna']>;
-  centroEducativo: FormControl<IJugador['centroEducativo']>;
-  categorias: FormControl<IJugador['categorias']>;
 };
 
 export type JugadorFormGroup = FormGroup<JugadorFormGroupContent>;
@@ -98,11 +93,6 @@ export class JugadorFormService {
       imagenJugadorContentType: new FormControl(jugadorRawValue.imagenJugadorContentType),
       documentoIdentificacion: new FormControl(jugadorRawValue.documentoIdentificacion),
       documentoIdentificacionContentType: new FormControl(jugadorRawValue.documentoIdentificacionContentType),
-      centroSalud: new FormControl(jugadorRawValue.centroSalud),
-      previsionSalud: new FormControl(jugadorRawValue.previsionSalud),
-      comuna: new FormControl(jugadorRawValue.comuna),
-      centroEducativo: new FormControl(jugadorRawValue.centroEducativo),
-      categorias: new FormControl(jugadorRawValue.categorias),
     });
   }
 

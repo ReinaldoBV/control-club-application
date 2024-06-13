@@ -5,8 +5,6 @@ import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { of, Subject, from } from 'rxjs';
 
-import { IAsociados } from 'app/entities/asociados/asociados.model';
-import { AsociadosService } from 'app/entities/asociados/service/asociados.service';
 import { DirectivosService } from '../service/directivos.service';
 import { IDirectivos } from '../directivos.model';
 import { DirectivosFormService } from './directivos-form.service';
@@ -19,7 +17,6 @@ describe('Directivos Management Update Component', () => {
   let activatedRoute: ActivatedRoute;
   let directivosFormService: DirectivosFormService;
   let directivosService: DirectivosService;
-  let asociadosService: AsociadosService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -41,39 +38,17 @@ describe('Directivos Management Update Component', () => {
     activatedRoute = TestBed.inject(ActivatedRoute);
     directivosFormService = TestBed.inject(DirectivosFormService);
     directivosService = TestBed.inject(DirectivosService);
-    asociadosService = TestBed.inject(AsociadosService);
 
     comp = fixture.componentInstance;
   });
 
   describe('ngOnInit', () => {
-    it('Should call asociados query and add missing value', () => {
-      const directivos: IDirectivos = { id: 456 };
-      const asociados: IAsociados = { id: 29850 };
-      directivos.asociados = asociados;
-
-      const asociadosCollection: IAsociados[] = [{ id: 24297 }];
-      jest.spyOn(asociadosService, 'query').mockReturnValue(of(new HttpResponse({ body: asociadosCollection })));
-      const expectedCollection: IAsociados[] = [asociados, ...asociadosCollection];
-      jest.spyOn(asociadosService, 'addAsociadosToCollectionIfMissing').mockReturnValue(expectedCollection);
-
-      activatedRoute.data = of({ directivos });
-      comp.ngOnInit();
-
-      expect(asociadosService.query).toHaveBeenCalled();
-      expect(asociadosService.addAsociadosToCollectionIfMissing).toHaveBeenCalledWith(asociadosCollection, asociados);
-      expect(comp.asociadosCollection).toEqual(expectedCollection);
-    });
-
     it('Should update editForm', () => {
       const directivos: IDirectivos = { id: 456 };
-      const asociados: IAsociados = { id: 28499 };
-      directivos.asociados = asociados;
 
       activatedRoute.data = of({ directivos });
       comp.ngOnInit();
 
-      expect(comp.asociadosCollection).toContain(asociados);
       expect(comp.directivos).toEqual(directivos);
     });
   });
@@ -143,18 +118,6 @@ describe('Directivos Management Update Component', () => {
       expect(directivosService.update).toHaveBeenCalled();
       expect(comp.isSaving).toEqual(false);
       expect(comp.previousState).not.toHaveBeenCalled();
-    });
-  });
-
-  describe('Compare relationships', () => {
-    describe('compareAsociados', () => {
-      it('Should forward to asociadosService', () => {
-        const entity = { id: 123 };
-        const entity2 = { id: 456 };
-        jest.spyOn(asociadosService, 'compareAsociados');
-        comp.compareAsociados(entity, entity2);
-        expect(asociadosService.compareAsociados).toHaveBeenCalledWith(entity, entity2);
-      });
     });
   });
 });

@@ -93,46 +93,6 @@
               </div>
             }
           </dd>
-          <dt><span jhiTranslate="controlClubApplicationApp.jugador.centroSalud">Centro Salud</span></dt>
-          <dd>
-            @if (jugador()!.centroSalud) {
-              <div>
-                <a [routerLink]="['/centro-salud', jugador()!.centroSalud?.id, 'view']">{{ jugador()!.centroSalud?.id }}</a>
-              </div>
-            }
-          </dd>
-          <dt><span jhiTranslate="controlClubApplicationApp.jugador.previsionSalud">Prevision Salud</span></dt>
-          <dd>
-            @if (jugador()!.previsionSalud) {
-              <div>
-                <a [routerLink]="['/prevision-salud', jugador()!.previsionSalud?.id, 'view']">{{ jugador()!.previsionSalud?.id }}</a>
-              </div>
-            }
-          </dd>
-          <dt><span jhiTranslate="controlClubApplicationApp.jugador.comuna">Comuna</span></dt>
-          <dd>
-            @if (jugador()!.comuna) {
-              <div>
-                <a [routerLink]="['/comuna', jugador()!.comuna?.id, 'view']">{{ jugador()!.comuna?.id }}</a>
-              </div>
-            }
-          </dd>
-          <dt><span jhiTranslate="controlClubApplicationApp.jugador.centroEducativo">Centro Educativo</span></dt>
-          <dd>
-            @if (jugador()!.centroEducativo) {
-              <div>
-                <a [routerLink]="['/centro-educativo', jugador()!.centroEducativo?.id, 'view']">{{ jugador()!.centroEducativo?.id }}</a>
-              </div>
-            }
-          </dd>
-          <dt><span jhiTranslate="controlClubApplicationApp.jugador.categorias">Categorias</span></dt>
-          <dd>
-            @if (jugador()!.categorias) {
-              <div>
-                <a [routerLink]="['/categorias', jugador()!.categorias?.id, 'view']">{{ jugador()!.categorias?.id }}</a>
-              </div>
-            }
-          </dd>
         </dl>
 
         <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">

@@ -4,11 +4,7 @@ import cl.controlclub.myapp.domain.Jugador;
 import cl.controlclub.myapp.repository.JugadorRepository;
 import cl.controlclub.myapp.service.dto.JugadorDTO;
 import cl.controlclub.myapp.service.mapper.JugadorMapper;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -90,19 +86,6 @@ public class JugadorService {
     public Page<JugadorDTO> findAll(Pageable pageable) {
         log.debug("Request to get all Jugadors");
         return jugadorRepository.findAll(pageable).map(jugadorMapper::toDto);
-    }
-
-    /**
-     *  Get all the jugadors where Usuario is {@code null}.
-     *  @return the list of entities.
-     */
-    @Transactional(readOnly = true)
-    public List<JugadorDTO> findAllWhereUsuarioIsNull() {
-        log.debug("Request to get all jugadors where Usuario is null");
-        return StreamSupport.stream(jugadorRepository.findAll().spliterator(), false)
-            .filter(jugador -> jugador.getUsuario() == null)
-            .map(jugadorMapper::toDto)
-            .collect(Collectors.toCollection(LinkedList::new));
     }
 
     /**

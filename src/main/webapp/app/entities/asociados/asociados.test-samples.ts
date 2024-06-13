@@ -3,42 +3,42 @@ import dayjs from 'dayjs/esm';
 import { IAsociados, NewAsociados } from './asociados.model';
 
 export const sampleWithRequiredData: IAsociados = {
-  id: 15112,
-  nombres: 'unto worse',
-  apellidos: 'suffocation gracious qua',
-  cargo: 'gutter whoa',
-  telefono: 'outrun plagiarism that',
+  id: 29850,
+  nombres: 'whoa odd faithfully',
+  apellidos: 'plaintive wherever sequel',
+  cargo: 'only except',
+  telefono: 'supposing',
   fechaAsoc: dayjs('2024-06-13'),
-  email: 'Elena.PadronNavarro88@gmail.com',
+  email: 'Ester62@hotmail.com',
 };
 
 export const sampleWithPartialData: IAsociados = {
-  id: 14048,
-  nombres: 'instead for',
-  apellidos: 'grateful if oh',
-  cargo: 'in or',
-  telefono: 'unto',
+  id: 20874,
+  nombres: 'afore',
+  apellidos: 'dressing powerfully with',
+  cargo: 'brr vitiate',
+  telefono: 'plus',
   fechaAsoc: dayjs('2024-06-13'),
-  email: 'Adan_MelendezNoriega@yahoo.com',
+  email: 'Caridad_CortesGuajardo52@yahoo.com',
 };
 
 export const sampleWithFullData: IAsociados = {
-  id: 6226,
-  nombres: 'once supposing',
-  apellidos: 'needily continue enraged',
-  cargo: 'breadfruit forenenst',
-  telefono: 'fowl abolish jovial',
+  id: 5660,
+  nombres: 'regal inside',
+  apellidos: 'madly',
+  cargo: 'supposing bag',
+  telefono: 'continue enraged',
   fechaAsoc: dayjs('2024-06-13'),
-  email: 'Ruben.SantacruzAranda98@hotmail.com',
+  email: 'Pablo71@gmail.com',
 };
 
 export const sampleWithNewData: NewAsociados = {
-  nombres: 'whereas',
-  apellidos: 'mmm',
-  cargo: 'rotating',
-  telefono: 'forget achiever',
-  fechaAsoc: dayjs('2024-06-12'),
-  email: 'Pedro46@gmail.com',
+  nombres: 'up',
+  apellidos: 'glass',
+  cargo: 'kiddingly imaginary',
+  telefono: 'ugh',
+  fechaAsoc: dayjs('2024-06-13'),
+  email: 'Rafael.SaavedraSalas97@hotmail.com',
   id: null,
 };
 

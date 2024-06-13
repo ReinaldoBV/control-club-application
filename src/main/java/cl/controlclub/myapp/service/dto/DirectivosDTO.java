@@ -34,8 +34,6 @@ public class DirectivosDTO implements Serializable {
     @NotNull
     private String email;
 
-    private AsociadosDTO asociados;
-
     public Long getId() {
         return id;
     }
@@ -100,14 +98,6 @@ public class DirectivosDTO implements Serializable {
         this.email = email;
     }
 
-    public AsociadosDTO getAsociados() {
-        return asociados;
-    }
-
-    public void setAsociados(AsociadosDTO asociados) {
-        this.asociados = asociados;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -141,7 +131,6 @@ public class DirectivosDTO implements Serializable {
             ", fechaEleccion='" + getFechaEleccion() + "'" +
             ", fechaVencimiento='" + getFechaVencimiento() + "'" +
             ", email='" + getEmail() + "'" +
-            ", asociados=" + getAsociados() +
             "}";
     }
 }

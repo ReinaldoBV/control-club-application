@@ -4,11 +4,7 @@ import cl.controlclub.myapp.domain.PrevisionSalud;
 import cl.controlclub.myapp.repository.PrevisionSaludRepository;
 import cl.controlclub.myapp.service.dto.PrevisionSaludDTO;
 import cl.controlclub.myapp.service.mapper.PrevisionSaludMapper;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -90,19 +86,6 @@ public class PrevisionSaludService {
     public Page<PrevisionSaludDTO> findAll(Pageable pageable) {
         log.debug("Request to get all PrevisionSaluds");
         return previsionSaludRepository.findAll(pageable).map(previsionSaludMapper::toDto);
-    }
-
-    /**
-     *  Get all the previsionSaluds where Jugador is {@code null}.
-     *  @return the list of entities.
-     */
-    @Transactional(readOnly = true)
-    public List<PrevisionSaludDTO> findAllWhereJugadorIsNull() {
-        log.debug("Request to get all previsionSaluds where Jugador is null");
-        return StreamSupport.stream(previsionSaludRepository.findAll().spliterator(), false)
-            .filter(previsionSalud -> previsionSalud.getJugador() == null)
-            .map(previsionSaludMapper::toDto)
-            .collect(Collectors.toCollection(LinkedList::new));
     }
 
     /**

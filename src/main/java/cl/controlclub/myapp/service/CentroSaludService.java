@@ -4,11 +4,7 @@ import cl.controlclub.myapp.domain.CentroSalud;
 import cl.controlclub.myapp.repository.CentroSaludRepository;
 import cl.controlclub.myapp.service.dto.CentroSaludDTO;
 import cl.controlclub.myapp.service.mapper.CentroSaludMapper;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -90,19 +86,6 @@ public class CentroSaludService {
     public Page<CentroSaludDTO> findAll(Pageable pageable) {
         log.debug("Request to get all CentroSaluds");
         return centroSaludRepository.findAll(pageable).map(centroSaludMapper::toDto);
-    }
-
-    /**
-     *  Get all the centroSaluds where Jugador is {@code null}.
-     *  @return the list of entities.
-     */
-    @Transactional(readOnly = true)
-    public List<CentroSaludDTO> findAllWhereJugadorIsNull() {
-        log.debug("Request to get all centroSaluds where Jugador is null");
-        return StreamSupport.stream(centroSaludRepository.findAll().spliterator(), false)
-            .filter(centroSalud -> centroSalud.getJugador() == null)
-            .map(centroSaludMapper::toDto)
-            .collect(Collectors.toCollection(LinkedList::new));
     }
 
     /**

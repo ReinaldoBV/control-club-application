@@ -31,8 +31,6 @@ public class CuerpoTecnicoDTO implements Serializable {
     @NotNull
     private String email;
 
-    private AsociadosDTO asociados;
-
     public Long getId() {
         return id;
     }
@@ -89,14 +87,6 @@ public class CuerpoTecnicoDTO implements Serializable {
         this.email = email;
     }
 
-    public AsociadosDTO getAsociados() {
-        return asociados;
-    }
-
-    public void setAsociados(AsociadosDTO asociados) {
-        this.asociados = asociados;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -129,7 +119,6 @@ public class CuerpoTecnicoDTO implements Serializable {
             ", telefono='" + getTelefono() + "'" +
             ", fechaInicio='" + getFechaInicio() + "'" +
             ", email='" + getEmail() + "'" +
-            ", asociados=" + getAsociados() +
             "}";
     }
 }

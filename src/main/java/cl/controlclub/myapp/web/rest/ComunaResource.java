@@ -17,7 +17,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -140,18 +139,10 @@ public class ComunaResource {
      * {@code GET  /comunas} : get all the comunas.
      *
      * @param pageable the pagination information.
-     * @param filter the filter of the request.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of comunas in body.
      */
     @GetMapping("")
-    public ResponseEntity<List<ComunaDTO>> getAllComunas(
-        @org.springdoc.core.annotations.ParameterObject Pageable pageable,
-        @RequestParam(name = "filter", required = false) String filter
-    ) {
-        if ("jugador-is-null".equals(filter)) {
-            log.debug("REST request to get all Comunas where jugador is null");
-            return new ResponseEntity<>(comunaService.findAllWhereJugadorIsNull(), HttpStatus.OK);
-        }
+    public ResponseEntity<List<ComunaDTO>> getAllComunas(@org.springdoc.core.annotations.ParameterObject Pageable pageable) {
         log.debug("REST request to get a page of Comunas");
         Page<ComunaDTO> page = comunaService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);

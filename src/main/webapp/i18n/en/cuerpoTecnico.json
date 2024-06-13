@@ -23,9 +23,7 @@
       "rolTecnico": "Rol Tecnico",
       "telefono": "Telefono",
       "fechaInicio": "Fecha Inicio",
-      "email": "Email",
-      "asociados": "Asociados",
-      "usuario": "Usuario"
+      "email": "Email"
     }
   }
 }

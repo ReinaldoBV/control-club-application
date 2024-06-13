@@ -24,7 +24,6 @@ type CuerpoTecnicoFormGroupContent = {
   telefono: FormControl<ICuerpoTecnico['telefono']>;
   fechaInicio: FormControl<ICuerpoTecnico['fechaInicio']>;
   email: FormControl<ICuerpoTecnico['email']>;
-  asociados: FormControl<ICuerpoTecnico['asociados']>;
 };
 
 export type CuerpoTecnicoFormGroup = FormGroup<CuerpoTecnicoFormGroupContent>;
@@ -62,7 +61,6 @@ export class CuerpoTecnicoFormService {
       email: new FormControl(cuerpoTecnicoRawValue.email, {
         validators: [Validators.required],
       }),
-      asociados: new FormControl(cuerpoTecnicoRawValue.asociados),
     });
   }
 

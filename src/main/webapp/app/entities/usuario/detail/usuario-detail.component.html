@@ -31,38 +31,6 @@
               ]
             }}</span>
           </dd>
-          <dt><span jhiTranslate="controlClubApplicationApp.usuario.jugador">Jugador</span></dt>
-          <dd>
-            @if (usuario()!.jugador) {
-              <div>
-                <a [routerLink]="['/jugador', usuario()!.jugador?.id, 'view']">{{ usuario()!.jugador?.id }}</a>
-              </div>
-            }
-          </dd>
-          <dt><span jhiTranslate="controlClubApplicationApp.usuario.asociados">Asociados</span></dt>
-          <dd>
-            @if (usuario()!.asociados) {
-              <div>
-                <a [routerLink]="['/asociados', usuario()!.asociados?.id, 'view']">{{ usuario()!.asociados?.id }}</a>
-              </div>
-            }
-          </dd>
-          <dt><span jhiTranslate="controlClubApplicationApp.usuario.directivos">Directivos</span></dt>
-          <dd>
-            @if (usuario()!.directivos) {
-              <div>
-                <a [routerLink]="['/directivos', usuario()!.directivos?.id, 'view']">{{ usuario()!.directivos?.id }}</a>
-              </div>
-            }
-          </dd>
-          <dt><span jhiTranslate="controlClubApplicationApp.usuario.cuerpoTecnico">Cuerpo Tecnico</span></dt>
-          <dd>
-            @if (usuario()!.cuerpoTecnico) {
-              <div>
-                <a [routerLink]="['/cuerpo-tecnico', usuario()!.cuerpoTecnico?.id, 'view']">{{ usuario()!.cuerpoTecnico?.id }}</a>
-              </div>
-            }
-          </dd>
         </dl>
 
         <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">

@@ -17,7 +17,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -140,28 +139,10 @@ public class AsociadosResource {
      * {@code GET  /asociados} : get all the asociados.
      *
      * @param pageable the pagination information.
-     * @param filter the filter of the request.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of asociados in body.
      */
     @GetMapping("")
-    public ResponseEntity<List<AsociadosDTO>> getAllAsociados(
-        @org.springdoc.core.annotations.ParameterObject Pageable pageable,
-        @RequestParam(name = "filter", required = false) String filter
-    ) {
-        if ("usuario-is-null".equals(filter)) {
-            log.debug("REST request to get all Asociadoss where usuario is null");
-            return new ResponseEntity<>(asociadosService.findAllWhereUsuarioIsNull(), HttpStatus.OK);
-        }
-
-        if ("directivos-is-null".equals(filter)) {
-            log.debug("REST request to get all Asociadoss where directivos is null");
-            return new ResponseEntity<>(asociadosService.findAllWhereDirectivosIsNull(), HttpStatus.OK);
-        }
-
-        if ("cuerpotecnico-is-null".equals(filter)) {
-            log.debug("REST request to get all Asociadoss where cuerpoTecnico is null");
-            return new ResponseEntity<>(asociadosService.findAllWhereCuerpoTecnicoIsNull(), HttpStatus.OK);
-        }
+    public ResponseEntity<List<AsociadosDTO>> getAllAsociados(@org.springdoc.core.annotations.ParameterObject Pageable pageable) {
         log.debug("REST request to get a page of Asociados");
         Page<AsociadosDTO> page = asociadosService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
