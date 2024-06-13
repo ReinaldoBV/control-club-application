@@ -1,0 +1,29 @@
+{
+  "controlClubApplicationApp": {
+    "asociados": {
+      "home": {
+        "title": "Asociados",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Asociados",
+        "createOrEditLabel": "Create or edit a Asociados",
+        "notFound": "No Asociados found"
+      },
+      "created": "A new Asociados is created with identifier {{ param }}",
+      "updated": "A Asociados is updated with identifier {{ param }}",
+      "deleted": "A Asociados is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Asociados {{ id }}?"
+      },
+      "detail": {
+        "title": "Asociados"
+      },
+      "id": "ID",
+      "nombres": "Nombres",
+      "apellidos": "Apellidos",
+      "cargo": "Cargo",
+      "telefono": "Telefono",
+      "fechaAsoc": "Fecha Asoc",
+      "email": "Email"
+    }
+  }
+}

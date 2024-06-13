@@ -1,0 +1,42 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (partido()) {
+      <div>
+        <h2 data-cy="partidoDetailsHeading"><span jhiTranslate="controlClubApplicationApp.partido.detail.title">Partido</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ partido()!.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.partido.fecha">Fecha</span></dt>
+          <dd>
+            <span>{{ partido()!.fecha | formatMediumDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.partido.oponente">Oponente</span></dt>
+          <dd>
+            <span>{{ partido()!.oponente }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.partido.resultado">Resultado</span></dt>
+          <dd>
+            <span>{{ partido()!.resultado }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+        </button>
+
+        <button type="button" [routerLink]="['/partido', partido()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

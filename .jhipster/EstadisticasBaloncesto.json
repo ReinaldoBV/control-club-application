@@ -1,0 +1,38 @@
+{
+  "annotations": {
+    "changelogDate": "20240613164808"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "puntos",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "rebotes",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "asistencias",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "robos",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "bloqueos",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "porcentajeTiro",
+      "fieldType": "BigDecimal"
+    }
+  ],
+  "name": "EstadisticasBaloncesto",
+  "pagination": "pagination",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

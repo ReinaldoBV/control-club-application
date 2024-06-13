@@ -1,0 +1,56 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (estadisticasBaloncesto()) {
+      <div>
+        <h2 data-cy="estadisticasBaloncestoDetailsHeading">
+          <span jhiTranslate="controlClubApplicationApp.estadisticasBaloncesto.detail.title">Estadisticas Baloncesto</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ estadisticasBaloncesto()!.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.estadisticasBaloncesto.puntos">Puntos</span></dt>
+          <dd>
+            <span>{{ estadisticasBaloncesto()!.puntos }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.estadisticasBaloncesto.rebotes">Rebotes</span></dt>
+          <dd>
+            <span>{{ estadisticasBaloncesto()!.rebotes }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.estadisticasBaloncesto.asistencias">Asistencias</span></dt>
+          <dd>
+            <span>{{ estadisticasBaloncesto()!.asistencias }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.estadisticasBaloncesto.robos">Robos</span></dt>
+          <dd>
+            <span>{{ estadisticasBaloncesto()!.robos }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.estadisticasBaloncesto.bloqueos">Bloqueos</span></dt>
+          <dd>
+            <span>{{ estadisticasBaloncesto()!.bloqueos }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.estadisticasBaloncesto.porcentajeTiro">Porcentaje Tiro</span></dt>
+          <dd>
+            <span>{{ estadisticasBaloncesto()!.porcentajeTiro }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+        </button>
+
+        <button type="button" [routerLink]="['/estadisticas-baloncesto', estadisticasBaloncesto()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

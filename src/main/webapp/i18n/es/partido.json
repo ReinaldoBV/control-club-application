@@ -1,0 +1,26 @@
+{
+  "controlClubApplicationApp": {
+    "partido": {
+      "home": {
+        "title": "Partidos",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Partido",
+        "createOrEditLabel": "Crear o editar Partido",
+        "notFound": "Ningún Partidos encontrado"
+      },
+      "created": "Un nuevo Partido ha sido creado con el identificador {{ param }}",
+      "updated": "Un Partido ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Partido ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Partido {{ id }}?"
+      },
+      "detail": {
+        "title": "Partido"
+      },
+      "id": "ID",
+      "fecha": "Fecha",
+      "oponente": "Oponente",
+      "resultado": "Resultado"
+    }
+  }
+}

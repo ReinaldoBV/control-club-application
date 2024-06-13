@@ -1,0 +1,58 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (directivos()) {
+      <div>
+        <h2 data-cy="directivosDetailsHeading"><span jhiTranslate="controlClubApplicationApp.directivos.detail.title">Directivos</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ directivos()!.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.directivos.nombres">Nombres</span></dt>
+          <dd>
+            <span>{{ directivos()!.nombres }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.directivos.apellidos">Apellidos</span></dt>
+          <dd>
+            <span>{{ directivos()!.apellidos }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.directivos.cargo">Cargo</span></dt>
+          <dd>
+            <span>{{ directivos()!.cargo }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.directivos.telefono">Telefono</span></dt>
+          <dd>
+            <span>{{ directivos()!.telefono }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.directivos.fechaEleccion">Fecha Eleccion</span></dt>
+          <dd>
+            <span>{{ directivos()!.fechaEleccion | formatMediumDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.directivos.fechaVencimiento">Fecha Vencimiento</span></dt>
+          <dd>
+            <span>{{ directivos()!.fechaVencimiento | formatMediumDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.directivos.email">Email</span></dt>
+          <dd>
+            <span>{{ directivos()!.email }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+        </button>
+
+        <button type="button" [routerLink]="['/directivos', directivos()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

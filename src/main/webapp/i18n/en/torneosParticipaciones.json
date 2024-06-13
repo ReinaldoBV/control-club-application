@@ -1,0 +1,26 @@
+{
+  "controlClubApplicationApp": {
+    "torneosParticipaciones": {
+      "home": {
+        "title": "Torneos Participaciones",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Torneos Participaciones",
+        "createOrEditLabel": "Create or edit a Torneos Participaciones",
+        "notFound": "No Torneos Participaciones found"
+      },
+      "created": "A new Torneos Participaciones is created with identifier {{ param }}",
+      "updated": "A Torneos Participaciones is updated with identifier {{ param }}",
+      "deleted": "A Torneos Participaciones is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Torneos Participaciones {{ id }}?"
+      },
+      "detail": {
+        "title": "Torneos Participaciones"
+      },
+      "id": "ID",
+      "descripcion": "Descripcion",
+      "monto": "Monto",
+      "fecha": "Fecha"
+    }
+  }
+}
