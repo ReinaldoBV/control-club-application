@@ -24,6 +24,7 @@ type PadreFormGroupContent = {
   telefono: FormControl<IPadre['telefono']>;
   asociado: FormControl<IPadre['asociado']>;
   email: FormControl<IPadre['email']>;
+  jugador: FormControl<IPadre['jugador']>;
 };
 
 export type PadreFormGroup = FormGroup<PadreFormGroupContent>;
@@ -61,6 +62,7 @@ export class PadreFormService {
       email: new FormControl(padreRawValue.email, {
         validators: [Validators.required],
       }),
+      jugador: new FormControl(padreRawValue.jugador),
     });
   }
 

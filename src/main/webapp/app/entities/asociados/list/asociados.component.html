@@ -84,6 +84,12 @@
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
+            <th scope="col" jhiSortBy="jugador.id">
+              <div class="d-flex">
+                <span jhiTranslate="controlClubApplicationApp.asociados.jugador">Jugador</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
             <th scope="col"></th>
           </tr>
         </thead>
@@ -99,6 +105,13 @@
               <td>{{ asociados.telefono }}</td>
               <td>{{ asociados.fechaAsoc | formatMediumDate }}</td>
               <td>{{ asociados.email }}</td>
+              <td>
+                @if (asociados.jugador) {
+                  <div>
+                    <a [routerLink]="['/jugador', asociados.jugador.id, 'view']">{{ asociados.jugador.id }}</a>
+                  </div>
+                }
+              </td>
               <td class="text-end">
                 <div class="btn-group">
                   <a [routerLink]="['/asociados', asociados.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">

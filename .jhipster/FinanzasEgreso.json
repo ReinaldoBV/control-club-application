@@ -1,0 +1,43 @@
+{
+  "annotations": {
+    "changelogDate": "20240613174733"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "tipo",
+      "fieldType": "TipoEgreso",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "TRANSFERENCIA,EFECTIVO,CHEQUE"
+    },
+    {
+      "fieldName": "descripcion",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "monto",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "fecha",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "FinanzasEgreso",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "cuentas",
+      "otherEntityRelationshipName": "finanzasEgreso",
+      "relationshipName": "cuentas",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

@@ -356,7 +356,7 @@ class TorneosParticipacionesResourceIT {
         TorneosParticipaciones partialUpdatedTorneosParticipaciones = new TorneosParticipaciones();
         partialUpdatedTorneosParticipaciones.setId(torneosParticipaciones.getId());
 
-        partialUpdatedTorneosParticipaciones.monto(UPDATED_MONTO);
+        partialUpdatedTorneosParticipaciones.descripcion(UPDATED_DESCRIPCION).fecha(UPDATED_FECHA);
 
         restTorneosParticipacionesMockMvc
             .perform(

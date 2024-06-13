@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <!--
+        Added the constraints for entity Jugador.
+    -->
+    <changeSet id="20240613174729-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="centro_salud_id"
+                                 baseTableName="jugador"
+                                 constraintName="fk_jugador__centro_salud_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="centro_salud"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="prevision_salud_id"
+                                 baseTableName="jugador"
+                                 constraintName="fk_jugador__prevision_salud_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="prevision_salud"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="comuna_id"
+                                 baseTableName="jugador"
+                                 constraintName="fk_jugador__comuna_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="comuna"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="centro_educativo_id"
+                                 baseTableName="jugador"
+                                 constraintName="fk_jugador__centro_educativo_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="centro_educativo"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="categorias_id"
+                                 baseTableName="jugador"
+                                 constraintName="fk_jugador__categorias_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="categorias"
+                                 />
+    </changeSet>
+</databaseChangeLog>

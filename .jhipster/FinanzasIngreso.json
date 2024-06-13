@@ -1,0 +1,43 @@
+{
+  "annotations": {
+    "changelogDate": "20240613174732"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "tipo",
+      "fieldType": "TipoIngreso",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "TRANSFERENCIA,EFECTIVO,CHEQUE"
+    },
+    {
+      "fieldName": "descripcion",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "monto",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "fecha",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "FinanzasIngreso",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "jugador",
+      "otherEntityRelationshipName": "finanzasIngreso",
+      "relationshipName": "jugador",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

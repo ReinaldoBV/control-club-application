@@ -1,5 +1,6 @@
 package cl.controlclub.myapp.domain;
 
+import static cl.controlclub.myapp.domain.JugadorTestSamples.*;
 import static cl.controlclub.myapp.domain.PadreTestSamples.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -20,5 +21,17 @@ class PadreTest {
 
         padre2 = getPadreSample2();
         assertThat(padre1).isNotEqualTo(padre2);
+    }
+
+    @Test
+    void jugadorTest() {
+        Padre padre = getPadreRandomSampleGenerator();
+        Jugador jugadorBack = getJugadorRandomSampleGenerator();
+
+        padre.setJugador(jugadorBack);
+        assertThat(padre.getJugador()).isEqualTo(jugadorBack);
+
+        padre.jugador(null);
+        assertThat(padre.getJugador()).isNull();
     }
 }

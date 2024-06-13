@@ -1,0 +1,31 @@
+{
+  "controlClubApplicationApp": {
+    "cuentas": {
+      "home": {
+        "title": "Cuentas",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Cuentas",
+        "createOrEditLabel": "Create or edit a Cuentas",
+        "notFound": "No Cuentas found"
+      },
+      "created": "A new Cuentas is created with identifier {{ param }}",
+      "updated": "A Cuentas is updated with identifier {{ param }}",
+      "deleted": "A Cuentas is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Cuentas {{ id }}?"
+      },
+      "detail": {
+        "title": "Cuentas"
+      },
+      "id": "ID",
+      "tipo": "Tipo",
+      "descripcion": "Descripcion",
+      "monto": "Monto",
+      "nroCuotas": "Nro Cuotas",
+      "fechaVencimiento": "Fecha Vencimiento",
+      "estado": "Estado",
+      "jugador": "Jugador",
+      "finanzasEgreso": "Finanzas Egreso"
+    }
+  }
+}

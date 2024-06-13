@@ -450,7 +450,12 @@ class DirectivosResourceIT {
         Directivos partialUpdatedDirectivos = new Directivos();
         partialUpdatedDirectivos.setId(directivos.getId());
 
-        partialUpdatedDirectivos.nombres(UPDATED_NOMBRES).fechaVencimiento(UPDATED_FECHA_VENCIMIENTO).email(UPDATED_EMAIL);
+        partialUpdatedDirectivos
+            .nombres(UPDATED_NOMBRES)
+            .apellidos(UPDATED_APELLIDOS)
+            .telefono(UPDATED_TELEFONO)
+            .fechaEleccion(UPDATED_FECHA_ELECCION)
+            .fechaVencimiento(UPDATED_FECHA_VENCIMIENTO);
 
         restDirectivosMockMvc
             .perform(

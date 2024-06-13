@@ -1,0 +1,50 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (bienes()) {
+      <div>
+        <h2 data-cy="bienesDetailsHeading"><span jhiTranslate="controlClubApplicationApp.bienes.detail.title">Bienes</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ bienes()!.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.bienes.descripcion">Descripcion</span></dt>
+          <dd>
+            <span>{{ bienes()!.descripcion }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.bienes.cantidad">Cantidad</span></dt>
+          <dd>
+            <span>{{ bienes()!.cantidad }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.bienes.estado">Estado</span></dt>
+          <dd>
+            <span>{{ bienes()!.estado }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.bienes.asignadoA">Asignado A</span></dt>
+          <dd>
+            @if (bienes()!.asignadoA) {
+              <div>
+                <a [routerLink]="['/jugador', bienes()!.asignadoA?.id, 'view']">{{ bienes()!.asignadoA?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+        </button>
+
+        <button type="button" [routerLink]="['/bienes', bienes()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

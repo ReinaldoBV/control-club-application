@@ -56,5 +56,9 @@ public class CentroEducativoAsserts {
      * @param expected the expected entity
      * @param actual the actual entity
      */
-    public static void assertCentroEducativoUpdatableRelationshipsEquals(CentroEducativo expected, CentroEducativo actual) {}
+    public static void assertCentroEducativoUpdatableRelationshipsEquals(CentroEducativo expected, CentroEducativo actual) {
+        assertThat(expected)
+            .as("Verify CentroEducativo relationships")
+            .satisfies(e -> assertThat(e.getComuna()).as("check comuna").isEqualTo(actual.getComuna()));
+    }
 }

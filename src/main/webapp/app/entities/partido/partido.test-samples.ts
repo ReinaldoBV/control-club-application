@@ -3,28 +3,28 @@ import dayjs from 'dayjs/esm';
 import { IPartido, NewPartido } from './partido.model';
 
 export const sampleWithRequiredData: IPartido = {
-  id: 11559,
+  id: 26152,
   fecha: dayjs('2024-06-13'),
-  oponente: 'blah knavishly courageously',
+  oponente: 'following ack versus',
 };
 
 export const sampleWithPartialData: IPartido = {
-  id: 18843,
+  id: 30273,
   fecha: dayjs('2024-06-13'),
-  oponente: 'clump',
-  resultado: 'wetly',
+  oponente: 'hear',
+  resultado: 'helpfully',
 };
 
 export const sampleWithFullData: IPartido = {
-  id: 245,
-  fecha: dayjs('2024-06-12'),
-  oponente: 'bashfully demolish beneath',
-  resultado: 'unnecessarily until',
+  id: 15656,
+  fecha: dayjs('2024-06-13'),
+  oponente: 'how outside outrageous',
+  resultado: 'whoever',
 };
 
 export const sampleWithNewData: NewPartido = {
   fecha: dayjs('2024-06-13'),
-  oponente: 'instead on collision',
+  oponente: 'epee shell geez',
   id: null,
 };
 

@@ -39,6 +39,14 @@
           <dd>
             <span>{{ asociados()!.email }}</span>
           </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.asociados.jugador">Jugador</span></dt>
+          <dd>
+            @if (asociados()!.jugador) {
+              <div>
+                <a [routerLink]="['/jugador', asociados()!.jugador?.id, 'view']">{{ asociados()!.jugador?.id }}</a>
+              </div>
+            }
+          </dd>
         </dl>
 
         <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">

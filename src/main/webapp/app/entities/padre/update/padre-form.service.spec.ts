@@ -26,6 +26,7 @@ describe('Padre Form Service', () => {
             telefono: expect.any(Object),
             asociado: expect.any(Object),
             email: expect.any(Object),
+            jugador: expect.any(Object),
           }),
         );
       });
@@ -42,6 +43,7 @@ describe('Padre Form Service', () => {
             telefono: expect.any(Object),
             asociado: expect.any(Object),
             email: expect.any(Object),
+            jugador: expect.any(Object),
           }),
         );
       });

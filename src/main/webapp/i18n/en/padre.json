@@ -23,7 +23,8 @@
       "relacion": "Relacion",
       "telefono": "Telefono",
       "asociado": "Asociado",
-      "email": "Email"
+      "email": "Email",
+      "jugador": "Jugador"
     }
   }
 }

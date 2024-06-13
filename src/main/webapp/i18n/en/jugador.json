@@ -1,0 +1,47 @@
+{
+  "controlClubApplicationApp": {
+    "jugador": {
+      "home": {
+        "title": "Jugadors",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Jugador",
+        "createOrEditLabel": "Create or edit a Jugador",
+        "notFound": "No Jugadors found"
+      },
+      "created": "A new Jugador is created with identifier {{ param }}",
+      "updated": "A Jugador is updated with identifier {{ param }}",
+      "deleted": "A Jugador is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Jugador {{ id }}?"
+      },
+      "detail": {
+        "title": "Jugador"
+      },
+      "id": "ID",
+      "nroIdentificacion": "Nro Identificacion",
+      "tipoIdentificacion": "Tipo Identificacion",
+      "nombres": "Nombres",
+      "apellidos": "Apellidos",
+      "nacionalidad": "Nacionalidad",
+      "edad": "Edad",
+      "fechaNacimiento": "Fecha Nacimiento",
+      "numeroCamisa": "Numero Camisa",
+      "contactoEmergencia": "Contacto Emergencia",
+      "calleAvenidaDireccion": "Calle Avenida Direccion",
+      "numeroDireccion": "Numero Direccion",
+      "numeroPersonal": "Numero Personal",
+      "imagenJugador": "Imagen Jugador",
+      "documentoIdentificacion": "Documento Identificacion",
+      "centroSalud": "Centro Salud",
+      "previsionSalud": "Prevision Salud",
+      "comuna": "Comuna",
+      "centroEducativo": "Centro Educativo",
+      "categorias": "Categorias",
+      "usuario": "Usuario",
+      "finanzasIngreso": "Finanzas Ingreso",
+      "cuentas": "Cuentas",
+      "padre": "Padre",
+      "asociados": "Asociados"
+    }
+  }
+}

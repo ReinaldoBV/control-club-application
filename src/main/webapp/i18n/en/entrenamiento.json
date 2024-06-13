@@ -1,0 +1,26 @@
+{
+  "controlClubApplicationApp": {
+    "entrenamiento": {
+      "home": {
+        "title": "Entrenamientos",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Entrenamiento",
+        "createOrEditLabel": "Create or edit a Entrenamiento",
+        "notFound": "No Entrenamientos found"
+      },
+      "created": "A new Entrenamiento is created with identifier {{ param }}",
+      "updated": "A Entrenamiento is updated with identifier {{ param }}",
+      "deleted": "A Entrenamiento is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Entrenamiento {{ id }}?"
+      },
+      "detail": {
+        "title": "Entrenamiento"
+      },
+      "id": "ID",
+      "fechaHora": "Fecha Hora",
+      "duracion": "Duracion",
+      "cuerpoTecnico": "Cuerpo Tecnico"
+    }
+  }
+}

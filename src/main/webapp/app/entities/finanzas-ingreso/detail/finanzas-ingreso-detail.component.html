@@ -1,0 +1,58 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (finanzasIngreso()) {
+      <div>
+        <h2 data-cy="finanzasIngresoDetailsHeading">
+          <span jhiTranslate="controlClubApplicationApp.finanzasIngreso.detail.title">Finanzas Ingreso</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ finanzasIngreso()!.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.finanzasIngreso.tipo">Tipo</span></dt>
+          <dd>
+            <span [jhiTranslate]="'controlClubApplicationApp.TipoIngreso.' + (finanzasIngreso()!.tipo ?? 'null')">{{
+              { null: '', TRANSFERENCIA: 'TRANSFERENCIA', EFECTIVO: 'EFECTIVO', CHEQUE: 'CHEQUE' }[finanzasIngreso()!.tipo ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.finanzasIngreso.descripcion">Descripcion</span></dt>
+          <dd>
+            <span>{{ finanzasIngreso()!.descripcion }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.finanzasIngreso.monto">Monto</span></dt>
+          <dd>
+            <span>{{ finanzasIngreso()!.monto }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.finanzasIngreso.fecha">Fecha</span></dt>
+          <dd>
+            <span>{{ finanzasIngreso()!.fecha | formatMediumDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.finanzasIngreso.jugador">Jugador</span></dt>
+          <dd>
+            @if (finanzasIngreso()!.jugador) {
+              <div>
+                <a [routerLink]="['/jugador', finanzasIngreso()!.jugador?.id, 'view']">{{ finanzasIngreso()!.jugador?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+        </button>
+
+        <button type="button" [routerLink]="['/finanzas-ingreso', finanzasIngreso()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

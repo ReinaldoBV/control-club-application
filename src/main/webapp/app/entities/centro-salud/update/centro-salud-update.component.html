@@ -39,6 +39,23 @@
             </div>
           }
         </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_comuna" jhiTranslate="controlClubApplicationApp.centroSalud.comuna">Comuna</label>
+          <select
+            class="form-control"
+            id="field_comuna"
+            data-cy="comuna"
+            name="comuna"
+            formControlName="comuna"
+            [compareWith]="compareComuna"
+          >
+            <option [ngValue]="null"></option>
+            @for (comunaOption of comunasSharedCollection; track $index) {
+              <option [ngValue]="comunaOption">{{ comunaOption.id }}</option>
+            }
+          </select>
+        </div>
       </div>
 
       <div>
