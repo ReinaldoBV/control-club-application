@@ -1,0 +1,29 @@
+{
+  "controlClubApplicationApp": {
+    "estadisticasBaloncesto": {
+      "home": {
+        "title": "Estadisticas Baloncestos",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Estadisticas Baloncesto",
+        "createOrEditLabel": "Crear o editar Estadisticas Baloncesto",
+        "notFound": "Ningún Estadisticas Baloncestos encontrado"
+      },
+      "created": "Un nuevo Estadisticas Baloncesto ha sido creado con el identificador {{ param }}",
+      "updated": "Un Estadisticas Baloncesto ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Estadisticas Baloncesto ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Estadisticas Baloncesto {{ id }}?"
+      },
+      "detail": {
+        "title": "Estadisticas Baloncesto"
+      },
+      "id": "ID",
+      "puntos": "Puntos",
+      "rebotes": "Rebotes",
+      "asistencias": "Asistencias",
+      "robos": "Robos",
+      "bloqueos": "Bloqueos",
+      "porcentajeTiro": "Porcentaje Tiro"
+    }
+  }
+}

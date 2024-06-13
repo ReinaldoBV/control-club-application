@@ -1,0 +1,95 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-estadisticas-baloncesto-heading"
+        data-cy="EstadisticasBaloncestoCreateUpdateHeading"
+        jhiTranslate="controlClubApplicationApp.estadisticasBaloncesto.home.createOrEditLabel"
+      >
+        Crear o editar Estadisticas Baloncesto
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="controlClubApplicationApp.estadisticasBaloncesto.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_puntos" jhiTranslate="controlClubApplicationApp.estadisticasBaloncesto.puntos">Puntos</label>
+          <input type="number" class="form-control" name="puntos" id="field_puntos" data-cy="puntos" formControlName="puntos" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_rebotes" jhiTranslate="controlClubApplicationApp.estadisticasBaloncesto.rebotes"
+            >Rebotes</label
+          >
+          <input type="number" class="form-control" name="rebotes" id="field_rebotes" data-cy="rebotes" formControlName="rebotes" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_asistencias" jhiTranslate="controlClubApplicationApp.estadisticasBaloncesto.asistencias"
+            >Asistencias</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="asistencias"
+            id="field_asistencias"
+            data-cy="asistencias"
+            formControlName="asistencias"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_robos" jhiTranslate="controlClubApplicationApp.estadisticasBaloncesto.robos">Robos</label>
+          <input type="number" class="form-control" name="robos" id="field_robos" data-cy="robos" formControlName="robos" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_bloqueos" jhiTranslate="controlClubApplicationApp.estadisticasBaloncesto.bloqueos"
+            >Bloqueos</label
+          >
+          <input type="number" class="form-control" name="bloqueos" id="field_bloqueos" data-cy="bloqueos" formControlName="bloqueos" />
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_porcentajeTiro"
+            jhiTranslate="controlClubApplicationApp.estadisticasBaloncesto.porcentajeTiro"
+            >Porcentaje Tiro</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="porcentajeTiro"
+            id="field_porcentajeTiro"
+            data-cy="porcentajeTiro"
+            formControlName="porcentajeTiro"
+          />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancelar</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Guardar</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

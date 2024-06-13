@@ -291,8 +291,6 @@ class ComunaResourceIT {
         Comuna partialUpdatedComuna = new Comuna();
         partialUpdatedComuna.setId(comuna.getId());
 
-        partialUpdatedComuna.comuna(UPDATED_COMUNA);
-
         restComunaMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, partialUpdatedComuna.getId())

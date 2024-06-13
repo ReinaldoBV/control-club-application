@@ -16,6 +16,12 @@
     <include file="config/liquibase/changelog/20240613162322_added_entity_CentroSalud.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20240613163025_added_entity_CentroEducativo.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20240613163026_added_entity_Categorias.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240613164804_added_entity_Directivos.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240613164805_added_entity_Asociados.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240613164806_added_entity_Padre.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240613164807_added_entity_TorneosParticipaciones.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240613164808_added_entity_EstadisticasBaloncesto.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240613164809_added_entity_Partido.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->

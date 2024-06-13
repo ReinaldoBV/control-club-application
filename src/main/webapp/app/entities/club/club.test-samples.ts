@@ -3,42 +3,42 @@ import dayjs from 'dayjs/esm';
 import { IClub, NewClub } from './club.model';
 
 export const sampleWithRequiredData: IClub = {
-  id: 4079,
-  razon: 'failing',
-  direccion: 'following gadzooks',
-  telefono: 'ick',
-  email: 'Mayte_HernandezArmenta46@yahoo.com',
+  id: 5699,
+  razon: 'violence aw dribble',
+  direccion: 'for fantasize jagged',
+  telefono: 'with',
+  email: 'Enrique21@yahoo.com',
   fechaFundacion: dayjs('2024-06-13'),
-  presidente: 'inside',
+  presidente: 'vide boring ugh',
 };
 
 export const sampleWithPartialData: IClub = {
-  id: 5950,
-  razon: 'yum',
-  direccion: 'hm furiously',
-  telefono: 'arid',
-  email: 'Mateo.ChaconHolguin79@yahoo.com',
+  id: 18894,
+  razon: 'wherever tedious snorkel',
+  direccion: 'out generally for',
+  telefono: 'upside-down periodic phew',
+  email: 'Diego_VelezTamayo30@gmail.com',
   fechaFundacion: dayjs('2024-06-13'),
-  presidente: 'intelligent coo',
+  presidente: 'restate ripe from',
 };
 
 export const sampleWithFullData: IClub = {
-  id: 31905,
-  razon: 'whip hm trusty',
-  direccion: 'aside duh',
-  telefono: 'brand for',
-  email: 'Ines61@gmail.com',
+  id: 27020,
+  razon: 'flight concerning',
+  direccion: 'fraternise',
+  telefono: 'phooey gadzooks calmly',
+  email: 'Anita_ArmijoDelacruz@yahoo.com',
   fechaFundacion: dayjs('2024-06-12'),
-  presidente: 'troubleshoot coaxingly certainly',
+  presidente: 'demolish overconfidently knowing',
 };
 
 export const sampleWithNewData: NewClub = {
-  razon: 'monitor reluctantly',
-  direccion: 'greatness incidentally',
-  telefono: 'excitedly',
-  email: 'Rosa27@gmail.com',
+  razon: 'foolhardy memorable oldie',
+  direccion: 'whenever cluster besides',
+  telefono: 'instead',
+  email: 'Hernan48@hotmail.com',
   fechaFundacion: dayjs('2024-06-12'),
-  presidente: 'chromakey willfully upon',
+  presidente: 'provided',
   id: null,
 };
 

@@ -1,22 +1,22 @@
 import { IComuna, NewComuna } from './comuna.model';
 
 export const sampleWithRequiredData: IComuna = {
-  id: 10441,
-  comuna: 'uh-huh chapter',
+  id: 30808,
+  comuna: 'warmly',
 };
 
 export const sampleWithPartialData: IComuna = {
-  id: 18404,
-  comuna: 'intent',
+  id: 15612,
+  comuna: 'gather relieved webbed',
 };
 
 export const sampleWithFullData: IComuna = {
-  id: 11323,
-  comuna: 'cruelly',
+  id: 25406,
+  comuna: 'loftily prioritise',
 };
 
 export const sampleWithNewData: NewComuna = {
-  comuna: 'volunteer',
+  comuna: 'yet yuck',
   id: null,
 };
 

@@ -31,6 +31,36 @@ const routes: Routes = [
     data: { pageTitle: 'controlClubApplicationApp.categorias.home.title' },
     loadChildren: () => import('./categorias/categorias.routes'),
   },
+  {
+    path: 'directivos',
+    data: { pageTitle: 'controlClubApplicationApp.directivos.home.title' },
+    loadChildren: () => import('./directivos/directivos.routes'),
+  },
+  {
+    path: 'asociados',
+    data: { pageTitle: 'controlClubApplicationApp.asociados.home.title' },
+    loadChildren: () => import('./asociados/asociados.routes'),
+  },
+  {
+    path: 'padre',
+    data: { pageTitle: 'controlClubApplicationApp.padre.home.title' },
+    loadChildren: () => import('./padre/padre.routes'),
+  },
+  {
+    path: 'torneos-participaciones',
+    data: { pageTitle: 'controlClubApplicationApp.torneosParticipaciones.home.title' },
+    loadChildren: () => import('./torneos-participaciones/torneos-participaciones.routes'),
+  },
+  {
+    path: 'estadisticas-baloncesto',
+    data: { pageTitle: 'controlClubApplicationApp.estadisticasBaloncesto.home.title' },
+    loadChildren: () => import('./estadisticas-baloncesto/estadisticas-baloncesto.routes'),
+  },
+  {
+    path: 'partido',
+    data: { pageTitle: 'controlClubApplicationApp.partido.home.title' },
+    loadChildren: () => import('./partido/partido.routes'),
+  },
   /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
 ];
 

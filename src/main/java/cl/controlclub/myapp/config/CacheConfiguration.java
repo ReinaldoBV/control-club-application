@@ -55,6 +55,12 @@ public class CacheConfiguration {
             createCache(cm, cl.controlclub.myapp.domain.CentroSalud.class.getName());
             createCache(cm, cl.controlclub.myapp.domain.CentroEducativo.class.getName());
             createCache(cm, cl.controlclub.myapp.domain.Categorias.class.getName());
+            createCache(cm, cl.controlclub.myapp.domain.Directivos.class.getName());
+            createCache(cm, cl.controlclub.myapp.domain.Asociados.class.getName());
+            createCache(cm, cl.controlclub.myapp.domain.Padre.class.getName());
+            createCache(cm, cl.controlclub.myapp.domain.TorneosParticipaciones.class.getName());
+            createCache(cm, cl.controlclub.myapp.domain.EstadisticasBaloncesto.class.getName());
+            createCache(cm, cl.controlclub.myapp.domain.Partido.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

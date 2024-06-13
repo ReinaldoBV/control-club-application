@@ -1,0 +1,26 @@
+{
+  "controlClubApplicationApp": {
+    "partido": {
+      "home": {
+        "title": "Partidos",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Partido",
+        "createOrEditLabel": "Create or edit a Partido",
+        "notFound": "No Partidos found"
+      },
+      "created": "A new Partido is created with identifier {{ param }}",
+      "updated": "A Partido is updated with identifier {{ param }}",
+      "deleted": "A Partido is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Partido {{ id }}?"
+      },
+      "detail": {
+        "title": "Partido"
+      },
+      "id": "ID",
+      "fecha": "Fecha",
+      "oponente": "Oponente",
+      "resultado": "Resultado"
+    }
+  }
+}

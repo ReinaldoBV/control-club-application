@@ -12,7 +12,13 @@
         "comuna": "Comuna",
         "centroSalud": "Centro Salud",
         "centroEducativo": "Centro Educativo",
-        "categorias": "Categorias"
+        "categorias": "Categorias",
+        "directivos": "Directivos",
+        "asociados": "Asociados",
+        "padre": "Padre",
+        "torneosParticipaciones": "Torneos Participaciones",
+        "estadisticasBaloncesto": "Estadisticas Baloncesto",
+        "partido": "Partido"
       },
       "account": {
         "main": "Account",
