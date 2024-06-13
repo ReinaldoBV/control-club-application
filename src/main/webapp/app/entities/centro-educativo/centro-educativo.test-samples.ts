@@ -1,22 +1,22 @@
 import { ICentroEducativo, NewCentroEducativo } from './centro-educativo.model';
 
 export const sampleWithRequiredData: ICentroEducativo = {
-  id: 8610,
-  centroEducativo: 'softly',
+  id: 25524,
+  centroEducativo: 'energetically grown process',
 };
 
 export const sampleWithPartialData: ICentroEducativo = {
-  id: 27566,
-  centroEducativo: 'mission',
+  id: 24542,
+  centroEducativo: 'cleverly defend bleep',
 };
 
 export const sampleWithFullData: ICentroEducativo = {
-  id: 7354,
-  centroEducativo: 'before times rush',
+  id: 11144,
+  centroEducativo: 'quickly um',
 };
 
 export const sampleWithNewData: NewCentroEducativo = {
-  centroEducativo: 'confusion',
+  centroEducativo: 'yowza outside given',
   id: null,
 };
 

@@ -1,0 +1,30 @@
+@if (finanzasIngreso) {
+  <form name="deleteForm" (ngSubmit)="confirmDelete(finanzasIngreso.id!)">
+    <div class="modal-header">
+      <h4 class="modal-title" data-cy="finanzasIngresoDeleteDialogHeading" jhiTranslate="entity.delete.title">
+        Confirmar operación de borrado
+      </h4>
+    </div>
+
+    <div class="modal-body">
+      <jhi-alert-error></jhi-alert-error>
+      <p
+        id="jhi-delete-finanzasIngreso-heading"
+        jhiTranslate="controlClubApplicationApp.finanzasIngreso.delete.question"
+        [translateValues]="{ id: finanzasIngreso.id }"
+      >
+        ¿Seguro que quiere eliminar Finanzas Ingreso {{ finanzasIngreso.id }}?
+      </p>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancel()">
+        <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancelar</span>
+      </button>
+
+      <button id="jhi-confirm-delete-finanzasIngreso" data-cy="entityConfirmDeleteButton" type="submit" class="btn btn-danger">
+        <fa-icon icon="times"></fa-icon>&nbsp;<span jhiTranslate="entity.action.delete">Eliminar</span>
+      </button>
+    </div>
+  </form>
+}

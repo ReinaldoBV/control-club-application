@@ -1,22 +1,22 @@
 import { ICentroSalud, NewCentroSalud } from './centro-salud.model';
 
 export const sampleWithRequiredData: ICentroSalud = {
-  id: 4402,
-  centroSalud: 'deserted',
+  id: 30103,
+  centroSalud: 'yahoo shyly',
 };
 
 export const sampleWithPartialData: ICentroSalud = {
-  id: 3990,
-  centroSalud: 'batter competent',
+  id: 6208,
+  centroSalud: 'ha',
 };
 
 export const sampleWithFullData: ICentroSalud = {
-  id: 16800,
-  centroSalud: 'fancy',
+  id: 31437,
+  centroSalud: 'woot indeed up',
 };
 
 export const sampleWithNewData: NewCentroSalud = {
-  centroSalud: 'slosh to',
+  centroSalud: 'loudly',
   id: null,
 };
 

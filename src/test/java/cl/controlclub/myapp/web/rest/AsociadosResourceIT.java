@@ -425,7 +425,7 @@ class AsociadosResourceIT {
         Asociados partialUpdatedAsociados = new Asociados();
         partialUpdatedAsociados.setId(asociados.getId());
 
-        partialUpdatedAsociados.nombres(UPDATED_NOMBRES).apellidos(UPDATED_APELLIDOS).telefono(UPDATED_TELEFONO);
+        partialUpdatedAsociados.nombres(UPDATED_NOMBRES).cargo(UPDATED_CARGO).fechaAsoc(UPDATED_FECHA_ASOC);
 
         restAsociadosMockMvc
             .perform(

@@ -3,29 +3,29 @@ import dayjs from 'dayjs/esm';
 import { ITorneosParticipaciones, NewTorneosParticipaciones } from './torneos-participaciones.model';
 
 export const sampleWithRequiredData: ITorneosParticipaciones = {
-  id: 14524,
-  descripcion: 'forsake subedit terraform',
-  monto: 13386.18,
+  id: 12717,
+  descripcion: 'portend circa',
+  monto: 12641.86,
   fecha: dayjs('2024-06-13'),
 };
 
 export const sampleWithPartialData: ITorneosParticipaciones = {
-  id: 26738,
-  descripcion: 'boo brr',
-  monto: 14231.23,
+  id: 29373,
+  descripcion: 'formalise when upon',
+  monto: 8718.88,
   fecha: dayjs('2024-06-13'),
 };
 
 export const sampleWithFullData: ITorneosParticipaciones = {
-  id: 7947,
-  descripcion: 'relay',
-  monto: 28881.88,
+  id: 32236,
+  descripcion: 'ah',
+  monto: 10088.69,
   fecha: dayjs('2024-06-13'),
 };
 
 export const sampleWithNewData: NewTorneosParticipaciones = {
-  descripcion: 'neighboring',
-  monto: 17684.4,
+  descripcion: 'eek canon',
+  monto: 7609.02,
   fecha: dayjs('2024-06-12'),
   id: null,
 };

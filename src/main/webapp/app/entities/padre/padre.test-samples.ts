@@ -1,42 +1,42 @@
 import { IPadre, NewPadre } from './padre.model';
 
 export const sampleWithRequiredData: IPadre = {
-  id: 11646,
-  nombres: 'gabble considering now',
-  apellidos: 'interfere er',
-  relacion: 'portly',
-  telefono: 'jubilantly browbeat',
-  asociado: true,
-  email: 'MariaCristina_ZavalaMacias89@hotmail.com',
+  id: 14098,
+  nombres: 'pain',
+  apellidos: 'puzzling',
+  relacion: 'swoosh',
+  telefono: 'irresponsible geez grocery',
+  asociado: false,
+  email: 'Marisol_QuinteroOrozco@gmail.com',
 };
 
 export const sampleWithPartialData: IPadre = {
-  id: 18841,
-  nombres: 'lavish',
-  apellidos: 'fooey',
-  relacion: 'gadzooks',
-  telefono: 'election pfft given',
-  asociado: true,
-  email: 'Cristina67@hotmail.com',
+  id: 19137,
+  nombres: 'regenerate so ew',
+  apellidos: 'constant doubtfully',
+  relacion: 'fedora past',
+  telefono: 'request',
+  asociado: false,
+  email: 'Gregorio86@gmail.com',
 };
 
 export const sampleWithFullData: IPadre = {
-  id: 16006,
-  nombres: 'eek',
-  apellidos: 'underlie portion crude',
-  relacion: 'ill-informed transport yahoo',
-  telefono: 'athletic up',
+  id: 2022,
+  nombres: 'quick-witted colossal outside',
+  apellidos: 'often hollow',
+  relacion: 'below',
+  telefono: 'above',
   asociado: false,
-  email: 'Rebeca_SotoArredondo@hotmail.com',
+  email: 'Benjamin87@gmail.com',
 };
 
 export const sampleWithNewData: NewPadre = {
-  nombres: 'thunderous stalk',
-  apellidos: 'flawed',
-  relacion: 'besides',
-  telefono: 'plant haunting across',
-  asociado: true,
-  email: 'Victor64@gmail.com',
+  nombres: 'if beneath',
+  apellidos: 'and oof',
+  relacion: 'burden',
+  telefono: 'terrible since',
+  asociado: false,
+  email: 'Joaquin87@hotmail.com',
   id: null,
 };
 

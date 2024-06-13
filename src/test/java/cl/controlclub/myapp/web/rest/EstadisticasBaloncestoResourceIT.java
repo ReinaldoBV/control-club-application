@@ -333,8 +333,8 @@ class EstadisticasBaloncestoResourceIT {
         partialUpdatedEstadisticasBaloncesto
             .rebotes(UPDATED_REBOTES)
             .asistencias(UPDATED_ASISTENCIAS)
-            .robos(UPDATED_ROBOS)
-            .bloqueos(UPDATED_BLOQUEOS);
+            .bloqueos(UPDATED_BLOQUEOS)
+            .porcentajeTiro(UPDATED_PORCENTAJE_TIRO);
 
         restEstadisticasBaloncestoMockMvc
             .perform(

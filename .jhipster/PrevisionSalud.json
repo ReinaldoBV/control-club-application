@@ -1,0 +1,20 @@
+{
+  "annotations": {
+    "changelogDate": "20240613171545"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "tipoPrevision",
+      "fieldType": "TipoPrevision",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "FONASA,ISAPRE,NO_TIENE,OTRO"
+    }
+  ],
+  "name": "PrevisionSalud",
+  "pagination": "pagination",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

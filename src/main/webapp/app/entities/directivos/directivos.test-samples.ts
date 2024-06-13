@@ -3,46 +3,46 @@ import dayjs from 'dayjs/esm';
 import { IDirectivos, NewDirectivos } from './directivos.model';
 
 export const sampleWithRequiredData: IDirectivos = {
-  id: 22539,
-  nombres: 'playfully',
-  apellidos: 'promise',
-  cargo: 'from',
-  telefono: 'apropos surprisingly',
+  id: 21328,
+  nombres: 'hm brr',
+  apellidos: 'briefly',
+  cargo: 'boohoo likewise but',
+  telefono: 'strictly during whether',
   fechaEleccion: dayjs('2024-06-13'),
   fechaVencimiento: dayjs('2024-06-13'),
-  email: 'David31@yahoo.com',
+  email: 'MariadelCarmen68@hotmail.com',
 };
 
 export const sampleWithPartialData: IDirectivos = {
-  id: 5379,
-  nombres: 'consequently',
-  apellidos: 'which',
-  cargo: 'gratefully night',
-  telefono: 'till finally worriedly',
-  fechaEleccion: dayjs('2024-06-13'),
-  fechaVencimiento: dayjs('2024-06-13'),
-  email: 'MariaCristina.GironDelgadillo@yahoo.com',
+  id: 20258,
+  nombres: 'until around trill',
+  apellidos: 'um vast although',
+  cargo: 'bow',
+  telefono: 'assistance',
+  fechaEleccion: dayjs('2024-06-12'),
+  fechaVencimiento: dayjs('2024-06-12'),
+  email: 'Rosalia_ChapaMendoza87@gmail.com',
 };
 
 export const sampleWithFullData: IDirectivos = {
-  id: 13014,
-  nombres: 'mockingly amongst',
-  apellidos: 'heavenly',
-  cargo: 'slowly sound fantastic',
-  telefono: 'gazump fumble',
+  id: 2279,
+  nombres: 'unless gosh',
+  apellidos: 'phew peek glower',
+  cargo: 'round unto',
+  telefono: 'lender',
   fechaEleccion: dayjs('2024-06-12'),
   fechaVencimiento: dayjs('2024-06-13'),
-  email: 'Andres.ArguelloSandoval@gmail.com',
+  email: 'Ariadna13@hotmail.com',
 };
 
 export const sampleWithNewData: NewDirectivos = {
-  nombres: 'ew',
-  apellidos: 'urn bah',
-  cargo: 'majority',
-  telefono: 'bodge finally',
-  fechaEleccion: dayjs('2024-06-13'),
+  nombres: 'oh',
+  apellidos: 'eek remark more',
+  cargo: 'hmph though',
+  telefono: 'whose staid',
+  fechaEleccion: dayjs('2024-06-12'),
   fechaVencimiento: dayjs('2024-06-13'),
-  email: 'Joaquin.RoldanGranados77@hotmail.com',
+  email: 'Gerardo24@gmail.com',
   id: null,
 };
 

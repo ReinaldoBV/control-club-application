@@ -1,3 +1,60 @@
+enum TipoIdentificacion {
+    RUT,
+    PASAPORTE,
+    ESCOLAR,
+    OTRO
+}
+
+enum Nacionalidad {
+    CHILENA,
+    VENEZOLANA,
+    DOMINICANA,
+    COLOMBIANA,
+    OTRA
+}
+
+enum TipoPrevision {
+    FONASA,
+    ISAPRE,
+    NO_TIENE,
+    OTRO
+}
+
+enum TipoIngreso {
+    TRANSFERENCIA,
+    EFECTIVO,
+    CHEQUE
+}
+
+enum TipoEgreso {
+    TRANSFERENCIA,
+    EFECTIVO,
+    CHEQUE
+}
+
+enum TipoCuenta {
+    PAGAR,
+    COBRAR
+}
+
+enum EstadoCuenta {
+    PENDIENTE,
+    PAGADO,
+    COBRADO
+}
+
+enum RolUsuario {
+    ADMINISTRADOR,
+    ENTRENADOR,
+    JUGADOR,
+    PADRE
+}
+
+enum TipoAsistencia {
+    ENTRENAMIENTO,
+    PARTIDO
+}
+
 entity Club {
     razon String required,
     direccion String required,
@@ -5,6 +62,10 @@ entity Club {
     email String required,
     fechaFundacion LocalDate required,
     presidente String required
+}
+
+entity PrevisionSalud {
+    tipoPrevision TipoPrevision required
 }
 
 entity Comuna {
@@ -93,6 +154,53 @@ entity Partido {
     fecha LocalDate required,
     oponente String required,
     resultado String
+}
+
+entity Entrenamiento {
+    fechaHora LocalDate required,
+    duracion Integer required // Duración en minutos
+}
+
+entity Mensaje {
+    remitenteId Long required,
+    destinatarioId Long required,
+    mensaje String required,
+    leido Boolean
+}
+
+entity Anuncio {
+    titulo String required,
+    contenido String required,
+    fechaPublicacion LocalDate required
+}
+
+entity Bienes {
+    descripcion String required,
+    cantidad Integer required,
+    estado String required
+}
+
+entity FinanzasIngreso {
+    tipo TipoIngreso required,
+    descripcion String required,
+    monto BigDecimal required,
+    fecha LocalDate required
+}
+
+entity FinanzasEgreso {
+    tipo TipoEgreso required,
+	descripcion String required,
+    monto BigDecimal required,
+    fecha LocalDate required
+}
+
+entity Cuentas {
+    tipo TipoCuenta required,
+    descripcion String required,
+    monto BigDecimal required,
+    nroCuotas Long required, // Fraccionar en 1 a 12 cuotas
+    fechaVencimiento LocalDate required,
+    estado EstadoCuenta required
 }
 
 service all with serviceClass
