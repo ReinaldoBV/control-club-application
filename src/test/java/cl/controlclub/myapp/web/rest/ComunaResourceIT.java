@@ -9,6 +9,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import cl.controlclub.myapp.IntegrationTest;
 import cl.controlclub.myapp.domain.Comuna;
+import cl.controlclub.myapp.domain.enumeration.RMComuna;
 import cl.controlclub.myapp.repository.ComunaRepository;
 import cl.controlclub.myapp.service.dto.ComunaDTO;
 import cl.controlclub.myapp.service.mapper.ComunaMapper;
@@ -34,8 +35,8 @@ import org.springframework.transaction.annotation.Transactional;
 @WithMockUser
 class ComunaResourceIT {
 
-    private static final String DEFAULT_COMUNA = "AAAAAAAAAA";
-    private static final String UPDATED_COMUNA = "BBBBBBBBBB";
+    private static final RMComuna DEFAULT_COMUNA = RMComuna.CERRILLOS;
+    private static final RMComuna UPDATED_COMUNA = RMComuna.CERRO;
 
     private static final String ENTITY_API_URL = "/api/comunas";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
@@ -168,7 +169,7 @@ class ComunaResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(comuna.getId().intValue())))
-            .andExpect(jsonPath("$.[*].comuna").value(hasItem(DEFAULT_COMUNA)));
+            .andExpect(jsonPath("$.[*].comuna").value(hasItem(DEFAULT_COMUNA.toString())));
     }
 
     @Test
@@ -183,7 +184,7 @@ class ComunaResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(comuna.getId().intValue()))
-            .andExpect(jsonPath("$.comuna").value(DEFAULT_COMUNA));
+            .andExpect(jsonPath("$.comuna").value(DEFAULT_COMUNA.toString()));
     }
 
     @Test

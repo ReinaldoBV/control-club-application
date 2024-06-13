@@ -1,3 +1,42 @@
+enum RMComuna {
+    CERRILLOS,
+	CERRO NAVIA,
+	CONCHALI,
+	EL BOSQUE,
+	ESTACION CENTRAL,
+    HUECHURABA,
+    INDEPENDENCIA,
+    LA CISTERNA,
+    LA FLORIDA,
+    LA GRANJA,
+    LA PINTANA,
+    LA REINA,
+    LAS CONDES,
+    LO BARNECHEA,
+    LO ESPEJO,
+    LO PRADO,
+    MACUL,
+    MAIPU,
+    NUNOA,
+    PADRE HURTADO,
+    PEDRO AGUIRRE CERDA,
+    PENALOLEN,
+    PIRQUE,
+    PROVIDENCIA,
+    PUDAHUEL,
+    PUENTE ALTO,
+    QUILICURA,
+    QUINTA NORMAL,
+    RECOLETA,
+    RENCA,
+    SAN BERNARDO,
+    SAN JOAQUIN,
+    SAN JOSE DE MAIPO,
+    SAN MIGUEL,
+    SAN RAMON,
+    SANTIAGO
+}
+
 enum TipoIdentificacion {
     RUT,
     PASAPORTE,
@@ -86,7 +125,7 @@ entity PrevisionSalud {
 }
 
 entity Comuna {
-    comuna String required
+    comuna RMComuna required
 }
 
 entity CentroSalud {

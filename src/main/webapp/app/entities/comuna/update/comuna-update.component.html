@@ -21,7 +21,12 @@
 
         <div class="mb-3">
           <label class="form-label" for="field_comuna" jhiTranslate="controlClubApplicationApp.comuna.comuna">Comuna</label>
-          <input type="text" class="form-control" name="comuna" id="field_comuna" data-cy="comuna" formControlName="comuna" />
+          <select class="form-control" name="comuna" formControlName="comuna" id="field_comuna" data-cy="comuna">
+            <option [ngValue]="null">{{ 'controlClubApplicationApp.RMComuna.null' | translate }}</option>
+            @for (rMComuna of rMComunaValues; track $index) {
+              <option [value]="rMComuna">{{ 'controlClubApplicationApp.RMComuna.' + rMComuna | translate }}</option>
+            }
+          </select>
           @if (editForm.get('comuna')!.invalid && (editForm.get('comuna')!.dirty || editForm.get('comuna')!.touched)) {
             <div>
               @if (editForm.get('comuna')?.errors?.required) {

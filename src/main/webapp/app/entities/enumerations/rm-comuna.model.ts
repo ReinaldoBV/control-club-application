@@ -1,0 +1,101 @@
+export enum RMComuna {
+  CERRILLOS = 'CERRILLOS',
+
+  CERRO = 'CERRO',
+
+  NAVIA = 'NAVIA',
+
+  CONCHALI = 'CONCHALI',
+
+  EL = 'EL',
+
+  BOSQUE = 'BOSQUE',
+
+  ESTACION = 'ESTACION',
+
+  CENTRAL = 'CENTRAL',
+
+  HUECHURABA = 'HUECHURABA',
+
+  INDEPENDENCIA = 'INDEPENDENCIA',
+
+  LA = 'LA',
+
+  CISTERNA = 'CISTERNA',
+
+  FLORIDA = 'FLORIDA',
+
+  GRANJA = 'GRANJA',
+
+  PINTANA = 'PINTANA',
+
+  REINA = 'REINA',
+
+  LAS = 'LAS',
+
+  CONDES = 'CONDES',
+
+  LO = 'LO',
+
+  BARNECHEA = 'BARNECHEA',
+
+  ESPEJO = 'ESPEJO',
+
+  PRADO = 'PRADO',
+
+  MACUL = 'MACUL',
+
+  MAIPU = 'MAIPU',
+
+  NUNOA = 'NUNOA',
+
+  PADRE = 'PADRE',
+
+  HURTADO = 'HURTADO',
+
+  PEDRO = 'PEDRO',
+
+  AGUIRRE = 'AGUIRRE',
+
+  CERDA = 'CERDA',
+
+  PENALOLEN = 'PENALOLEN',
+
+  PIRQUE = 'PIRQUE',
+
+  PROVIDENCIA = 'PROVIDENCIA',
+
+  PUDAHUEL = 'PUDAHUEL',
+
+  PUENTE = 'PUENTE',
+
+  ALTO = 'ALTO',
+
+  QUILICURA = 'QUILICURA',
+
+  QUINTA = 'QUINTA',
+
+  NORMAL = 'NORMAL',
+
+  RECOLETA = 'RECOLETA',
+
+  RENCA = 'RENCA',
+
+  SAN = 'SAN',
+
+  BERNARDO = 'BERNARDO',
+
+  JOAQUIN = 'JOAQUIN',
+
+  JOSE = 'JOSE',
+
+  DE = 'DE',
+
+  MAIPO = 'MAIPO',
+
+  MIGUEL = 'MIGUEL',
+
+  RAMON = 'RAMON',
+
+  SANTIAGO = 'SANTIAGO',
+}

@@ -1,5 +1,6 @@
 package cl.controlclub.myapp.service.dto;
 
+import cl.controlclub.myapp.domain.enumeration.RMComuna;
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
 import java.util.Objects;
@@ -13,7 +14,7 @@ public class ComunaDTO implements Serializable {
     private Long id;
 
     @NotNull
-    private String comuna;
+    private RMComuna comuna;
 
     public Long getId() {
         return id;
@@ -23,11 +24,11 @@ public class ComunaDTO implements Serializable {
         this.id = id;
     }
 
-    public String getComuna() {
+    public RMComuna getComuna() {
         return comuna;
     }
 
-    public void setComuna(String comuna) {
+    public void setComuna(RMComuna comuna) {
         this.comuna = comuna;
     }
 

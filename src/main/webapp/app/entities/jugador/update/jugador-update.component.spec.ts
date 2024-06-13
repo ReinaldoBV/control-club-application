@@ -101,10 +101,10 @@ describe('Jugador Management Update Component', () => {
 
     it('Should call comuna query and add missing value', () => {
       const jugador: IJugador = { id: 456 };
-      const comuna: IComuna = { id: 29122 };
+      const comuna: IComuna = { id: 6056 };
       jugador.comuna = comuna;
 
-      const comunaCollection: IComuna[] = [{ id: 1880 }];
+      const comunaCollection: IComuna[] = [{ id: 19846 }];
       jest.spyOn(comunaService, 'query').mockReturnValue(of(new HttpResponse({ body: comunaCollection })));
       const expectedCollection: IComuna[] = [comuna, ...comunaCollection];
       jest.spyOn(comunaService, 'addComunaToCollectionIfMissing').mockReturnValue(expectedCollection);
@@ -162,7 +162,7 @@ describe('Jugador Management Update Component', () => {
       jugador.centroSalud = centroSalud;
       const previsionSalud: IPrevisionSalud = { id: 29485 };
       jugador.previsionSalud = previsionSalud;
-      const comuna: IComuna = { id: 11500 };
+      const comuna: IComuna = { id: 11781 };
       jugador.comuna = comuna;
       const centroEducativo: ICentroEducativo = { id: 26567 };
       jugador.centroEducativo = centroEducativo;
