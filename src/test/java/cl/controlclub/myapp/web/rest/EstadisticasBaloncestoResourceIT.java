@@ -330,11 +330,7 @@ class EstadisticasBaloncestoResourceIT {
         EstadisticasBaloncesto partialUpdatedEstadisticasBaloncesto = new EstadisticasBaloncesto();
         partialUpdatedEstadisticasBaloncesto.setId(estadisticasBaloncesto.getId());
 
-        partialUpdatedEstadisticasBaloncesto
-            .rebotes(UPDATED_REBOTES)
-            .asistencias(UPDATED_ASISTENCIAS)
-            .robos(UPDATED_ROBOS)
-            .bloqueos(UPDATED_BLOQUEOS);
+        partialUpdatedEstadisticasBaloncesto.robos(UPDATED_ROBOS).porcentajeTiro(UPDATED_PORCENTAJE_TIRO);
 
         restEstadisticasBaloncestoMockMvc
             .perform(

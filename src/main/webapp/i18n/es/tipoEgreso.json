@@ -1,0 +1,10 @@
+{
+  "controlClubApplicationApp": {
+    "TipoEgreso": {
+      "null": "",
+      "TRANSFERENCIA": "TRANSFERENCIA",
+      "EFECTIVO": "EFECTIVO",
+      "CHEQUE": "CHEQUE"
+    }
+  }
+}

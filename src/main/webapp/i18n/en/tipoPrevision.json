@@ -1,0 +1,11 @@
+{
+  "controlClubApplicationApp": {
+    "TipoPrevision": {
+      "null": "",
+      "FONASA": "FONASA",
+      "ISAPRE": "ISAPRE",
+      "NO_TIENE": "NO_TIENE",
+      "OTRO": "OTRO"
+    }
+  }
+}

@@ -1,0 +1,427 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-jugador-heading"
+        data-cy="JugadorCreateUpdateHeading"
+        jhiTranslate="controlClubApplicationApp.jugador.home.createOrEditLabel"
+      >
+        Crear o editar Jugador
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="controlClubApplicationApp.jugador.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_nroIdentificacion" jhiTranslate="controlClubApplicationApp.jugador.nroIdentificacion"
+            >Nro Identificacion</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="nroIdentificacion"
+            id="field_nroIdentificacion"
+            data-cy="nroIdentificacion"
+            formControlName="nroIdentificacion"
+          />
+          @if (
+            editForm.get('nroIdentificacion')!.invalid &&
+            (editForm.get('nroIdentificacion')!.dirty || editForm.get('nroIdentificacion')!.touched)
+          ) {
+            <div>
+              @if (editForm.get('nroIdentificacion')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('nroIdentificacion')?.errors?.number"
+                jhiTranslate="entity.validation.number"
+                >Este campo debe ser un número.</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_tipoIdentificacion" jhiTranslate="controlClubApplicationApp.jugador.tipoIdentificacion"
+            >Tipo Identificacion</label
+          >
+          <select
+            class="form-control"
+            name="tipoIdentificacion"
+            formControlName="tipoIdentificacion"
+            id="field_tipoIdentificacion"
+            data-cy="tipoIdentificacion"
+          >
+            <option [ngValue]="null">{{ 'controlClubApplicationApp.TipoIdentificacion.null' | translate }}</option>
+            @for (tipoIdentificacion of tipoIdentificacionValues; track $index) {
+              <option [value]="tipoIdentificacion">
+                {{ 'controlClubApplicationApp.TipoIdentificacion.' + tipoIdentificacion | translate }}
+              </option>
+            }
+          </select>
+          @if (
+            editForm.get('tipoIdentificacion')!.invalid &&
+            (editForm.get('tipoIdentificacion')!.dirty || editForm.get('tipoIdentificacion')!.touched)
+          ) {
+            <div>
+              @if (editForm.get('tipoIdentificacion')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_nombres" jhiTranslate="controlClubApplicationApp.jugador.nombres">Nombres</label>
+          <input type="text" class="form-control" name="nombres" id="field_nombres" data-cy="nombres" formControlName="nombres" />
+          @if (editForm.get('nombres')!.invalid && (editForm.get('nombres')!.dirty || editForm.get('nombres')!.touched)) {
+            <div>
+              @if (editForm.get('nombres')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_apellidos" jhiTranslate="controlClubApplicationApp.jugador.apellidos">Apellidos</label>
+          <input type="text" class="form-control" name="apellidos" id="field_apellidos" data-cy="apellidos" formControlName="apellidos" />
+          @if (editForm.get('apellidos')!.invalid && (editForm.get('apellidos')!.dirty || editForm.get('apellidos')!.touched)) {
+            <div>
+              @if (editForm.get('apellidos')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_nacionalidad" jhiTranslate="controlClubApplicationApp.jugador.nacionalidad"
+            >Nacionalidad</label
+          >
+          <select class="form-control" name="nacionalidad" formControlName="nacionalidad" id="field_nacionalidad" data-cy="nacionalidad">
+            <option [ngValue]="null">{{ 'controlClubApplicationApp.Nacionalidad.null' | translate }}</option>
+            @for (nacionalidad of nacionalidadValues; track $index) {
+              <option [value]="nacionalidad">{{ 'controlClubApplicationApp.Nacionalidad.' + nacionalidad | translate }}</option>
+            }
+          </select>
+          @if (editForm.get('nacionalidad')!.invalid && (editForm.get('nacionalidad')!.dirty || editForm.get('nacionalidad')!.touched)) {
+            <div>
+              @if (editForm.get('nacionalidad')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_edad" jhiTranslate="controlClubApplicationApp.jugador.edad">Edad</label>
+          <input type="number" class="form-control" name="edad" id="field_edad" data-cy="edad" formControlName="edad" />
+          @if (editForm.get('edad')!.invalid && (editForm.get('edad')!.dirty || editForm.get('edad')!.touched)) {
+            <div>
+              @if (editForm.get('edad')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+              <small class="form-text text-danger" [hidden]="!editForm.get('edad')?.errors?.number" jhiTranslate="entity.validation.number"
+                >Este campo debe ser un número.</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_fechaNacimiento" jhiTranslate="controlClubApplicationApp.jugador.fechaNacimiento"
+            >Fecha Nacimiento</label
+          >
+          <div class="input-group">
+            <input
+              id="field_fechaNacimiento"
+              data-cy="fechaNacimiento"
+              type="text"
+              class="form-control"
+              name="fechaNacimiento"
+              ngbDatepicker
+              #fechaNacimientoDp="ngbDatepicker"
+              formControlName="fechaNacimiento"
+            />
+            <button type="button" class="btn btn-secondary" (click)="fechaNacimientoDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+          @if (
+            editForm.get('fechaNacimiento')!.invalid && (editForm.get('fechaNacimiento')!.dirty || editForm.get('fechaNacimiento')!.touched)
+          ) {
+            <div>
+              @if (editForm.get('fechaNacimiento')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_numeroCamisa" jhiTranslate="controlClubApplicationApp.jugador.numeroCamisa"
+            >Numero Camisa</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="numeroCamisa"
+            id="field_numeroCamisa"
+            data-cy="numeroCamisa"
+            formControlName="numeroCamisa"
+          />
+          @if (editForm.get('numeroCamisa')!.invalid && (editForm.get('numeroCamisa')!.dirty || editForm.get('numeroCamisa')!.touched)) {
+            <div>
+              @if (editForm.get('numeroCamisa')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('numeroCamisa')?.errors?.number"
+                jhiTranslate="entity.validation.number"
+                >Este campo debe ser un número.</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_contactoEmergencia" jhiTranslate="controlClubApplicationApp.jugador.contactoEmergencia"
+            >Contacto Emergencia</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="contactoEmergencia"
+            id="field_contactoEmergencia"
+            data-cy="contactoEmergencia"
+            formControlName="contactoEmergencia"
+          />
+          @if (
+            editForm.get('contactoEmergencia')!.invalid &&
+            (editForm.get('contactoEmergencia')!.dirty || editForm.get('contactoEmergencia')!.touched)
+          ) {
+            <div>
+              @if (editForm.get('contactoEmergencia')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_calleAvenidaDireccion" jhiTranslate="controlClubApplicationApp.jugador.calleAvenidaDireccion"
+            >Calle Avenida Direccion</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="calleAvenidaDireccion"
+            id="field_calleAvenidaDireccion"
+            data-cy="calleAvenidaDireccion"
+            formControlName="calleAvenidaDireccion"
+          />
+          @if (
+            editForm.get('calleAvenidaDireccion')!.invalid &&
+            (editForm.get('calleAvenidaDireccion')!.dirty || editForm.get('calleAvenidaDireccion')!.touched)
+          ) {
+            <div>
+              @if (editForm.get('calleAvenidaDireccion')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_numeroDireccion" jhiTranslate="controlClubApplicationApp.jugador.numeroDireccion"
+            >Numero Direccion</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="numeroDireccion"
+            id="field_numeroDireccion"
+            data-cy="numeroDireccion"
+            formControlName="numeroDireccion"
+          />
+          @if (
+            editForm.get('numeroDireccion')!.invalid && (editForm.get('numeroDireccion')!.dirty || editForm.get('numeroDireccion')!.touched)
+          ) {
+            <div>
+              @if (editForm.get('numeroDireccion')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('numeroDireccion')?.errors?.number"
+                jhiTranslate="entity.validation.number"
+                >Este campo debe ser un número.</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_numeroPersonal" jhiTranslate="controlClubApplicationApp.jugador.numeroPersonal"
+            >Numero Personal</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="numeroPersonal"
+            id="field_numeroPersonal"
+            data-cy="numeroPersonal"
+            formControlName="numeroPersonal"
+          />
+          @if (
+            editForm.get('numeroPersonal')!.invalid && (editForm.get('numeroPersonal')!.dirty || editForm.get('numeroPersonal')!.touched)
+          ) {
+            <div>
+              @if (editForm.get('numeroPersonal')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('numeroPersonal')?.errors?.number"
+                jhiTranslate="entity.validation.number"
+                >Este campo debe ser un número.</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_imagenJugador" jhiTranslate="controlClubApplicationApp.jugador.imagenJugador"
+            >Imagen Jugador</label
+          >
+          <div>
+            @if (editForm.get('imagenJugador')!.value) {
+              <div class="form-text text-danger clearfix">
+                <a
+                  class="pull-start"
+                  (click)="openFile(editForm.get('imagenJugador')!.value!, editForm.get('imagenJugadorContentType')!.value!)"
+                  jhiTranslate="entity.action.open"
+                  >Abrir</a
+                ><br />
+                <span class="pull-start"
+                  >{{ editForm.get('imagenJugadorContentType')!.value }}, {{ byteSize(editForm.get('imagenJugador')!.value!) }}</span
+                >
+                <button
+                  type="button"
+                  (click)="editForm.patchValue({ imagenJugador: undefined, imagenJugadorContentType: undefined })"
+                  class="btn btn-secondary btn-xs pull-end"
+                >
+                  <fa-icon icon="times"></fa-icon>
+                </button>
+              </div>
+            }
+            <input
+              type="file"
+              id="file_imagenJugador"
+              data-cy="imagenJugador"
+              (change)="setFileData($event, 'imagenJugador', false)"
+              jhiTranslate="entity.action.addblob"
+            />
+          </div>
+          <input
+            type="hidden"
+            class="form-control"
+            name="imagenJugador"
+            id="field_imagenJugador"
+            data-cy="imagenJugador"
+            formControlName="imagenJugador"
+          />
+          <input
+            type="hidden"
+            class="form-control"
+            name="imagenJugadorContentType"
+            id="field_imagenJugadorContentType"
+            formControlName="imagenJugadorContentType"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_documentoIdentificacion"
+            jhiTranslate="controlClubApplicationApp.jugador.documentoIdentificacion"
+            >Documento Identificacion</label
+          >
+          <div>
+            @if (editForm.get('documentoIdentificacion')!.value) {
+              <div class="form-text text-danger clearfix">
+                <a
+                  class="pull-start"
+                  (click)="
+                    openFile(editForm.get('documentoIdentificacion')!.value!, editForm.get('documentoIdentificacionContentType')!.value!)
+                  "
+                  jhiTranslate="entity.action.open"
+                  >Abrir</a
+                ><br />
+                <span class="pull-start"
+                  >{{ editForm.get('documentoIdentificacionContentType')!.value }},
+                  {{ byteSize(editForm.get('documentoIdentificacion')!.value!) }}</span
+                >
+                <button
+                  type="button"
+                  (click)="editForm.patchValue({ documentoIdentificacion: undefined, documentoIdentificacionContentType: undefined })"
+                  class="btn btn-secondary btn-xs pull-end"
+                >
+                  <fa-icon icon="times"></fa-icon>
+                </button>
+              </div>
+            }
+            <input
+              type="file"
+              id="file_documentoIdentificacion"
+              data-cy="documentoIdentificacion"
+              (change)="setFileData($event, 'documentoIdentificacion', false)"
+              jhiTranslate="entity.action.addblob"
+            />
+          </div>
+          <input
+            type="hidden"
+            class="form-control"
+            name="documentoIdentificacion"
+            id="field_documentoIdentificacion"
+            data-cy="documentoIdentificacion"
+            formControlName="documentoIdentificacion"
+          />
+          <input
+            type="hidden"
+            class="form-control"
+            name="documentoIdentificacionContentType"
+            id="field_documentoIdentificacionContentType"
+            formControlName="documentoIdentificacionContentType"
+          />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancelar</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Guardar</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,65 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-prevision-salud-heading"
+        data-cy="PrevisionSaludCreateUpdateHeading"
+        jhiTranslate="controlClubApplicationApp.previsionSalud.home.createOrEditLabel"
+      >
+        Crear o editar Prevision Salud
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="controlClubApplicationApp.previsionSalud.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_tipoPrevision" jhiTranslate="controlClubApplicationApp.previsionSalud.tipoPrevision"
+            >Tipo Prevision</label
+          >
+          <select
+            class="form-control"
+            name="tipoPrevision"
+            formControlName="tipoPrevision"
+            id="field_tipoPrevision"
+            data-cy="tipoPrevision"
+          >
+            <option [ngValue]="null">{{ 'controlClubApplicationApp.TipoPrevision.null' | translate }}</option>
+            @for (tipoPrevision of tipoPrevisionValues; track $index) {
+              <option [value]="tipoPrevision">{{ 'controlClubApplicationApp.TipoPrevision.' + tipoPrevision | translate }}</option>
+            }
+          </select>
+          @if (editForm.get('tipoPrevision')!.invalid && (editForm.get('tipoPrevision')!.dirty || editForm.get('tipoPrevision')!.touched)) {
+            <div>
+              @if (editForm.get('tipoPrevision')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+            </div>
+          }
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancelar</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Guardar</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -3,42 +3,42 @@ import dayjs from 'dayjs/esm';
 import { IClub, NewClub } from './club.model';
 
 export const sampleWithRequiredData: IClub = {
-  id: 5699,
-  razon: 'violence aw dribble',
-  direccion: 'for fantasize jagged',
-  telefono: 'with',
-  email: 'Enrique21@yahoo.com',
-  fechaFundacion: dayjs('2024-06-13'),
-  presidente: 'vide boring ugh',
+  id: 27484,
+  razon: 'meantime yuck woot',
+  direccion: 'athwart',
+  telefono: 'standing alongside good-natured',
+  email: 'Blanca37@hotmail.com',
+  fechaFundacion: dayjs('2024-06-12'),
+  presidente: 'hence',
 };
 
 export const sampleWithPartialData: IClub = {
-  id: 18894,
-  razon: 'wherever tedious snorkel',
-  direccion: 'out generally for',
-  telefono: 'upside-down periodic phew',
-  email: 'Diego_VelezTamayo30@gmail.com',
-  fechaFundacion: dayjs('2024-06-13'),
-  presidente: 'restate ripe from',
+  id: 4022,
+  razon: 'cleft psst',
+  direccion: 'sweetly alongside hungrily',
+  telefono: 'hideous',
+  email: 'Victor.CarreonMota88@yahoo.com',
+  fechaFundacion: dayjs('2024-06-12'),
+  presidente: 'behind during before',
 };
 
 export const sampleWithFullData: IClub = {
-  id: 27020,
-  razon: 'flight concerning',
-  direccion: 'fraternise',
-  telefono: 'phooey gadzooks calmly',
-  email: 'Anita_ArmijoDelacruz@yahoo.com',
-  fechaFundacion: dayjs('2024-06-12'),
-  presidente: 'demolish overconfidently knowing',
+  id: 13062,
+  razon: 'anenst out',
+  direccion: 'pint shrilly',
+  telefono: 'uh-huh knowingly anguished',
+  email: 'Benjamin_GodinezUrias@gmail.com',
+  fechaFundacion: dayjs('2024-06-13'),
+  presidente: 'whoever',
 };
 
 export const sampleWithNewData: NewClub = {
-  razon: 'foolhardy memorable oldie',
-  direccion: 'whenever cluster besides',
-  telefono: 'instead',
-  email: 'Hernan48@hotmail.com',
-  fechaFundacion: dayjs('2024-06-12'),
-  presidente: 'provided',
+  razon: 'selfishly mouse unscramble',
+  direccion: 'birdcage',
+  telefono: 'oddball',
+  email: 'Gerardo7@hotmail.com',
+  fechaFundacion: dayjs('2024-06-13'),
+  presidente: 'knavishly dear after',
   id: null,
 };
 

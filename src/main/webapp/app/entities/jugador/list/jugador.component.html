@@ -1,0 +1,238 @@
+<div>
+  <h2 id="page-heading" data-cy="JugadorHeading">
+    <span jhiTranslate="controlClubApplicationApp.jugador.home.title">Jugadors</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="controlClubApplicationApp.jugador.home.refreshListLabel">Refrescar lista</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-jugador"
+        [routerLink]="['/jugador/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="controlClubApplicationApp.jugador.home.createLabel">Crear nuevo Jugador</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (jugadors?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="controlClubApplicationApp.jugador.home.notFound">Ningún Jugadors encontrado</span>
+    </div>
+  }
+
+  @if (jugadors && jugadors.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="nroIdentificacion">
+              <div class="d-flex">
+                <span jhiTranslate="controlClubApplicationApp.jugador.nroIdentificacion">Nro Identificacion</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="tipoIdentificacion">
+              <div class="d-flex">
+                <span jhiTranslate="controlClubApplicationApp.jugador.tipoIdentificacion">Tipo Identificacion</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="nombres">
+              <div class="d-flex">
+                <span jhiTranslate="controlClubApplicationApp.jugador.nombres">Nombres</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="apellidos">
+              <div class="d-flex">
+                <span jhiTranslate="controlClubApplicationApp.jugador.apellidos">Apellidos</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="nacionalidad">
+              <div class="d-flex">
+                <span jhiTranslate="controlClubApplicationApp.jugador.nacionalidad">Nacionalidad</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="edad">
+              <div class="d-flex">
+                <span jhiTranslate="controlClubApplicationApp.jugador.edad">Edad</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="fechaNacimiento">
+              <div class="d-flex">
+                <span jhiTranslate="controlClubApplicationApp.jugador.fechaNacimiento">Fecha Nacimiento</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="numeroCamisa">
+              <div class="d-flex">
+                <span jhiTranslate="controlClubApplicationApp.jugador.numeroCamisa">Numero Camisa</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="contactoEmergencia">
+              <div class="d-flex">
+                <span jhiTranslate="controlClubApplicationApp.jugador.contactoEmergencia">Contacto Emergencia</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="calleAvenidaDireccion">
+              <div class="d-flex">
+                <span jhiTranslate="controlClubApplicationApp.jugador.calleAvenidaDireccion">Calle Avenida Direccion</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="numeroDireccion">
+              <div class="d-flex">
+                <span jhiTranslate="controlClubApplicationApp.jugador.numeroDireccion">Numero Direccion</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="numeroPersonal">
+              <div class="d-flex">
+                <span jhiTranslate="controlClubApplicationApp.jugador.numeroPersonal">Numero Personal</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="imagenJugador">
+              <div class="d-flex">
+                <span jhiTranslate="controlClubApplicationApp.jugador.imagenJugador">Imagen Jugador</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="documentoIdentificacion">
+              <div class="d-flex">
+                <span jhiTranslate="controlClubApplicationApp.jugador.documentoIdentificacion">Documento Identificacion</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (jugador of jugadors; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/jugador', jugador.id, 'view']">{{ jugador.id }}</a>
+              </td>
+              <td>{{ jugador.nroIdentificacion }}</td>
+              <td [jhiTranslate]="'controlClubApplicationApp.TipoIdentificacion.' + (jugador.tipoIdentificacion ?? 'null')">
+                {{
+                  { null: '', RUT: 'RUT', PASAPORTE: 'PASAPORTE', ESCOLAR: 'ESCOLAR', OTRO: 'OTRO' }[jugador.tipoIdentificacion ?? 'null']
+                }}
+              </td>
+              <td>{{ jugador.nombres }}</td>
+              <td>{{ jugador.apellidos }}</td>
+              <td [jhiTranslate]="'controlClubApplicationApp.Nacionalidad.' + (jugador.nacionalidad ?? 'null')">
+                {{
+                  {
+                    null: '',
+                    CHILENA: 'CHILENA',
+                    VENEZOLANA: 'VENEZOLANA',
+                    DOMINICANA: 'DOMINICANA',
+                    COLOMBIANA: 'COLOMBIANA',
+                    OTRA: 'OTRA'
+                  }[jugador.nacionalidad ?? 'null']
+                }}
+              </td>
+              <td>{{ jugador.edad }}</td>
+              <td>{{ jugador.fechaNacimiento | formatMediumDate }}</td>
+              <td>{{ jugador.numeroCamisa }}</td>
+              <td>{{ jugador.contactoEmergencia }}</td>
+              <td>{{ jugador.calleAvenidaDireccion }}</td>
+              <td>{{ jugador.numeroDireccion }}</td>
+              <td>{{ jugador.numeroPersonal }}</td>
+              <td>
+                @if (jugador.imagenJugador) {
+                  <a (click)="openFile(jugador.imagenJugador, jugador.imagenJugadorContentType)" jhiTranslate="entity.action.open">Abrir</a>
+                  <span>{{ jugador.imagenJugadorContentType }}, {{ byteSize(jugador.imagenJugador) }}</span>
+                }
+              </td>
+              <td>
+                @if (jugador.documentoIdentificacion) {
+                  <a
+                    (click)="openFile(jugador.documentoIdentificacion, jugador.documentoIdentificacionContentType)"
+                    jhiTranslate="entity.action.open"
+                    >Abrir</a
+                  >
+                  <span>{{ jugador.documentoIdentificacionContentType }}, {{ byteSize(jugador.documentoIdentificacion) }}</span>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/jugador', jugador.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Vista</span>
+                  </a>
+
+                  <a [routerLink]="['/jugador', jugador.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editar</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(jugador)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Eliminar</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (jugadors && jugadors.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>
