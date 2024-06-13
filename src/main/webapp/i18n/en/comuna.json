@@ -18,7 +18,8 @@
         "title": "Comuna"
       },
       "id": "ID",
-      "comuna": "Comuna"
+      "comuna": "Comuna",
+      "jugador": "Jugador"
     }
   }
 }

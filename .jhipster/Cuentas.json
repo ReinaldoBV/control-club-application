@@ -1,0 +1,46 @@
+{
+  "annotations": {
+    "changelogDate": "20240613173827"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "tipo",
+      "fieldType": "TipoCuenta",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "PAGAR,COBRAR"
+    },
+    {
+      "fieldName": "descripcion",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "monto",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "nroCuotas",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "fechaVencimiento",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "estado",
+      "fieldType": "EstadoCuenta",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "PENDIENTE,PAGADO,COBRADO"
+    }
+  ],
+  "name": "Cuentas",
+  "pagination": "pagination",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

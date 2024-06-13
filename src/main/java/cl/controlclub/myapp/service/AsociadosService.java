@@ -4,7 +4,11 @@ import cl.controlclub.myapp.domain.Asociados;
 import cl.controlclub.myapp.repository.AsociadosRepository;
 import cl.controlclub.myapp.service.dto.AsociadosDTO;
 import cl.controlclub.myapp.service.mapper.AsociadosMapper;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -86,6 +90,45 @@ public class AsociadosService {
     public Page<AsociadosDTO> findAll(Pageable pageable) {
         log.debug("Request to get all Asociados");
         return asociadosRepository.findAll(pageable).map(asociadosMapper::toDto);
+    }
+
+    /**
+     *  Get all the asociados where Usuario is {@code null}.
+     *  @return the list of entities.
+     */
+    @Transactional(readOnly = true)
+    public List<AsociadosDTO> findAllWhereUsuarioIsNull() {
+        log.debug("Request to get all asociados where Usuario is null");
+        return StreamSupport.stream(asociadosRepository.findAll().spliterator(), false)
+            .filter(asociados -> asociados.getUsuario() == null)
+            .map(asociadosMapper::toDto)
+            .collect(Collectors.toCollection(LinkedList::new));
+    }
+
+    /**
+     *  Get all the asociados where Directivos is {@code null}.
+     *  @return the list of entities.
+     */
+    @Transactional(readOnly = true)
+    public List<AsociadosDTO> findAllWhereDirectivosIsNull() {
+        log.debug("Request to get all asociados where Directivos is null");
+        return StreamSupport.stream(asociadosRepository.findAll().spliterator(), false)
+            .filter(asociados -> asociados.getDirectivos() == null)
+            .map(asociadosMapper::toDto)
+            .collect(Collectors.toCollection(LinkedList::new));
+    }
+
+    /**
+     *  Get all the asociados where CuerpoTecnico is {@code null}.
+     *  @return the list of entities.
+     */
+    @Transactional(readOnly = true)
+    public List<AsociadosDTO> findAllWhereCuerpoTecnicoIsNull() {
+        log.debug("Request to get all asociados where CuerpoTecnico is null");
+        return StreamSupport.stream(asociadosRepository.findAll().spliterator(), false)
+            .filter(asociados -> asociados.getCuerpoTecnico() == null)
+            .map(asociadosMapper::toDto)
+            .collect(Collectors.toCollection(LinkedList::new));
     }
 
     /**

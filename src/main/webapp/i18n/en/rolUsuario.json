@@ -1,0 +1,11 @@
+{
+  "controlClubApplicationApp": {
+    "RolUsuario": {
+      "null": "",
+      "ADMINISTRADOR": "ADMINISTRADOR",
+      "ENTRENADOR": "ENTRENADOR",
+      "JUGADOR": "JUGADOR",
+      "PADRE": "PADRE"
+    }
+  }
+}

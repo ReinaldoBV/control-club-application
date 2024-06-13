@@ -61,6 +61,66 @@ const routes: Routes = [
     data: { pageTitle: 'controlClubApplicationApp.partido.home.title' },
     loadChildren: () => import('./partido/partido.routes'),
   },
+  {
+    path: 'jugador',
+    data: { pageTitle: 'controlClubApplicationApp.jugador.home.title' },
+    loadChildren: () => import('./jugador/jugador.routes'),
+  },
+  {
+    path: 'prevision-salud',
+    data: { pageTitle: 'controlClubApplicationApp.previsionSalud.home.title' },
+    loadChildren: () => import('./prevision-salud/prevision-salud.routes'),
+  },
+  {
+    path: 'cuerpo-tecnico',
+    data: { pageTitle: 'controlClubApplicationApp.cuerpoTecnico.home.title' },
+    loadChildren: () => import('./cuerpo-tecnico/cuerpo-tecnico.routes'),
+  },
+  {
+    path: 'finanzas-ingreso',
+    data: { pageTitle: 'controlClubApplicationApp.finanzasIngreso.home.title' },
+    loadChildren: () => import('./finanzas-ingreso/finanzas-ingreso.routes'),
+  },
+  {
+    path: 'finanzas-egreso',
+    data: { pageTitle: 'controlClubApplicationApp.finanzasEgreso.home.title' },
+    loadChildren: () => import('./finanzas-egreso/finanzas-egreso.routes'),
+  },
+  {
+    path: 'cuentas',
+    data: { pageTitle: 'controlClubApplicationApp.cuentas.home.title' },
+    loadChildren: () => import('./cuentas/cuentas.routes'),
+  },
+  {
+    path: 'entrenamiento',
+    data: { pageTitle: 'controlClubApplicationApp.entrenamiento.home.title' },
+    loadChildren: () => import('./entrenamiento/entrenamiento.routes'),
+  },
+  {
+    path: 'mensaje',
+    data: { pageTitle: 'controlClubApplicationApp.mensaje.home.title' },
+    loadChildren: () => import('./mensaje/mensaje.routes'),
+  },
+  {
+    path: 'anuncio',
+    data: { pageTitle: 'controlClubApplicationApp.anuncio.home.title' },
+    loadChildren: () => import('./anuncio/anuncio.routes'),
+  },
+  {
+    path: 'bienes',
+    data: { pageTitle: 'controlClubApplicationApp.bienes.home.title' },
+    loadChildren: () => import('./bienes/bienes.routes'),
+  },
+  {
+    path: 'usuario',
+    data: { pageTitle: 'controlClubApplicationApp.usuario.home.title' },
+    loadChildren: () => import('./usuario/usuario.routes'),
+  },
+  {
+    path: 'asistencia',
+    data: { pageTitle: 'controlClubApplicationApp.asistencia.home.title' },
+    loadChildren: () => import('./asistencia/asistencia.routes'),
+  },
   /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
 ];
 
