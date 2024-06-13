@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (club()) {
+      <div>
+        <h2 data-cy="clubDetailsHeading"><span jhiTranslate="controlClubApplicationApp.club.detail.title">Club</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ club()!.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.club.razon">Razon</span></dt>
+          <dd>
+            <span>{{ club()!.razon }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.club.direccion">Direccion</span></dt>
+          <dd>
+            <span>{{ club()!.direccion }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.club.telefono">Telefono</span></dt>
+          <dd>
+            <span>{{ club()!.telefono }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.club.email">Email</span></dt>
+          <dd>
+            <span>{{ club()!.email }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.club.fechaFundacion">Fecha Fundacion</span></dt>
+          <dd>
+            <span>{{ club()!.fechaFundacion | formatMediumDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.club.presidente">Presidente</span></dt>
+          <dd>
+            <span>{{ club()!.presidente }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+        </button>
+
+        <button type="button" [routerLink]="['/club', club()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>
