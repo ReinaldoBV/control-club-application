@@ -268,7 +268,6 @@ relationship OneToOne {
     Usuario to CuerpoTecnico,
     Jugador to CentroSalud,
     Jugador to PrevisionSalud,
-    Jugador to Comuna,
     Jugador to CentroEducativo,
     Jugador to Categorias,
     Asociados to Directivos,
