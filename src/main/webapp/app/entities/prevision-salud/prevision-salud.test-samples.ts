@@ -1,22 +1,22 @@
 import { IPrevisionSalud, NewPrevisionSalud } from './prevision-salud.model';
 
 export const sampleWithRequiredData: IPrevisionSalud = {
-  id: 6399,
-  tipoPrevision: 'OTRO',
+  id: 28683,
+  tipoPrevision: 'NO_TIENE',
 };
 
 export const sampleWithPartialData: IPrevisionSalud = {
-  id: 29485,
+  id: 21777,
   tipoPrevision: 'OTRO',
 };
 
 export const sampleWithFullData: IPrevisionSalud = {
-  id: 20430,
+  id: 10741,
   tipoPrevision: 'NO_TIENE',
 };
 
 export const sampleWithNewData: NewPrevisionSalud = {
-  tipoPrevision: 'OTRO',
+  tipoPrevision: 'NO_TIENE',
   id: null,
 };
 

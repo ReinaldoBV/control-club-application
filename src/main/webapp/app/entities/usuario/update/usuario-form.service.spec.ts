@@ -23,6 +23,10 @@ describe('Usuario Form Service', () => {
             username: expect.any(Object),
             password: expect.any(Object),
             rol: expect.any(Object),
+            jugador: expect.any(Object),
+            asociados: expect.any(Object),
+            directivos: expect.any(Object),
+            cuerpoTecnico: expect.any(Object),
           }),
         );
       });
@@ -36,6 +40,10 @@ describe('Usuario Form Service', () => {
             username: expect.any(Object),
             password: expect.any(Object),
             rol: expect.any(Object),
+            jugador: expect.any(Object),
+            asociados: expect.any(Object),
+            directivos: expect.any(Object),
+            cuerpoTecnico: expect.any(Object),
           }),
         );
       });

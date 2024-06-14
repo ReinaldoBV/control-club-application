@@ -102,6 +102,42 @@
             </div>
           }
         </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_directivos" jhiTranslate="controlClubApplicationApp.asociados.directivos">Directivos</label>
+          <select
+            class="form-control"
+            id="field_directivos"
+            data-cy="directivos"
+            name="directivos"
+            formControlName="directivos"
+            [compareWith]="compareDirectivos"
+          >
+            <option [ngValue]="null"></option>
+            @for (directivosOption of directivosCollection; track $index) {
+              <option [ngValue]="directivosOption">{{ directivosOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_cuerpoTecnico" jhiTranslate="controlClubApplicationApp.asociados.cuerpoTecnico"
+            >Cuerpo Tecnico</label
+          >
+          <select
+            class="form-control"
+            id="field_cuerpoTecnico"
+            data-cy="cuerpoTecnico"
+            name="cuerpoTecnico"
+            formControlName="cuerpoTecnico"
+            [compareWith]="compareCuerpoTecnico"
+          >
+            <option [ngValue]="null"></option>
+            @for (cuerpoTecnicoOption of cuerpoTecnicosCollection; track $index) {
+              <option [ngValue]="cuerpoTecnicoOption">{{ cuerpoTecnicoOption.id }}</option>
+            }
+          </select>
+        </div>
       </div>
 
       <div>

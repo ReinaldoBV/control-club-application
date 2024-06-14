@@ -62,6 +62,16 @@ public class JugadorDTO implements Serializable {
 
     private String documentoIdentificacionContentType;
 
+    private CentroSaludDTO centroSalud;
+
+    private PrevisionSaludDTO previsionSalud;
+
+    private ComunaDTO comuna;
+
+    private CentroEducativoDTO centroEducativo;
+
+    private CategoriasDTO categorias;
+
     public Long getId() {
         return id;
     }
@@ -198,6 +208,46 @@ public class JugadorDTO implements Serializable {
         this.documentoIdentificacionContentType = documentoIdentificacionContentType;
     }
 
+    public CentroSaludDTO getCentroSalud() {
+        return centroSalud;
+    }
+
+    public void setCentroSalud(CentroSaludDTO centroSalud) {
+        this.centroSalud = centroSalud;
+    }
+
+    public PrevisionSaludDTO getPrevisionSalud() {
+        return previsionSalud;
+    }
+
+    public void setPrevisionSalud(PrevisionSaludDTO previsionSalud) {
+        this.previsionSalud = previsionSalud;
+    }
+
+    public ComunaDTO getComuna() {
+        return comuna;
+    }
+
+    public void setComuna(ComunaDTO comuna) {
+        this.comuna = comuna;
+    }
+
+    public CentroEducativoDTO getCentroEducativo() {
+        return centroEducativo;
+    }
+
+    public void setCentroEducativo(CentroEducativoDTO centroEducativo) {
+        this.centroEducativo = centroEducativo;
+    }
+
+    public CategoriasDTO getCategorias() {
+        return categorias;
+    }
+
+    public void setCategorias(CategoriasDTO categorias) {
+        this.categorias = categorias;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -238,6 +288,11 @@ public class JugadorDTO implements Serializable {
             ", numeroPersonal=" + getNumeroPersonal() +
             ", imagenJugador='" + getImagenJugador() + "'" +
             ", documentoIdentificacion='" + getDocumentoIdentificacion() + "'" +
+            ", centroSalud=" + getCentroSalud() +
+            ", previsionSalud=" + getPrevisionSalud() +
+            ", comuna=" + getComuna() +
+            ", centroEducativo=" + getCentroEducativo() +
+            ", categorias=" + getCategorias() +
             "}";
     }
 }

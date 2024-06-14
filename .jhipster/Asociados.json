@@ -38,7 +38,29 @@
   ],
   "name": "Asociados",
   "pagination": "pagination",
-  "relationships": [],
+  "relationships": [
+    {
+      "otherEntityName": "directivos",
+      "otherEntityRelationshipName": "asociados",
+      "relationshipName": "directivos",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "cuerpoTecnico",
+      "otherEntityRelationshipName": "asociados",
+      "relationshipName": "cuerpoTecnico",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "usuario",
+      "otherEntityRelationshipName": "asociados",
+      "relationshipName": "usuario",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-one"
+    }
+  ],
   "searchEngine": "no",
   "service": "serviceClass"
 }

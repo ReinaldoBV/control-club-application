@@ -261,6 +261,19 @@ entity Asistencia {
     asistencia Boolean required // Asistencia: true (presente), false (ausente)
 }
 
+relationship OneToOne {
+    Usuario to Jugador,
+    Usuario to Asociados,
+    Usuario to Directivos,
+    Usuario to CuerpoTecnico,
+    Jugador to CentroSalud,
+    Jugador to PrevisionSalud,
+    Jugador to Comuna,
+    Jugador to CentroEducativo,
+    Jugador to Categorias,
+    Asociados to Directivos,
+    Asociados to CuerpoTecnico
+}
 
 service all with serviceClass
 dto all with mapstruct

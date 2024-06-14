@@ -1,5 +1,6 @@
 package cl.controlclub.myapp.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
@@ -51,6 +52,14 @@ public class Directivos implements Serializable {
     @NotNull
     @Column(name = "email", nullable = false)
     private String email;
+
+    @JsonIgnoreProperties(value = { "jugador", "asociados", "directivos", "cuerpoTecnico" }, allowSetters = true)
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "directivos")
+    private Usuario usuario;
+
+    @JsonIgnoreProperties(value = { "directivos", "cuerpoTecnico", "usuario" }, allowSetters = true)
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "directivos")
+    private Asociados asociados;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -156,6 +165,44 @@ public class Directivos implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Usuario getUsuario() {
+        return this.usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        if (this.usuario != null) {
+            this.usuario.setDirectivos(null);
+        }
+        if (usuario != null) {
+            usuario.setDirectivos(this);
+        }
+        this.usuario = usuario;
+    }
+
+    public Directivos usuario(Usuario usuario) {
+        this.setUsuario(usuario);
+        return this;
+    }
+
+    public Asociados getAsociados() {
+        return this.asociados;
+    }
+
+    public void setAsociados(Asociados asociados) {
+        if (this.asociados != null) {
+            this.asociados.setDirectivos(null);
+        }
+        if (asociados != null) {
+            asociados.setDirectivos(this);
+        }
+        this.asociados = asociados;
+    }
+
+    public Directivos asociados(Asociados asociados) {
+        this.setAsociados(asociados);
+        return this;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here

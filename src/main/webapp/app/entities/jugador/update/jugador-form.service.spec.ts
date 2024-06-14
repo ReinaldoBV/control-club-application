@@ -34,6 +34,11 @@ describe('Jugador Form Service', () => {
             numeroPersonal: expect.any(Object),
             imagenJugador: expect.any(Object),
             documentoIdentificacion: expect.any(Object),
+            centroSalud: expect.any(Object),
+            previsionSalud: expect.any(Object),
+            comuna: expect.any(Object),
+            centroEducativo: expect.any(Object),
+            categorias: expect.any(Object),
           }),
         );
       });
@@ -58,6 +63,11 @@ describe('Jugador Form Service', () => {
             numeroPersonal: expect.any(Object),
             imagenJugador: expect.any(Object),
             documentoIdentificacion: expect.any(Object),
+            centroSalud: expect.any(Object),
+            previsionSalud: expect.any(Object),
+            comuna: expect.any(Object),
+            centroEducativo: expect.any(Object),
+            categorias: expect.any(Object),
           }),
         );
       });

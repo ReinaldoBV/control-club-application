@@ -24,7 +24,9 @@
       "telefono": "Telefono",
       "fechaEleccion": "Fecha Eleccion",
       "fechaVencimiento": "Fecha Vencimiento",
-      "email": "Email"
+      "email": "Email",
+      "usuario": "Usuario",
+      "asociados": "Asociados"
     }
   }
 }
