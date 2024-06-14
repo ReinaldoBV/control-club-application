@@ -39,6 +39,22 @@
           <dd>
             <span>{{ asociados()!.email }}</span>
           </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.asociados.directivos">Directivos</span></dt>
+          <dd>
+            @if (asociados()!.directivos) {
+              <div>
+                <a [routerLink]="['/directivos', asociados()!.directivos?.id, 'view']">{{ asociados()!.directivos?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.asociados.cuerpoTecnico">Cuerpo Tecnico</span></dt>
+          <dd>
+            @if (asociados()!.cuerpoTecnico) {
+              <div>
+                <a [routerLink]="['/cuerpo-tecnico', asociados()!.cuerpoTecnico?.id, 'view']">{{ asociados()!.cuerpoTecnico?.id }}</a>
+              </div>
+            }
+          </dd>
         </dl>
 
         <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">

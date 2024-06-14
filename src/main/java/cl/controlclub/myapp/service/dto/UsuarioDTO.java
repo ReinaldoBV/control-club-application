@@ -22,6 +22,14 @@ public class UsuarioDTO implements Serializable {
     @NotNull
     private RolUsuario rol;
 
+    private JugadorDTO jugador;
+
+    private AsociadosDTO asociados;
+
+    private DirectivosDTO directivos;
+
+    private CuerpoTecnicoDTO cuerpoTecnico;
+
     public Long getId() {
         return id;
     }
@@ -54,6 +62,38 @@ public class UsuarioDTO implements Serializable {
         this.rol = rol;
     }
 
+    public JugadorDTO getJugador() {
+        return jugador;
+    }
+
+    public void setJugador(JugadorDTO jugador) {
+        this.jugador = jugador;
+    }
+
+    public AsociadosDTO getAsociados() {
+        return asociados;
+    }
+
+    public void setAsociados(AsociadosDTO asociados) {
+        this.asociados = asociados;
+    }
+
+    public DirectivosDTO getDirectivos() {
+        return directivos;
+    }
+
+    public void setDirectivos(DirectivosDTO directivos) {
+        this.directivos = directivos;
+    }
+
+    public CuerpoTecnicoDTO getCuerpoTecnico() {
+        return cuerpoTecnico;
+    }
+
+    public void setCuerpoTecnico(CuerpoTecnicoDTO cuerpoTecnico) {
+        this.cuerpoTecnico = cuerpoTecnico;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -83,6 +123,10 @@ public class UsuarioDTO implements Serializable {
             ", username='" + getUsername() + "'" +
             ", password='" + getPassword() + "'" +
             ", rol='" + getRol() + "'" +
+            ", jugador=" + getJugador() +
+            ", asociados=" + getAsociados() +
+            ", directivos=" + getDirectivos() +
+            ", cuerpoTecnico=" + getCuerpoTecnico() +
             "}";
     }
 }

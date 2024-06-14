@@ -23,6 +23,18 @@
             <column name="rol" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
+            <column name="jugador_id" type="bigint">
+                <constraints nullable="true" unique="true" uniqueConstraintName="ux_usuario__jugador_id" />
+            </column>
+            <column name="asociados_id" type="bigint">
+                <constraints nullable="true" unique="true" uniqueConstraintName="ux_usuario__asociados_id" />
+            </column>
+            <column name="directivos_id" type="bigint">
+                <constraints nullable="true" unique="true" uniqueConstraintName="ux_usuario__directivos_id" />
+            </column>
+            <column name="cuerpo_tecnico_id" type="bigint">
+                <constraints nullable="true" unique="true" uniqueConstraintName="ux_usuario__cuerpo_tecnico_id" />
+            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
     </changeSet>

@@ -13,7 +13,15 @@
   ],
   "name": "CentroSalud",
   "pagination": "pagination",
-  "relationships": [],
+  "relationships": [
+    {
+      "otherEntityName": "jugador",
+      "otherEntityRelationshipName": "centroSalud",
+      "relationshipName": "jugador",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-one"
+    }
+  ],
   "searchEngine": "no",
   "service": "serviceClass"
 }

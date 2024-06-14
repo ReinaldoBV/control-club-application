@@ -2,6 +2,7 @@ package cl.controlclub.myapp.domain;
 
 import cl.controlclub.myapp.domain.enumeration.Nacionalidad;
 import cl.controlclub.myapp.domain.enumeration.TipoIdentificacion;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
@@ -89,6 +90,35 @@ public class Jugador implements Serializable {
 
     @Column(name = "documento_identificacion_content_type")
     private String documentoIdentificacionContentType;
+
+    @JsonIgnoreProperties(value = { "jugador" }, allowSetters = true)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(unique = true)
+    private CentroSalud centroSalud;
+
+    @JsonIgnoreProperties(value = { "jugador" }, allowSetters = true)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(unique = true)
+    private PrevisionSalud previsionSalud;
+
+    @JsonIgnoreProperties(value = { "jugador" }, allowSetters = true)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(unique = true)
+    private Comuna comuna;
+
+    @JsonIgnoreProperties(value = { "jugador" }, allowSetters = true)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(unique = true)
+    private CentroEducativo centroEducativo;
+
+    @JsonIgnoreProperties(value = { "jugador" }, allowSetters = true)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(unique = true)
+    private Categorias categorias;
+
+    @JsonIgnoreProperties(value = { "jugador", "asociados", "directivos", "cuerpoTecnico" }, allowSetters = true)
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "jugador")
+    private Usuario usuario;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -311,6 +341,90 @@ public class Jugador implements Serializable {
 
     public void setDocumentoIdentificacionContentType(String documentoIdentificacionContentType) {
         this.documentoIdentificacionContentType = documentoIdentificacionContentType;
+    }
+
+    public CentroSalud getCentroSalud() {
+        return this.centroSalud;
+    }
+
+    public void setCentroSalud(CentroSalud centroSalud) {
+        this.centroSalud = centroSalud;
+    }
+
+    public Jugador centroSalud(CentroSalud centroSalud) {
+        this.setCentroSalud(centroSalud);
+        return this;
+    }
+
+    public PrevisionSalud getPrevisionSalud() {
+        return this.previsionSalud;
+    }
+
+    public void setPrevisionSalud(PrevisionSalud previsionSalud) {
+        this.previsionSalud = previsionSalud;
+    }
+
+    public Jugador previsionSalud(PrevisionSalud previsionSalud) {
+        this.setPrevisionSalud(previsionSalud);
+        return this;
+    }
+
+    public Comuna getComuna() {
+        return this.comuna;
+    }
+
+    public void setComuna(Comuna comuna) {
+        this.comuna = comuna;
+    }
+
+    public Jugador comuna(Comuna comuna) {
+        this.setComuna(comuna);
+        return this;
+    }
+
+    public CentroEducativo getCentroEducativo() {
+        return this.centroEducativo;
+    }
+
+    public void setCentroEducativo(CentroEducativo centroEducativo) {
+        this.centroEducativo = centroEducativo;
+    }
+
+    public Jugador centroEducativo(CentroEducativo centroEducativo) {
+        this.setCentroEducativo(centroEducativo);
+        return this;
+    }
+
+    public Categorias getCategorias() {
+        return this.categorias;
+    }
+
+    public void setCategorias(Categorias categorias) {
+        this.categorias = categorias;
+    }
+
+    public Jugador categorias(Categorias categorias) {
+        this.setCategorias(categorias);
+        return this;
+    }
+
+    public Usuario getUsuario() {
+        return this.usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        if (this.usuario != null) {
+            this.usuario.setJugador(null);
+        }
+        if (usuario != null) {
+            usuario.setJugador(this);
+        }
+        this.usuario = usuario;
+    }
+
+    public Jugador usuario(Usuario usuario) {
+        this.setUsuario(usuario);
+        return this;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here

@@ -10,11 +10,18 @@
     -->
     <changeSet id="20240613164805-2" author="jhipster">
 
-        <addForeignKeyConstraint baseColumnNames="jugador_id"
+        <addForeignKeyConstraint baseColumnNames="directivos_id"
                                  baseTableName="asociados"
-                                 constraintName="fk_asociados__jugador_id"
+                                 constraintName="fk_asociados__directivos_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="jugador"
+                                 referencedTableName="directivos"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="cuerpo_tecnico_id"
+                                 baseTableName="asociados"
+                                 constraintName="fk_asociados__cuerpo_tecnico_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="cuerpo_tecnico"
                                  />
     </changeSet>
 </databaseChangeLog>

@@ -4,7 +4,11 @@ import cl.controlclub.myapp.domain.Directivos;
 import cl.controlclub.myapp.repository.DirectivosRepository;
 import cl.controlclub.myapp.service.dto.DirectivosDTO;
 import cl.controlclub.myapp.service.mapper.DirectivosMapper;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -86,6 +90,32 @@ public class DirectivosService {
     public Page<DirectivosDTO> findAll(Pageable pageable) {
         log.debug("Request to get all Directivos");
         return directivosRepository.findAll(pageable).map(directivosMapper::toDto);
+    }
+
+    /**
+     *  Get all the directivos where Usuario is {@code null}.
+     *  @return the list of entities.
+     */
+    @Transactional(readOnly = true)
+    public List<DirectivosDTO> findAllWhereUsuarioIsNull() {
+        log.debug("Request to get all directivos where Usuario is null");
+        return StreamSupport.stream(directivosRepository.findAll().spliterator(), false)
+            .filter(directivos -> directivos.getUsuario() == null)
+            .map(directivosMapper::toDto)
+            .collect(Collectors.toCollection(LinkedList::new));
+    }
+
+    /**
+     *  Get all the directivos where Asociados is {@code null}.
+     *  @return the list of entities.
+     */
+    @Transactional(readOnly = true)
+    public List<DirectivosDTO> findAllWhereAsociadosIsNull() {
+        log.debug("Request to get all directivos where Asociados is null");
+        return StreamSupport.stream(directivosRepository.findAll().spliterator(), false)
+            .filter(directivos -> directivos.getAsociados() == null)
+            .map(directivosMapper::toDto)
+            .collect(Collectors.toCollection(LinkedList::new));
     }
 
     /**

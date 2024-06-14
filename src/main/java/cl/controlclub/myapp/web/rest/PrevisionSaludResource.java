@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -140,12 +141,18 @@ public class PrevisionSaludResource {
      * {@code GET  /prevision-saluds} : get all the previsionSaluds.
      *
      * @param pageable the pagination information.
+     * @param filter the filter of the request.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of previsionSaluds in body.
      */
     @GetMapping("")
     public ResponseEntity<List<PrevisionSaludDTO>> getAllPrevisionSaluds(
-        @org.springdoc.core.annotations.ParameterObject Pageable pageable
+        @org.springdoc.core.annotations.ParameterObject Pageable pageable,
+        @RequestParam(name = "filter", required = false) String filter
     ) {
+        if ("jugador-is-null".equals(filter)) {
+            log.debug("REST request to get all PrevisionSaluds where jugador is null");
+            return new ResponseEntity<>(previsionSaludService.findAllWhereJugadorIsNull(), HttpStatus.OK);
+        }
         log.debug("REST request to get a page of PrevisionSaluds");
         Page<PrevisionSaludDTO> page = previsionSaludService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);

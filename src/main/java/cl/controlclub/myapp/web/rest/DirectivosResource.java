@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -139,10 +140,23 @@ public class DirectivosResource {
      * {@code GET  /directivos} : get all the directivos.
      *
      * @param pageable the pagination information.
+     * @param filter the filter of the request.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of directivos in body.
      */
     @GetMapping("")
-    public ResponseEntity<List<DirectivosDTO>> getAllDirectivos(@org.springdoc.core.annotations.ParameterObject Pageable pageable) {
+    public ResponseEntity<List<DirectivosDTO>> getAllDirectivos(
+        @org.springdoc.core.annotations.ParameterObject Pageable pageable,
+        @RequestParam(name = "filter", required = false) String filter
+    ) {
+        if ("usuario-is-null".equals(filter)) {
+            log.debug("REST request to get all Directivoss where usuario is null");
+            return new ResponseEntity<>(directivosService.findAllWhereUsuarioIsNull(), HttpStatus.OK);
+        }
+
+        if ("asociados-is-null".equals(filter)) {
+            log.debug("REST request to get all Directivoss where asociados is null");
+            return new ResponseEntity<>(directivosService.findAllWhereAsociadosIsNull(), HttpStatus.OK);
+        }
         log.debug("REST request to get a page of Directivos");
         Page<DirectivosDTO> page = directivosService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);

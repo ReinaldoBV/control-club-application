@@ -18,7 +18,8 @@
         "title": "Prevision Salud"
       },
       "id": "ID",
-      "tipoPrevision": "Tipo Prevision"
+      "tipoPrevision": "Tipo Prevision",
+      "jugador": "Jugador"
     }
   }
 }

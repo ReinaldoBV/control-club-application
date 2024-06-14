@@ -14,7 +14,15 @@
   ],
   "name": "Comuna",
   "pagination": "pagination",
-  "relationships": [],
+  "relationships": [
+    {
+      "otherEntityName": "jugador",
+      "otherEntityRelationshipName": "comuna",
+      "relationshipName": "jugador",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-one"
+    }
+  ],
   "searchEngine": "no",
   "service": "serviceClass"
 }
