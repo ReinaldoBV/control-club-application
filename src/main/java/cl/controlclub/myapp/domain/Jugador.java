@@ -104,11 +104,6 @@ public class Jugador implements Serializable {
     @JsonIgnoreProperties(value = { "jugador" }, allowSetters = true)
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(unique = true)
-    private Comuna comuna;
-
-    @JsonIgnoreProperties(value = { "jugador" }, allowSetters = true)
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(unique = true)
     private CentroEducativo centroEducativo;
 
     @JsonIgnoreProperties(value = { "jugador" }, allowSetters = true)
@@ -366,19 +361,6 @@ public class Jugador implements Serializable {
 
     public Jugador previsionSalud(PrevisionSalud previsionSalud) {
         this.setPrevisionSalud(previsionSalud);
-        return this;
-    }
-
-    public Comuna getComuna() {
-        return this.comuna;
-    }
-
-    public void setComuna(Comuna comuna) {
-        this.comuna = comuna;
-    }
-
-    public Jugador comuna(Comuna comuna) {
-        this.setComuna(comuna);
         return this;
     }
 

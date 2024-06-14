@@ -14,8 +14,6 @@ import { ICentroSalud } from 'app/entities/centro-salud/centro-salud.model';
 import { CentroSaludService } from 'app/entities/centro-salud/service/centro-salud.service';
 import { IPrevisionSalud } from 'app/entities/prevision-salud/prevision-salud.model';
 import { PrevisionSaludService } from 'app/entities/prevision-salud/service/prevision-salud.service';
-import { IComuna } from 'app/entities/comuna/comuna.model';
-import { ComunaService } from 'app/entities/comuna/service/comuna.service';
 import { ICentroEducativo } from 'app/entities/centro-educativo/centro-educativo.model';
 import { CentroEducativoService } from 'app/entities/centro-educativo/service/centro-educativo.service';
 import { ICategorias } from 'app/entities/categorias/categorias.model';
@@ -40,7 +38,6 @@ export class JugadorUpdateComponent implements OnInit {
 
   centroSaludsCollection: ICentroSalud[] = [];
   previsionSaludsCollection: IPrevisionSalud[] = [];
-  comunasCollection: IComuna[] = [];
   centroEducativosCollection: ICentroEducativo[] = [];
   categoriasCollection: ICategorias[] = [];
 
@@ -50,7 +47,6 @@ export class JugadorUpdateComponent implements OnInit {
   protected jugadorFormService = inject(JugadorFormService);
   protected centroSaludService = inject(CentroSaludService);
   protected previsionSaludService = inject(PrevisionSaludService);
-  protected comunaService = inject(ComunaService);
   protected centroEducativoService = inject(CentroEducativoService);
   protected categoriasService = inject(CategoriasService);
   protected activatedRoute = inject(ActivatedRoute);
@@ -62,8 +58,6 @@ export class JugadorUpdateComponent implements OnInit {
 
   comparePrevisionSalud = (o1: IPrevisionSalud | null, o2: IPrevisionSalud | null): boolean =>
     this.previsionSaludService.comparePrevisionSalud(o1, o2);
-
-  compareComuna = (o1: IComuna | null, o2: IComuna | null): boolean => this.comunaService.compareComuna(o1, o2);
 
   compareCentroEducativo = (o1: ICentroEducativo | null, o2: ICentroEducativo | null): boolean =>
     this.centroEducativoService.compareCentroEducativo(o1, o2);
@@ -143,7 +137,6 @@ export class JugadorUpdateComponent implements OnInit {
       this.previsionSaludsCollection,
       jugador.previsionSalud,
     );
-    this.comunasCollection = this.comunaService.addComunaToCollectionIfMissing<IComuna>(this.comunasCollection, jugador.comuna);
     this.centroEducativosCollection = this.centroEducativoService.addCentroEducativoToCollectionIfMissing<ICentroEducativo>(
       this.centroEducativosCollection,
       jugador.centroEducativo,
@@ -174,12 +167,6 @@ export class JugadorUpdateComponent implements OnInit {
         ),
       )
       .subscribe((previsionSaluds: IPrevisionSalud[]) => (this.previsionSaludsCollection = previsionSaluds));
-
-    this.comunaService
-      .query({ filter: 'jugador-is-null' })
-      .pipe(map((res: HttpResponse<IComuna[]>) => res.body ?? []))
-      .pipe(map((comunas: IComuna[]) => this.comunaService.addComunaToCollectionIfMissing<IComuna>(comunas, this.jugador?.comuna)))
-      .subscribe((comunas: IComuna[]) => (this.comunasCollection = comunas));
 
     this.centroEducativoService
       .query({ filter: 'jugador-is-null' })

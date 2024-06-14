@@ -109,14 +109,6 @@
               </div>
             }
           </dd>
-          <dt><span jhiTranslate="controlClubApplicationApp.jugador.comuna">Comuna</span></dt>
-          <dd>
-            @if (jugador()!.comuna) {
-              <div>
-                <a [routerLink]="['/comuna', jugador()!.comuna?.id, 'view']">{{ jugador()!.comuna?.id }}</a>
-              </div>
-            }
-          </dd>
           <dt><span jhiTranslate="controlClubApplicationApp.jugador.centroEducativo">Centro Educativo</span></dt>
           <dd>
             @if (jugador()!.centroEducativo) {

@@ -9,8 +9,6 @@ import { ICentroSalud } from 'app/entities/centro-salud/centro-salud.model';
 import { CentroSaludService } from 'app/entities/centro-salud/service/centro-salud.service';
 import { IPrevisionSalud } from 'app/entities/prevision-salud/prevision-salud.model';
 import { PrevisionSaludService } from 'app/entities/prevision-salud/service/prevision-salud.service';
-import { IComuna } from 'app/entities/comuna/comuna.model';
-import { ComunaService } from 'app/entities/comuna/service/comuna.service';
 import { ICentroEducativo } from 'app/entities/centro-educativo/centro-educativo.model';
 import { CentroEducativoService } from 'app/entities/centro-educativo/service/centro-educativo.service';
 import { ICategorias } from 'app/entities/categorias/categorias.model';
@@ -29,7 +27,6 @@ describe('Jugador Management Update Component', () => {
   let jugadorService: JugadorService;
   let centroSaludService: CentroSaludService;
   let previsionSaludService: PrevisionSaludService;
-  let comunaService: ComunaService;
   let centroEducativoService: CentroEducativoService;
   let categoriasService: CategoriasService;
 
@@ -55,7 +52,6 @@ describe('Jugador Management Update Component', () => {
     jugadorService = TestBed.inject(JugadorService);
     centroSaludService = TestBed.inject(CentroSaludService);
     previsionSaludService = TestBed.inject(PrevisionSaludService);
-    comunaService = TestBed.inject(ComunaService);
     centroEducativoService = TestBed.inject(CentroEducativoService);
     categoriasService = TestBed.inject(CategoriasService);
 
@@ -97,24 +93,6 @@ describe('Jugador Management Update Component', () => {
       expect(previsionSaludService.query).toHaveBeenCalled();
       expect(previsionSaludService.addPrevisionSaludToCollectionIfMissing).toHaveBeenCalledWith(previsionSaludCollection, previsionSalud);
       expect(comp.previsionSaludsCollection).toEqual(expectedCollection);
-    });
-
-    it('Should call comuna query and add missing value', () => {
-      const jugador: IJugador = { id: 456 };
-      const comuna: IComuna = { id: 6056 };
-      jugador.comuna = comuna;
-
-      const comunaCollection: IComuna[] = [{ id: 19846 }];
-      jest.spyOn(comunaService, 'query').mockReturnValue(of(new HttpResponse({ body: comunaCollection })));
-      const expectedCollection: IComuna[] = [comuna, ...comunaCollection];
-      jest.spyOn(comunaService, 'addComunaToCollectionIfMissing').mockReturnValue(expectedCollection);
-
-      activatedRoute.data = of({ jugador });
-      comp.ngOnInit();
-
-      expect(comunaService.query).toHaveBeenCalled();
-      expect(comunaService.addComunaToCollectionIfMissing).toHaveBeenCalledWith(comunaCollection, comuna);
-      expect(comp.comunasCollection).toEqual(expectedCollection);
     });
 
     it('Should call centroEducativo query and add missing value', () => {
@@ -162,8 +140,6 @@ describe('Jugador Management Update Component', () => {
       jugador.centroSalud = centroSalud;
       const previsionSalud: IPrevisionSalud = { id: 29485 };
       jugador.previsionSalud = previsionSalud;
-      const comuna: IComuna = { id: 11781 };
-      jugador.comuna = comuna;
       const centroEducativo: ICentroEducativo = { id: 26567 };
       jugador.centroEducativo = centroEducativo;
       const categorias: ICategorias = { id: 28409 };
@@ -174,7 +150,6 @@ describe('Jugador Management Update Component', () => {
 
       expect(comp.centroSaludsCollection).toContain(centroSalud);
       expect(comp.previsionSaludsCollection).toContain(previsionSalud);
-      expect(comp.comunasCollection).toContain(comuna);
       expect(comp.centroEducativosCollection).toContain(centroEducativo);
       expect(comp.categoriasCollection).toContain(categorias);
       expect(comp.jugador).toEqual(jugador);
@@ -267,16 +242,6 @@ describe('Jugador Management Update Component', () => {
         jest.spyOn(previsionSaludService, 'comparePrevisionSalud');
         comp.comparePrevisionSalud(entity, entity2);
         expect(previsionSaludService.comparePrevisionSalud).toHaveBeenCalledWith(entity, entity2);
-      });
-    });
-
-    describe('compareComuna', () => {
-      it('Should forward to comunaService', () => {
-        const entity = { id: 123 };
-        const entity2 = { id: 456 };
-        jest.spyOn(comunaService, 'compareComuna');
-        comp.compareComuna(entity, entity2);
-        expect(comunaService.compareComuna).toHaveBeenCalledWith(entity, entity2);
       });
     });
 
