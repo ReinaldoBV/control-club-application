@@ -24,13 +24,6 @@
                                  referencedTableName="prevision_salud"
                                  />
 
-        <addForeignKeyConstraint baseColumnNames="comuna_id"
-                                 baseTableName="jugador"
-                                 constraintName="fk_jugador__comuna_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="comuna"
-                                 />
-
         <addForeignKeyConstraint baseColumnNames="centro_educativo_id"
                                  baseTableName="jugador"
                                  constraintName="fk_jugador__centro_educativo_id"

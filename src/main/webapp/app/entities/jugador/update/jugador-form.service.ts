@@ -36,7 +36,6 @@ type JugadorFormGroupContent = {
   documentoIdentificacionContentType: FormControl<IJugador['documentoIdentificacionContentType']>;
   centroSalud: FormControl<IJugador['centroSalud']>;
   previsionSalud: FormControl<IJugador['previsionSalud']>;
-  comuna: FormControl<IJugador['comuna']>;
   centroEducativo: FormControl<IJugador['centroEducativo']>;
   categorias: FormControl<IJugador['categorias']>;
 };
@@ -100,7 +99,6 @@ export class JugadorFormService {
       documentoIdentificacionContentType: new FormControl(jugadorRawValue.documentoIdentificacionContentType),
       centroSalud: new FormControl(jugadorRawValue.centroSalud),
       previsionSalud: new FormControl(jugadorRawValue.previsionSalud),
-      comuna: new FormControl(jugadorRawValue.comuna),
       centroEducativo: new FormControl(jugadorRawValue.centroEducativo),
       categorias: new FormControl(jugadorRawValue.categorias),
     });

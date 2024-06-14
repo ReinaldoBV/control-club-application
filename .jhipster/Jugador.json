@@ -96,13 +96,6 @@
       "relationshipType": "one-to-one"
     },
     {
-      "otherEntityName": "comuna",
-      "otherEntityRelationshipName": "jugador",
-      "relationshipName": "comuna",
-      "relationshipSide": "left",
-      "relationshipType": "one-to-one"
-    },
-    {
       "otherEntityName": "centroEducativo",
       "otherEntityRelationshipName": "jugador",
       "relationshipName": "centroEducativo",

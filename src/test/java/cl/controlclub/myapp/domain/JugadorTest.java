@@ -3,7 +3,6 @@ package cl.controlclub.myapp.domain;
 import static cl.controlclub.myapp.domain.CategoriasTestSamples.*;
 import static cl.controlclub.myapp.domain.CentroEducativoTestSamples.*;
 import static cl.controlclub.myapp.domain.CentroSaludTestSamples.*;
-import static cl.controlclub.myapp.domain.ComunaTestSamples.*;
 import static cl.controlclub.myapp.domain.JugadorTestSamples.*;
 import static cl.controlclub.myapp.domain.PrevisionSaludTestSamples.*;
 import static cl.controlclub.myapp.domain.UsuarioTestSamples.*;
@@ -50,18 +49,6 @@ class JugadorTest {
 
         jugador.previsionSalud(null);
         assertThat(jugador.getPrevisionSalud()).isNull();
-    }
-
-    @Test
-    void comunaTest() {
-        Jugador jugador = getJugadorRandomSampleGenerator();
-        Comuna comunaBack = getComunaRandomSampleGenerator();
-
-        jugador.setComuna(comunaBack);
-        assertThat(jugador.getComuna()).isEqualTo(comunaBack);
-
-        jugador.comuna(null);
-        assertThat(jugador.getComuna()).isNull();
     }
 
     @Test

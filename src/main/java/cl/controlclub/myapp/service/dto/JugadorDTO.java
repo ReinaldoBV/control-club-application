@@ -66,8 +66,6 @@ public class JugadorDTO implements Serializable {
 
     private PrevisionSaludDTO previsionSalud;
 
-    private ComunaDTO comuna;
-
     private CentroEducativoDTO centroEducativo;
 
     private CategoriasDTO categorias;
@@ -224,14 +222,6 @@ public class JugadorDTO implements Serializable {
         this.previsionSalud = previsionSalud;
     }
 
-    public ComunaDTO getComuna() {
-        return comuna;
-    }
-
-    public void setComuna(ComunaDTO comuna) {
-        this.comuna = comuna;
-    }
-
     public CentroEducativoDTO getCentroEducativo() {
         return centroEducativo;
     }
@@ -290,7 +280,6 @@ public class JugadorDTO implements Serializable {
             ", documentoIdentificacion='" + getDocumentoIdentificacion() + "'" +
             ", centroSalud=" + getCentroSalud() +
             ", previsionSalud=" + getPrevisionSalud() +
-            ", comuna=" + getComuna() +
             ", centroEducativo=" + getCentroEducativo() +
             ", categorias=" + getCategorias() +
             "}";

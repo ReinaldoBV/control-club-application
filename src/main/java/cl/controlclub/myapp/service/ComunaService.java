@@ -4,11 +4,7 @@ import cl.controlclub.myapp.domain.Comuna;
 import cl.controlclub.myapp.repository.ComunaRepository;
 import cl.controlclub.myapp.service.dto.ComunaDTO;
 import cl.controlclub.myapp.service.mapper.ComunaMapper;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -90,19 +86,6 @@ public class ComunaService {
     public Page<ComunaDTO> findAll(Pageable pageable) {
         log.debug("Request to get all Comunas");
         return comunaRepository.findAll(pageable).map(comunaMapper::toDto);
-    }
-
-    /**
-     *  Get all the comunas where Jugador is {@code null}.
-     *  @return the list of entities.
-     */
-    @Transactional(readOnly = true)
-    public List<ComunaDTO> findAllWhereJugadorIsNull() {
-        log.debug("Request to get all comunas where Jugador is null");
-        return StreamSupport.stream(comunaRepository.findAll().spliterator(), false)
-            .filter(comuna -> comuna.getJugador() == null)
-            .map(comunaMapper::toDto)
-            .collect(Collectors.toCollection(LinkedList::new));
     }
 
     /**

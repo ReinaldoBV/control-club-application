@@ -152,12 +152,6 @@
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="comuna.id">
-              <div class="d-flex">
-                <span jhiTranslate="controlClubApplicationApp.jugador.comuna">Comuna</span>
-                <fa-icon class="p-1" icon="sort"></fa-icon>
-              </div>
-            </th>
             <th scope="col" jhiSortBy="centroEducativo.id">
               <div class="d-flex">
                 <span jhiTranslate="controlClubApplicationApp.jugador.centroEducativo">Centro Educativo</span>
@@ -233,13 +227,6 @@
                 @if (jugador.previsionSalud) {
                   <div>
                     <a [routerLink]="['/prevision-salud', jugador.previsionSalud.id, 'view']">{{ jugador.previsionSalud.id }}</a>
-                  </div>
-                }
-              </td>
-              <td>
-                @if (jugador.comuna) {
-                  <div>
-                    <a [routerLink]="['/comuna', jugador.comuna.id, 'view']">{{ jugador.comuna.id }}</a>
                   </div>
                 }
               </td>

@@ -28,10 +28,7 @@ public class CentroEducativo implements Serializable {
     @Column(name = "centro_educativo", nullable = false)
     private String centroEducativo;
 
-    @JsonIgnoreProperties(
-        value = { "centroSalud", "previsionSalud", "comuna", "centroEducativo", "categorias", "usuario" },
-        allowSetters = true
-    )
+    @JsonIgnoreProperties(value = { "centroSalud", "previsionSalud", "centroEducativo", "categorias", "usuario" }, allowSetters = true)
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "centroEducativo")
     private Jugador jugador;
 
