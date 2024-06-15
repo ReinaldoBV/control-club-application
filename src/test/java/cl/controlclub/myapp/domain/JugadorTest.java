@@ -1,10 +1,7 @@
 package cl.controlclub.myapp.domain;
 
 import static cl.controlclub.myapp.domain.CategoriasTestSamples.*;
-import static cl.controlclub.myapp.domain.CentroEducativoTestSamples.*;
-import static cl.controlclub.myapp.domain.CentroSaludTestSamples.*;
 import static cl.controlclub.myapp.domain.JugadorTestSamples.*;
-import static cl.controlclub.myapp.domain.PrevisionSaludTestSamples.*;
 import static cl.controlclub.myapp.domain.UsuarioTestSamples.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -25,42 +22,6 @@ class JugadorTest {
 
         jugador2 = getJugadorSample2();
         assertThat(jugador1).isNotEqualTo(jugador2);
-    }
-
-    @Test
-    void centroSaludTest() {
-        Jugador jugador = getJugadorRandomSampleGenerator();
-        CentroSalud centroSaludBack = getCentroSaludRandomSampleGenerator();
-
-        jugador.setCentroSalud(centroSaludBack);
-        assertThat(jugador.getCentroSalud()).isEqualTo(centroSaludBack);
-
-        jugador.centroSalud(null);
-        assertThat(jugador.getCentroSalud()).isNull();
-    }
-
-    @Test
-    void previsionSaludTest() {
-        Jugador jugador = getJugadorRandomSampleGenerator();
-        PrevisionSalud previsionSaludBack = getPrevisionSaludRandomSampleGenerator();
-
-        jugador.setPrevisionSalud(previsionSaludBack);
-        assertThat(jugador.getPrevisionSalud()).isEqualTo(previsionSaludBack);
-
-        jugador.previsionSalud(null);
-        assertThat(jugador.getPrevisionSalud()).isNull();
-    }
-
-    @Test
-    void centroEducativoTest() {
-        Jugador jugador = getJugadorRandomSampleGenerator();
-        CentroEducativo centroEducativoBack = getCentroEducativoRandomSampleGenerator();
-
-        jugador.setCentroEducativo(centroEducativoBack);
-        assertThat(jugador.getCentroEducativo()).isEqualTo(centroEducativoBack);
-
-        jugador.centroEducativo(null);
-        assertThat(jugador.getCentroEducativo()).isNull();
     }
 
     @Test

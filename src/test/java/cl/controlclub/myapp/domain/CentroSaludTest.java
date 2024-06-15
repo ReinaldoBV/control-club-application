@@ -1,7 +1,6 @@
 package cl.controlclub.myapp.domain;
 
 import static cl.controlclub.myapp.domain.CentroSaludTestSamples.*;
-import static cl.controlclub.myapp.domain.JugadorTestSamples.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import cl.controlclub.myapp.web.rest.TestUtil;
@@ -21,19 +20,5 @@ class CentroSaludTest {
 
         centroSalud2 = getCentroSaludSample2();
         assertThat(centroSalud1).isNotEqualTo(centroSalud2);
-    }
-
-    @Test
-    void jugadorTest() {
-        CentroSalud centroSalud = getCentroSaludRandomSampleGenerator();
-        Jugador jugadorBack = getJugadorRandomSampleGenerator();
-
-        centroSalud.setJugador(jugadorBack);
-        assertThat(centroSalud.getJugador()).isEqualTo(jugadorBack);
-        assertThat(jugadorBack.getCentroSalud()).isEqualTo(centroSalud);
-
-        centroSalud.jugador(null);
-        assertThat(centroSalud.getJugador()).isNull();
-        assertThat(jugadorBack.getCentroSalud()).isNull();
     }
 }

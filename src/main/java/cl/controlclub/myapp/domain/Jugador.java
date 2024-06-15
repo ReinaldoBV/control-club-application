@@ -94,21 +94,6 @@ public class Jugador implements Serializable {
     @JsonIgnoreProperties(value = { "jugador" }, allowSetters = true)
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(unique = true)
-    private CentroSalud centroSalud;
-
-    @JsonIgnoreProperties(value = { "jugador" }, allowSetters = true)
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(unique = true)
-    private PrevisionSalud previsionSalud;
-
-    @JsonIgnoreProperties(value = { "jugador" }, allowSetters = true)
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(unique = true)
-    private CentroEducativo centroEducativo;
-
-    @JsonIgnoreProperties(value = { "jugador" }, allowSetters = true)
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(unique = true)
     private Categorias categorias;
 
     @JsonIgnoreProperties(value = { "jugador", "asociados", "directivos", "cuerpoTecnico" }, allowSetters = true)
@@ -336,45 +321,6 @@ public class Jugador implements Serializable {
 
     public void setDocumentoIdentificacionContentType(String documentoIdentificacionContentType) {
         this.documentoIdentificacionContentType = documentoIdentificacionContentType;
-    }
-
-    public CentroSalud getCentroSalud() {
-        return this.centroSalud;
-    }
-
-    public void setCentroSalud(CentroSalud centroSalud) {
-        this.centroSalud = centroSalud;
-    }
-
-    public Jugador centroSalud(CentroSalud centroSalud) {
-        this.setCentroSalud(centroSalud);
-        return this;
-    }
-
-    public PrevisionSalud getPrevisionSalud() {
-        return this.previsionSalud;
-    }
-
-    public void setPrevisionSalud(PrevisionSalud previsionSalud) {
-        this.previsionSalud = previsionSalud;
-    }
-
-    public Jugador previsionSalud(PrevisionSalud previsionSalud) {
-        this.setPrevisionSalud(previsionSalud);
-        return this;
-    }
-
-    public CentroEducativo getCentroEducativo() {
-        return this.centroEducativo;
-    }
-
-    public void setCentroEducativo(CentroEducativo centroEducativo) {
-        this.centroEducativo = centroEducativo;
-    }
-
-    public Jugador centroEducativo(CentroEducativo centroEducativo) {
-        this.setCentroEducativo(centroEducativo);
-        return this;
     }
 
     public Categorias getCategorias() {

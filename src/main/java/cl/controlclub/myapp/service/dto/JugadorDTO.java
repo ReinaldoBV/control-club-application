@@ -62,12 +62,6 @@ public class JugadorDTO implements Serializable {
 
     private String documentoIdentificacionContentType;
 
-    private CentroSaludDTO centroSalud;
-
-    private PrevisionSaludDTO previsionSalud;
-
-    private CentroEducativoDTO centroEducativo;
-
     private CategoriasDTO categorias;
 
     public Long getId() {
@@ -206,30 +200,6 @@ public class JugadorDTO implements Serializable {
         this.documentoIdentificacionContentType = documentoIdentificacionContentType;
     }
 
-    public CentroSaludDTO getCentroSalud() {
-        return centroSalud;
-    }
-
-    public void setCentroSalud(CentroSaludDTO centroSalud) {
-        this.centroSalud = centroSalud;
-    }
-
-    public PrevisionSaludDTO getPrevisionSalud() {
-        return previsionSalud;
-    }
-
-    public void setPrevisionSalud(PrevisionSaludDTO previsionSalud) {
-        this.previsionSalud = previsionSalud;
-    }
-
-    public CentroEducativoDTO getCentroEducativo() {
-        return centroEducativo;
-    }
-
-    public void setCentroEducativo(CentroEducativoDTO centroEducativo) {
-        this.centroEducativo = centroEducativo;
-    }
-
     public CategoriasDTO getCategorias() {
         return categorias;
     }
@@ -278,9 +248,6 @@ public class JugadorDTO implements Serializable {
             ", numeroPersonal=" + getNumeroPersonal() +
             ", imagenJugador='" + getImagenJugador() + "'" +
             ", documentoIdentificacion='" + getDocumentoIdentificacion() + "'" +
-            ", centroSalud=" + getCentroSalud() +
-            ", previsionSalud=" + getPrevisionSalud() +
-            ", centroEducativo=" + getCentroEducativo() +
             ", categorias=" + getCategorias() +
             "}";
     }

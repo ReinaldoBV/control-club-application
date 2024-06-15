@@ -82,27 +82,6 @@
   "pagination": "pagination",
   "relationships": [
     {
-      "otherEntityName": "centroSalud",
-      "otherEntityRelationshipName": "jugador",
-      "relationshipName": "centroSalud",
-      "relationshipSide": "left",
-      "relationshipType": "one-to-one"
-    },
-    {
-      "otherEntityName": "previsionSalud",
-      "otherEntityRelationshipName": "jugador",
-      "relationshipName": "previsionSalud",
-      "relationshipSide": "left",
-      "relationshipType": "one-to-one"
-    },
-    {
-      "otherEntityName": "centroEducativo",
-      "otherEntityRelationshipName": "jugador",
-      "relationshipName": "centroEducativo",
-      "relationshipSide": "left",
-      "relationshipType": "one-to-one"
-    },
-    {
       "otherEntityName": "categorias",
       "otherEntityRelationshipName": "jugador",
       "relationshipName": "categorias",

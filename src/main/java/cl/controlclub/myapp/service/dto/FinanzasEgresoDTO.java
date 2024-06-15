@@ -1,6 +1,6 @@
 package cl.controlclub.myapp.service.dto;
 
-import cl.controlclub.myapp.domain.enumeration.TipoEgreso;
+import cl.controlclub.myapp.domain.enumeration.TipoPago;
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -16,7 +16,7 @@ public class FinanzasEgresoDTO implements Serializable {
     private Long id;
 
     @NotNull
-    private TipoEgreso tipo;
+    private TipoPago tipo;
 
     @NotNull
     private String descripcion;
@@ -35,11 +35,11 @@ public class FinanzasEgresoDTO implements Serializable {
         this.id = id;
     }
 
-    public TipoEgreso getTipo() {
+    public TipoPago getTipo() {
         return tipo;
     }
 
-    public void setTipo(TipoEgreso tipo) {
+    public void setTipo(TipoPago tipo) {
         this.tipo = tipo;
     }
 

@@ -7,7 +7,7 @@ import { finalize } from 'rxjs/operators';
 import SharedModule from 'app/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { TipoEgreso } from 'app/entities/enumerations/tipo-egreso.model';
+import { TipoPago } from 'app/entities/enumerations/tipo-pago.model';
 import { IFinanzasEgreso } from '../finanzas-egreso.model';
 import { FinanzasEgresoService } from '../service/finanzas-egreso.service';
 import { FinanzasEgresoFormService, FinanzasEgresoFormGroup } from './finanzas-egreso-form.service';
@@ -21,7 +21,7 @@ import { FinanzasEgresoFormService, FinanzasEgresoFormGroup } from './finanzas-e
 export class FinanzasEgresoUpdateComponent implements OnInit {
   isSaving = false;
   finanzasEgreso: IFinanzasEgreso | null = null;
-  tipoEgresoValues = Object.keys(TipoEgreso);
+  tipoPagoValues = Object.keys(TipoPago);
 
   protected finanzasEgresoService = inject(FinanzasEgresoService);
   protected finanzasEgresoFormService = inject(FinanzasEgresoFormService);

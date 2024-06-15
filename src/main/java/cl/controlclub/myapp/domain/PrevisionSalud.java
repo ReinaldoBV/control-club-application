@@ -1,7 +1,6 @@
 package cl.controlclub.myapp.domain;
 
 import cl.controlclub.myapp.domain.enumeration.TipoPrevision;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
@@ -30,10 +29,6 @@ public class PrevisionSalud implements Serializable {
     @Column(name = "tipo_prevision", nullable = false)
     private TipoPrevision tipoPrevision;
 
-    @JsonIgnoreProperties(value = { "centroSalud", "previsionSalud", "centroEducativo", "categorias", "usuario" }, allowSetters = true)
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "previsionSalud")
-    private Jugador jugador;
-
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public Long getId() {
@@ -60,25 +55,6 @@ public class PrevisionSalud implements Serializable {
 
     public void setTipoPrevision(TipoPrevision tipoPrevision) {
         this.tipoPrevision = tipoPrevision;
-    }
-
-    public Jugador getJugador() {
-        return this.jugador;
-    }
-
-    public void setJugador(Jugador jugador) {
-        if (this.jugador != null) {
-            this.jugador.setPrevisionSalud(null);
-        }
-        if (jugador != null) {
-            jugador.setPrevisionSalud(this);
-        }
-        this.jugador = jugador;
-    }
-
-    public PrevisionSalud jugador(Jugador jugador) {
-        this.setJugador(jugador);
-        return this;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here

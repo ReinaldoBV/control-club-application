@@ -1,0 +1,7 @@
+export enum TipoPago {
+  TRANSFERENCIA = 'TRANSFERENCIA',
+
+  EFECTIVO = 'EFECTIVO',
+
+  CHEQUE = 'CHEQUE',
+}

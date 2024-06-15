@@ -38,7 +38,7 @@ public class Usuario implements Serializable {
     @Column(name = "rol", nullable = false)
     private RolUsuario rol;
 
-    @JsonIgnoreProperties(value = { "centroSalud", "previsionSalud", "centroEducativo", "categorias", "usuario" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "categorias", "usuario" }, allowSetters = true)
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(unique = true)
     private Jugador jugador;

@@ -140,24 +140,6 @@
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="centroSalud.id">
-              <div class="d-flex">
-                <span jhiTranslate="controlClubApplicationApp.jugador.centroSalud">Centro Salud</span>
-                <fa-icon class="p-1" icon="sort"></fa-icon>
-              </div>
-            </th>
-            <th scope="col" jhiSortBy="previsionSalud.id">
-              <div class="d-flex">
-                <span jhiTranslate="controlClubApplicationApp.jugador.previsionSalud">Prevision Salud</span>
-                <fa-icon class="p-1" icon="sort"></fa-icon>
-              </div>
-            </th>
-            <th scope="col" jhiSortBy="centroEducativo.id">
-              <div class="d-flex">
-                <span jhiTranslate="controlClubApplicationApp.jugador.centroEducativo">Centro Educativo</span>
-                <fa-icon class="p-1" icon="sort"></fa-icon>
-              </div>
-            </th>
             <th scope="col" jhiSortBy="categorias.id">
               <div class="d-flex">
                 <span jhiTranslate="controlClubApplicationApp.jugador.categorias">Categorias</span>
@@ -214,27 +196,6 @@
                     >Abrir</a
                   >
                   <span>{{ jugador.documentoIdentificacionContentType }}, {{ byteSize(jugador.documentoIdentificacion) }}</span>
-                }
-              </td>
-              <td>
-                @if (jugador.centroSalud) {
-                  <div>
-                    <a [routerLink]="['/centro-salud', jugador.centroSalud.id, 'view']">{{ jugador.centroSalud.id }}</a>
-                  </div>
-                }
-              </td>
-              <td>
-                @if (jugador.previsionSalud) {
-                  <div>
-                    <a [routerLink]="['/prevision-salud', jugador.previsionSalud.id, 'view']">{{ jugador.previsionSalud.id }}</a>
-                  </div>
-                }
-              </td>
-              <td>
-                @if (jugador.centroEducativo) {
-                  <div>
-                    <a [routerLink]="['/centro-educativo', jugador.centroEducativo.id, 'view']">{{ jugador.centroEducativo.id }}</a>
-                  </div>
                 }
               </td>
               <td>

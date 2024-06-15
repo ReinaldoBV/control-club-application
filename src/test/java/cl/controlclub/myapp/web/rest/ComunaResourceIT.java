@@ -36,7 +36,7 @@ import org.springframework.transaction.annotation.Transactional;
 class ComunaResourceIT {
 
     private static final RMComuna DEFAULT_COMUNA = RMComuna.CERRILLOS;
-    private static final RMComuna UPDATED_COMUNA = RMComuna.CERRO;
+    private static final RMComuna UPDATED_COMUNA = RMComuna.CERRO_NAVIA;
 
     private static final String ENTITY_API_URL = "/api/comunas";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
