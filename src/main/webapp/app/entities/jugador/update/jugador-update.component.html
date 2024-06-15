@@ -407,63 +407,6 @@
         </div>
 
         <div class="mb-3">
-          <label class="form-label" for="field_centroSalud" jhiTranslate="controlClubApplicationApp.jugador.centroSalud"
-            >Centro Salud</label
-          >
-          <select
-            class="form-control"
-            id="field_centroSalud"
-            data-cy="centroSalud"
-            name="centroSalud"
-            formControlName="centroSalud"
-            [compareWith]="compareCentroSalud"
-          >
-            <option [ngValue]="null"></option>
-            @for (centroSaludOption of centroSaludsCollection; track $index) {
-              <option [ngValue]="centroSaludOption">{{ centroSaludOption.id }}</option>
-            }
-          </select>
-        </div>
-
-        <div class="mb-3">
-          <label class="form-label" for="field_previsionSalud" jhiTranslate="controlClubApplicationApp.jugador.previsionSalud"
-            >Prevision Salud</label
-          >
-          <select
-            class="form-control"
-            id="field_previsionSalud"
-            data-cy="previsionSalud"
-            name="previsionSalud"
-            formControlName="previsionSalud"
-            [compareWith]="comparePrevisionSalud"
-          >
-            <option [ngValue]="null"></option>
-            @for (previsionSaludOption of previsionSaludsCollection; track $index) {
-              <option [ngValue]="previsionSaludOption">{{ previsionSaludOption.id }}</option>
-            }
-          </select>
-        </div>
-
-        <div class="mb-3">
-          <label class="form-label" for="field_centroEducativo" jhiTranslate="controlClubApplicationApp.jugador.centroEducativo"
-            >Centro Educativo</label
-          >
-          <select
-            class="form-control"
-            id="field_centroEducativo"
-            data-cy="centroEducativo"
-            name="centroEducativo"
-            formControlName="centroEducativo"
-            [compareWith]="compareCentroEducativo"
-          >
-            <option [ngValue]="null"></option>
-            @for (centroEducativoOption of centroEducativosCollection; track $index) {
-              <option [ngValue]="centroEducativoOption">{{ centroEducativoOption.id }}</option>
-            }
-          </select>
-        </div>
-
-        <div class="mb-3">
           <label class="form-label" for="field_categorias" jhiTranslate="controlClubApplicationApp.jugador.categorias">Categorias</label>
           <select
             class="form-control"

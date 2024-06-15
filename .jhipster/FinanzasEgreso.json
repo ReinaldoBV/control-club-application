@@ -7,7 +7,7 @@
   "fields": [
     {
       "fieldName": "tipo",
-      "fieldType": "TipoEgreso",
+      "fieldType": "TipoPago",
       "fieldValidateRules": ["required"],
       "fieldValues": "TRANSFERENCIA,EFECTIVO,CHEQUE"
     },

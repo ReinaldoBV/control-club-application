@@ -1,9 +1,9 @@
 import dayjs from 'dayjs/esm';
-import { TipoIngreso } from 'app/entities/enumerations/tipo-ingreso.model';
+import { TipoPago } from 'app/entities/enumerations/tipo-pago.model';
 
 export interface IFinanzasIngreso {
   id: number;
-  tipo?: keyof typeof TipoIngreso | null;
+  tipo?: keyof typeof TipoPago | null;
   descripcion?: string | null;
   monto?: number | null;
   fecha?: dayjs.Dayjs | null;

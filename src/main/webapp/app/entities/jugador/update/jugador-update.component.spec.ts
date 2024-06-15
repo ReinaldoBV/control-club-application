@@ -5,16 +5,10 @@ import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { of, Subject, from } from 'rxjs';
 
-import { ICentroSalud } from 'app/entities/centro-salud/centro-salud.model';
-import { CentroSaludService } from 'app/entities/centro-salud/service/centro-salud.service';
-import { IPrevisionSalud } from 'app/entities/prevision-salud/prevision-salud.model';
-import { PrevisionSaludService } from 'app/entities/prevision-salud/service/prevision-salud.service';
-import { ICentroEducativo } from 'app/entities/centro-educativo/centro-educativo.model';
-import { CentroEducativoService } from 'app/entities/centro-educativo/service/centro-educativo.service';
 import { ICategorias } from 'app/entities/categorias/categorias.model';
 import { CategoriasService } from 'app/entities/categorias/service/categorias.service';
-import { IJugador } from '../jugador.model';
 import { JugadorService } from '../service/jugador.service';
+import { IJugador } from '../jugador.model';
 import { JugadorFormService } from './jugador-form.service';
 
 import { JugadorUpdateComponent } from './jugador-update.component';
@@ -25,9 +19,6 @@ describe('Jugador Management Update Component', () => {
   let activatedRoute: ActivatedRoute;
   let jugadorFormService: JugadorFormService;
   let jugadorService: JugadorService;
-  let centroSaludService: CentroSaludService;
-  let previsionSaludService: PrevisionSaludService;
-  let centroEducativoService: CentroEducativoService;
   let categoriasService: CategoriasService;
 
   beforeEach(() => {
@@ -50,72 +41,12 @@ describe('Jugador Management Update Component', () => {
     activatedRoute = TestBed.inject(ActivatedRoute);
     jugadorFormService = TestBed.inject(JugadorFormService);
     jugadorService = TestBed.inject(JugadorService);
-    centroSaludService = TestBed.inject(CentroSaludService);
-    previsionSaludService = TestBed.inject(PrevisionSaludService);
-    centroEducativoService = TestBed.inject(CentroEducativoService);
     categoriasService = TestBed.inject(CategoriasService);
 
     comp = fixture.componentInstance;
   });
 
   describe('ngOnInit', () => {
-    it('Should call centroSalud query and add missing value', () => {
-      const jugador: IJugador = { id: 456 };
-      const centroSalud: ICentroSalud = { id: 11456 };
-      jugador.centroSalud = centroSalud;
-
-      const centroSaludCollection: ICentroSalud[] = [{ id: 17024 }];
-      jest.spyOn(centroSaludService, 'query').mockReturnValue(of(new HttpResponse({ body: centroSaludCollection })));
-      const expectedCollection: ICentroSalud[] = [centroSalud, ...centroSaludCollection];
-      jest.spyOn(centroSaludService, 'addCentroSaludToCollectionIfMissing').mockReturnValue(expectedCollection);
-
-      activatedRoute.data = of({ jugador });
-      comp.ngOnInit();
-
-      expect(centroSaludService.query).toHaveBeenCalled();
-      expect(centroSaludService.addCentroSaludToCollectionIfMissing).toHaveBeenCalledWith(centroSaludCollection, centroSalud);
-      expect(comp.centroSaludsCollection).toEqual(expectedCollection);
-    });
-
-    it('Should call previsionSalud query and add missing value', () => {
-      const jugador: IJugador = { id: 456 };
-      const previsionSalud: IPrevisionSalud = { id: 6399 };
-      jugador.previsionSalud = previsionSalud;
-
-      const previsionSaludCollection: IPrevisionSalud[] = [{ id: 30763 }];
-      jest.spyOn(previsionSaludService, 'query').mockReturnValue(of(new HttpResponse({ body: previsionSaludCollection })));
-      const expectedCollection: IPrevisionSalud[] = [previsionSalud, ...previsionSaludCollection];
-      jest.spyOn(previsionSaludService, 'addPrevisionSaludToCollectionIfMissing').mockReturnValue(expectedCollection);
-
-      activatedRoute.data = of({ jugador });
-      comp.ngOnInit();
-
-      expect(previsionSaludService.query).toHaveBeenCalled();
-      expect(previsionSaludService.addPrevisionSaludToCollectionIfMissing).toHaveBeenCalledWith(previsionSaludCollection, previsionSalud);
-      expect(comp.previsionSaludsCollection).toEqual(expectedCollection);
-    });
-
-    it('Should call centroEducativo query and add missing value', () => {
-      const jugador: IJugador = { id: 456 };
-      const centroEducativo: ICentroEducativo = { id: 31971 };
-      jugador.centroEducativo = centroEducativo;
-
-      const centroEducativoCollection: ICentroEducativo[] = [{ id: 26747 }];
-      jest.spyOn(centroEducativoService, 'query').mockReturnValue(of(new HttpResponse({ body: centroEducativoCollection })));
-      const expectedCollection: ICentroEducativo[] = [centroEducativo, ...centroEducativoCollection];
-      jest.spyOn(centroEducativoService, 'addCentroEducativoToCollectionIfMissing').mockReturnValue(expectedCollection);
-
-      activatedRoute.data = of({ jugador });
-      comp.ngOnInit();
-
-      expect(centroEducativoService.query).toHaveBeenCalled();
-      expect(centroEducativoService.addCentroEducativoToCollectionIfMissing).toHaveBeenCalledWith(
-        centroEducativoCollection,
-        centroEducativo,
-      );
-      expect(comp.centroEducativosCollection).toEqual(expectedCollection);
-    });
-
     it('Should call categorias query and add missing value', () => {
       const jugador: IJugador = { id: 456 };
       const categorias: ICategorias = { id: 10205 };
@@ -136,21 +67,12 @@ describe('Jugador Management Update Component', () => {
 
     it('Should update editForm', () => {
       const jugador: IJugador = { id: 456 };
-      const centroSalud: ICentroSalud = { id: 32530 };
-      jugador.centroSalud = centroSalud;
-      const previsionSalud: IPrevisionSalud = { id: 29485 };
-      jugador.previsionSalud = previsionSalud;
-      const centroEducativo: ICentroEducativo = { id: 26567 };
-      jugador.centroEducativo = centroEducativo;
       const categorias: ICategorias = { id: 28409 };
       jugador.categorias = categorias;
 
       activatedRoute.data = of({ jugador });
       comp.ngOnInit();
 
-      expect(comp.centroSaludsCollection).toContain(centroSalud);
-      expect(comp.previsionSaludsCollection).toContain(previsionSalud);
-      expect(comp.centroEducativosCollection).toContain(centroEducativo);
       expect(comp.categoriasCollection).toContain(categorias);
       expect(comp.jugador).toEqual(jugador);
     });
@@ -225,36 +147,6 @@ describe('Jugador Management Update Component', () => {
   });
 
   describe('Compare relationships', () => {
-    describe('compareCentroSalud', () => {
-      it('Should forward to centroSaludService', () => {
-        const entity = { id: 123 };
-        const entity2 = { id: 456 };
-        jest.spyOn(centroSaludService, 'compareCentroSalud');
-        comp.compareCentroSalud(entity, entity2);
-        expect(centroSaludService.compareCentroSalud).toHaveBeenCalledWith(entity, entity2);
-      });
-    });
-
-    describe('comparePrevisionSalud', () => {
-      it('Should forward to previsionSaludService', () => {
-        const entity = { id: 123 };
-        const entity2 = { id: 456 };
-        jest.spyOn(previsionSaludService, 'comparePrevisionSalud');
-        comp.comparePrevisionSalud(entity, entity2);
-        expect(previsionSaludService.comparePrevisionSalud).toHaveBeenCalledWith(entity, entity2);
-      });
-    });
-
-    describe('compareCentroEducativo', () => {
-      it('Should forward to centroEducativoService', () => {
-        const entity = { id: 123 };
-        const entity2 = { id: 456 };
-        jest.spyOn(centroEducativoService, 'compareCentroEducativo');
-        comp.compareCentroEducativo(entity, entity2);
-        expect(centroEducativoService.compareCentroEducativo).toHaveBeenCalledWith(entity, entity2);
-      });
-    });
-
     describe('compareCategorias', () => {
       it('Should forward to categoriasService', () => {
         const entity = { id: 123 };

@@ -1,6 +1,6 @@
 package cl.controlclub.myapp.domain;
 
-import cl.controlclub.myapp.domain.enumeration.TipoIngreso;
+import cl.controlclub.myapp.domain.enumeration.TipoPago;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
@@ -29,7 +29,7 @@ public class FinanzasIngreso implements Serializable {
     @NotNull
     @Enumerated(EnumType.STRING)
     @Column(name = "tipo", nullable = false)
-    private TipoIngreso tipo;
+    private TipoPago tipo;
 
     @NotNull
     @Column(name = "descripcion", nullable = false)
@@ -58,16 +58,16 @@ public class FinanzasIngreso implements Serializable {
         this.id = id;
     }
 
-    public TipoIngreso getTipo() {
+    public TipoPago getTipo() {
         return this.tipo;
     }
 
-    public FinanzasIngreso tipo(TipoIngreso tipo) {
+    public FinanzasIngreso tipo(TipoPago tipo) {
         this.setTipo(tipo);
         return this;
     }
 
-    public void setTipo(TipoIngreso tipo) {
+    public void setTipo(TipoPago tipo) {
         this.tipo = tipo;
     }
 

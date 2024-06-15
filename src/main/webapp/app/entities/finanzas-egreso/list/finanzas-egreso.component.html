@@ -79,7 +79,7 @@
               <td>
                 <a [routerLink]="['/finanzas-egreso', finanzasEgreso.id, 'view']">{{ finanzasEgreso.id }}</a>
               </td>
-              <td [jhiTranslate]="'controlClubApplicationApp.TipoEgreso.' + (finanzasEgreso.tipo ?? 'null')">
+              <td [jhiTranslate]="'controlClubApplicationApp.TipoPago.' + (finanzasEgreso.tipo ?? 'null')">
                 {{ { null: '', TRANSFERENCIA: 'TRANSFERENCIA', EFECTIVO: 'EFECTIVO', CHEQUE: 'CHEQUE' }[finanzasEgreso.tipo ?? 'null'] }}
               </td>
               <td>{{ finanzasEgreso.descripcion }}</td>

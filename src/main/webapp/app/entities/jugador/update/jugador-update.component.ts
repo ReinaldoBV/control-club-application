@@ -10,12 +10,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AlertError } from 'app/shared/alert/alert-error.model';
 import { EventManager, EventWithContent } from 'app/core/util/event-manager.service';
 import { DataUtils, FileLoadError } from 'app/core/util/data-util.service';
-import { ICentroSalud } from 'app/entities/centro-salud/centro-salud.model';
-import { CentroSaludService } from 'app/entities/centro-salud/service/centro-salud.service';
-import { IPrevisionSalud } from 'app/entities/prevision-salud/prevision-salud.model';
-import { PrevisionSaludService } from 'app/entities/prevision-salud/service/prevision-salud.service';
-import { ICentroEducativo } from 'app/entities/centro-educativo/centro-educativo.model';
-import { CentroEducativoService } from 'app/entities/centro-educativo/service/centro-educativo.service';
 import { ICategorias } from 'app/entities/categorias/categorias.model';
 import { CategoriasService } from 'app/entities/categorias/service/categorias.service';
 import { TipoIdentificacion } from 'app/entities/enumerations/tipo-identificacion.model';
@@ -36,31 +30,17 @@ export class JugadorUpdateComponent implements OnInit {
   tipoIdentificacionValues = Object.keys(TipoIdentificacion);
   nacionalidadValues = Object.keys(Nacionalidad);
 
-  centroSaludsCollection: ICentroSalud[] = [];
-  previsionSaludsCollection: IPrevisionSalud[] = [];
-  centroEducativosCollection: ICentroEducativo[] = [];
   categoriasCollection: ICategorias[] = [];
 
   protected dataUtils = inject(DataUtils);
   protected eventManager = inject(EventManager);
   protected jugadorService = inject(JugadorService);
   protected jugadorFormService = inject(JugadorFormService);
-  protected centroSaludService = inject(CentroSaludService);
-  protected previsionSaludService = inject(PrevisionSaludService);
-  protected centroEducativoService = inject(CentroEducativoService);
   protected categoriasService = inject(CategoriasService);
   protected activatedRoute = inject(ActivatedRoute);
 
   // eslint-disable-next-line @typescript-eslint/member-ordering
   editForm: JugadorFormGroup = this.jugadorFormService.createJugadorFormGroup();
-
-  compareCentroSalud = (o1: ICentroSalud | null, o2: ICentroSalud | null): boolean => this.centroSaludService.compareCentroSalud(o1, o2);
-
-  comparePrevisionSalud = (o1: IPrevisionSalud | null, o2: IPrevisionSalud | null): boolean =>
-    this.previsionSaludService.comparePrevisionSalud(o1, o2);
-
-  compareCentroEducativo = (o1: ICentroEducativo | null, o2: ICentroEducativo | null): boolean =>
-    this.centroEducativoService.compareCentroEducativo(o1, o2);
 
   compareCategorias = (o1: ICategorias | null, o2: ICategorias | null): boolean => this.categoriasService.compareCategorias(o1, o2);
 
@@ -129,18 +109,6 @@ export class JugadorUpdateComponent implements OnInit {
     this.jugador = jugador;
     this.jugadorFormService.resetForm(this.editForm, jugador);
 
-    this.centroSaludsCollection = this.centroSaludService.addCentroSaludToCollectionIfMissing<ICentroSalud>(
-      this.centroSaludsCollection,
-      jugador.centroSalud,
-    );
-    this.previsionSaludsCollection = this.previsionSaludService.addPrevisionSaludToCollectionIfMissing<IPrevisionSalud>(
-      this.previsionSaludsCollection,
-      jugador.previsionSalud,
-    );
-    this.centroEducativosCollection = this.centroEducativoService.addCentroEducativoToCollectionIfMissing<ICentroEducativo>(
-      this.centroEducativosCollection,
-      jugador.centroEducativo,
-    );
     this.categoriasCollection = this.categoriasService.addCategoriasToCollectionIfMissing<ICategorias>(
       this.categoriasCollection,
       jugador.categorias,
@@ -148,39 +116,6 @@ export class JugadorUpdateComponent implements OnInit {
   }
 
   protected loadRelationshipsOptions(): void {
-    this.centroSaludService
-      .query({ filter: 'jugador-is-null' })
-      .pipe(map((res: HttpResponse<ICentroSalud[]>) => res.body ?? []))
-      .pipe(
-        map((centroSaluds: ICentroSalud[]) =>
-          this.centroSaludService.addCentroSaludToCollectionIfMissing<ICentroSalud>(centroSaluds, this.jugador?.centroSalud),
-        ),
-      )
-      .subscribe((centroSaluds: ICentroSalud[]) => (this.centroSaludsCollection = centroSaluds));
-
-    this.previsionSaludService
-      .query({ filter: 'jugador-is-null' })
-      .pipe(map((res: HttpResponse<IPrevisionSalud[]>) => res.body ?? []))
-      .pipe(
-        map((previsionSaluds: IPrevisionSalud[]) =>
-          this.previsionSaludService.addPrevisionSaludToCollectionIfMissing<IPrevisionSalud>(previsionSaluds, this.jugador?.previsionSalud),
-        ),
-      )
-      .subscribe((previsionSaluds: IPrevisionSalud[]) => (this.previsionSaludsCollection = previsionSaluds));
-
-    this.centroEducativoService
-      .query({ filter: 'jugador-is-null' })
-      .pipe(map((res: HttpResponse<ICentroEducativo[]>) => res.body ?? []))
-      .pipe(
-        map((centroEducativos: ICentroEducativo[]) =>
-          this.centroEducativoService.addCentroEducativoToCollectionIfMissing<ICentroEducativo>(
-            centroEducativos,
-            this.jugador?.centroEducativo,
-          ),
-        ),
-      )
-      .subscribe((centroEducativos: ICentroEducativo[]) => (this.centroEducativosCollection = centroEducativos));
-
     this.categoriasService
       .query({ filter: 'jugador-is-null' })
       .pipe(map((res: HttpResponse<ICategorias[]>) => res.body ?? []))

@@ -10,7 +10,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import cl.controlclub.myapp.IntegrationTest;
 import cl.controlclub.myapp.domain.FinanzasIngreso;
-import cl.controlclub.myapp.domain.enumeration.TipoIngreso;
+import cl.controlclub.myapp.domain.enumeration.TipoPago;
 import cl.controlclub.myapp.repository.FinanzasIngresoRepository;
 import cl.controlclub.myapp.service.dto.FinanzasIngresoDTO;
 import cl.controlclub.myapp.service.mapper.FinanzasIngresoMapper;
@@ -39,8 +39,8 @@ import org.springframework.transaction.annotation.Transactional;
 @WithMockUser
 class FinanzasIngresoResourceIT {
 
-    private static final TipoIngreso DEFAULT_TIPO = TipoIngreso.TRANSFERENCIA;
-    private static final TipoIngreso UPDATED_TIPO = TipoIngreso.EFECTIVO;
+    private static final TipoPago DEFAULT_TIPO = TipoPago.TRANSFERENCIA;
+    private static final TipoPago UPDATED_TIPO = TipoPago.EFECTIVO;
 
     private static final String DEFAULT_DESCRIPCION = "AAAAAAAAAA";
     private static final String UPDATED_DESCRIPCION = "BBBBBBBBBB";

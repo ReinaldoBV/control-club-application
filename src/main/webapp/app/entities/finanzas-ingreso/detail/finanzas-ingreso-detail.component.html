@@ -19,7 +19,7 @@
           </dd>
           <dt><span jhiTranslate="controlClubApplicationApp.finanzasIngreso.tipo">Tipo</span></dt>
           <dd>
-            <span [jhiTranslate]="'controlClubApplicationApp.TipoIngreso.' + (finanzasIngreso()!.tipo ?? 'null')">{{
+            <span [jhiTranslate]="'controlClubApplicationApp.TipoPago.' + (finanzasIngreso()!.tipo ?? 'null')">{{
               { null: '', TRANSFERENCIA: 'TRANSFERENCIA', EFECTIVO: 'EFECTIVO', CHEQUE: 'CHEQUE' }[finanzasIngreso()!.tipo ?? 'null']
             }}</span>
           </dd>
