@@ -1,39 +1,39 @@
 enum RMComuna {
     CERRILLOS,
-	CERRO NAVIA,
+	CERRO_NAVIA,
 	CONCHALI,
-	EL BOSQUE,
-	ESTACION CENTRAL,
+	EL_BOSQUE,
+	ESTACION_CENTRAL,
     HUECHURABA,
     INDEPENDENCIA,
-    LA CISTERNA,
-    LA FLORIDA,
-    LA GRANJA,
-    LA PINTANA,
-    LA REINA,
-    LAS CONDES,
-    LO BARNECHEA,
-    LO ESPEJO,
-    LO PRADO,
+    LA_CISTERNA,
+    LA_FLORIDA,
+    LA_GRANJA,
+    LA_PINTANA,
+    LA_REINA,
+    LAS_CONDES,
+    LO_BARNECHEA,
+    LO_ESPEJO,
+    LO_PRADO,
     MACUL,
     MAIPU,
     NUNOA,
-    PADRE HURTADO,
-    PEDRO AGUIRRE CERDA,
+    PADRE_HURTADO,
+    PEDRO_AGUIRRE_CERDA,
     PENALOLEN,
     PIRQUE,
     PROVIDENCIA,
     PUDAHUEL,
-    PUENTE ALTO,
+    PUENTE_ALTO,
     QUILICURA,
-    QUINTA NORMAL,
+    QUINTA_NORMAL,
     RECOLETA,
     RENCA,
-    SAN BERNARDO,
-    SAN JOAQUIN,
-    SAN JOSE DE MAIPO,
-    SAN MIGUEL,
-    SAN RAMON,
+    SAN_BERNARDO,
+    SAN_JOAQUIN,
+    SAN_JOSE_DE_MAIPO,
+    SAN_MIGUEL,
+    SAN_RAMON,
     SANTIAGO
 }
 
@@ -59,13 +59,7 @@ enum TipoPrevision {
     OTRO
 }
 
-enum TipoIngreso {
-    TRANSFERENCIA,
-    EFECTIVO,
-    CHEQUE
-}
-
-enum TipoEgreso {
+enum TipoPago {
     TRANSFERENCIA,
     EFECTIVO,
     CHEQUE
@@ -187,14 +181,14 @@ entity TorneosParticipaciones {
 
 
 entity FinanzasIngreso {
-    tipo TipoIngreso required,
+    tipo TipoPago required,
     descripcion String required,
     monto BigDecimal required,
     fecha LocalDate required
 }
 
 entity FinanzasEgreso {
-    tipo TipoEgreso required,
+    tipo TipoPago required,
 	descripcion String required,
     monto BigDecimal required,
     fecha LocalDate required
@@ -266,9 +260,6 @@ relationship OneToOne {
     Usuario to Asociados,
     Usuario to Directivos,
     Usuario to CuerpoTecnico,
-    Jugador to CentroSalud,
-    Jugador to PrevisionSalud,
-    Jugador to CentroEducativo,
     Jugador to Categorias,
     Asociados to Directivos,
     Asociados to CuerpoTecnico
