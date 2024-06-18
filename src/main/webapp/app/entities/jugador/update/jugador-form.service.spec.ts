@@ -35,6 +35,7 @@ describe('Jugador Form Service', () => {
             numeroPersonal: expect.any(Object),
             imagenJugador: expect.any(Object),
             documentoIdentificacion: expect.any(Object),
+            categoria: expect.any(Object),
           }),
         );
       });
@@ -60,6 +61,7 @@ describe('Jugador Form Service', () => {
             numeroPersonal: expect.any(Object),
             imagenJugador: expect.any(Object),
             documentoIdentificacion: expect.any(Object),
+            categoria: expect.any(Object),
           }),
         );
       });

@@ -1,4 +1,5 @@
 import dayjs from 'dayjs/esm';
+import { ICategorias } from 'app/entities/categorias/categorias.model';
 import { TipoIdentificacion } from 'app/entities/enumerations/tipo-identificacion.model';
 import { Nacionalidad } from 'app/entities/enumerations/nacionalidad.model';
 
@@ -21,6 +22,7 @@ export interface IJugador {
   imagenJugadorContentType?: string | null;
   documentoIdentificacion?: string | null;
   documentoIdentificacionContentType?: string | null;
+  categoria?: Pick<ICategorias, 'id'> | null;
 }
 
 export type NewJugador = Omit<IJugador, 'id'> & { id: null };

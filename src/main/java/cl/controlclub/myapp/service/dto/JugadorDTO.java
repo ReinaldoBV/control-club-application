@@ -65,6 +65,8 @@ public class JugadorDTO implements Serializable {
 
     private String documentoIdentificacionContentType;
 
+    private CategoriasDTO categoria;
+
     public Long getId() {
         return id;
     }
@@ -209,6 +211,14 @@ public class JugadorDTO implements Serializable {
         this.documentoIdentificacionContentType = documentoIdentificacionContentType;
     }
 
+    public CategoriasDTO getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(CategoriasDTO categoria) {
+        this.categoria = categoria;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -250,6 +260,7 @@ public class JugadorDTO implements Serializable {
             ", numeroPersonal=" + getNumeroPersonal() +
             ", imagenJugador='" + getImagenJugador() + "'" +
             ", documentoIdentificacion='" + getDocumentoIdentificacion() + "'" +
+            ", categoria=" + getCategoria() +
             "}";
     }
 }

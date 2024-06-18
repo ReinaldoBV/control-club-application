@@ -34,7 +34,7 @@
       "imagenJugador": "Imagen Jugador",
       "documentoIdentificacion": "Documento Identificacion",
       "usuario": "Usuario",
-      "categorias": "Categorias"
+      "categoria": "Categoria"
     }
   }
 }

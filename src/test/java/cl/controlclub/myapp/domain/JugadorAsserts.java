@@ -89,5 +89,9 @@ public class JugadorAsserts {
      * @param expected the expected entity
      * @param actual the actual entity
      */
-    public static void assertJugadorUpdatableRelationshipsEquals(Jugador expected, Jugador actual) {}
+    public static void assertJugadorUpdatableRelationshipsEquals(Jugador expected, Jugador actual) {
+        assertThat(expected)
+            .as("Verify Jugador relationships")
+            .satisfies(e -> assertThat(e.getCategoria()).as("check categoria").isEqualTo(actual.getCategoria()));
+    }
 }

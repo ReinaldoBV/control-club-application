@@ -23,7 +23,6 @@ describe('Categorias Form Service', () => {
             anioInicio: expect.any(Object),
             anioFinal: expect.any(Object),
             nombreCategoria: expect.any(Object),
-            jugador: expect.any(Object),
           }),
         );
       });
@@ -37,7 +36,6 @@ describe('Categorias Form Service', () => {
             anioInicio: expect.any(Object),
             anioFinal: expect.any(Object),
             nombreCategoria: expect.any(Object),
-            jugador: expect.any(Object),
           }),
         );
       });

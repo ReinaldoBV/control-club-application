@@ -26,10 +26,10 @@
   "relationships": [
     {
       "otherEntityName": "jugador",
-      "otherEntityRelationshipName": "categorias",
+      "otherEntityRelationshipName": "categoria",
       "relationshipName": "jugador",
       "relationshipSide": "left",
-      "relationshipType": "many-to-one"
+      "relationshipType": "one-to-many"
     }
   ],
   "searchEngine": "no",

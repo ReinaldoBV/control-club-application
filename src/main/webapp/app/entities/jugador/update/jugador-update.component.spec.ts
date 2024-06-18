@@ -5,6 +5,8 @@ import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { of, Subject, from } from 'rxjs';
 
+import { ICategorias } from 'app/entities/categorias/categorias.model';
+import { CategoriasService } from 'app/entities/categorias/service/categorias.service';
 import { JugadorService } from '../service/jugador.service';
 import { IJugador } from '../jugador.model';
 import { JugadorFormService } from './jugador-form.service';
@@ -17,6 +19,7 @@ describe('Jugador Management Update Component', () => {
   let activatedRoute: ActivatedRoute;
   let jugadorFormService: JugadorFormService;
   let jugadorService: JugadorService;
+  let categoriasService: CategoriasService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -38,17 +41,43 @@ describe('Jugador Management Update Component', () => {
     activatedRoute = TestBed.inject(ActivatedRoute);
     jugadorFormService = TestBed.inject(JugadorFormService);
     jugadorService = TestBed.inject(JugadorService);
+    categoriasService = TestBed.inject(CategoriasService);
 
     comp = fixture.componentInstance;
   });
 
   describe('ngOnInit', () => {
-    it('Should update editForm', () => {
+    it('Should call Categorias query and add missing value', () => {
       const jugador: IJugador = { id: 456 };
+      const categoria: ICategorias = { id: 10205 };
+      jugador.categoria = categoria;
+
+      const categoriasCollection: ICategorias[] = [{ id: 17129 }];
+      jest.spyOn(categoriasService, 'query').mockReturnValue(of(new HttpResponse({ body: categoriasCollection })));
+      const additionalCategorias = [categoria];
+      const expectedCollection: ICategorias[] = [...additionalCategorias, ...categoriasCollection];
+      jest.spyOn(categoriasService, 'addCategoriasToCollectionIfMissing').mockReturnValue(expectedCollection);
 
       activatedRoute.data = of({ jugador });
       comp.ngOnInit();
 
+      expect(categoriasService.query).toHaveBeenCalled();
+      expect(categoriasService.addCategoriasToCollectionIfMissing).toHaveBeenCalledWith(
+        categoriasCollection,
+        ...additionalCategorias.map(expect.objectContaining),
+      );
+      expect(comp.categoriasSharedCollection).toEqual(expectedCollection);
+    });
+
+    it('Should update editForm', () => {
+      const jugador: IJugador = { id: 456 };
+      const categoria: ICategorias = { id: 28409 };
+      jugador.categoria = categoria;
+
+      activatedRoute.data = of({ jugador });
+      comp.ngOnInit();
+
+      expect(comp.categoriasSharedCollection).toContain(categoria);
       expect(comp.jugador).toEqual(jugador);
     });
   });
@@ -118,6 +147,18 @@ describe('Jugador Management Update Component', () => {
       expect(jugadorService.update).toHaveBeenCalled();
       expect(comp.isSaving).toEqual(false);
       expect(comp.previousState).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('Compare relationships', () => {
+    describe('compareCategorias', () => {
+      it('Should forward to categoriasService', () => {
+        const entity = { id: 123 };
+        const entity2 = { id: 456 };
+        jest.spyOn(categoriasService, 'compareCategorias');
+        comp.compareCategorias(entity, entity2);
+        expect(categoriasService.compareCategorias).toHaveBeenCalledWith(entity, entity2);
+      });
     });
   });
 });
