@@ -26,30 +26,6 @@ class AsociadosTest {
     }
 
     @Test
-    void directivosTest() {
-        Asociados asociados = getAsociadosRandomSampleGenerator();
-        Directivos directivosBack = getDirectivosRandomSampleGenerator();
-
-        asociados.setDirectivos(directivosBack);
-        assertThat(asociados.getDirectivos()).isEqualTo(directivosBack);
-
-        asociados.directivos(null);
-        assertThat(asociados.getDirectivos()).isNull();
-    }
-
-    @Test
-    void cuerpoTecnicoTest() {
-        Asociados asociados = getAsociadosRandomSampleGenerator();
-        CuerpoTecnico cuerpoTecnicoBack = getCuerpoTecnicoRandomSampleGenerator();
-
-        asociados.setCuerpoTecnico(cuerpoTecnicoBack);
-        assertThat(asociados.getCuerpoTecnico()).isEqualTo(cuerpoTecnicoBack);
-
-        asociados.cuerpoTecnico(null);
-        assertThat(asociados.getCuerpoTecnico()).isNull();
-    }
-
-    @Test
     void usuarioTest() {
         Asociados asociados = getAsociadosRandomSampleGenerator();
         Usuario usuarioBack = getUsuarioRandomSampleGenerator();
@@ -61,5 +37,33 @@ class AsociadosTest {
         asociados.usuario(null);
         assertThat(asociados.getUsuario()).isNull();
         assertThat(usuarioBack.getAsociados()).isNull();
+    }
+
+    @Test
+    void cuerpoTecnicoTest() {
+        Asociados asociados = getAsociadosRandomSampleGenerator();
+        CuerpoTecnico cuerpoTecnicoBack = getCuerpoTecnicoRandomSampleGenerator();
+
+        asociados.setCuerpoTecnico(cuerpoTecnicoBack);
+        assertThat(asociados.getCuerpoTecnico()).isEqualTo(cuerpoTecnicoBack);
+        assertThat(cuerpoTecnicoBack.getAsociados()).isEqualTo(asociados);
+
+        asociados.cuerpoTecnico(null);
+        assertThat(asociados.getCuerpoTecnico()).isNull();
+        assertThat(cuerpoTecnicoBack.getAsociados()).isNull();
+    }
+
+    @Test
+    void directivosTest() {
+        Asociados asociados = getAsociadosRandomSampleGenerator();
+        Directivos directivosBack = getDirectivosRandomSampleGenerator();
+
+        asociados.setDirectivos(directivosBack);
+        assertThat(asociados.getDirectivos()).isEqualTo(directivosBack);
+        assertThat(directivosBack.getAsociados()).isEqualTo(asociados);
+
+        asociados.directivos(null);
+        assertThat(asociados.getDirectivos()).isNull();
+        assertThat(directivosBack.getAsociados()).isNull();
     }
 }

@@ -6,6 +6,11 @@
   "dto": "mapstruct",
   "fields": [
     {
+      "fieldName": "idJugador",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
       "fieldName": "nroIdentificacion",
       "fieldType": "Long",
       "fieldValidateRules": ["required"]
@@ -82,18 +87,18 @@
   "pagination": "pagination",
   "relationships": [
     {
-      "otherEntityName": "categorias",
-      "otherEntityRelationshipName": "jugador",
-      "relationshipName": "categorias",
-      "relationshipSide": "left",
-      "relationshipType": "one-to-one"
-    },
-    {
       "otherEntityName": "usuario",
       "otherEntityRelationshipName": "jugador",
       "relationshipName": "usuario",
       "relationshipSide": "right",
       "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "categorias",
+      "otherEntityRelationshipName": "jugador",
+      "relationshipName": "categorias",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
     }
   ],
   "searchEngine": "no",

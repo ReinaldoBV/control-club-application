@@ -153,11 +153,6 @@ public class CuerpoTecnicoResource {
             log.debug("REST request to get all CuerpoTecnicos where usuario is null");
             return new ResponseEntity<>(cuerpoTecnicoService.findAllWhereUsuarioIsNull(), HttpStatus.OK);
         }
-
-        if ("asociados-is-null".equals(filter)) {
-            log.debug("REST request to get all CuerpoTecnicos where asociados is null");
-            return new ResponseEntity<>(cuerpoTecnicoService.findAllWhereAsociadosIsNull(), HttpStatus.OK);
-        }
         log.debug("REST request to get a page of CuerpoTecnicos");
         Page<CuerpoTecnicoDTO> page = cuerpoTecnicoService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);

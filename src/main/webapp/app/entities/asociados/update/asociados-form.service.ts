@@ -24,8 +24,6 @@ type AsociadosFormGroupContent = {
   telefono: FormControl<IAsociados['telefono']>;
   fechaAsoc: FormControl<IAsociados['fechaAsoc']>;
   email: FormControl<IAsociados['email']>;
-  directivos: FormControl<IAsociados['directivos']>;
-  cuerpoTecnico: FormControl<IAsociados['cuerpoTecnico']>;
 };
 
 export type AsociadosFormGroup = FormGroup<AsociadosFormGroupContent>;
@@ -63,8 +61,6 @@ export class AsociadosFormService {
       email: new FormControl(asociadosRawValue.email, {
         validators: [Validators.required],
       }),
-      directivos: new FormControl(asociadosRawValue.directivos),
-      cuerpoTecnico: new FormControl(asociadosRawValue.cuerpoTecnico),
     });
   }
 

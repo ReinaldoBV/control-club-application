@@ -152,6 +152,16 @@ public class AsociadosResource {
             log.debug("REST request to get all Asociadoss where usuario is null");
             return new ResponseEntity<>(asociadosService.findAllWhereUsuarioIsNull(), HttpStatus.OK);
         }
+
+        if ("cuerpotecnico-is-null".equals(filter)) {
+            log.debug("REST request to get all Asociadoss where cuerpoTecnico is null");
+            return new ResponseEntity<>(asociadosService.findAllWhereCuerpoTecnicoIsNull(), HttpStatus.OK);
+        }
+
+        if ("directivos-is-null".equals(filter)) {
+            log.debug("REST request to get all Asociadoss where directivos is null");
+            return new ResponseEntity<>(asociadosService.findAllWhereDirectivosIsNull(), HttpStatus.OK);
+        }
         log.debug("REST request to get a page of Asociados");
         Page<AsociadosDTO> page = asociadosService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);

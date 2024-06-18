@@ -7,6 +7,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -26,6 +28,10 @@ public class Jugador implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     @Column(name = "id")
     private Long id;
+
+    @NotNull
+    @Column(name = "id_jugador", nullable = false)
+    private Long idJugador;
 
     @NotNull
     @Column(name = "nro_identificacion", nullable = false)
@@ -91,14 +97,14 @@ public class Jugador implements Serializable {
     @Column(name = "documento_identificacion_content_type")
     private String documentoIdentificacionContentType;
 
-    @JsonIgnoreProperties(value = { "jugador" }, allowSetters = true)
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(unique = true)
-    private Categorias categorias;
-
     @JsonIgnoreProperties(value = { "jugador", "asociados", "directivos", "cuerpoTecnico" }, allowSetters = true)
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "jugador")
     private Usuario usuario;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "jugador")
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @JsonIgnoreProperties(value = { "jugador" }, allowSetters = true)
+    private Set<Categorias> categorias = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -113,6 +119,19 @@ public class Jugador implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getIdJugador() {
+        return this.idJugador;
+    }
+
+    public Jugador idJugador(Long idJugador) {
+        this.setIdJugador(idJugador);
+        return this;
+    }
+
+    public void setIdJugador(Long idJugador) {
+        this.idJugador = idJugador;
     }
 
     public Long getNroIdentificacion() {
@@ -323,19 +342,6 @@ public class Jugador implements Serializable {
         this.documentoIdentificacionContentType = documentoIdentificacionContentType;
     }
 
-    public Categorias getCategorias() {
-        return this.categorias;
-    }
-
-    public void setCategorias(Categorias categorias) {
-        this.categorias = categorias;
-    }
-
-    public Jugador categorias(Categorias categorias) {
-        this.setCategorias(categorias);
-        return this;
-    }
-
     public Usuario getUsuario() {
         return this.usuario;
     }
@@ -352,6 +358,37 @@ public class Jugador implements Serializable {
 
     public Jugador usuario(Usuario usuario) {
         this.setUsuario(usuario);
+        return this;
+    }
+
+    public Set<Categorias> getCategorias() {
+        return this.categorias;
+    }
+
+    public void setCategorias(Set<Categorias> categorias) {
+        if (this.categorias != null) {
+            this.categorias.forEach(i -> i.setJugador(null));
+        }
+        if (categorias != null) {
+            categorias.forEach(i -> i.setJugador(this));
+        }
+        this.categorias = categorias;
+    }
+
+    public Jugador categorias(Set<Categorias> categorias) {
+        this.setCategorias(categorias);
+        return this;
+    }
+
+    public Jugador addCategorias(Categorias categorias) {
+        this.categorias.add(categorias);
+        categorias.setJugador(this);
+        return this;
+    }
+
+    public Jugador removeCategorias(Categorias categorias) {
+        this.categorias.remove(categorias);
+        categorias.setJugador(null);
         return this;
     }
 
@@ -379,6 +416,7 @@ public class Jugador implements Serializable {
     public String toString() {
         return "Jugador{" +
             "id=" + getId() +
+            ", idJugador=" + getIdJugador() +
             ", nroIdentificacion=" + getNroIdentificacion() +
             ", tipoIdentificacion='" + getTipoIdentificacion() + "'" +
             ", nombres='" + getNombres() + "'" +

@@ -25,6 +25,18 @@ class CuerpoTecnicoTest {
     }
 
     @Test
+    void asociadosTest() {
+        CuerpoTecnico cuerpoTecnico = getCuerpoTecnicoRandomSampleGenerator();
+        Asociados asociadosBack = getAsociadosRandomSampleGenerator();
+
+        cuerpoTecnico.setAsociados(asociadosBack);
+        assertThat(cuerpoTecnico.getAsociados()).isEqualTo(asociadosBack);
+
+        cuerpoTecnico.asociados(null);
+        assertThat(cuerpoTecnico.getAsociados()).isNull();
+    }
+
+    @Test
     void usuarioTest() {
         CuerpoTecnico cuerpoTecnico = getCuerpoTecnicoRandomSampleGenerator();
         Usuario usuarioBack = getUsuarioRandomSampleGenerator();
@@ -36,19 +48,5 @@ class CuerpoTecnicoTest {
         cuerpoTecnico.usuario(null);
         assertThat(cuerpoTecnico.getUsuario()).isNull();
         assertThat(usuarioBack.getCuerpoTecnico()).isNull();
-    }
-
-    @Test
-    void asociadosTest() {
-        CuerpoTecnico cuerpoTecnico = getCuerpoTecnicoRandomSampleGenerator();
-        Asociados asociadosBack = getAsociadosRandomSampleGenerator();
-
-        cuerpoTecnico.setAsociados(asociadosBack);
-        assertThat(cuerpoTecnico.getAsociados()).isEqualTo(asociadosBack);
-        assertThat(asociadosBack.getCuerpoTecnico()).isEqualTo(cuerpoTecnico);
-
-        cuerpoTecnico.asociados(null);
-        assertThat(cuerpoTecnico.getAsociados()).isNull();
-        assertThat(asociadosBack.getCuerpoTecnico()).isNull();
     }
 }

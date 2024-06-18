@@ -24,8 +24,8 @@
       "telefono": "Telefono",
       "fechaInicio": "Fecha Inicio",
       "email": "Email",
-      "usuario": "Usuario",
-      "asociados": "Asociados"
+      "asociados": "Asociados",
+      "usuario": "Usuario"
     }
   }
 }

@@ -25,6 +25,7 @@ type DirectivosFormGroupContent = {
   fechaEleccion: FormControl<IDirectivos['fechaEleccion']>;
   fechaVencimiento: FormControl<IDirectivos['fechaVencimiento']>;
   email: FormControl<IDirectivos['email']>;
+  asociados: FormControl<IDirectivos['asociados']>;
 };
 
 export type DirectivosFormGroup = FormGroup<DirectivosFormGroupContent>;
@@ -65,6 +66,7 @@ export class DirectivosFormService {
       email: new FormControl(directivosRawValue.email, {
         validators: [Validators.required],
       }),
+      asociados: new FormControl(directivosRawValue.asociados),
     });
   }
 

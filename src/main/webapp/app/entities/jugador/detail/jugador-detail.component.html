@@ -15,6 +15,10 @@
           <dd>
             <span>{{ jugador()!.id }}</span>
           </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.jugador.idJugador">Id Jugador</span></dt>
+          <dd>
+            <span>{{ jugador()!.idJugador }}</span>
+          </dd>
           <dt><span jhiTranslate="controlClubApplicationApp.jugador.nroIdentificacion">Nro Identificacion</span></dt>
           <dd>
             <span>{{ jugador()!.nroIdentificacion }}</span>
@@ -90,14 +94,6 @@
                   >Abrir</a
                 >
                 {{ jugador()!.documentoIdentificacionContentType }}, {{ byteSize(jugador()!.documentoIdentificacion ?? '') }}
-              </div>
-            }
-          </dd>
-          <dt><span jhiTranslate="controlClubApplicationApp.jugador.categorias">Categorias</span></dt>
-          <dd>
-            @if (jugador()!.categorias) {
-              <div>
-                <a [routerLink]="['/categorias', jugador()!.categorias?.id, 'view']">{{ jugador()!.categorias?.id }}</a>
               </div>
             }
           </dd>

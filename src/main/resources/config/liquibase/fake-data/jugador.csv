@@ -1,11 +1,11 @@
-id;nro_identificacion;tipo_identificacion;nombres;apellidos;nacionalidad;edad;fecha_nacimiento;numero_camisa;contacto_emergencia;calle_avenida_direccion;numero_direccion;numero_personal;imagen_jugador;imagen_jugador_content_type;documento_identificacion;documento_identificacion_content_type
-1;32750;OTRO;monk once;feminine as;VENEZOLANA;29341;2024-06-12;14597;oh plaintive;hamper through;10307;23428;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png
-2;22900;ESCOLAR;politicise;massive whose;VENEZOLANA;12047;2024-06-13;22781;calm;yowza;26553;15287;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png
-3;1624;PASAPORTE;whereas;eek till;COLOMBIANA;985;2024-06-12;1892;weird twitter;locate in huzzah;12889;5659;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png
-4;2318;PASAPORTE;when unto leaflet;tinderbox meaty yum;OTRA;25682;2024-06-13;32081;revolving;rust;10077;8955;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png
-5;8372;RUT;midst hmph;underneath;OTRA;8977;2024-06-13;4912;why;meanwhile brick;14412;26516;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png
-6;4125;PASAPORTE;compartmentalize;so but overweight;CHILENA;15584;2024-06-13;14755;however;bogus hack videotape;14859;7052;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png
-7;21908;RUT;ew;ew whoever yippee;DOMINICANA;19022;2024-06-13;24921;sibling;burning within;759;27675;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png
-8;21082;ESCOLAR;atop;enormous postfix excepting;COLOMBIANA;16015;2024-06-13;8746;speedy;hmph unwritten facet;7713;3491;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png
-9;2870;RUT;loosen fast;badly er consequently;VENEZOLANA;31123;2024-06-13;30196;born fugato however;milestone;19467;7304;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png
-10;2510;OTRO;than amongst;ew following;VENEZOLANA;31746;2024-06-13;6848;codepage;worse;21739;30727;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png
+id;id_jugador;nro_identificacion;tipo_identificacion;nombres;apellidos;nacionalidad;edad;fecha_nacimiento;numero_camisa;contacto_emergencia;calle_avenida_direccion;numero_direccion;numero_personal;imagen_jugador;imagen_jugador_content_type;documento_identificacion;documento_identificacion_content_type
+1;32750;32633;PASAPORTE;above near feminine;dam phooey;CHILENA;12781;2024-06-12;1388;passionate hamper;euthanise;23428;22900;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png
+2;18223;10400;ESCOLAR;pilot;puzzling concerning;COLOMBIANA;22781;2024-06-13;8274;surprisingly uh-huh;madly consequently;12324;29163;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png
+3;339;19352;RUT;ambitious modulo truthfully;fame;COLOMBIANA;4397;2024-06-13;16505;lamb;bat comfort coo;21878;29825;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png
+4;373;22264;ESCOLAR;fully healthily inhere;whelp;CHILENA;24285;2024-06-13;12339;so atop;halibut;18431;27458;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png
+5;6335;11363;PASAPORTE;hygienic daily through;evangelise pomelo painfully;DOMINICANA;10157;2024-06-13;29331;so comptroller hoof;associate;193;26710;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png
+6;28818;18449;RUT;visible;hack;COLOMBIANA;22008;2024-06-13;5109;eventually ew engage;whoever;26528;1352;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png
+7;1647;2257;OTRO;dehumanise provided burning;amalgamate;OTRA;21082;2024-06-12;2856;qua enormous;whirring seriously;16015;5711;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png
+8;8746;9785;OTRO;oblong impassioned;irresponsible cheerfully till;CHILENA;5005;2024-06-13;21333;when;whenever amongst vascular;17125;30196;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png
+9;28875;16560;PASAPORTE;fairly toward;divulge blah;OTRA;17221;2024-06-13;18719;apud hence;readjust;5837;16343;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png
+10;24271;14933;PASAPORTE;springboard evenly married;amid spruce staircase;DOMINICANA;13159;2024-06-12;25012;inasmuch;meanwhile or mineral;24291;16102;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png

@@ -39,6 +39,9 @@ import org.springframework.transaction.annotation.Transactional;
 @WithMockUser
 class JugadorResourceIT {
 
+    private static final Long DEFAULT_ID_JUGADOR = 1L;
+    private static final Long UPDATED_ID_JUGADOR = 2L;
+
     private static final Long DEFAULT_NRO_IDENTIFICACION = 1L;
     private static final Long UPDATED_NRO_IDENTIFICACION = 2L;
 
@@ -118,6 +121,7 @@ class JugadorResourceIT {
      */
     public static Jugador createEntity(EntityManager em) {
         Jugador jugador = new Jugador()
+            .idJugador(DEFAULT_ID_JUGADOR)
             .nroIdentificacion(DEFAULT_NRO_IDENTIFICACION)
             .tipoIdentificacion(DEFAULT_TIPO_IDENTIFICACION)
             .nombres(DEFAULT_NOMBRES)
@@ -145,6 +149,7 @@ class JugadorResourceIT {
      */
     public static Jugador createUpdatedEntity(EntityManager em) {
         Jugador jugador = new Jugador()
+            .idJugador(UPDATED_ID_JUGADOR)
             .nroIdentificacion(UPDATED_NRO_IDENTIFICACION)
             .tipoIdentificacion(UPDATED_TIPO_IDENTIFICACION)
             .nombres(UPDATED_NOMBRES)
@@ -217,6 +222,23 @@ class JugadorResourceIT {
 
         // Validate the Jugador in the database
         assertSameRepositoryCount(databaseSizeBeforeCreate);
+    }
+
+    @Test
+    @Transactional
+    void checkIdJugadorIsRequired() throws Exception {
+        long databaseSizeBeforeTest = getRepositoryCount();
+        // set the field null
+        jugador.setIdJugador(null);
+
+        // Create the Jugador, which fails.
+        JugadorDTO jugadorDTO = jugadorMapper.toDto(jugador);
+
+        restJugadorMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(jugadorDTO)))
+            .andExpect(status().isBadRequest());
+
+        assertSameRepositoryCount(databaseSizeBeforeTest);
     }
 
     @Test
@@ -435,6 +457,7 @@ class JugadorResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(jugador.getId().intValue())))
+            .andExpect(jsonPath("$.[*].idJugador").value(hasItem(DEFAULT_ID_JUGADOR.intValue())))
             .andExpect(jsonPath("$.[*].nroIdentificacion").value(hasItem(DEFAULT_NRO_IDENTIFICACION.intValue())))
             .andExpect(jsonPath("$.[*].tipoIdentificacion").value(hasItem(DEFAULT_TIPO_IDENTIFICACION.toString())))
             .andExpect(jsonPath("$.[*].nombres").value(hasItem(DEFAULT_NOMBRES)))
@@ -469,6 +492,7 @@ class JugadorResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(jugador.getId().intValue()))
+            .andExpect(jsonPath("$.idJugador").value(DEFAULT_ID_JUGADOR.intValue()))
             .andExpect(jsonPath("$.nroIdentificacion").value(DEFAULT_NRO_IDENTIFICACION.intValue()))
             .andExpect(jsonPath("$.tipoIdentificacion").value(DEFAULT_TIPO_IDENTIFICACION.toString()))
             .andExpect(jsonPath("$.nombres").value(DEFAULT_NOMBRES))
@@ -507,6 +531,7 @@ class JugadorResourceIT {
         // Disconnect from session so that the updates on updatedJugador are not directly saved in db
         em.detach(updatedJugador);
         updatedJugador
+            .idJugador(UPDATED_ID_JUGADOR)
             .nroIdentificacion(UPDATED_NRO_IDENTIFICACION)
             .tipoIdentificacion(UPDATED_TIPO_IDENTIFICACION)
             .nombres(UPDATED_NOMBRES)
@@ -609,18 +634,17 @@ class JugadorResourceIT {
         partialUpdatedJugador.setId(jugador.getId());
 
         partialUpdatedJugador
-            .nroIdentificacion(UPDATED_NRO_IDENTIFICACION)
+            .idJugador(UPDATED_ID_JUGADOR)
+            .nombres(UPDATED_NOMBRES)
             .apellidos(UPDATED_APELLIDOS)
             .nacionalidad(UPDATED_NACIONALIDAD)
             .edad(UPDATED_EDAD)
-            .fechaNacimiento(UPDATED_FECHA_NACIMIENTO)
-            .contactoEmergencia(UPDATED_CONTACTO_EMERGENCIA)
+            .numeroCamisa(UPDATED_NUMERO_CAMISA)
+            .calleAvenidaDireccion(UPDATED_CALLE_AVENIDA_DIRECCION)
             .numeroDireccion(UPDATED_NUMERO_DIRECCION)
             .numeroPersonal(UPDATED_NUMERO_PERSONAL)
             .imagenJugador(UPDATED_IMAGEN_JUGADOR)
-            .imagenJugadorContentType(UPDATED_IMAGEN_JUGADOR_CONTENT_TYPE)
-            .documentoIdentificacion(UPDATED_DOCUMENTO_IDENTIFICACION)
-            .documentoIdentificacionContentType(UPDATED_DOCUMENTO_IDENTIFICACION_CONTENT_TYPE);
+            .imagenJugadorContentType(UPDATED_IMAGEN_JUGADOR_CONTENT_TYPE);
 
         restJugadorMockMvc
             .perform(
@@ -649,6 +673,7 @@ class JugadorResourceIT {
         partialUpdatedJugador.setId(jugador.getId());
 
         partialUpdatedJugador
+            .idJugador(UPDATED_ID_JUGADOR)
             .nroIdentificacion(UPDATED_NRO_IDENTIFICACION)
             .tipoIdentificacion(UPDATED_TIPO_IDENTIFICACION)
             .nombres(UPDATED_NOMBRES)

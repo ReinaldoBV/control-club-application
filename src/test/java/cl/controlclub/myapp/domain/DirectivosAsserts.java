@@ -62,5 +62,9 @@ public class DirectivosAsserts {
      * @param expected the expected entity
      * @param actual the actual entity
      */
-    public static void assertDirectivosUpdatableRelationshipsEquals(Directivos expected, Directivos actual) {}
+    public static void assertDirectivosUpdatableRelationshipsEquals(Directivos expected, Directivos actual) {
+        assertThat(expected)
+            .as("Verify Directivos relationships")
+            .satisfies(e -> assertThat(e.getAsociados()).as("check asociados").isEqualTo(actual.getAsociados()));
+    }
 }

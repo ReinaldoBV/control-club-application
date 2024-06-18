@@ -61,10 +61,10 @@ describe('Usuario Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call jugador query and add missing value', () => {
       const usuario: IUsuario = { id: 456 };
-      const jugador: IJugador = { id: 26003 };
+      const jugador: IJugador = { id: 5757 };
       usuario.jugador = jugador;
 
-      const jugadorCollection: IJugador[] = [{ id: 5757 }];
+      const jugadorCollection: IJugador[] = [{ id: 26369 }];
       jest.spyOn(jugadorService, 'query').mockReturnValue(of(new HttpResponse({ body: jugadorCollection })));
       const expectedCollection: IJugador[] = [jugador, ...jugadorCollection];
       jest.spyOn(jugadorService, 'addJugadorToCollectionIfMissing').mockReturnValue(expectedCollection);
@@ -79,10 +79,10 @@ describe('Usuario Management Update Component', () => {
 
     it('Should call asociados query and add missing value', () => {
       const usuario: IUsuario = { id: 456 };
-      const asociados: IAsociados = { id: 31029 };
+      const asociados: IAsociados = { id: 13097 };
       usuario.asociados = asociados;
 
-      const asociadosCollection: IAsociados[] = [{ id: 1087 }];
+      const asociadosCollection: IAsociados[] = [{ id: 16748 }];
       jest.spyOn(asociadosService, 'query').mockReturnValue(of(new HttpResponse({ body: asociadosCollection })));
       const expectedCollection: IAsociados[] = [asociados, ...asociadosCollection];
       jest.spyOn(asociadosService, 'addAsociadosToCollectionIfMissing').mockReturnValue(expectedCollection);
@@ -97,10 +97,10 @@ describe('Usuario Management Update Component', () => {
 
     it('Should call directivos query and add missing value', () => {
       const usuario: IUsuario = { id: 456 };
-      const directivos: IDirectivos = { id: 13801 };
+      const directivos: IDirectivos = { id: 588 };
       usuario.directivos = directivos;
 
-      const directivosCollection: IDirectivos[] = [{ id: 20395 }];
+      const directivosCollection: IDirectivos[] = [{ id: 15105 }];
       jest.spyOn(directivosService, 'query').mockReturnValue(of(new HttpResponse({ body: directivosCollection })));
       const expectedCollection: IDirectivos[] = [directivos, ...directivosCollection];
       jest.spyOn(directivosService, 'addDirectivosToCollectionIfMissing').mockReturnValue(expectedCollection);
@@ -115,10 +115,10 @@ describe('Usuario Management Update Component', () => {
 
     it('Should call cuerpoTecnico query and add missing value', () => {
       const usuario: IUsuario = { id: 456 };
-      const cuerpoTecnico: ICuerpoTecnico = { id: 18119 };
+      const cuerpoTecnico: ICuerpoTecnico = { id: 7033 };
       usuario.cuerpoTecnico = cuerpoTecnico;
 
-      const cuerpoTecnicoCollection: ICuerpoTecnico[] = [{ id: 19256 }];
+      const cuerpoTecnicoCollection: ICuerpoTecnico[] = [{ id: 25064 }];
       jest.spyOn(cuerpoTecnicoService, 'query').mockReturnValue(of(new HttpResponse({ body: cuerpoTecnicoCollection })));
       const expectedCollection: ICuerpoTecnico[] = [cuerpoTecnico, ...cuerpoTecnicoCollection];
       jest.spyOn(cuerpoTecnicoService, 'addCuerpoTecnicoToCollectionIfMissing').mockReturnValue(expectedCollection);
@@ -133,13 +133,13 @@ describe('Usuario Management Update Component', () => {
 
     it('Should update editForm', () => {
       const usuario: IUsuario = { id: 456 };
-      const jugador: IJugador = { id: 26369 };
+      const jugador: IJugador = { id: 14640 };
       usuario.jugador = jugador;
-      const asociados: IAsociados = { id: 25230 };
+      const asociados: IAsociados = { id: 3858 };
       usuario.asociados = asociados;
-      const directivos: IDirectivos = { id: 18858 };
+      const directivos: IDirectivos = { id: 10024 };
       usuario.directivos = directivos;
-      const cuerpoTecnico: ICuerpoTecnico = { id: 16764 };
+      const cuerpoTecnico: ICuerpoTecnico = { id: 4851 };
       usuario.cuerpoTecnico = cuerpoTecnico;
 
       activatedRoute.data = of({ usuario });

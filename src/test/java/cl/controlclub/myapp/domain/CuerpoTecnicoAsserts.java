@@ -61,5 +61,9 @@ public class CuerpoTecnicoAsserts {
      * @param expected the expected entity
      * @param actual the actual entity
      */
-    public static void assertCuerpoTecnicoUpdatableRelationshipsEquals(CuerpoTecnico expected, CuerpoTecnico actual) {}
+    public static void assertCuerpoTecnicoUpdatableRelationshipsEquals(CuerpoTecnico expected, CuerpoTecnico actual) {
+        assertThat(expected)
+            .as("Verify CuerpoTecnico relationships")
+            .satisfies(e -> assertThat(e.getAsociados()).as("check asociados").isEqualTo(actual.getAsociados()));
+    }
 }

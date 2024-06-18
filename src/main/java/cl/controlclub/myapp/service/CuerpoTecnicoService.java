@@ -106,19 +106,6 @@ public class CuerpoTecnicoService {
     }
 
     /**
-     *  Get all the cuerpoTecnicos where Asociados is {@code null}.
-     *  @return the list of entities.
-     */
-    @Transactional(readOnly = true)
-    public List<CuerpoTecnicoDTO> findAllWhereAsociadosIsNull() {
-        log.debug("Request to get all cuerpoTecnicos where Asociados is null");
-        return StreamSupport.stream(cuerpoTecnicoRepository.findAll().spliterator(), false)
-            .filter(cuerpoTecnico -> cuerpoTecnico.getAsociados() == null)
-            .map(cuerpoTecnicoMapper::toDto)
-            .collect(Collectors.toCollection(LinkedList::new));
-    }
-
-    /**
      * Get one cuerpoTecnico by id.
      *
      * @param id the id of the entity.

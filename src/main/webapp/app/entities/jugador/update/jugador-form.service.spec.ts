@@ -20,6 +20,7 @@ describe('Jugador Form Service', () => {
         expect(formGroup.controls).toEqual(
           expect.objectContaining({
             id: expect.any(Object),
+            idJugador: expect.any(Object),
             nroIdentificacion: expect.any(Object),
             tipoIdentificacion: expect.any(Object),
             nombres: expect.any(Object),
@@ -34,7 +35,6 @@ describe('Jugador Form Service', () => {
             numeroPersonal: expect.any(Object),
             imagenJugador: expect.any(Object),
             documentoIdentificacion: expect.any(Object),
-            categorias: expect.any(Object),
           }),
         );
       });
@@ -45,6 +45,7 @@ describe('Jugador Form Service', () => {
         expect(formGroup.controls).toEqual(
           expect.objectContaining({
             id: expect.any(Object),
+            idJugador: expect.any(Object),
             nroIdentificacion: expect.any(Object),
             tipoIdentificacion: expect.any(Object),
             nombres: expect.any(Object),
@@ -59,7 +60,6 @@ describe('Jugador Form Service', () => {
             numeroPersonal: expect.any(Object),
             imagenJugador: expect.any(Object),
             documentoIdentificacion: expect.any(Object),
-            categorias: expect.any(Object),
           }),
         );
       });

@@ -84,18 +84,6 @@
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="directivos.id">
-              <div class="d-flex">
-                <span jhiTranslate="controlClubApplicationApp.asociados.directivos">Directivos</span>
-                <fa-icon class="p-1" icon="sort"></fa-icon>
-              </div>
-            </th>
-            <th scope="col" jhiSortBy="cuerpoTecnico.id">
-              <div class="d-flex">
-                <span jhiTranslate="controlClubApplicationApp.asociados.cuerpoTecnico">Cuerpo Tecnico</span>
-                <fa-icon class="p-1" icon="sort"></fa-icon>
-              </div>
-            </th>
             <th scope="col"></th>
           </tr>
         </thead>
@@ -111,20 +99,6 @@
               <td>{{ asociados.telefono }}</td>
               <td>{{ asociados.fechaAsoc | formatMediumDate }}</td>
               <td>{{ asociados.email }}</td>
-              <td>
-                @if (asociados.directivos) {
-                  <div>
-                    <a [routerLink]="['/directivos', asociados.directivos.id, 'view']">{{ asociados.directivos.id }}</a>
-                  </div>
-                }
-              </td>
-              <td>
-                @if (asociados.cuerpoTecnico) {
-                  <div>
-                    <a [routerLink]="['/cuerpo-tecnico', asociados.cuerpoTecnico.id, 'view']">{{ asociados.cuerpoTecnico.id }}</a>
-                  </div>
-                }
-              </td>
               <td class="text-end">
                 <div class="btn-group">
                   <a [routerLink]="['/asociados', asociados.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">

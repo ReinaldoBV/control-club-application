@@ -28,8 +28,8 @@
       "otherEntityName": "jugador",
       "otherEntityRelationshipName": "categorias",
       "relationshipName": "jugador",
-      "relationshipSide": "right",
-      "relationshipType": "one-to-one"
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
     }
   ],
   "searchEngine": "no",
