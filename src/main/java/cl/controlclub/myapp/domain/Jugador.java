@@ -7,8 +7,6 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -101,10 +99,9 @@ public class Jugador implements Serializable {
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "jugador")
     private Usuario usuario;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "jugador")
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnoreProperties(value = { "jugador" }, allowSetters = true)
-    private Set<Categorias> categorias = new HashSet<>();
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnoreProperties(value = { "jugadors" }, allowSetters = true)
+    private Categorias categoria;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -361,34 +358,16 @@ public class Jugador implements Serializable {
         return this;
     }
 
-    public Set<Categorias> getCategorias() {
-        return this.categorias;
+    public Categorias getCategoria() {
+        return this.categoria;
     }
 
-    public void setCategorias(Set<Categorias> categorias) {
-        if (this.categorias != null) {
-            this.categorias.forEach(i -> i.setJugador(null));
-        }
-        if (categorias != null) {
-            categorias.forEach(i -> i.setJugador(this));
-        }
-        this.categorias = categorias;
+    public void setCategoria(Categorias categorias) {
+        this.categoria = categorias;
     }
 
-    public Jugador categorias(Set<Categorias> categorias) {
-        this.setCategorias(categorias);
-        return this;
-    }
-
-    public Jugador addCategorias(Categorias categorias) {
-        this.categorias.add(categorias);
-        categorias.setJugador(this);
-        return this;
-    }
-
-    public Jugador removeCategorias(Categorias categorias) {
-        this.categorias.remove(categorias);
-        categorias.setJugador(null);
+    public Jugador categoria(Categorias categorias) {
+        this.setCategoria(categorias);
         return this;
     }
 

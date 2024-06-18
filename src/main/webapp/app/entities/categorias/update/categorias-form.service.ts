@@ -21,7 +21,6 @@ type CategoriasFormGroupContent = {
   anioInicio: FormControl<ICategorias['anioInicio']>;
   anioFinal: FormControl<ICategorias['anioFinal']>;
   nombreCategoria: FormControl<ICategorias['nombreCategoria']>;
-  jugador: FormControl<ICategorias['jugador']>;
 };
 
 export type CategoriasFormGroup = FormGroup<CategoriasFormGroupContent>;
@@ -50,7 +49,6 @@ export class CategoriasFormService {
       nombreCategoria: new FormControl(categoriasRawValue.nombreCategoria, {
         validators: [Validators.required],
       }),
-      jugador: new FormControl(categoriasRawValue.jugador),
     });
   }
 

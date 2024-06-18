@@ -61,10 +61,10 @@ describe('Usuario Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call jugador query and add missing value', () => {
       const usuario: IUsuario = { id: 456 };
-      const jugador: IJugador = { id: 5757 };
+      const jugador: IJugador = { id: 7614 };
       usuario.jugador = jugador;
 
-      const jugadorCollection: IJugador[] = [{ id: 26369 }];
+      const jugadorCollection: IJugador[] = [{ id: 30295 }];
       jest.spyOn(jugadorService, 'query').mockReturnValue(of(new HttpResponse({ body: jugadorCollection })));
       const expectedCollection: IJugador[] = [jugador, ...jugadorCollection];
       jest.spyOn(jugadorService, 'addJugadorToCollectionIfMissing').mockReturnValue(expectedCollection);
@@ -133,7 +133,7 @@ describe('Usuario Management Update Component', () => {
 
     it('Should update editForm', () => {
       const usuario: IUsuario = { id: 456 };
-      const jugador: IJugador = { id: 14640 };
+      const jugador: IJugador = { id: 25326 };
       usuario.jugador = jugador;
       const asociados: IAsociados = { id: 3858 };
       usuario.asociados = asociados;

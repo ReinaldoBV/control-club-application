@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -36,9 +38,10 @@ public class Categorias implements Serializable {
     @Column(name = "nombre_categoria", nullable = false)
     private String nombreCategoria;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnoreProperties(value = { "usuario", "categorias" }, allowSetters = true)
-    private Jugador jugador;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "categoria")
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @JsonIgnoreProperties(value = { "usuario", "categoria" }, allowSetters = true)
+    private Set<Jugador> jugadors = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -94,16 +97,34 @@ public class Categorias implements Serializable {
         this.nombreCategoria = nombreCategoria;
     }
 
-    public Jugador getJugador() {
-        return this.jugador;
+    public Set<Jugador> getJugadors() {
+        return this.jugadors;
     }
 
-    public void setJugador(Jugador jugador) {
-        this.jugador = jugador;
+    public void setJugadors(Set<Jugador> jugadors) {
+        if (this.jugadors != null) {
+            this.jugadors.forEach(i -> i.setCategoria(null));
+        }
+        if (jugadors != null) {
+            jugadors.forEach(i -> i.setCategoria(this));
+        }
+        this.jugadors = jugadors;
     }
 
-    public Categorias jugador(Jugador jugador) {
-        this.setJugador(jugador);
+    public Categorias jugadors(Set<Jugador> jugadors) {
+        this.setJugadors(jugadors);
+        return this;
+    }
+
+    public Categorias addJugador(Jugador jugador) {
+        this.jugadors.add(jugador);
+        jugador.setCategoria(this);
+        return this;
+    }
+
+    public Categorias removeJugador(Jugador jugador) {
+        this.jugadors.remove(jugador);
+        jugador.setCategoria(null);
         return this;
     }
 

@@ -6,8 +6,6 @@ import static cl.controlclub.myapp.domain.UsuarioTestSamples.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import cl.controlclub.myapp.web.rest.TestUtil;
-import java.util.HashSet;
-import java.util.Set;
 import org.junit.jupiter.api.Test;
 
 class JugadorTest {
@@ -41,24 +39,14 @@ class JugadorTest {
     }
 
     @Test
-    void categoriasTest() {
+    void categoriaTest() {
         Jugador jugador = getJugadorRandomSampleGenerator();
         Categorias categoriasBack = getCategoriasRandomSampleGenerator();
 
-        jugador.addCategorias(categoriasBack);
-        assertThat(jugador.getCategorias()).containsOnly(categoriasBack);
-        assertThat(categoriasBack.getJugador()).isEqualTo(jugador);
+        jugador.setCategoria(categoriasBack);
+        assertThat(jugador.getCategoria()).isEqualTo(categoriasBack);
 
-        jugador.removeCategorias(categoriasBack);
-        assertThat(jugador.getCategorias()).doesNotContain(categoriasBack);
-        assertThat(categoriasBack.getJugador()).isNull();
-
-        jugador.categorias(new HashSet<>(Set.of(categoriasBack)));
-        assertThat(jugador.getCategorias()).containsOnly(categoriasBack);
-        assertThat(categoriasBack.getJugador()).isEqualTo(jugador);
-
-        jugador.setCategorias(new HashSet<>());
-        assertThat(jugador.getCategorias()).doesNotContain(categoriasBack);
-        assertThat(categoriasBack.getJugador()).isNull();
+        jugador.categoria(null);
+        assertThat(jugador.getCategoria()).isNull();
     }
 }

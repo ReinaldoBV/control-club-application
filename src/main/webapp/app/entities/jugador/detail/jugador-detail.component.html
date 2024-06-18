@@ -97,6 +97,14 @@
               </div>
             }
           </dd>
+          <dt><span jhiTranslate="controlClubApplicationApp.jugador.categoria">Categoria</span></dt>
+          <dd>
+            @if (jugador()!.categoria) {
+              <div>
+                <a [routerLink]="['/categorias', jugador()!.categoria?.id, 'view']">{{ jugador()!.categoria?.id }}</a>
+              </div>
+            }
+          </dd>
         </dl>
 
         <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">

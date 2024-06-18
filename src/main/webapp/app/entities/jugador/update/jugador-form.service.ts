@@ -35,6 +35,7 @@ type JugadorFormGroupContent = {
   imagenJugadorContentType: FormControl<IJugador['imagenJugadorContentType']>;
   documentoIdentificacion: FormControl<IJugador['documentoIdentificacion']>;
   documentoIdentificacionContentType: FormControl<IJugador['documentoIdentificacionContentType']>;
+  categoria: FormControl<IJugador['categoria']>;
 };
 
 export type JugadorFormGroup = FormGroup<JugadorFormGroupContent>;
@@ -97,6 +98,7 @@ export class JugadorFormService {
       imagenJugadorContentType: new FormControl(jugadorRawValue.imagenJugadorContentType),
       documentoIdentificacion: new FormControl(jugadorRawValue.documentoIdentificacion),
       documentoIdentificacionContentType: new FormControl(jugadorRawValue.documentoIdentificacionContentType),
+      categoria: new FormControl(jugadorRawValue.categoria),
     });
   }
 

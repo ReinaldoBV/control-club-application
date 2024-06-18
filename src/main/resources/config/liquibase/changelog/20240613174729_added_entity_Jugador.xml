@@ -65,6 +65,9 @@
             <column name="documento_identificacion_content_type" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
+            <column name="categoria_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
     </changeSet>

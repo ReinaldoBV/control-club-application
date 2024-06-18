@@ -95,10 +95,9 @@
     },
     {
       "otherEntityName": "categorias",
-      "otherEntityRelationshipName": "jugador",
-      "relationshipName": "categorias",
+      "relationshipName": "categoria",
       "relationshipSide": "right",
-      "relationshipType": "one-to-many"
+      "relationshipType": "many-to-one"
     }
   ],
   "searchEngine": "no",

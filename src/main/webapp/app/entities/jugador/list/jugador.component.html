@@ -147,6 +147,12 @@
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
+            <th scope="col" jhiSortBy="categoria.id">
+              <div class="d-flex">
+                <span jhiTranslate="controlClubApplicationApp.jugador.categoria">Categoria</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
             <th scope="col"></th>
           </tr>
         </thead>
@@ -198,6 +204,13 @@
                     >Abrir</a
                   >
                   <span>{{ jugador.documentoIdentificacionContentType }}, {{ byteSize(jugador.documentoIdentificacion) }}</span>
+                }
+              </td>
+              <td>
+                @if (jugador.categoria) {
+                  <div>
+                    <a [routerLink]="['/categorias', jugador.categoria.id, 'view']">{{ jugador.categoria.id }}</a>
+                  </div>
                 }
               </td>
               <td class="text-end">

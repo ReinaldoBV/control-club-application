@@ -58,9 +58,5 @@ public class CategoriasAsserts {
      * @param expected the expected entity
      * @param actual the actual entity
      */
-    public static void assertCategoriasUpdatableRelationshipsEquals(Categorias expected, Categorias actual) {
-        assertThat(expected)
-            .as("Verify Categorias relationships")
-            .satisfies(e -> assertThat(e.getJugador()).as("check jugador").isEqualTo(actual.getJugador()));
-    }
+    public static void assertCategoriasUpdatableRelationshipsEquals(Categorias expected, Categorias actual) {}
 }

@@ -423,6 +423,23 @@
             formControlName="documentoIdentificacionContentType"
           />
         </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_categoria" jhiTranslate="controlClubApplicationApp.jugador.categoria">Categoria</label>
+          <select
+            class="form-control"
+            id="field_categoria"
+            data-cy="categoria"
+            name="categoria"
+            formControlName="categoria"
+            [compareWith]="compareCategorias"
+          >
+            <option [ngValue]="null"></option>
+            @for (categoriasOption of categoriasSharedCollection; track $index) {
+              <option [ngValue]="categoriasOption">{{ categoriasOption.id }}</option>
+            }
+          </select>
+        </div>
       </div>
 
       <div>
