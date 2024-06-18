@@ -265,8 +265,8 @@ relationship OneToOne {
     Directivos to Asociados
 }
 
-relationship ManyToOne {
-    Categorias to Jugador
+relationship OneToMany {
+    Categorias to Jugador { categoria }
     }
 
 service all with serviceClass
