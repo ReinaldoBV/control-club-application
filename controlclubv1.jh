@@ -257,12 +257,12 @@ entity Asistencia {
 }
 
 relationship OneToOne {
-    Usuario to Jugador,
-    Usuario to Asociados,
-    Usuario to Directivos,
-    Usuario to CuerpoTecnico,
-    CuerpoTecnico to Asociados, 
-    Directivos to Asociados
+    Usuario to Jugador { usuario },
+    Usuario to Asociados { idAsociado },
+    Usuario to Directivos { idDirectivo },
+    Usuario to CuerpoTecnico { idTecnico },
+    CuerpoTecnico to Asociados { idAsociado }, 
+    Directivos to Asociados { idAsociado }
 }
 
 relationship ManyToOne {
