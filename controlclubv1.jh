@@ -98,6 +98,7 @@ entity Club {
 }
 
 entity Jugador {
+	idJugador Long required,
     nroIdentificacion Long required,
     tipoIdentificacion TipoIdentificacion required,
     nombres String required,
@@ -256,13 +257,13 @@ entity Asistencia {
 }
 
 relationship OneToOne {
-    Usuario to Jugador,
+    Usuario { jugador required } to Jugador { id required },
     Usuario to Asociados,
     Usuario to Directivos,
     Usuario to CuerpoTecnico,
     Jugador to Categorias,
-    Asociados to Directivos,
-    Asociados to CuerpoTecnico
+    CuerpoTecnico to Asociados, 
+    Directivos to Asociados
 }
 
 service all with serviceClass
