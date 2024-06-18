@@ -20,6 +20,24 @@
         }
 
         <div class="mb-3">
+          <label class="form-label" for="field_idJugador" jhiTranslate="controlClubApplicationApp.jugador.idJugador">Id Jugador</label>
+          <input type="number" class="form-control" name="idJugador" id="field_idJugador" data-cy="idJugador" formControlName="idJugador" />
+          @if (editForm.get('idJugador')!.invalid && (editForm.get('idJugador')!.dirty || editForm.get('idJugador')!.touched)) {
+            <div>
+              @if (editForm.get('idJugador')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('idJugador')?.errors?.number"
+                jhiTranslate="entity.validation.number"
+                >Este campo debe ser un número.</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
           <label class="form-label" for="field_nroIdentificacion" jhiTranslate="controlClubApplicationApp.jugador.nroIdentificacion"
             >Nro Identificacion</label
           >
@@ -404,23 +422,6 @@
             id="field_documentoIdentificacionContentType"
             formControlName="documentoIdentificacionContentType"
           />
-        </div>
-
-        <div class="mb-3">
-          <label class="form-label" for="field_categorias" jhiTranslate="controlClubApplicationApp.jugador.categorias">Categorias</label>
-          <select
-            class="form-control"
-            id="field_categorias"
-            data-cy="categorias"
-            name="categorias"
-            formControlName="categorias"
-            [compareWith]="compareCategorias"
-          >
-            <option [ngValue]="null"></option>
-            @for (categoriasOption of categoriasCollection; track $index) {
-              <option [ngValue]="categoriasOption">{{ categoriasOption.id }}</option>
-            }
-          </select>
         </div>
       </div>
 

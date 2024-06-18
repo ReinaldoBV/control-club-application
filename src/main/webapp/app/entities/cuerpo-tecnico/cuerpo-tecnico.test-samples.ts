@@ -3,42 +3,42 @@ import dayjs from 'dayjs/esm';
 import { ICuerpoTecnico, NewCuerpoTecnico } from './cuerpo-tecnico.model';
 
 export const sampleWithRequiredData: ICuerpoTecnico = {
-  id: 29080,
-  nombres: 'stupidity yang',
-  apellidos: 'famous',
-  rolTecnico: 'shoehorn fiercely',
-  telefono: 'proper',
+  id: 26527,
+  nombres: 'cheek',
+  apellidos: 'because statistics parched',
+  rolTecnico: 'turban',
+  telefono: 'lending',
   fechaInicio: dayjs('2024-06-12'),
-  email: 'Barbara.TiradoAlonzo75@hotmail.com',
+  email: 'Esperanza_VanegasMarin@yahoo.com',
 };
 
 export const sampleWithPartialData: ICuerpoTecnico = {
-  id: 17148,
-  nombres: 'go-kart whereas requisition',
-  apellidos: 'so',
-  rolTecnico: 'if spasm fireman',
-  telefono: 'blah',
+  id: 1487,
+  nombres: 'phooey',
+  apellidos: 'worried under party',
+  rolTecnico: 'aboard bah embellishment',
+  telefono: 'collectivisation hm ugh',
   fechaInicio: dayjs('2024-06-13'),
-  email: 'Pablo.BrionesCasanova21@hotmail.com',
+  email: 'MariaJose80@gmail.com',
 };
 
 export const sampleWithFullData: ICuerpoTecnico = {
-  id: 18274,
-  nombres: 'qua',
-  apellidos: 'er sympathetically rapidly',
-  rolTecnico: 'regarding overlooked',
-  telefono: 'indeed insure',
-  fechaInicio: dayjs('2024-06-12'),
-  email: 'Rodrigo_OrtaGonzalez63@gmail.com',
+  id: 1532,
+  nombres: 'classification rough',
+  apellidos: 'apprehensive',
+  rolTecnico: 'runny enchanted',
+  telefono: 'yippee',
+  fechaInicio: dayjs('2024-06-13'),
+  email: 'JorgeLuis.VanegasBadillo@gmail.com',
 };
 
 export const sampleWithNewData: NewCuerpoTecnico = {
-  nombres: 'though enchant',
-  apellidos: 'restfully generously',
-  rolTecnico: 'radio kick',
-  telefono: 'abaft lapse lest',
+  nombres: 'ew boohoo',
+  apellidos: 'bubbly',
+  rolTecnico: 'gosh how cuddly',
+  telefono: 'oh cleverly after',
   fechaInicio: dayjs('2024-06-13'),
-  email: 'Mayte.RinconBlanco66@yahoo.com',
+  email: 'Rafael_GilCarbajal@yahoo.com',
   id: null,
 };
 

@@ -106,6 +106,32 @@ public class AsociadosService {
     }
 
     /**
+     *  Get all the asociados where CuerpoTecnico is {@code null}.
+     *  @return the list of entities.
+     */
+    @Transactional(readOnly = true)
+    public List<AsociadosDTO> findAllWhereCuerpoTecnicoIsNull() {
+        log.debug("Request to get all asociados where CuerpoTecnico is null");
+        return StreamSupport.stream(asociadosRepository.findAll().spliterator(), false)
+            .filter(asociados -> asociados.getCuerpoTecnico() == null)
+            .map(asociadosMapper::toDto)
+            .collect(Collectors.toCollection(LinkedList::new));
+    }
+
+    /**
+     *  Get all the asociados where Directivos is {@code null}.
+     *  @return the list of entities.
+     */
+    @Transactional(readOnly = true)
+    public List<AsociadosDTO> findAllWhereDirectivosIsNull() {
+        log.debug("Request to get all asociados where Directivos is null");
+        return StreamSupport.stream(asociadosRepository.findAll().spliterator(), false)
+            .filter(asociados -> asociados.getDirectivos() == null)
+            .map(asociadosMapper::toDto)
+            .collect(Collectors.toCollection(LinkedList::new));
+    }
+
+    /**
      * Get one asociados by id.
      *
      * @param id the id of the entity.

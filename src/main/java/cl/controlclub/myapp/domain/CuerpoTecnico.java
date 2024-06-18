@@ -49,13 +49,14 @@ public class CuerpoTecnico implements Serializable {
     @Column(name = "email", nullable = false)
     private String email;
 
+    @JsonIgnoreProperties(value = { "usuario", "cuerpoTecnico", "directivos" }, allowSetters = true)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(unique = true)
+    private Asociados asociados;
+
     @JsonIgnoreProperties(value = { "jugador", "asociados", "directivos", "cuerpoTecnico" }, allowSetters = true)
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "cuerpoTecnico")
     private Usuario usuario;
-
-    @JsonIgnoreProperties(value = { "directivos", "cuerpoTecnico", "usuario" }, allowSetters = true)
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "cuerpoTecnico")
-    private Asociados asociados;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -150,6 +151,19 @@ public class CuerpoTecnico implements Serializable {
         this.email = email;
     }
 
+    public Asociados getAsociados() {
+        return this.asociados;
+    }
+
+    public void setAsociados(Asociados asociados) {
+        this.asociados = asociados;
+    }
+
+    public CuerpoTecnico asociados(Asociados asociados) {
+        this.setAsociados(asociados);
+        return this;
+    }
+
     public Usuario getUsuario() {
         return this.usuario;
     }
@@ -166,25 +180,6 @@ public class CuerpoTecnico implements Serializable {
 
     public CuerpoTecnico usuario(Usuario usuario) {
         this.setUsuario(usuario);
-        return this;
-    }
-
-    public Asociados getAsociados() {
-        return this.asociados;
-    }
-
-    public void setAsociados(Asociados asociados) {
-        if (this.asociados != null) {
-            this.asociados.setCuerpoTecnico(null);
-        }
-        if (asociados != null) {
-            asociados.setCuerpoTecnico(this);
-        }
-        this.asociados = asociados;
-    }
-
-    public CuerpoTecnico asociados(Asociados asociados) {
-        this.setAsociados(asociados);
         return this;
     }
 

@@ -49,19 +49,17 @@ public class Asociados implements Serializable {
     @Column(name = "email", nullable = false)
     private String email;
 
-    @JsonIgnoreProperties(value = { "usuario", "asociados" }, allowSetters = true)
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(unique = true)
-    private Directivos directivos;
-
-    @JsonIgnoreProperties(value = { "usuario", "asociados" }, allowSetters = true)
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(unique = true)
-    private CuerpoTecnico cuerpoTecnico;
-
     @JsonIgnoreProperties(value = { "jugador", "asociados", "directivos", "cuerpoTecnico" }, allowSetters = true)
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "asociados")
     private Usuario usuario;
+
+    @JsonIgnoreProperties(value = { "asociados", "usuario" }, allowSetters = true)
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "asociados")
+    private CuerpoTecnico cuerpoTecnico;
+
+    @JsonIgnoreProperties(value = { "asociados", "usuario" }, allowSetters = true)
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "asociados")
+    private Directivos directivos;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -156,32 +154,6 @@ public class Asociados implements Serializable {
         this.email = email;
     }
 
-    public Directivos getDirectivos() {
-        return this.directivos;
-    }
-
-    public void setDirectivos(Directivos directivos) {
-        this.directivos = directivos;
-    }
-
-    public Asociados directivos(Directivos directivos) {
-        this.setDirectivos(directivos);
-        return this;
-    }
-
-    public CuerpoTecnico getCuerpoTecnico() {
-        return this.cuerpoTecnico;
-    }
-
-    public void setCuerpoTecnico(CuerpoTecnico cuerpoTecnico) {
-        this.cuerpoTecnico = cuerpoTecnico;
-    }
-
-    public Asociados cuerpoTecnico(CuerpoTecnico cuerpoTecnico) {
-        this.setCuerpoTecnico(cuerpoTecnico);
-        return this;
-    }
-
     public Usuario getUsuario() {
         return this.usuario;
     }
@@ -198,6 +170,44 @@ public class Asociados implements Serializable {
 
     public Asociados usuario(Usuario usuario) {
         this.setUsuario(usuario);
+        return this;
+    }
+
+    public CuerpoTecnico getCuerpoTecnico() {
+        return this.cuerpoTecnico;
+    }
+
+    public void setCuerpoTecnico(CuerpoTecnico cuerpoTecnico) {
+        if (this.cuerpoTecnico != null) {
+            this.cuerpoTecnico.setAsociados(null);
+        }
+        if (cuerpoTecnico != null) {
+            cuerpoTecnico.setAsociados(this);
+        }
+        this.cuerpoTecnico = cuerpoTecnico;
+    }
+
+    public Asociados cuerpoTecnico(CuerpoTecnico cuerpoTecnico) {
+        this.setCuerpoTecnico(cuerpoTecnico);
+        return this;
+    }
+
+    public Directivos getDirectivos() {
+        return this.directivos;
+    }
+
+    public void setDirectivos(Directivos directivos) {
+        if (this.directivos != null) {
+            this.directivos.setAsociados(null);
+        }
+        if (directivos != null) {
+            directivos.setAsociados(this);
+        }
+        this.directivos = directivos;
+    }
+
+    public Asociados directivos(Directivos directivos) {
+        this.setDirectivos(directivos);
         return this;
     }
 

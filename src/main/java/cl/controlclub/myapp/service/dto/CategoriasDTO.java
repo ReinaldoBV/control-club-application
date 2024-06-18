@@ -21,6 +21,8 @@ public class CategoriasDTO implements Serializable {
     @NotNull
     private String nombreCategoria;
 
+    private JugadorDTO jugador;
+
     public Long getId() {
         return id;
     }
@@ -53,6 +55,14 @@ public class CategoriasDTO implements Serializable {
         this.nombreCategoria = nombreCategoria;
     }
 
+    public JugadorDTO getJugador() {
+        return jugador;
+    }
+
+    public void setJugador(JugadorDTO jugador) {
+        this.jugador = jugador;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -82,6 +92,7 @@ public class CategoriasDTO implements Serializable {
             ", anioInicio=" + getAnioInicio() +
             ", anioFinal=" + getAnioFinal() +
             ", nombreCategoria='" + getNombreCategoria() + "'" +
+            ", jugador=" + getJugador() +
             "}";
     }
 }

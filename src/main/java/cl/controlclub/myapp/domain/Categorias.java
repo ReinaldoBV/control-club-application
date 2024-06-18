@@ -36,8 +36,8 @@ public class Categorias implements Serializable {
     @Column(name = "nombre_categoria", nullable = false)
     private String nombreCategoria;
 
-    @JsonIgnoreProperties(value = { "categorias", "usuario" }, allowSetters = true)
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "categorias")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnoreProperties(value = { "usuario", "categorias" }, allowSetters = true)
     private Jugador jugador;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
@@ -99,12 +99,6 @@ public class Categorias implements Serializable {
     }
 
     public void setJugador(Jugador jugador) {
-        if (this.jugador != null) {
-            this.jugador.setCategorias(null);
-        }
-        if (jugador != null) {
-            jugador.setCategorias(this);
-        }
         this.jugador = jugador;
     }
 

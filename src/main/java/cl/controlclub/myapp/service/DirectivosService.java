@@ -106,19 +106,6 @@ public class DirectivosService {
     }
 
     /**
-     *  Get all the directivos where Asociados is {@code null}.
-     *  @return the list of entities.
-     */
-    @Transactional(readOnly = true)
-    public List<DirectivosDTO> findAllWhereAsociadosIsNull() {
-        log.debug("Request to get all directivos where Asociados is null");
-        return StreamSupport.stream(directivosRepository.findAll().spliterator(), false)
-            .filter(directivos -> directivos.getAsociados() == null)
-            .map(directivosMapper::toDto)
-            .collect(Collectors.toCollection(LinkedList::new));
-    }
-
-    /**
      * Get one directivos by id.
      *
      * @param id the id of the entity.

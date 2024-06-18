@@ -47,6 +47,7 @@ public class JugadorAsserts {
     public static void assertJugadorUpdatableFieldsEquals(Jugador expected, Jugador actual) {
         assertThat(expected)
             .as("Verify Jugador relevant properties")
+            .satisfies(e -> assertThat(e.getIdJugador()).as("check idJugador").isEqualTo(actual.getIdJugador()))
             .satisfies(e -> assertThat(e.getNroIdentificacion()).as("check nroIdentificacion").isEqualTo(actual.getNroIdentificacion()))
             .satisfies(e -> assertThat(e.getTipoIdentificacion()).as("check tipoIdentificacion").isEqualTo(actual.getTipoIdentificacion()))
             .satisfies(e -> assertThat(e.getNombres()).as("check nombres").isEqualTo(actual.getNombres()))
@@ -88,9 +89,5 @@ public class JugadorAsserts {
      * @param expected the expected entity
      * @param actual the actual entity
      */
-    public static void assertJugadorUpdatableRelationshipsEquals(Jugador expected, Jugador actual) {
-        assertThat(expected)
-            .as("Verify Jugador relationships")
-            .satisfies(e -> assertThat(e.getCategorias()).as("check categorias").isEqualTo(actual.getCategorias()));
-    }
+    public static void assertJugadorUpdatableRelationshipsEquals(Jugador expected, Jugador actual) {}
 }

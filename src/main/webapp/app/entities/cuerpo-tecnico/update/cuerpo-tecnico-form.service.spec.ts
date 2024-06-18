@@ -26,6 +26,7 @@ describe('CuerpoTecnico Form Service', () => {
             telefono: expect.any(Object),
             fechaInicio: expect.any(Object),
             email: expect.any(Object),
+            asociados: expect.any(Object),
           }),
         );
       });
@@ -42,6 +43,7 @@ describe('CuerpoTecnico Form Service', () => {
             telefono: expect.any(Object),
             fechaInicio: expect.any(Object),
             email: expect.any(Object),
+            asociados: expect.any(Object),
           }),
         );
       });

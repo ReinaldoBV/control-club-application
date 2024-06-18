@@ -31,10 +31,6 @@ public class AsociadosDTO implements Serializable {
     @NotNull
     private String email;
 
-    private DirectivosDTO directivos;
-
-    private CuerpoTecnicoDTO cuerpoTecnico;
-
     public Long getId() {
         return id;
     }
@@ -91,22 +87,6 @@ public class AsociadosDTO implements Serializable {
         this.email = email;
     }
 
-    public DirectivosDTO getDirectivos() {
-        return directivos;
-    }
-
-    public void setDirectivos(DirectivosDTO directivos) {
-        this.directivos = directivos;
-    }
-
-    public CuerpoTecnicoDTO getCuerpoTecnico() {
-        return cuerpoTecnico;
-    }
-
-    public void setCuerpoTecnico(CuerpoTecnicoDTO cuerpoTecnico) {
-        this.cuerpoTecnico = cuerpoTecnico;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -139,8 +119,6 @@ public class AsociadosDTO implements Serializable {
             ", telefono='" + getTelefono() + "'" +
             ", fechaAsoc='" + getFechaAsoc() + "'" +
             ", email='" + getEmail() + "'" +
-            ", directivos=" + getDirectivos() +
-            ", cuerpoTecnico=" + getCuerpoTecnico() +
             "}";
     }
 }

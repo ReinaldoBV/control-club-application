@@ -18,6 +18,7 @@ type JugadorFormDefaults = Pick<NewJugador, 'id'>;
 
 type JugadorFormGroupContent = {
   id: FormControl<IJugador['id'] | NewJugador['id']>;
+  idJugador: FormControl<IJugador['idJugador']>;
   nroIdentificacion: FormControl<IJugador['nroIdentificacion']>;
   tipoIdentificacion: FormControl<IJugador['tipoIdentificacion']>;
   nombres: FormControl<IJugador['nombres']>;
@@ -34,7 +35,6 @@ type JugadorFormGroupContent = {
   imagenJugadorContentType: FormControl<IJugador['imagenJugadorContentType']>;
   documentoIdentificacion: FormControl<IJugador['documentoIdentificacion']>;
   documentoIdentificacionContentType: FormControl<IJugador['documentoIdentificacionContentType']>;
-  categorias: FormControl<IJugador['categorias']>;
 };
 
 export type JugadorFormGroup = FormGroup<JugadorFormGroupContent>;
@@ -54,6 +54,9 @@ export class JugadorFormService {
           validators: [Validators.required],
         },
       ),
+      idJugador: new FormControl(jugadorRawValue.idJugador, {
+        validators: [Validators.required],
+      }),
       nroIdentificacion: new FormControl(jugadorRawValue.nroIdentificacion, {
         validators: [Validators.required],
       }),
@@ -94,7 +97,6 @@ export class JugadorFormService {
       imagenJugadorContentType: new FormControl(jugadorRawValue.imagenJugadorContentType),
       documentoIdentificacion: new FormControl(jugadorRawValue.documentoIdentificacion),
       documentoIdentificacionContentType: new FormControl(jugadorRawValue.documentoIdentificacionContentType),
-      categorias: new FormControl(jugadorRawValue.categorias),
     });
   }
 

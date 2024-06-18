@@ -24,9 +24,9 @@
       "telefono": "Telefono",
       "fechaAsoc": "Fecha Asoc",
       "email": "Email",
-      "directivos": "Directivos",
+      "usuario": "Usuario",
       "cuerpoTecnico": "Cuerpo Tecnico",
-      "usuario": "Usuario"
+      "directivos": "Directivos"
     }
   }
 }

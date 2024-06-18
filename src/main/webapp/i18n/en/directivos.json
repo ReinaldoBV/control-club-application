@@ -25,8 +25,8 @@
       "fechaEleccion": "Fecha Eleccion",
       "fechaVencimiento": "Fecha Vencimiento",
       "email": "Email",
-      "usuario": "Usuario",
-      "asociados": "Asociados"
+      "asociados": "Asociados",
+      "usuario": "Usuario"
     }
   }
 }

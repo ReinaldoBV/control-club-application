@@ -30,10 +30,8 @@ class CategoriasTest {
 
         categorias.setJugador(jugadorBack);
         assertThat(categorias.getJugador()).isEqualTo(jugadorBack);
-        assertThat(jugadorBack.getCategorias()).isEqualTo(categorias);
 
         categorias.jugador(null);
         assertThat(categorias.getJugador()).isNull();
-        assertThat(jugadorBack.getCategorias()).isNull();
     }
 }

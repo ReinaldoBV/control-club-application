@@ -6,6 +6,8 @@ import static cl.controlclub.myapp.domain.UsuarioTestSamples.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import cl.controlclub.myapp.web.rest.TestUtil;
+import java.util.HashSet;
+import java.util.Set;
 import org.junit.jupiter.api.Test;
 
 class JugadorTest {
@@ -25,18 +27,6 @@ class JugadorTest {
     }
 
     @Test
-    void categoriasTest() {
-        Jugador jugador = getJugadorRandomSampleGenerator();
-        Categorias categoriasBack = getCategoriasRandomSampleGenerator();
-
-        jugador.setCategorias(categoriasBack);
-        assertThat(jugador.getCategorias()).isEqualTo(categoriasBack);
-
-        jugador.categorias(null);
-        assertThat(jugador.getCategorias()).isNull();
-    }
-
-    @Test
     void usuarioTest() {
         Jugador jugador = getJugadorRandomSampleGenerator();
         Usuario usuarioBack = getUsuarioRandomSampleGenerator();
@@ -48,5 +38,27 @@ class JugadorTest {
         jugador.usuario(null);
         assertThat(jugador.getUsuario()).isNull();
         assertThat(usuarioBack.getJugador()).isNull();
+    }
+
+    @Test
+    void categoriasTest() {
+        Jugador jugador = getJugadorRandomSampleGenerator();
+        Categorias categoriasBack = getCategoriasRandomSampleGenerator();
+
+        jugador.addCategorias(categoriasBack);
+        assertThat(jugador.getCategorias()).containsOnly(categoriasBack);
+        assertThat(categoriasBack.getJugador()).isEqualTo(jugador);
+
+        jugador.removeCategorias(categoriasBack);
+        assertThat(jugador.getCategorias()).doesNotContain(categoriasBack);
+        assertThat(categoriasBack.getJugador()).isNull();
+
+        jugador.categorias(new HashSet<>(Set.of(categoriasBack)));
+        assertThat(jugador.getCategorias()).containsOnly(categoriasBack);
+        assertThat(categoriasBack.getJugador()).isEqualTo(jugador);
+
+        jugador.setCategorias(new HashSet<>());
+        assertThat(jugador.getCategorias()).doesNotContain(categoriasBack);
+        assertThat(categoriasBack.getJugador()).isNull();
     }
 }

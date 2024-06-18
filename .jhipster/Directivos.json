@@ -45,16 +45,16 @@
   "pagination": "pagination",
   "relationships": [
     {
-      "otherEntityName": "usuario",
-      "otherEntityRelationshipName": "directivos",
-      "relationshipName": "usuario",
-      "relationshipSide": "right",
-      "relationshipType": "one-to-one"
-    },
-    {
       "otherEntityName": "asociados",
       "otherEntityRelationshipName": "directivos",
       "relationshipName": "asociados",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "usuario",
+      "otherEntityRelationshipName": "directivos",
+      "relationshipName": "usuario",
       "relationshipSide": "right",
       "relationshipType": "one-to-one"
     }

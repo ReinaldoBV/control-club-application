@@ -40,23 +40,23 @@
   "pagination": "pagination",
   "relationships": [
     {
-      "otherEntityName": "directivos",
+      "otherEntityName": "usuario",
       "otherEntityRelationshipName": "asociados",
-      "relationshipName": "directivos",
-      "relationshipSide": "left",
+      "relationshipName": "usuario",
+      "relationshipSide": "right",
       "relationshipType": "one-to-one"
     },
     {
       "otherEntityName": "cuerpoTecnico",
       "otherEntityRelationshipName": "asociados",
       "relationshipName": "cuerpoTecnico",
-      "relationshipSide": "left",
+      "relationshipSide": "right",
       "relationshipType": "one-to-one"
     },
     {
-      "otherEntityName": "usuario",
+      "otherEntityName": "directivos",
       "otherEntityRelationshipName": "asociados",
-      "relationshipName": "usuario",
+      "relationshipName": "directivos",
       "relationshipSide": "right",
       "relationshipType": "one-to-one"
     }

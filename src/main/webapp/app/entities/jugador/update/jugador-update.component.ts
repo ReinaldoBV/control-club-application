@@ -2,7 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { finalize, map } from 'rxjs/operators';
+import { finalize } from 'rxjs/operators';
 
 import SharedModule from 'app/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -10,8 +10,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AlertError } from 'app/shared/alert/alert-error.model';
 import { EventManager, EventWithContent } from 'app/core/util/event-manager.service';
 import { DataUtils, FileLoadError } from 'app/core/util/data-util.service';
-import { ICategorias } from 'app/entities/categorias/categorias.model';
-import { CategoriasService } from 'app/entities/categorias/service/categorias.service';
 import { TipoIdentificacion } from 'app/entities/enumerations/tipo-identificacion.model';
 import { Nacionalidad } from 'app/entities/enumerations/nacionalidad.model';
 import { JugadorService } from '../service/jugador.service';
@@ -30,19 +28,14 @@ export class JugadorUpdateComponent implements OnInit {
   tipoIdentificacionValues = Object.keys(TipoIdentificacion);
   nacionalidadValues = Object.keys(Nacionalidad);
 
-  categoriasCollection: ICategorias[] = [];
-
   protected dataUtils = inject(DataUtils);
   protected eventManager = inject(EventManager);
   protected jugadorService = inject(JugadorService);
   protected jugadorFormService = inject(JugadorFormService);
-  protected categoriasService = inject(CategoriasService);
   protected activatedRoute = inject(ActivatedRoute);
 
   // eslint-disable-next-line @typescript-eslint/member-ordering
   editForm: JugadorFormGroup = this.jugadorFormService.createJugadorFormGroup();
-
-  compareCategorias = (o1: ICategorias | null, o2: ICategorias | null): boolean => this.categoriasService.compareCategorias(o1, o2);
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ jugador }) => {
@@ -50,8 +43,6 @@ export class JugadorUpdateComponent implements OnInit {
       if (jugador) {
         this.updateForm(jugador);
       }
-
-      this.loadRelationshipsOptions();
     });
   }
 
@@ -108,22 +99,5 @@ export class JugadorUpdateComponent implements OnInit {
   protected updateForm(jugador: IJugador): void {
     this.jugador = jugador;
     this.jugadorFormService.resetForm(this.editForm, jugador);
-
-    this.categoriasCollection = this.categoriasService.addCategoriasToCollectionIfMissing<ICategorias>(
-      this.categoriasCollection,
-      jugador.categorias,
-    );
-  }
-
-  protected loadRelationshipsOptions(): void {
-    this.categoriasService
-      .query({ filter: 'jugador-is-null' })
-      .pipe(map((res: HttpResponse<ICategorias[]>) => res.body ?? []))
-      .pipe(
-        map((categorias: ICategorias[]) =>
-          this.categoriasService.addCategoriasToCollectionIfMissing<ICategorias>(categorias, this.jugador?.categorias),
-        ),
-      )
-      .subscribe((categorias: ICategorias[]) => (this.categoriasCollection = categorias));
   }
 }

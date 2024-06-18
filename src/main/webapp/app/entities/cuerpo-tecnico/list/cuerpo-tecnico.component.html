@@ -84,6 +84,12 @@
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
+            <th scope="col" jhiSortBy="asociados.id">
+              <div class="d-flex">
+                <span jhiTranslate="controlClubApplicationApp.cuerpoTecnico.asociados">Asociados</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
             <th scope="col"></th>
           </tr>
         </thead>
@@ -99,6 +105,13 @@
               <td>{{ cuerpoTecnico.telefono }}</td>
               <td>{{ cuerpoTecnico.fechaInicio | formatMediumDate }}</td>
               <td>{{ cuerpoTecnico.email }}</td>
+              <td>
+                @if (cuerpoTecnico.asociados) {
+                  <div>
+                    <a [routerLink]="['/asociados', cuerpoTecnico.asociados.id, 'view']">{{ cuerpoTecnico.asociados.id }}</a>
+                  </div>
+                }
+              </td>
               <td class="text-end">
                 <div class="btn-group">
                   <a [routerLink]="['/cuerpo-tecnico', cuerpoTecnico.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">

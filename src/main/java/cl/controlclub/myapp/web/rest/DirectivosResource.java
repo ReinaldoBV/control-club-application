@@ -152,11 +152,6 @@ public class DirectivosResource {
             log.debug("REST request to get all Directivoss where usuario is null");
             return new ResponseEntity<>(directivosService.findAllWhereUsuarioIsNull(), HttpStatus.OK);
         }
-
-        if ("asociados-is-null".equals(filter)) {
-            log.debug("REST request to get all Directivoss where asociados is null");
-            return new ResponseEntity<>(directivosService.findAllWhereAsociadosIsNull(), HttpStatus.OK);
-        }
         log.debug("REST request to get a page of Directivos");
         Page<DirectivosDTO> page = directivosService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);

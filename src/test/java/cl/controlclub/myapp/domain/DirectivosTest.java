@@ -25,6 +25,18 @@ class DirectivosTest {
     }
 
     @Test
+    void asociadosTest() {
+        Directivos directivos = getDirectivosRandomSampleGenerator();
+        Asociados asociadosBack = getAsociadosRandomSampleGenerator();
+
+        directivos.setAsociados(asociadosBack);
+        assertThat(directivos.getAsociados()).isEqualTo(asociadosBack);
+
+        directivos.asociados(null);
+        assertThat(directivos.getAsociados()).isNull();
+    }
+
+    @Test
     void usuarioTest() {
         Directivos directivos = getDirectivosRandomSampleGenerator();
         Usuario usuarioBack = getUsuarioRandomSampleGenerator();
@@ -36,19 +48,5 @@ class DirectivosTest {
         directivos.usuario(null);
         assertThat(directivos.getUsuario()).isNull();
         assertThat(usuarioBack.getDirectivos()).isNull();
-    }
-
-    @Test
-    void asociadosTest() {
-        Directivos directivos = getDirectivosRandomSampleGenerator();
-        Asociados asociadosBack = getAsociadosRandomSampleGenerator();
-
-        directivos.setAsociados(asociadosBack);
-        assertThat(directivos.getAsociados()).isEqualTo(asociadosBack);
-        assertThat(asociadosBack.getDirectivos()).isEqualTo(directivos);
-
-        directivos.asociados(null);
-        assertThat(directivos.getAsociados()).isNull();
-        assertThat(asociadosBack.getDirectivos()).isNull();
     }
 }

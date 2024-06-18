@@ -49,6 +49,7 @@
     <include file="config/liquibase/changelog/20240613174736_added_entity_constraints_Mensaje.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20240613174738_added_entity_constraints_Bienes.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20240613174739_added_entity_constraints_Usuario.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240613163026_added_entity_constraints_Categorias.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
 </databaseChangeLog>

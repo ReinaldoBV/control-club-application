@@ -38,22 +38,22 @@ public class Usuario implements Serializable {
     @Column(name = "rol", nullable = false)
     private RolUsuario rol;
 
-    @JsonIgnoreProperties(value = { "categorias", "usuario" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "usuario", "categorias" }, allowSetters = true)
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(unique = true)
     private Jugador jugador;
 
-    @JsonIgnoreProperties(value = { "directivos", "cuerpoTecnico", "usuario" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "usuario", "cuerpoTecnico", "directivos" }, allowSetters = true)
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(unique = true)
     private Asociados asociados;
 
-    @JsonIgnoreProperties(value = { "usuario", "asociados" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "asociados", "usuario" }, allowSetters = true)
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(unique = true)
     private Directivos directivos;
 
-    @JsonIgnoreProperties(value = { "usuario", "asociados" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "asociados", "usuario" }, allowSetters = true)
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(unique = true)
     private CuerpoTecnico cuerpoTecnico;

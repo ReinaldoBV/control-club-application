@@ -14,6 +14,7 @@ public class JugadorTestSamples {
     public static Jugador getJugadorSample1() {
         return new Jugador()
             .id(1L)
+            .idJugador(1L)
             .nroIdentificacion(1L)
             .nombres("nombres1")
             .apellidos("apellidos1")
@@ -28,6 +29,7 @@ public class JugadorTestSamples {
     public static Jugador getJugadorSample2() {
         return new Jugador()
             .id(2L)
+            .idJugador(2L)
             .nroIdentificacion(2L)
             .nombres("nombres2")
             .apellidos("apellidos2")
@@ -42,6 +44,7 @@ public class JugadorTestSamples {
     public static Jugador getJugadorRandomSampleGenerator() {
         return new Jugador()
             .id(longCount.incrementAndGet())
+            .idJugador(longCount.incrementAndGet())
             .nroIdentificacion(longCount.incrementAndGet())
             .nombres(UUID.randomUUID().toString())
             .apellidos(UUID.randomUUID().toString())
