@@ -1,274 +1,81 @@
-enum RMComuna {
-    CERRILLOS,
-	CERRO_NAVIA,
-	CONCHALI,
-	EL_BOSQUE,
-	ESTACION_CENTRAL,
-    HUECHURABA,
-    INDEPENDENCIA,
-    LA_CISTERNA,
-    LA_FLORIDA,
-    LA_GRANJA,
-    LA_PINTANA,
-    LA_REINA,
-    LAS_CONDES,
-    LO_BARNECHEA,
-    LO_ESPEJO,
-    LO_PRADO,
-    MACUL,
-    MAIPU,
-    NUNOA,
-    PADRE_HURTADO,
-    PEDRO_AGUIRRE_CERDA,
-    PENALOLEN,
-    PIRQUE,
-    PROVIDENCIA,
-    PUDAHUEL,
-    PUENTE_ALTO,
-    QUILICURA,
-    QUINTA_NORMAL,
-    RECOLETA,
-    RENCA,
-    SAN_BERNARDO,
-    SAN_JOAQUIN,
-    SAN_JOSE_DE_MAIPO,
-    SAN_MIGUEL,
-    SAN_RAMON,
-    SANTIAGO
-}
-
-enum TipoIdentificacion {
-    RUT,
-    PASAPORTE,
-    ESCOLAR,
-    OTRO
-}
-
-enum Nacionalidad {
-    CHILENA,
-    VENEZOLANA,
-    DOMINICANA,
-    COLOMBIANA,
-    OTRA
-}
-
-enum TipoPrevision {
-    FONASA,
-    ISAPRE,
-    NO_TIENE,
-    OTRO
-}
-
-enum TipoPago {
-    TRANSFERENCIA,
-    EFECTIVO,
-    CHEQUE
-}
-
-enum TipoCuenta {
-    PAGAR,
-    COBRAR
-}
-
-enum EstadoCuenta {
-    PENDIENTE,
-    PAGADO,
-    COBRADO
-}
-
-enum RolUsuario {
-    ADMINISTRADOR,
-    ENTRENADOR,
-    JUGADOR,
-    PADRE
-}
-
-enum TipoAsistencia {
-    ENTRENAMIENTO,
-    PARTIDO
-}
-
-entity Club {
-    razon String required,
-    direccion String required,
-    telefono String required,
-    email String required,
-    fechaFundacion LocalDate required,
-    presidente String required
-}
-
-entity Jugador {
-	idJugador Long required,
-    nroIdentificacion Long required,
-    tipoIdentificacion TipoIdentificacion required,
-    nombres String required,
-    apellidos String required,
-    nacionalidad Nacionalidad required,
-    edad Integer required,
-    fechaNacimiento LocalDate required,
-    numeroCamisa Integer required,
-    contactoEmergencia String required,
-    calleAvenidaDireccion String required,
-    numeroDireccion Long required,
-    numeroPersonal Long required,
-    imagenJugador Blob, // Almacenar la imagen del jugador como binario
-    documentoIdentificacion Blob // Almacenar el documento de identificación como binario
-}
-
-entity PrevisionSalud {
-    tipoPrevision TipoPrevision required
-}
-
-entity Comuna {
-    comuna RMComuna required
-}
-
-entity CentroSalud {
-    centroSalud String required
-}
-
-entity CentroEducativo {
-    centroEducativo String required
-}
-
-entity CuerpoTecnico {
-    nombres String required,
-    apellidos String required,
-    rolTecnico String required,
-    telefono String required,
-    fechaInicio LocalDate required,
-    email String required
-}
-
-entity Categorias {
-    anioInicio Long required,
-    anioFinal Long required,
-    nombreCategoria String required
-}
-
-entity Directivos {
-	nombres String required,
-    apellidos String required,	
-    cargo String required,
-    telefono String required,
-    fechaEleccion LocalDate required,
-    fechaVencimiento LocalDate required,
-    email String required
-}
-
-entity Asociados {
-    nombres String required,
-    apellidos String required,
-    cargo String required,
-    telefono String required,
-    fechaAsoc LocalDate required,
-    email String required
-}
-
-entity Padre {
-    nombres String required,
-    apellidos String required,
-    relacion String required,
-    telefono String required,
-    asociado Boolean required,
-    email String required
-}
-
-entity TorneosParticipaciones {
-    descripcion String required,
-    monto BigDecimal required,
-    fecha LocalDate required
-}
-
-
-entity FinanzasIngreso {
-    tipo TipoPago required,
-    descripcion String required,
-    monto BigDecimal required,
-    fecha LocalDate required
-}
-
-entity FinanzasEgreso {
-    tipo TipoPago required,
-	descripcion String required,
-    monto BigDecimal required,
-    fecha LocalDate required
-}
-
-entity Cuentas {
-    tipo TipoCuenta required,
-    descripcion String required,
-    monto BigDecimal required,
-    nroCuotas Long required, // Fraccionar en 1 a 12 cuotas
-    fechaVencimiento LocalDate required,
-    estado EstadoCuenta required
-}
-
-entity EstadisticasBaloncesto {
-    puntos Integer,
-    rebotes Integer,
-    asistencias Integer,
-    robos Integer,
-    bloqueos Integer,
-    porcentajeTiro BigDecimal
-}
-
-entity Partido {
-    fecha LocalDate required,
-    oponente String required,
-    resultado String
-}
-
-entity Entrenamiento {
-    fechaHora LocalDate required,
-    duracion Integer required // Duración en minutos
-}
-
-entity Mensaje {
-    remitenteId Long required,
-    destinatarioId Long required,
-    mensaje String required,
-    leido Boolean
-}
-
-entity Anuncio {
-    titulo String required,
-    contenido String required,
-    fechaPublicacion LocalDate required
-}
-
-entity Bienes {
-    descripcion String required,
-    cantidad Integer required,
-    estado String required
+application {
+  config {
+    baseName ControlPagoMensual,
+    applicationType monolith,
+    authenticationType jwt,
+    packageName com.example.controlpagomensual,
+    prodDatabaseType postgresql,
+    buildTool maven,
+    enableSwaggerCodegen true,
+    enableTranslation false,
+    nativeLanguage es
+  }
+  entities Usuario, Pago, Notificacion, HistorialPago
 }
 
 entity Usuario {
-    username String required unique,
-    password String required,
-    rol RolUsuario required
+  nombre String required,
+  direccion String required,
+  correoElectronico String required,
+  telefono String required,
+  identificacion String required,
+  rol RolUsuario required
 }
 
-entity Asistencia {
-    tipo TipoAsistencia required,
-    idEvento Long required, // ID del entrenamiento o partido
-    fecha LocalDate required,
-    asistencia Boolean required // Asistencia: true (presente), false (ausente)
+enum RolUsuario {
+  ADMINISTRADOR,
+  USUARIO
 }
 
-relationship OneToOne {
-    Usuario to Jugador,
-    Usuario to Asociados,
-    Usuario to Directivos,
-    Usuario to CuerpoTecnico,
-    CuerpoTecnico to Asociados, 
-    Directivos to Asociados
+entity Pago {
+  descripcion String required,
+  monto BigDecimal required,
+  fechaPago Instant required,
+  estadoPago EstadoPago required,
+  referencia String required,
+  metodoPago MetodoPago required,
+  usuario Usuario required,
+  historialPago HistorialPago
 }
 
-relationship OneToMany {
-    Categorias to Jugador { categoria }
-    }
+enum EstadoPago {
+  PENDIENTE,
+  COMPLETADO,
+  VENCIDO
+}
 
-service all with serviceClass
-dto all with mapstruct
-paginate all with pagination
+enum MetodoPago {
+  CHEQUE,
+  TRANSFERENCIA,
+  EFECTIVO
+}
+
+entity HistorialPago {
+  idPago Long required,
+  fechaPago Instant required,
+  monto BigDecimal required,
+  estadoPago EstadoPago required
+}
+
+entity Notificacion {
+  mensaje String required,
+  tipoNotificacion TipoNotificacion required,
+  fechaEnvio Instant required,
+  usuario Usuario required
+}
+
+enum TipoNotificacion {
+  WHATSAPP,
+  CORREO_ELECTRONICO,
+  SMS
+}
+
+relationship ManyToOne {
+  Pago{usuario} to Usuario
+  Notificacion{usuario} to Usuario
+  HistorialPago{pago} to Pago
+}
+
+service Usuario, Pago, Notificacion with serviceClass
+
+paginate Pago, Notificacion, HistorialPago with pagination
